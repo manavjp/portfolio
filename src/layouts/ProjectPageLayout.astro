@@ -1,0 +1,128 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ghostText: string;
+  category: string;
+  tagline: string;
+}
+
+const { title, description, ghostText, category, tagline } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <section class="proj-hero">
+    <div class="proj-hero__bg" aria-hidden="true"></div>
+    <div class="proj-hero__ghost" aria-hidden="true">{ghostText}</div>
+    <div class="proj-hero__content page-padded">
+      <a href="/projects" class="proj-hero__back">← Projects</a>
+      <p class="proj-hero__category">{category}</p>
+      <h1 class="proj-hero__title">{title}</h1>
+      <p class="proj-hero__tagline">{tagline}</p>
+    </div>
+  </section>
+
+  <div class="proj-body page-padded">
+    <slot />
+  </div>
+</Layout>
+
+<style>
+  .proj-hero {
+    position: relative;
+    min-height: 55vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .proj-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        var(--grid-line) 0px, var(--grid-line) 1px,
+        transparent 1px, transparent 40px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        var(--grid-line) 0px, var(--grid-line) 1px,
+        transparent 1px, transparent 40px
+      );
+  }
+
+  .proj-hero__ghost {
+    position: absolute;
+    bottom: -0.12em;
+    left: 0;
+    right: 0;
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 18vw, 16rem);
+    font-weight: var(--fw-black);
+    color: var(--text-15);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
+    padding: 0 var(--outer-gutter);
+    overflow: hidden;
+  }
+
+  .proj-hero__content {
+    position: relative;
+    z-index: 1;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    width: 100%;
+  }
+
+  .proj-hero__back {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  .proj-hero__back:hover { color: var(--text-70); }
+
+  .proj-hero__category {
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .proj-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 5vw, 4.5rem);
+    font-weight: var(--fw-black);
+    color: var(--text-100);
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+    max-width: 18ch;
+  }
+
+  .proj-hero__tagline {
+    font-family: var(--font-label);
+    font-size: var(--text-base);
+    color: var(--text-50);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    max-width: 60ch;
+  }
+
+  .proj-body {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+  }
+</style>

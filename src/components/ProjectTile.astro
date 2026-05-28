@@ -2,22 +2,35 @@
 interface Props {
   title: string;
   tagline: string;
-  href: string;
+  href?: string;
   featured?: boolean;
 }
 const { title, tagline, href, featured = false } = Astro.props;
+const classes = ['tile', featured && 'tile--featured', !href && 'tile--static'].filter(Boolean) as string[];
 ---
 
-<a href={href} class:list={['tile', { 'tile--featured': featured }]}>
-  <div class="tile__bg" aria-hidden="true"></div>
-  <div class="tile__content">
-    <div class="tile__text">
-      <span class="tile__title">{title}</span>
-      <span class="tile__tagline">{tagline}</span>
+{href ? (
+  <a href={href} class:list={classes}>
+    <div class="tile__bg" aria-hidden="true"></div>
+    <div class="tile__content">
+      <div class="tile__text">
+        <span class="tile__title">{title}</span>
+        <span class="tile__tagline">{tagline}</span>
+      </div>
+      <span class="tile__arrow" aria-hidden="true">↗</span>
     </div>
-    <span class="tile__arrow" aria-hidden="true">↗</span>
+  </a>
+) : (
+  <div class:list={classes}>
+    <div class="tile__bg" aria-hidden="true"></div>
+    <div class="tile__content">
+      <div class="tile__text">
+        <span class="tile__title">{title}</span>
+        <span class="tile__tagline">{tagline}</span>
+      </div>
+    </div>
   </div>
-</a>
+)}
 
 <style>
   .tile {
@@ -32,7 +45,8 @@ const { title, tagline, href, featured = false } = Astro.props;
     transition: border-color var(--dur-fast) var(--ease-out);
   }
 
-  .tile:hover { border-color: var(--accent); }
+  .tile--static { cursor: default; }
+  a.tile:hover  { border-color: var(--accent); }
 
   .tile__bg {
     position: absolute;
@@ -101,7 +115,7 @@ const { title, tagline, href, featured = false } = Astro.props;
     align-self: flex-end;
   }
 
-  .tile:hover .tile__arrow {
+  a.tile:hover .tile__arrow {
     opacity: 1;
     transform: translate(0, 0);
   }

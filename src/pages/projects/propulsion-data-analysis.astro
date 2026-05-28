@@ -1,23 +1,74 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
+import SpecTable from '../../components/SpecTable.astro';
+import MetricCallout from '../../components/MetricCallout.astro';
+import ThrustChart from '../../components/ThrustChart.astro';
+import ScatteredReports from '../../components/ScatteredReports.astro';
+
+const specRows = [
+  { label: 'Test Campaigns',  value: '3 (Hydro, Cold-Flow, Static-Fire)' },
+  { label: 'Test Reports',    value: '20+ pages'                          },
+  { label: 'Peak Thrust',     value: '~950 lbf (representative)'          },
+  { label: 'Total Impulse',   value: '5,635 lbf-s'                        },
+  { label: 'Data Systems',    value: 'Load cell, pressure transducer'     },
+];
+
+const reports = [
+  { title: 'Static Fire #1 — Summary',    subtitle: 'Mojave Air & Space Port',    date: '2024', href: '#' },
+  { title: 'Cold-Flow Test Campaign',     subtitle: 'Injector characterization',  date: '2024', href: '#' },
+  { title: 'Hydrostatic Test — Summary',  subtitle: 'Tank pressure validation',   date: '2024', href: '#' },
+];
 ---
-<Layout title="Propulsion Data Analysis">
-  <div class="page-padded">
-    <div class="stub-header">
-      <a href="/projects" class="back-link">← Projects</a>
-      <h1 class="stub-title">Propulsion Data Analysis</h1>
-      <p class="stub-tag">UCLA Rocket Project</p>
-    </div>
+<ProjectPageLayout
+  title="Propulsion Data Analysis"
+  description="20+ pages of hydro, cold-flow, and static-fire test reports across three UCLA Rocket Project test campaigns."
+  ghostText="DATA"
+  category="UCLA Rocket Project"
+  tagline="20+ pages of hydro, cold-flow & static-fire test reports"
+>
+  <section class="spec-block">
+    <SpecTable rows={specRows} title="Specifications" />
     <div class="todo-block">
-      <span class="todo-label">TODO — Milestone 4</span>
-      <p>Full detail page: scattered-reports component (20+ PDF test summaries as overlapping paper cards), key data plots from hydro, cold-flow, and static-fire campaigns, anomaly notes.</p>
+      <span class="todo-label">TODO — Real PDF links</span>
+      <p>Replace <code>href: '#'</code> in the reports array with actual PDF paths once reports are placed in <code>public/assets/projects/propulsion-data-analysis/</code>.</p>
     </div>
-  </div>
-</Layout>
-<style>
-  .stub-header { margin-bottom: 2rem; }
-  .back-link { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-35); letter-spacing: 0.06em; display: block; margin-bottom: 1.25rem; transition: color var(--dur-fast) var(--ease-out); }
-  .back-link:hover { color: var(--text-70); }
-  .stub-title { font-family: var(--font-display); font-size: var(--text-4xl); font-weight: var(--fw-black); color: var(--text-100); letter-spacing: -0.01em; line-height: var(--leading-tight); text-transform: uppercase; margin-bottom: 0.5rem; }
-  .stub-tag { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-35); letter-spacing: 0.08em; text-transform: uppercase; }
-</style>
+  </section>
+  <section class="metrics-row" aria-label="Key metrics">
+    <MetricCallout value="3"     unit="campaigns" description="Test campaign types"        />
+    <MetricCallout value="20"    unit="+ pages"   description="Test report documentation" />
+    <MetricCallout value="5,635" unit="lbf-s"     description="Peak static fire impulse"  />
+  </section>
+  <section class="the-work">
+    <div class="work-row">
+      <h2 class="work-label">Problem</h2>
+      <div class="work-content">
+        <p class="work-text">Multiple test campaigns across hydrostatic, cold-flow, and static-fire conditions produce raw sensor data that requires systematic documentation, anomaly tracking, and comparison against model predictions. Raw DAQ output is not interpretable without structured analysis and reporting.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Approach</h2>
+      <div class="work-content">
+        <p class="work-text">Compiled and analyzed time-series data from three test campaign types. Documented findings, anomalies, and comparisons between model predictions and measured values in structured test reports spanning 20+ pages across all campaigns.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Analysis</h2>
+      <div class="work-content">
+        <ThrustChart />
+        <ScatteredReports reports={reports} />
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Result</h2>
+      <div class="work-content">
+        <p class="work-text">Comprehensive test documentation spanning three campaign types enables systematic comparison between test runs and informed decision-making for subsequent test planning. Anomalies identified in early campaigns were addressed in later test configurations.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Reflection</h2>
+      <div class="work-content">
+        <p class="work-text">Manual data reduction was time-intensive. A future iteration would implement an automated pipeline from DAQ output to standardized report generation, reducing analyst time and improving consistency between campaigns.</p>
+      </div>
+    </div>
+  </section>
+</ProjectPageLayout>

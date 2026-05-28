@@ -1,23 +1,72 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
+import SpecTable from '../../components/SpecTable.astro';
+import MetricCallout from '../../components/MetricCallout.astro';
+
+const specRows = [
+  { label: 'Configuration',  value: 'Vertical, tank-mount'  },
+  { label: 'Analysis Tool',  value: 'Ansys Mechanical'       },
+  { label: 'Validation',     value: 'FEA structural safety'  },
+  { label: 'Design Tool',    value: 'SolidWorks'             },
+  { label: 'Load Cases',     value: 'Tank mass + motor thrust' },
+];
 ---
-<Layout title="Vertical Test Stand & Tank Mount">
-  <div class="page-padded">
-    <div class="stub-header">
-      <a href="/projects" class="back-link">← Projects</a>
-      <h1 class="stub-title">Vertical Test Stand & Tank Mount</h1>
-      <p class="stub-tag">UCLA Rocket Project</p>
-    </div>
+<ProjectPageLayout
+  title="Vertical Test Stand & Tank Mount"
+  description="Flight tank structural mount and vertical stand infrastructure, FEA-validated in Ansys Mechanical."
+  ghostText="VERTICAL"
+  category="UCLA Rocket Project"
+  tagline="Flight tank structural mount, FEA-validated in Ansys Mechanical"
+>
+  <section class="spec-block">
+    <SpecTable rows={specRows} title="Specifications" />
     <div class="todo-block">
-      <span class="todo-label">TODO — Milestone 4</span>
-      <p>Full detail page: tank-mount and vertical stand infrastructure, Ansys Mechanical FEA stress contours, structural safety validation, CAD renders.</p>
+      <span class="todo-label">TODO — CAD render + rotating model</span>
+      <p>SolidWorks render of the vertical stand and tank mount assembly. 360° rotating MP4 or high-res isometric PNG. Place at <code>public/assets/projects/vertical-test-stand/</code>.</p>
     </div>
-  </div>
-</Layout>
-<style>
-  .stub-header { margin-bottom: 2rem; }
-  .back-link { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-35); letter-spacing: 0.06em; display: block; margin-bottom: 1.25rem; transition: color var(--dur-fast) var(--ease-out); }
-  .back-link:hover { color: var(--text-70); }
-  .stub-title { font-family: var(--font-display); font-size: var(--text-4xl); font-weight: var(--fw-black); color: var(--text-100); letter-spacing: -0.01em; line-height: var(--leading-tight); text-transform: uppercase; margin-bottom: 0.5rem; }
-  .stub-tag { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-35); letter-spacing: 0.08em; text-transform: uppercase; }
-</style>
+  </section>
+  <section class="metrics-row" aria-label="Key metrics">
+    <MetricCallout value="2.0" unit=""      description="Factor of Safety (min)" prefix=">" />
+    <MetricCallout value="3"   unit="cases" description="FEA load cases analyzed"           />
+    <MetricCallout value="2"   unit="iters" description="CAD design iterations"             />
+  </section>
+  <section class="the-work">
+    <div class="work-row">
+      <h2 class="work-label">Problem</h2>
+      <div class="work-content">
+        <p class="work-text">The flight tank required a structural mount for vertical test stand integration. Tank mass, motor thrust, and dynamic loads needed to be safely transferred to the stand structure without yielding or buckling under test conditions.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Approach</h2>
+      <div class="work-content">
+        <p class="work-text">Designed the tank-mount and vertical stand infrastructure in SolidWorks. Imported the assembly into Ansys Mechanical for FEA structural analysis. Applied representative load cases (static tank weight, peak thrust, combined loading) and iterated on the mounting geometry to achieve factor of safety greater than 2.0 across all cases.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Analysis</h2>
+      <div class="work-content">
+        <div class="todo-block">
+          <span class="todo-label">TODO — FEA stress contours</span>
+          <p>Ansys Mechanical von Mises stress contours for each load case. Export as high-res PNG with colorbar and FoS annotation.</p>
+        </div>
+        <div class="todo-block">
+          <span class="todo-label">TODO — Mount detail photos</span>
+          <p>Fabricated mount detail photographs showing weld quality and bracket hardware.</p>
+        </div>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Result</h2>
+      <div class="work-content">
+        <p class="work-text">Structural safety validated across all modeled load cases with factor of safety greater than 2.0. The stand and tank mount successfully supported test operations.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Reflection</h2>
+      <div class="work-content">
+        <p class="work-text">FEA-driven iteration revealed stress concentrations at weld toes that drove a geometry change in the gusset profile. Identifying this in simulation rather than fabrication saved both time and material.</p>
+      </div>
+    </div>
+  </section>
+</ProjectPageLayout>

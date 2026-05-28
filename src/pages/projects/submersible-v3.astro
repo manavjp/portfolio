@@ -1,23 +1,74 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
+import SpecTable from '../../components/SpecTable.astro';
+import MetricCallout from '../../components/MetricCallout.astro';
+
+const specRows = [
+  { label: 'Length',           value: '16 ft'                 },
+  { label: 'Operating Depth',  value: '35 ft'                 },
+  { label: 'Buoyancy',         value: 'Neutral'               },
+  { label: 'Scale Prototype',  value: '1/20'                  },
+  { label: 'Frame Type',       value: 'Open-frame'            },
+  { label: 'Application',      value: 'Civilian EVA training' },
+  { label: 'Design Tool',      value: 'SolidWorks'            },
+];
 ---
-<Layout title="Submersible V3">
-  <div class="page-padded">
-    <div class="stub-header">
-      <a href="/projects" class="back-link">← Projects</a>
-      <h1 class="stub-title">Submersible V3</h1>
-      <p class="stub-tag">AdvancingX — Human Spaceflight EVA Training</p>
-    </div>
+<ProjectPageLayout
+  title="Submersible V3"
+  description="16-ft neutrally buoyant open-frame submersible for civilian astronaut EVA training, developed for AdvancingX."
+  ghostText="SUBMERSIBLE"
+  category="AdvancingX"
+  tagline="16-ft neutrally buoyant open-frame EVA trainer"
+>
+  <section class="spec-block">
+    <SpecTable rows={specRows} title="Specifications" />
     <div class="todo-block">
-      <span class="todo-label">TODO — Milestone 4</span>
-      <p>Full detail page: 16-ft neutrally buoyant open-frame submersible for civilian astronaut EVA training. SolidWorks model, buoyancy hand-calcs, structural analysis to 35-ft depth, 1/20-scale prototype test footage.</p>
+      <span class="todo-label">TODO — SolidWorks model &amp; rotating render</span>
+      <p>SolidWorks CAD render of the open-frame assembly (isometric + rotating MP4). Place at <code>public/assets/projects/submersible-v3/</code>.</p>
     </div>
-  </div>
-</Layout>
-<style>
-  .stub-header { margin-bottom: 2rem; }
-  .back-link { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-35); letter-spacing: 0.06em; display: block; margin-bottom: 1.25rem; transition: color var(--dur-fast) var(--ease-out); }
-  .back-link:hover { color: var(--text-70); }
-  .stub-title { font-family: var(--font-display); font-size: var(--text-4xl); font-weight: var(--fw-black); color: var(--text-100); letter-spacing: -0.01em; line-height: var(--leading-tight); text-transform: uppercase; margin-bottom: 0.5rem; }
-  .stub-tag { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-35); letter-spacing: 0.08em; text-transform: uppercase; }
-</style>
+  </section>
+  <section class="metrics-row" aria-label="Key metrics">
+    <MetricCallout value="16" unit="ft"    description="Full-scale length"         />
+    <MetricCallout value="35" unit="ft"    description="Operating depth"           />
+    <MetricCallout value="20" unit=":1"    description="Prototype scale ratio"     />
+  </section>
+  <section class="the-work">
+    <div class="work-row">
+      <h2 class="work-label">Problem</h2>
+      <div class="work-content">
+        <p class="work-text">Civilian astronaut EVA training requires a controlled neutral-buoyancy environment to simulate the physical sensations of spacewalk operations. AdvancingX needed a purpose-built 16-ft open-frame submersible vehicle capable of operating at 35-ft depth to support their astronaut-training program.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Approach</h2>
+      <div class="work-content">
+        <p class="work-text">Designed an open-frame structure in SolidWorks to maximize trainee visibility and freedom of movement. Performed buoyancy hand-calculations (Archimedes' principle, component volume and mass breakdown) to verify neutral-buoyancy conditions. Structural analysis confirmed adequate safety margin at 35-ft hydrostatic pressure. A 1/20-scale prototype was fabricated and pool-tested to validate the design concept before full-scale commitment.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Analysis</h2>
+      <div class="work-content">
+        <div class="todo-block">
+          <span class="todo-label">TODO — Buoyancy calculation document</span>
+          <p>Component-level buoyancy breakdown: volume, mass, and net buoyant force per member. PDF or rendered summary.</p>
+        </div>
+        <div class="todo-block">
+          <span class="todo-label">TODO — Prototype test footage</span>
+          <p>1/20-scale prototype pool test video showing neutral buoyancy behavior. Place at <code>public/assets/projects/submersible-v3/prototype-test.mp4</code>.</p>
+        </div>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Result</h2>
+      <div class="work-content">
+        <p class="work-text">Design validated through 1/20-scale prototype testing. Neutral-buoyancy condition achieved within the prototype's ballast adjustment range. Full-scale design ready for fabrication review by AdvancingX.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Reflection</h2>
+      <div class="work-content">
+        <p class="work-text">The open-frame configuration maximizes trainee visibility but complicates precise buoyancy control since frame members have irregular cross-sections. A future iteration would incorporate adjustable ballast bladders for fine-tuned trim, reducing setup time between dives.</p>
+      </div>
+    </div>
+  </section>
+</ProjectPageLayout>

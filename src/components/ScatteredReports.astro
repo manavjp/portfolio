@@ -1,0 +1,153 @@
+---
+interface ReportCard {
+  title: string;
+  subtitle: string;
+  date: string;
+  href: string;
+}
+
+interface Props {
+  reports: ReportCard[];
+}
+
+const { reports } = Astro.props;
+---
+
+<div class="reports-section">
+  <p class="reports-label">Test Reports</p>
+  <div class="reports-stack" role="list">
+    {reports.map((report, i) => (
+      <a
+        href={report.href}
+        class="report-card"
+        style={`--card-index: ${i}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        role="listitem"
+        aria-label={`Open ${report.title}`}
+      >
+        <div class="report-card__header">
+          <span class="report-card__type">Test Report</span>
+          <span class="report-card__date">{report.date}</span>
+        </div>
+        <p class="report-card__title">{report.title}</p>
+        <p class="report-card__subtitle">{report.subtitle}</p>
+        <span class="report-card__open">Open ↗</span>
+      </a>
+    ))}
+  </div>
+  <p class="reports-hint">Hover to browse · Click to open</p>
+</div>
+
+<style>
+  .reports-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .reports-label {
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+  }
+
+  .reports-stack {
+    position: relative;
+    width: 280px;
+    height: 340px;
+  }
+
+  .report-card {
+    position: absolute;
+    inset: 0;
+    background: var(--surface-raised);
+    border: 1px solid var(--hairline);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: transform 0.35s var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+  }
+
+  .report-card:nth-child(1) { transform: rotate(-5deg) translate(-8px, 10px); z-index: 1; }
+  .report-card:nth-child(2) { transform: rotate(2deg)  translate(4px,  5px);  z-index: 2; }
+  .report-card:nth-child(3) { transform: rotate(0deg);                         z-index: 3; }
+
+  .reports-stack:hover .report-card:nth-child(1) {
+    transform: rotate(-14deg) translate(-40px, -24px);
+  }
+  .reports-stack:hover .report-card:nth-child(2) {
+    transform: rotate(-4deg)  translate(-10px, -12px);
+  }
+  .reports-stack:hover .report-card:nth-child(3) {
+    transform: rotate(6deg)   translate(16px,  -8px);
+  }
+
+  .report-card:hover { border-color: var(--accent); }
+
+  .report-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .report-card__type {
+    font-family: var(--font-label);
+    font-size: var(--text-2xs);
+    color: var(--text-35);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+  }
+
+  .report-card__date {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    color: var(--text-35);
+  }
+
+  .report-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: var(--fw-semibold);
+    color: var(--text-100);
+    line-height: var(--leading-snug);
+    margin-top: auto;
+  }
+
+  .report-card__subtitle {
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    color: var(--text-50);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .report-card__open {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.06em;
+    margin-top: auto;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+
+  .report-card:hover .report-card__open { color: var(--accent); }
+
+  .reports-hint {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.04em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .report-card {
+      transition: border-color var(--dur-fast) var(--ease-out);
+      transform: none !important;
+    }
+  }
+</style>

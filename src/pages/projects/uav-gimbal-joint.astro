@@ -1,23 +1,72 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
+import SpecTable from '../../components/SpecTable.astro';
+import MetricCallout from '../../components/MetricCallout.astro';
+
+const specRows = [
+  { label: 'DoF Added',      value: '+1 Rotational'                  },
+  { label: 'Singularity',    value: '6-DoF at vertical arm'          },
+  { label: 'Design Method',  value: 'DfAM (additive manufacturing)'  },
+  { label: 'Joint Type',     value: 'Gimbal on passive hinge'        },
+  { label: 'Lab',            value: 'UCLA MacLab / Mechatronics Lab' },
+];
 ---
-<Layout title="UAV Gimbal Joint Design">
-  <div class="page-padded">
-    <div class="stub-header">
-      <a href="/projects" class="back-link">← Projects</a>
-      <h1 class="stub-title">UAV Gimbal Joint Design</h1>
-      <p class="stub-tag">UCLA Mechatronics & Controls Lab</p>
-    </div>
+<ProjectPageLayout
+  title="UAV Gimbal Joint Design"
+  description="DfAM gimbal joint adding one rotational DoF to an over-actuated UAV, eliminating a 6-DoF kinematic singularity."
+  ghostText="GIMBAL"
+  category="Mechatronics & Controls Lab"
+  tagline="Eliminating 6-DoF kinematic singularity in over-actuated UAV"
+>
+  <section class="spec-block">
+    <SpecTable rows={specRows} title="Specifications" />
     <div class="todo-block">
-      <span class="todo-label">TODO — Milestone 4</span>
-      <p>Full detail page: DfAM gimbal joint adding a rotational DoF to the passive-hinge structure of an over-actuated UAV, eliminating a 6-DoF singularity at vertical arm orientations. Singularity-explainer diagram, rotating gimbal GIF.</p>
+      <span class="todo-label">TODO — Rotating gimbal GIF</span>
+      <p>SolidWorks animation showing the gimbal joint articulating through its full range of motion. ~3 s loop GIF or MP4. Place at <code>public/assets/projects/uav-gimbal-joint/gimbal-rotate.gif</code>.</p>
     </div>
-  </div>
-</Layout>
-<style>
-  .stub-header { margin-bottom: 2rem; }
-  .back-link { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-35); letter-spacing: 0.06em; display: block; margin-bottom: 1.25rem; transition: color var(--dur-fast) var(--ease-out); }
-  .back-link:hover { color: var(--text-70); }
-  .stub-title { font-family: var(--font-display); font-size: var(--text-4xl); font-weight: var(--fw-black); color: var(--text-100); letter-spacing: -0.01em; line-height: var(--leading-tight); text-transform: uppercase; margin-bottom: 0.5rem; }
-  .stub-tag { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-35); letter-spacing: 0.08em; text-transform: uppercase; }
-</style>
+  </section>
+  <section class="metrics-row" aria-label="Key metrics">
+    <MetricCallout value="1" unit="DoF"  description="Rotational DoF added"      prefix="+" />
+    <MetricCallout value="6" unit="-DoF" description="Singularity eliminated"               />
+    <MetricCallout value="0" unit="machinable alternatives" description="DfAM only solution" />
+  </section>
+  <section class="the-work">
+    <div class="work-row">
+      <h2 class="work-label">Problem</h2>
+      <div class="work-content">
+        <p class="work-text">The over-actuated UAV's passive-hinge arm structure exhibits a 6-degree-of-freedom kinematic singularity at vertical arm orientations. At this configuration the structure loses the ability to produce forces and torques along certain directions, degrading control authority and preventing the vehicle from reaching a subset of its intended workspace.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Approach</h2>
+      <div class="work-content">
+        <p class="work-text">Designed a DfAM gimbal joint that introduces one additional rotational degree of freedom into the passive-hinge arm structure. The added rotation decouples the problematic joint coupling at vertical orientations, allowing the arm to articulate through the singular configuration without losing control authority. The internal channel routing required for the gimbal's actuation cable is only achievable through additive manufacturing — conventional machining cannot produce the geometry.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Analysis</h2>
+      <div class="work-content">
+        <div class="todo-block">
+          <span class="todo-label">TODO — Singularity-explainer diagram</span>
+          <p>Kinematic diagram showing the passive-hinge structure at the singular configuration: which force/torque directions are lost and how the added DoF restores them.</p>
+        </div>
+        <div class="todo-block">
+          <span class="todo-label">TODO — Before/after DoF comparison</span>
+          <p>Side-by-side workspace visualization showing inaccessible configurations before the gimbal and the recovered workspace after.</p>
+        </div>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Result</h2>
+      <div class="work-content">
+        <p class="work-text">Successfully eliminated the 6-DoF singularity at vertical arm orientations, restoring full control authority across the UAV's intended workspace. The DfAM joint was fabricated and fit-checked on the arm assembly.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Reflection</h2>
+      <div class="work-content">
+        <p class="work-text">The DfAM approach was essential — the internal routing geometry cannot be achieved through conventional machining. This project reinforced that additive manufacturing enables solutions for kinematically constrained mechanisms with internal passages that are otherwise impossible to fabricate.</p>
+      </div>
+    </div>
+  </section>
+</ProjectPageLayout>

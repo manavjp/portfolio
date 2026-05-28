@@ -1,23 +1,73 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
+import SpecTable from '../../components/SpecTable.astro';
+import MetricCallout from '../../components/MetricCallout.astro';
+
+const specRows = [
+  { label: 'Injector Orifices',   value: '69'                    },
+  { label: 'N₂O Error (Initial)', value: '35%'                   },
+  { label: 'N₂O Error (Final)',   value: '10.3%'                 },
+  { label: 'Model Type',          value: 'Two-phase, real-fluid' },
+  { label: 'Thermodynamic Lib',   value: 'CoolProp'              },
+  { label: 'Language',            value: 'Python 3'              },
+];
 ---
-<Layout title="Hybrid Injector Orifice Sizing">
-  <div class="page-padded">
-    <div class="stub-header">
-      <a href="/projects" class="back-link">← Projects</a>
-      <h1 class="stub-title">Hybrid Injector Orifice Sizing</h1>
-      <p class="stub-tag">UCLA Rocket Project</p>
-    </div>
+<ProjectPageLayout
+  title="Hybrid Injector Orifice Sizing"
+  description="Python/CoolProp two-phase model reducing N₂O mass-flow error from 35% to 10.3%."
+  ghostText="INJECTOR"
+  category="UCLA Rocket Project"
+  tagline="Two-phase N₂O model — 35% → 10.3% mass-flow error"
+>
+  <section class="spec-block">
+    <SpecTable rows={specRows} title="Specifications" />
     <div class="todo-block">
-      <span class="todo-label">TODO — Milestone 4</span>
-      <p>Full detail page: Python/CoolProp two-phase injector model, predicted-vs-actual N₂O mass-flow interactive plot, 69-orifice pattern diagram, 35% → 10.3% error reduction writeup. Lead data project for the Rocket cluster.</p>
+      <span class="todo-label">TODO — Orifice pattern diagram</span>
+      <p>Annotated diagram of the 69-orifice pattern: oxidizer/fuel port arrangement, orifice diameter, spacing.</p>
     </div>
-  </div>
-</Layout>
-<style>
-  .stub-header { margin-bottom: 2rem; }
-  .back-link { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-35); letter-spacing: 0.06em; display: block; margin-bottom: 1.25rem; transition: color var(--dur-fast) var(--ease-out); }
-  .back-link:hover { color: var(--text-70); }
-  .stub-title { font-family: var(--font-display); font-size: var(--text-4xl); font-weight: var(--fw-black); color: var(--text-100); letter-spacing: -0.01em; line-height: var(--leading-tight); text-transform: uppercase; margin-bottom: 0.5rem; }
-  .stub-tag { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-35); letter-spacing: 0.08em; text-transform: uppercase; }
-</style>
+  </section>
+  <section class="metrics-row" aria-label="Key metrics">
+    <MetricCallout value="69"   unit="orifices" description="Flight injector orifices"  />
+    <MetricCallout value="10.3" unit="%"         description="Final N₂O mass-flow error" />
+    <MetricCallout value="3.4"  unit="×"         description="Error reduction factor"    />
+  </section>
+  <section class="the-work">
+    <div class="work-row">
+      <h2 class="work-label">Problem</h2>
+      <div class="work-content">
+        <p class="work-text">The heritage single-phase incompressible injector model predicted N₂O mass flow with ~35% error against cold-flow data. N₂O near its saturation point exhibits real-fluid behavior — compressibility, phase transitions, non-ideal density — that single-phase models cannot capture, leading to systematic over-prediction and incorrect mixture-ratio assumptions.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Approach</h2>
+      <div class="work-content">
+        <p class="work-text">Replaced the single-phase model with a Python/CoolProp two-phase real-fluid model. CoolProp provides thermodynamic properties (density, enthalpy, entropy) for N₂O as a function of temperature and pressure, enabling the model to account for phase transitions and compressibility. The corrected model was then used to size the 69-orifice flight injector against target mixture-ratio and mass-flow requirements.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Analysis</h2>
+      <div class="work-content">
+        <div class="todo-block">
+          <span class="todo-label">TODO — Predicted vs. actual plot</span>
+          <p>Chart comparing single-phase model, two-phase model, and static-fire measured mass flow. Interactive version lives on the Propulsion Data Analysis page.</p>
+        </div>
+        <div class="todo-block">
+          <span class="todo-label">TODO — Model derivation writeup</span>
+          <p>Governing equations, CoolProp integration method, and validation methodology. Rendered Markdown or PDF summary.</p>
+        </div>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Result</h2>
+      <div class="work-content">
+        <p class="work-text">Reduced N₂O mass-flow prediction error from 35% to 10.3% against static-fire data — a 3.4× improvement. Used the corrected model to size the 69-orifice flight injector. The two-phase model is now the team's standard tool for injector sizing and mixture-ratio verification.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Reflection</h2>
+      <div class="work-content">
+        <p class="work-text">The model assumes steady-state flow and does not capture transient startup dynamics or combustion-driven oscillations. Future work includes transient startup modeling and discharge-coefficient sensitivity analysis across the orifice geometry space.</p>
+      </div>
+    </div>
+  </section>
+</ProjectPageLayout>

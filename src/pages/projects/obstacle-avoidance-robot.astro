@@ -1,23 +1,73 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
+import SpecTable from '../../components/SpecTable.astro';
+import MetricCallout from '../../components/MetricCallout.astro';
+
+const specRows = [
+  { label: 'Microcontroller',  value: 'Arduino Uno'           },
+  { label: 'Distance Sensor',  value: 'HC-SR04 Ultrasonic'    },
+  { label: 'Language',         value: 'C++'                   },
+  { label: 'Detection Range',  value: '2 – 400 cm'            },
+  { label: 'Behavior',         value: 'Real-time avoidance'   },
+  { label: 'Architecture',     value: 'Non-blocking (millis)' },
+];
 ---
-<Layout title="Obstacle Avoidance Embedded System">
-  <div class="page-padded">
-    <div class="stub-header">
-      <a href="/projects" class="back-link">← Projects</a>
-      <h1 class="stub-title">Obstacle Avoidance Embedded System</h1>
-      <p class="stub-tag">Embedded Systems — C++ — Arduino</p>
-    </div>
+<ProjectPageLayout
+  title="Obstacle Avoidance Embedded System"
+  description="Arduino Uno with HC-SR04 ultrasonic sensor, C++ non-blocking state machine for real-time obstacle detection and avoidance."
+  ghostText="EMBEDDED"
+  category="Embedded Systems"
+  tagline="Ultrasonic sensing and real-time obstacle avoidance in C++"
+>
+  <section class="spec-block">
+    <SpecTable rows={specRows} title="Specifications" />
     <div class="todo-block">
-      <span class="todo-label">TODO — Milestone 4</span>
-      <p>Full detail page: Arduino car with ultrasonic distance sensor for obstacle detection and avoidance. Build photos, demo video, wiring diagram, annotated code snippet.</p>
+      <span class="todo-label">TODO — Demo video &amp; wiring diagram</span>
+      <p>Demo video (~30 s) of the vehicle navigating an obstacle course. Annotated wiring diagram (Fritzing or hand-drawn). Place at <code>public/assets/projects/obstacle-avoidance-robot/</code>.</p>
     </div>
-  </div>
-</Layout>
-<style>
-  .stub-header { margin-bottom: 2rem; }
-  .back-link { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-35); letter-spacing: 0.06em; display: block; margin-bottom: 1.25rem; transition: color var(--dur-fast) var(--ease-out); }
-  .back-link:hover { color: var(--text-70); }
-  .stub-title { font-family: var(--font-display); font-size: var(--text-4xl); font-weight: var(--fw-black); color: var(--text-100); letter-spacing: -0.01em; line-height: var(--leading-tight); text-transform: uppercase; margin-bottom: 0.5rem; }
-  .stub-tag { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-35); letter-spacing: 0.08em; text-transform: uppercase; }
-</style>
+  </section>
+  <section class="metrics-row" aria-label="Key metrics">
+    <MetricCallout value="400" unit="cm" description="Maximum sensor range"    />
+    <MetricCallout value="2"   unit="cm" description="Minimum detection range" />
+    <MetricCallout value="3"   unit="states" description="State machine states" />
+  </section>
+  <section class="the-work">
+    <div class="work-row">
+      <h2 class="work-label">Problem</h2>
+      <div class="work-content">
+        <p class="work-text">Demonstrate embedded systems and electronics capability through a functional autonomous vehicle. The project targeted real-time obstacle detection and avoidance using ultrasonic sensing, requiring firmware that evaluates sensor data and actuates motors without blocking delays that would degrade responsiveness.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Approach</h2>
+      <div class="work-content">
+        <p class="work-text">Built on Arduino Uno with an HC-SR04 ultrasonic distance sensor. Implemented a C++ state machine with three states: ADVANCE, STOP, and AVOID. The critical design decision was replacing Arduino's <code>delay()</code> with <code>millis()</code>-based timing — this keeps the main loop non-blocking, allowing continuous sensor polling while motor control executes independently.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Analysis</h2>
+      <div class="work-content">
+        <div class="todo-block">
+          <span class="todo-label">TODO — Annotated code snippet</span>
+          <p>Key loop showing the non-blocking millis() pattern, state machine transitions, and sensor read logic. Syntax-highlighted code block.</p>
+        </div>
+        <div class="todo-block">
+          <span class="todo-label">TODO — Wiring diagram</span>
+          <p>Schematic showing HC-SR04 trigger/echo pin connections, motor driver wiring, and power distribution.</p>
+        </div>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Result</h2>
+      <div class="work-content">
+        <p class="work-text">Vehicle successfully avoids obstacles in real time across varied test environments. The non-blocking architecture allows the sensor to poll at full speed while motor actuation responds within one loop cycle, giving snappy obstacle response without firmware stalls.</p>
+      </div>
+    </div>
+    <div class="work-row">
+      <h2 class="work-label">Reflection</h2>
+      <div class="work-content">
+        <p class="work-text">A single front-facing sensor creates a blind spot at the vehicle's sides and rear. The natural next iteration is adding lateral sensors for 270° or full 360° coverage, and replacing the threshold-based state machine with a PID-based steering controller for smoother avoidance arcs.</p>
+      </div>
+    </div>
+  </section>
+</ProjectPageLayout>
