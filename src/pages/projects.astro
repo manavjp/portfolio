@@ -1,44 +1,156 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ProjectTile from '../components/ProjectTile.astro';
 ---
 
 <Layout title="Projects">
-  <div class="page-padded">
-  <div class="page-header">
-    <span class="page-label">// 002</span>
-    <h1 class="page-title">Projects</h1>
-  </div>
-  <div class="todo-block">
-    <span class="todo-label">TODO — Milestone 3</span>
-    <p>
-      Projects index: Anduril-style asymmetric mosaic on 12-col grid.
-      Full-bleed media tiles, bold name + short tagline bottom-left, ↗ on hover.
-      Rocket Project items as a cluster (hub tile + sub-cases).
-      Lead with Injector Orifice Sizing or Horizontal Test Stand.
-    </p>
-  </div>
+  <div class="page-padded projects-page">
+
+    <div class="section-header">
+      <span class="section-label">UCLA Rocket Project</span>
+      <hr class="section-rule" aria-hidden="true" />
+    </div>
+
+    <div class="mosaic">
+      <div class="t-hub">
+        <ProjectTile
+          title="UCLA Rocket Project"
+          tagline="5 projects · Propulsion · Structures · Data"
+          href="/projects/horizontal-propulsion-test-stand"
+          featured={true}
+        />
+      </div>
+      <div class="t-hts">
+        <ProjectTile
+          title="Horizontal Propulsion Test Stand"
+          tagline="Isolating 5,635 lbf-s onto linear rails"
+          href="/projects/horizontal-propulsion-test-stand"
+        />
+      </div>
+      <div class="t-inj">
+        <ProjectTile
+          title="Hybrid Injector Orifice Sizing"
+          tagline="Two-phase N₂O model, 35% → 10.3% error"
+          href="/projects/injector-orifice-sizing"
+        />
+      </div>
+      <div class="t-vstand">
+        <ProjectTile
+          title="Vertical Test Stand & Tank Mount"
+          tagline="Structural validation in Ansys Mechanical"
+          href="/projects/vertical-test-stand"
+        />
+      </div>
+      <div class="t-wflows">
+        <ProjectTile
+          title="Injector Water Flows"
+          tagline="Cold-flow characterization before hot fire"
+          href="/projects/injector-water-flows"
+        />
+      </div>
+      <div class="t-data">
+        <ProjectTile
+          title="Propulsion Data Analysis"
+          tagline="20+ pages of hydro, cold-flow & static-fire reports"
+          href="/projects/propulsion-data-analysis"
+        />
+      </div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">Standalone</span>
+      <hr class="section-rule" aria-hidden="true" />
+    </div>
+
+    <div class="mosaic mosaic--standalone">
+      <div class="t-sub">
+        <ProjectTile
+          title="Submersible V3"
+          tagline="16-ft neutrally buoyant EVA trainer"
+          href="/projects/submersible-v3"
+        />
+      </div>
+      <div class="t-uav">
+        <ProjectTile
+          title="UAV Gimbal Joint Design"
+          tagline="Eliminating 6-DoF singularity in over-actuated UAV"
+          href="/projects/uav-gimbal-joint"
+        />
+      </div>
+      <div class="t-obst">
+        <ProjectTile
+          title="Obstacle Avoidance Embedded System"
+          tagline="Ultrasonic sensing, C++, Arduino"
+          href="/projects/obstacle-avoidance-robot"
+        />
+      </div>
+      <div class="t-obs">
+        <ProjectTile
+          title="Friends of Taylor Observatory"
+          tagline="Astrometry, photometry, IAU submissions"
+          href="/projects/taylor-observatory"
+        />
+      </div>
+    </div>
+
   </div>
 </Layout>
 
 <style>
-  .page-header { margin-bottom: 2rem; }
+  .projects-page { padding-bottom: 4rem; }
 
-  .page-label {
-    display: block;
-    font-family: var(--font-mono);
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem 0 1.25rem;
+  }
+  .section-header:first-child { margin-top: 0; }
+
+  .section-label {
+    font-family: var(--font-label);
     font-size: var(--text-xs);
     color: var(--text-35);
-    letter-spacing: 0.08em;
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
-  .page-title {
-    font-family: var(--font-display);
-    font-size: var(--text-4xl);
-    font-weight: var(--fw-black);
-    color: var(--text-100);
-    letter-spacing: -0.01em;
-    line-height: var(--leading-tight);
-    text-transform: uppercase;
+  .section-rule {
+    flex: 1;
+    border: none;
+    border-top: 1px solid var(--grid-line);
+  }
+
+  .mosaic {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--col-gap);
+  }
+
+  /* Rocket cluster */
+  .t-hub    { grid-column: span 7; min-height: 300px; }
+  .t-hts    { grid-column: span 5; min-height: 300px; }
+  .t-inj    { grid-column: span 4; min-height: 180px; }
+  .t-vstand { grid-column: span 4; min-height: 180px; }
+  .t-wflows { grid-column: span 4; min-height: 180px; }
+  .t-data   { grid-column: span 12; min-height: 120px; }
+
+  /* Standalone */
+  .t-sub    { grid-column: span 4; min-height: 220px; }
+  .t-uav    { grid-column: span 4; min-height: 220px; }
+  .t-obst   { grid-column: span 4; min-height: 220px; }
+  .t-obs    { grid-column: span 12; min-height: 120px; }
+
+  @media (max-width: 900px) {
+    .t-hub, .t-hts,
+    .t-inj, .t-vstand, .t-wflows,
+    .t-sub, .t-uav, .t-obst { grid-column: span 6; }
+  }
+
+  @media (max-width: 600px) {
+    .t-hub, .t-hts,
+    .t-inj, .t-vstand, .t-wflows,
+    .t-sub, .t-uav, .t-obst { grid-column: span 12; }
   }
 </style>

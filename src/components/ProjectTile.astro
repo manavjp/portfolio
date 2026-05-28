@@ -1,0 +1,108 @@
+---
+interface Props {
+  title: string;
+  tagline: string;
+  href: string;
+  featured?: boolean;
+}
+const { title, tagline, href, featured = false } = Astro.props;
+---
+
+<a href={href} class:list={['tile', { 'tile--featured': featured }]}>
+  <div class="tile__bg" aria-hidden="true"></div>
+  <div class="tile__content">
+    <div class="tile__text">
+      <span class="tile__title">{title}</span>
+      <span class="tile__tagline">{tagline}</span>
+    </div>
+    <span class="tile__arrow" aria-hidden="true">↗</span>
+  </div>
+</a>
+
+<style>
+  .tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--surface);
+    border: 1px solid var(--grid-line);
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color var(--dur-fast) var(--ease-out);
+  }
+
+  .tile:hover { border-color: var(--accent); }
+
+  .tile__bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        var(--grid-line) 0px, var(--grid-line) 1px,
+        transparent 1px, transparent 40px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        var(--grid-line) 0px, var(--grid-line) 1px,
+        transparent 1px, transparent 40px
+      );
+    pointer-events: none;
+  }
+
+  .tile__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex: 1;
+    padding: 1.25rem;
+    gap: 0.5rem;
+  }
+
+  .tile__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .tile__title {
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    font-weight: var(--fw-bold);
+    color: var(--text-100);
+    line-height: var(--leading-snug);
+  }
+
+  .tile--featured .tile__title {
+    font-size: var(--text-xl);
+    font-weight: var(--fw-black);
+  }
+
+  .tile__tagline {
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .tile__arrow {
+    font-size: var(--text-md);
+    color: var(--accent);
+    opacity: 0;
+    transform: translate(-4px, 4px);
+    transition:
+      opacity var(--dur-fast) var(--ease-out),
+      transform var(--dur-fast) var(--ease-out);
+    flex-shrink: 0;
+    align-self: flex-end;
+  }
+
+  .tile:hover .tile__arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+</style>

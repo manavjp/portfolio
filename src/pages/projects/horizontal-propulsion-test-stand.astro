@@ -1,0 +1,315 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SpecTable from '../../components/SpecTable.astro';
+import MetricCallout from '../../components/MetricCallout.astro';
+
+const specRows = [
+  { label: 'Impulse Isolated',  value: '5,635 lbf-s'             },
+  { label: 'Factor of Safety',  value: '> 2.0'                    },
+  { label: 'Static Fires',      value: '2 (Mojave, CA)'           },
+  { label: 'Configuration',     value: 'Cantilever, linear rails' },
+  { label: 'Load Method',       value: 'Hand-calc, bolt/bracket'  },
+  { label: 'Design Tool',       value: 'SolidWorks'               },
+];
+---
+
+<Layout
+  title="Horizontal Propulsion Test Stand"
+  description="SolidWorks cantilever test stand isolating 5,635 lbf-s thrust onto linear rails, validated through 2 Mojave static fires."
+>
+
+  <!-- ① Hero Band -->
+  <section class="proj-hero">
+    <div class="proj-hero__bg" aria-hidden="true"></div>
+    <div class="proj-hero__ghost" aria-hidden="true">TEST STAND</div>
+    <div class="proj-hero__content page-padded">
+      <a href="/projects" class="proj-hero__back">← Projects</a>
+      <p class="proj-hero__category">UCLA Rocket Project</p>
+      <h1 class="proj-hero__title">Horizontal Propulsion<br>Test Stand</h1>
+      <p class="proj-hero__tagline">
+        Isolating 5,635 lbf-s onto linear rails — 2 Mojave static fires
+      </p>
+    </div>
+  </section>
+
+  <div class="proj-body page-padded">
+
+    <!-- ② Spec Block -->
+    <section class="spec-block">
+      <div class="spec-block__table">
+        <SpecTable rows={specRows} title="Specifications" />
+      </div>
+      <div class="spec-block__model">
+        <div class="todo-block">
+          <span class="todo-label">TODO — Rotating model</span>
+          <p>
+            360° rotating GIF or MP4 of the test stand CAD from SolidWorks.
+            Target: 24 fps, ~5 s loop, exported from SolidWorks Visualize or PhotoView 360.
+            Place at <code>public/assets/projects/horizontal-propulsion-test-stand/model-rotate.mp4</code>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ Metric Callouts -->
+    <section class="metrics" aria-label="Key metrics">
+      <MetricCallout value="5,635" unit="lbf-s" description="Impulse isolated"        />
+      <MetricCallout value="2.0"   unit=""       description="Factor of Safety (min)" prefix=">" />
+      <MetricCallout value="2"     unit="fires"  description="Static fires, Mojave CA" />
+    </section>
+
+    <!-- ④ The Work -->
+    <section class="the-work">
+
+      <div class="work-row">
+        <h2 class="work-label">Problem</h2>
+        <div class="work-content">
+          <p class="work-text">
+            A hybrid rocket motor generating over 5,000 lbf-s of total impulse requires a ground
+            test structure capable of safely isolating and reacting thrust loads during static-fire
+            characterization. Off-the-shelf test stands were cost-prohibitive and over-specified
+            for the team's motor size; the team needed a custom structure buildable in-house with
+            standard hardware and no specialized tooling.
+          </p>
+        </div>
+      </div>
+
+      <div class="work-row">
+        <h2 class="work-label">Approach</h2>
+        <div class="work-content">
+          <p class="work-text">
+            Designed a horizontal cantilever test stand in SolidWorks: the motor attaches to a
+            rigid arm that transfers thrust load laterally into a pair of linear rails, which are
+            anchored to a welded ground frame. All bolts and structural brackets were hand-calculated
+            to a factor of safety greater than 2.0 using AISC methods and published fastener load
+            ratings. The linear rail configuration allows axial motor alignment adjustment between
+            test campaigns.
+          </p>
+        </div>
+      </div>
+
+      <div class="work-row">
+        <h2 class="work-label">Analysis</h2>
+        <div class="work-content">
+          <div class="todo-block">
+            <span class="todo-label">TODO — FEA stress contour</span>
+            <p>
+              Ansys Mechanical von Mises stress contour at peak thrust load, highlighting
+              critical bracket joints. Export as high-res PNG; caption with peak stress value and FoS.
+            </p>
+          </div>
+          <div class="todo-block">
+            <span class="todo-label">TODO — Load-path diagram</span>
+            <p>
+              Annotated diagram tracing the thrust force path: motor mount → cantilever arm →
+              linear rail interface → anchor bolts → ground frame. SolidWorks drawing or Illustrator.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-row">
+        <h2 class="work-label">Result</h2>
+        <div class="work-content">
+          <p class="work-text">
+            The stand successfully completed two full-duration static fires at Mojave Air &amp;
+            Space Port with no structural failure or visible permanent deformation. Thrust data
+            was captured through both test campaigns, providing the propulsion team with motor
+            characterization data for flight performance predictions.
+          </p>
+          <div class="todo-block">
+            <span class="todo-label">TODO — Fire photos &amp; video</span>
+            <p>
+              Static-fire photos and video clip from Mojave test campaigns.
+              H.264 MP4, trimmed to motor burn duration (~10 s).
+              Place at <code>public/assets/projects/horizontal-propulsion-test-stand/static-fire.mp4</code>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-row">
+        <h2 class="work-label">Reflection</h2>
+        <div class="work-content">
+          <p class="work-text">
+            The cantilever geometry simplified fabrication but created a moment arm that amplified
+            bracket loading relative to a symmetric twin-rail mount. A future iteration would
+            shorten the moment arm or add a secondary rail to distribute load — reducing peak
+            fastener stress, improving lateral stiffness, and allowing longer-duration burns
+            without bracket fatigue concerns.
+          </p>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+</Layout>
+
+<style>
+  /* ── Hero Band ── */
+  .proj-hero {
+    position: relative;
+    min-height: 55vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .proj-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        var(--grid-line) 0px, var(--grid-line) 1px,
+        transparent 1px, transparent 40px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        var(--grid-line) 0px, var(--grid-line) 1px,
+        transparent 1px, transparent 40px
+      );
+  }
+
+  .proj-hero__ghost {
+    position: absolute;
+    bottom: -0.12em;
+    left: 0;
+    right: 0;
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 18vw, 16rem);
+    font-weight: var(--fw-black);
+    color: var(--text-15);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
+    padding: 0 var(--outer-gutter);
+    overflow: hidden;
+  }
+
+  .proj-hero__content {
+    position: relative;
+    z-index: 1;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    width: 100%;
+  }
+
+  .proj-hero__back {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  .proj-hero__back:hover { color: var(--text-70); }
+
+  .proj-hero__category {
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .proj-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 5vw, 4.5rem);
+    font-weight: var(--fw-black);
+    color: var(--text-100);
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+    max-width: 18ch;
+  }
+
+  .proj-hero__tagline {
+    font-family: var(--font-label);
+    font-size: var(--text-base);
+    color: var(--text-50);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    max-width: 60ch;
+  }
+
+  /* ── Body ── */
+  .proj-body {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+  }
+
+  /* ── Spec Block ── */
+  .spec-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .spec-block { grid-template-columns: 1fr; }
+  }
+
+  /* ── Metrics ── */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--grid-line);
+    border-bottom: 1px solid var(--grid-line);
+    margin-bottom: 4rem;
+  }
+
+  @media (max-width: 600px) {
+    .metrics { grid-template-columns: 1fr; }
+  }
+
+  /* ── The Work ── */
+  .the-work {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .work-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .work-row { grid-template-columns: 1fr; gap: 0.75rem; }
+  }
+
+  .work-label {
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding-top: 0.2rem;
+  }
+
+  .work-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .work-text {
+    font-size: var(--text-base);
+    color: var(--text-70);
+    line-height: var(--leading-loose);
+    max-width: 72ch;
+  }
+</style>
