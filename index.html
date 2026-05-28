@@ -14,12 +14,18 @@
       }
     </style>
   </head>
-  <script>
-    const REDIRECT_TO_LINKEDIN = true;
-    if (REDIRECT_TO_LINKEDIN) {
-      window.location.replace("https://www.linkedin.com/in/manavjp/");
-    }
-  </script>
+<script>
+  const SECRET = "dev9";
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.get("token") === SECRET) {
+    localStorage.setItem("access", SECRET);
+  }
+
+  if (localStorage.getItem("access") !== SECRET) {
+    window.location.href = "https://www.linkedin.com/in/manavjp/";
+  }
+</script>
   <body>
     <h1>Manav Patel</h1>
   </body>
