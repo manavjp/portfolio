@@ -73,18 +73,18 @@ const reports = [
 </ProjectPageLayout>
 
 <style>
-  /* Allow the thrown cards to overflow left into the specs column */
+  /* Center-align columns vertically — distributes any height diff symmetrically */
   .spec-block--reports {
     overflow: visible;
-    align-items: start;
+    align-items: center;
   }
 
   .reports-col {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    /* Shift the whole column left so thrown cards overlap the gap */
-    margin-left: -1.5rem;
+    /* Nudge right so the stack sits in the right half of the column */
+    margin-left: 1.5rem;
     overflow: visible;
   }
 
@@ -93,7 +93,6 @@ const reports = [
     font-size: var(--text-2xs);
     color: var(--text-35);
     line-height: var(--leading-normal);
-    /* Enough top margin to clear the tallest thrown card */
-    margin-top: 2.5rem;
+    margin-top: 0.5rem;
   }
 </style>
