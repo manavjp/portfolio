@@ -1,0 +1,165 @@
+---
+interface Props {
+  title: string;
+  tagline: string;
+}
+const { title, tagline } = Astro.props;
+---
+
+<div class="itar-tile" aria-label={`${title} — ITAR Restricted`}>
+  <div class="tile__bg" aria-hidden="true"></div>
+
+  <div class="tile__content">
+    <div class="tile__text">
+      <span class="tile__title">{title}</span>
+      <span class="tile__tagline">{tagline}</span>
+    </div>
+  </div>
+
+  <div class="itar-overlay" aria-hidden="true">
+    <span class="itar-ghost">ITAR</span>
+    <div class="itar-badge">
+      <span class="itar-classification">// CLASSIFICATION NOTICE</span>
+      <span class="itar-main">ITAR RESTRICTED</span>
+      <span class="itar-ref">Export Administration Regulations · 22 C.F.R. §120–130</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .itar-tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--surface);
+    border: 1px solid var(--grid-line);
+    overflow: hidden;
+    cursor: default;
+    transition: border-color var(--dur-fast) var(--ease-out);
+  }
+
+  .itar-tile:hover { border-color: var(--accent); }
+
+  /* Engineering-drawing grid — same as ProjectTile */
+  .tile__bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        var(--grid-line) 0px, var(--grid-line) 1px,
+        transparent 1px, transparent 40px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        var(--grid-line) 0px, var(--grid-line) 1px,
+        transparent 1px, transparent 40px
+      );
+    pointer-events: none;
+  }
+
+  .tile__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    flex: 1;
+    padding: 1.25rem;
+  }
+
+  .tile__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .tile__title {
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    font-weight: var(--fw-bold);
+    color: var(--text-100);
+    line-height: var(--leading-snug);
+  }
+
+  .tile__tagline {
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── ITAR Overlay ── */
+  .itar-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(1, 1, 1, 0.90);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity var(--dur-base) var(--ease-out);
+  }
+
+  .itar-tile:hover .itar-overlay { opacity: 1; }
+
+  /* Ghost "ITAR" behind the badge */
+  .itar-ghost {
+    position: absolute;
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 10vw, 7rem);
+    font-weight: var(--fw-black);
+    color: rgba(255, 45, 32, 0.07);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-transform: uppercase;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* Classification badge */
+  .itar-badge {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    text-align: center;
+    border: 1px solid var(--accent);
+    padding: 0.75rem 1.25rem;
+  }
+
+  .itar-classification {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    color: var(--text-35);
+    letter-spacing: 0.08em;
+  }
+
+  .itar-main {
+    font-family: var(--font-label);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .itar-ref {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    color: var(--text-35);
+    letter-spacing: 0.04em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .itar-overlay { transition: none; }
+  }
+</style>

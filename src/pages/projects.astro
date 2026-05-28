@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProjectTile from '../components/ProjectTile.astro';
+import ITARTile from '../components/ITARTile.astro';
 ---
 
 <Layout title="Projects">
@@ -53,6 +54,26 @@ import ProjectTile from '../components/ProjectTile.astro';
           tagline="20+ pages of hydro, cold-flow & static-fire reports"
           href="/projects/propulsion-data-analysis"
         />
+      </div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">Reynolds Systems</span>
+      <hr class="section-rule" aria-hidden="true" />
+    </div>
+
+    <div class="mosaic">
+      <div class="t-rs">
+        <ITARTile title="Production Fixtures"       tagline="Engineering design & fabrication"   />
+      </div>
+      <div class="t-rs">
+        <ITARTile title="Additive Manufacturing"    tagline="Design for additive manufacturing"  />
+      </div>
+      <div class="t-rs">
+        <ITARTile title="Exploding Foil Initiator"  tagline="Precision initiation engineering"   />
+      </div>
+      <div class="t-rs">
+        <ITARTile title="Precision Initiating Couplers" tagline="Ordnance interface engineering" />
       </div>
     </div>
 
@@ -151,6 +172,9 @@ import ProjectTile from '../components/ProjectTile.astro';
   .t-wflows { grid-column: span 4; min-height: 180px; }
   .t-data   { grid-column: span 12; min-height: 120px; }
 
+  /* Reynolds Systems — 4 equal tiles */
+  .t-rs { grid-column: span 3; min-height: 200px; }
+
   /* Single-org sections (AdvancingX, MacLab) — wider tiles */
   .t-sub  { grid-column: span 8; min-height: 260px; }
   .t-uav  { grid-column: span 8; min-height: 260px; }
@@ -162,6 +186,7 @@ import ProjectTile from '../components/ProjectTile.astro';
   @media (max-width: 900px) {
     .t-hub, .t-hts,
     .t-inj, .t-vstand, .t-wflows { grid-column: span 6; }
+    .t-rs                         { grid-column: span 6; }
     .t-sub, .t-uav               { grid-column: span 10; }
     .t-obst, .t-obs              { grid-column: span 6; }
   }
@@ -169,6 +194,7 @@ import ProjectTile from '../components/ProjectTile.astro';
   @media (max-width: 600px) {
     .t-hub, .t-hts,
     .t-inj, .t-vstand, .t-wflows,
+    .t-rs,
     .t-sub, .t-uav,
     .t-obst, .t-obs { grid-column: span 12; }
   }
