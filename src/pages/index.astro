@@ -1,42 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 ---
 
 <Layout title="Home">
-  <div class="page-header">
-    <span class="page-label">// 001</span>
-    <h1 class="page-title">Home</h1>
-  </div>
-  <div class="todo-block">
-    <span class="todo-label">TODO — Milestone 2</span>
-    <p>
-      Hero: minimal, type-driven. Name + 3–6 word positioning line
-      ("Propulsion · Test · Aerospace") + CTA → Projects. No photo.
-      Lean on type, negative space, and a subtle engineering-drawing
-      grid motif. Staggered reveal on load.
-    </p>
-  </div>
+  <Hero />
 </Layout>
-
-<style>
-  .page-header { margin-bottom: 2rem; }
-
-  .page-label {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    color: var(--text-35);
-    letter-spacing: 0.08em;
-    margin-bottom: 0.5rem;
-  }
-
-  .page-title {
-    font-family: var(--font-display);
-    font-size: var(--text-4xl);
-    font-weight: var(--fw-black);
-    color: var(--text-100);
-    letter-spacing: -0.01em;
-    line-height: var(--leading-tight);
-    text-transform: uppercase;
-  }
-</style>

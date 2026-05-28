@@ -65,6 +65,17 @@ img, video {
   font-family: var(--font-mono);
 }
 
+/* ── Standard page padding (all non-hero pages) ── */
+.page-padded {
+  padding: calc(var(--outer-gutter) * 1.5) var(--outer-gutter);
+}
+
+@media (max-width: 768px) {
+  .page-padded {
+    padding: 5rem var(--outer-gutter) var(--outer-gutter);
+  }
+}
+
 /* ── Accessible focus ring ── */
 :focus-visible {
   outline: 2px solid var(--accent);

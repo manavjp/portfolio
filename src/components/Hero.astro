@@ -1,0 +1,140 @@
+<section class="hero" aria-label="Hero introduction">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__content">
+    <span class="hero__eyebrow">Aerospace Engineering</span>
+    <h1 class="hero__name">Manav Patel</h1>
+    <p class="hero__tagline">Propulsion&nbsp;&middot; Test &middot;&nbsp;Aerospace</p>
+    <a href="/projects" class="hero__cta">
+      View Projects <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    height: 100svh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  /* Engineering-drawing grid — atmospheric at edges, fades toward center */
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        var(--grid-line) 0px, var(--grid-line) 1px,
+        transparent 1px, transparent 40px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        var(--grid-line) 0px, var(--grid-line) 1px,
+        transparent 1px, transparent 40px
+      );
+    mask-image: radial-gradient(
+      ellipse 75% 75% at 50% 50%,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 55%,
+      black 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 75% 75% at 50% 50%,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 55%,
+      black 100%
+    );
+    pointer-events: none;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.875rem;
+    padding: 0 var(--outer-gutter);
+    width: 100%;
+  }
+
+  /* ── Content elements ── */
+  .hero__eyebrow {
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    animation: reveal-up 0.5s var(--ease-out) 0s both;
+  }
+
+  .hero__name {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 8rem);
+    font-weight: var(--fw-black);
+    line-height: var(--leading-tight);
+    letter-spacing: -0.01em;
+    color: var(--text-100);
+    text-transform: uppercase;
+    margin: 0;
+    animation: reveal-up 0.75s var(--ease-out) 0.10s both;
+  }
+
+  .hero__tagline {
+    font-family: var(--font-label);
+    font-size: var(--text-sm);
+    color: var(--text-50);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+    animation: reveal-up 0.6s var(--ease-out) 0.30s both;
+  }
+
+  .hero__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-70);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.25rem;
+    border: 1px solid var(--hairline);
+    margin-top: 0.25rem;
+    transition:
+      border-color var(--dur-fast) var(--ease-out),
+      color var(--dur-fast) var(--ease-out);
+    animation: reveal-up 0.5s var(--ease-out) 0.60s both;
+  }
+
+  .hero__cta:hover {
+    border-color: var(--accent);
+    color: var(--text-100);
+  }
+
+  /* ── Staggered reveal ── */
+  @keyframes reveal-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .hero__eyebrow,
+    .hero__name,
+    .hero__tagline,
+    .hero__cta {
+      animation: none;
+      opacity: 1;
+    }
+  }
+</style>
