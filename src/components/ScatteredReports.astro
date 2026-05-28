@@ -59,17 +59,21 @@ const { reports } = Astro.props;
     text-transform: uppercase;
   }
 
-  /* Portrait / document proportions */
+  /* Portrait / document proportions — explicit on both container AND card */
   .reports-stack {
     position: relative;
-    width: 230px;
-    height: 320px;
+    width: 200px;
+    height: 290px;
+    flex-shrink: 0;
     overflow: visible;
   }
 
   .report-card {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 290px;
     background: var(--surface-raised);
     border: 1px solid var(--hairline);
     padding: 1.25rem;
