@@ -66,7 +66,6 @@ const { reports } = Astro.props;
     if (n === 0) return;
 
     let activeIdx = 0;
-    let hovering = false;
 
     // Deck slot transforms — slot 0 is front, higher = further back
     const slotTransform = [
@@ -91,12 +90,10 @@ const { reports } = Astro.props;
     // Hover: lift to front for reading
     cards.forEach(card => {
       card.addEventListener('mouseenter', () => {
-        hovering = true;
         card.style.transform = 'rotate(-0.5deg) translate(0, -6px)';
         card.style.zIndex    = '10';
       });
       card.addEventListener('mouseleave', () => {
-        hovering = false;
         applyDeck();
       });
     });
@@ -127,8 +124,9 @@ const { reports } = Astro.props;
 
 <style>
   .reports-component {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
+    align-self: flex-start;
     gap: 0;
   }
 
@@ -166,6 +164,12 @@ const { reports } = Astro.props;
       transform 0.4s var(--ease-out),
       border-color var(--dur-fast) var(--ease-out);
   }
+
+  /* Initial thrown positions (match JS slot 0/1/2 with activeIdx=0)
+     so cards are visible before JS initialises */
+  .report-card:nth-child(1) { transform: rotate(-1deg) translate( 2px,  0px); z-index: 3; }
+  .report-card:nth-child(2) { transform: rotate( 5deg) translate(16px,  9px); z-index: 2; }
+  .report-card:nth-child(3) { transform: rotate(-8deg) translate(-18px, 15px); z-index: 1; }
 
   .report-card:hover { border-color: var(--accent); }
 
@@ -241,6 +245,7 @@ const { reports } = Astro.props;
   /* ── Controls ── */
   .reports-controls {
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 0.75rem;
     margin-top: 2.25rem;
