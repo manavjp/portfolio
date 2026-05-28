@@ -113,6 +113,20 @@ import ITARTile from '../components/ITARTile.astro';
     </div>
 
     <div class="mosaic">
+      <div class="t-e1rk">
+        <ProjectTile
+          title="3D Printed Rocket"
+          tagline="E1RK · FDM sounding rocket — OpenRocket + SolidWorks"
+          href="/projects/3d-printed-rocket"
+        />
+      </div>
+      <div class="t-e1rk">
+        <ProjectTile
+          title="Group High Powered Rocket"
+          tagline="E1RK · Fiberglass airframe, 3D-printed nose cone & boat tail"
+          href="/projects/group-high-powered-rocket"
+        />
+      </div>
       <div class="t-obst">
         <ProjectTile
           title="Obstacle Avoidance Embedded System"
@@ -179,6 +193,9 @@ import ITARTile from '../components/ITARTile.astro';
   .t-sub  { grid-column: span 8; min-height: 260px; }
   .t-uav  { grid-column: span 8; min-height: 260px; }
 
+  /* E1RK — two equal tiles */
+  .t-e1rk { grid-column: span 6; min-height: 220px; }
+
   /* Standalone */
   .t-obst { grid-column: span 6; min-height: 220px; }
   .t-obs  { grid-column: span 6; min-height: 220px; }
@@ -188,7 +205,7 @@ import ITARTile from '../components/ITARTile.astro';
     .t-inj, .t-vstand, .t-wflows { grid-column: span 6; }
     .t-rs                         { grid-column: span 6; }
     .t-sub, .t-uav               { grid-column: span 10; }
-    .t-obst, .t-obs              { grid-column: span 6; }
+    .t-e1rk, .t-obst, .t-obs    { grid-column: span 6; }
   }
 
   @media (max-width: 600px) {
@@ -196,6 +213,7 @@ import ITARTile from '../components/ITARTile.astro';
     .t-inj, .t-vstand, .t-wflows,
     .t-rs,
     .t-sub, .t-uav,
+    .t-e1rk,
     .t-obst, .t-obs { grid-column: span 12; }
   }
 </style>

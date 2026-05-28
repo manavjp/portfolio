@@ -1,0 +1,42 @@
+---
+import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
+import SpecTable from '../../components/SpecTable.astro';
+
+const specRows = [
+  { label: 'Manufacturing',  value: 'FDM 3D Printing'         },
+  { label: 'Design Tools',   value: 'OpenRocket, SolidWorks'  },
+  { label: 'Class',          value: 'E1RK — UCLA'             },
+];
+---
+<ProjectPageLayout
+  title="3D Printed Rocket"
+  description="FDM-fabricated sounding rocket designed in OpenRocket and SolidWorks for UCLA's E1RK course."
+  ghostText="ROCKET"
+  category="E1RK — UCLA"
+  tagline="FDM sounding rocket — OpenRocket design + SolidWorks CAD"
+>
+  <section class="spec-block">
+    <SpecTable rows={specRows} title="Specifications" />
+    <div class="todo-block">
+      <span class="todo-label">TODO — Photos & renders</span>
+      <p>Photos of the printed rocket, SolidWorks render, and OpenRocket simulation screenshots. Place at <code>public/assets/projects/3d-printed-rocket/</code>.</p>
+    </div>
+  </section>
+
+  <section class="the-work">
+    <div class="work-row">
+      <h2 class="work-label">Overview</h2>
+      <div class="work-content">
+        <p class="work-text">
+          Designed and fabricated an FDM 3D-printed sounding rocket for UCLA's E1RK rocketry course.
+          Airframe and fins were modeled in SolidWorks; flight performance was simulated in OpenRocket
+          to optimize stability margin and apogee altitude.
+        </p>
+        <div class="todo-block">
+          <span class="todo-label">TODO — Full writeup</span>
+          <p>Design details, print settings, stability analysis, flight data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</ProjectPageLayout>

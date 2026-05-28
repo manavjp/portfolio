@@ -1,0 +1,44 @@
+---
+import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
+import SpecTable from '../../components/SpecTable.astro';
+
+const specRows = [
+  { label: 'Airframe',       value: 'Fiberglass'                        },
+  { label: 'Nose Cone',      value: '3D Printed'                        },
+  { label: 'Boat Tail',      value: '3D Printed'                        },
+  { label: 'Design Tools',   value: 'OpenRocket, SolidWorks'            },
+  { label: 'Class',          value: 'E1RK — UCLA'                       },
+];
+---
+<ProjectPageLayout
+  title="Group High Powered Rocket"
+  description="Fiberglass high-powered rocket with 3D-printed nose cone and boat tail, designed in OpenRocket and SolidWorks for UCLA's E1RK course."
+  ghostText="HPR"
+  category="E1RK — UCLA"
+  tagline="Fiberglass airframe, 3D-printed nose cone & boat tail"
+>
+  <section class="spec-block">
+    <SpecTable rows={specRows} title="Specifications" />
+    <div class="todo-block">
+      <span class="todo-label">TODO — Photos & renders</span>
+      <p>Photos of the assembled rocket, SolidWorks renders of nose cone and boat tail, OpenRocket simulation screenshots. Place at <code>public/assets/projects/group-high-powered-rocket/</code>.</p>
+    </div>
+  </section>
+
+  <section class="the-work">
+    <div class="work-row">
+      <h2 class="work-label">Overview</h2>
+      <div class="work-content">
+        <p class="work-text">
+          Group design and build of a high-powered rocket for UCLA's E1RK course. Fiberglass airframe
+          with 3D-printed nose cone and boat tail designed in SolidWorks. Flight performance and
+          stability validated in OpenRocket prior to build.
+        </p>
+        <div class="todo-block">
+          <span class="todo-label">TODO — Full writeup</span>
+          <p>Design process, manufacturing steps, team roles, stability analysis, flight data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</ProjectPageLayout>
