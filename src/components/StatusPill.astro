@@ -1,0 +1,60 @@
+<div
+  class="status-pill"
+  role="status"
+  aria-label="Availability: open to opportunities"
+>
+  <span class="pill-dot" aria-hidden="true"></span>
+  <span class="pill-text">OPEN TO OPPORTUNITIES</span>
+</div>
+
+<style>
+  .status-pill {
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: var(--z-pill);
+    padding: 0.375rem 0.75rem;
+    border: 1px solid var(--grid-line);
+    background: rgba(12, 13, 14, 0.85);
+    backdrop-filter: blur(8px);
+  }
+
+  .pill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--status-green);
+    flex-shrink: 0;
+    animation: dot-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 1;   transform: scale(1.00); }
+    50%       { opacity: 0.5; transform: scale(0.80); }
+  }
+
+  .pill-text {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: var(--fw-regular);
+    color: var(--text-70);
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 768px) {
+    .status-pill {
+      top: 0.875rem;
+      right: 1.25rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pill-dot {
+      animation: none;
+    }
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+import '@fontsource-variable/geist';
+import '@fontsource-variable/geist-mono';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import Sidebar from '../components/Sidebar.astro';
+import StatusPill from '../components/StatusPill.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Aerospace engineering portfolio of Manav Patel — propulsion, test, CAD, FEA.',
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} — Manav Patel</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- ACCESS GATE — remove this block for public launch -->
+    <script is:inline>
+      const SECRET = "dev9";
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("token") === SECRET) {
+        localStorage.setItem("access", SECRET);
+      }
+      if (localStorage.getItem("access") !== SECRET) {
+        window.location.href = "https://www.linkedin.com/in/manavjp/";
+      }
+    </script>
+    <!-- END ACCESS GATE -->
+  </head>
+  <body>
+    <Sidebar currentPath={currentPath} />
+    <StatusPill />
+    <main class="main-content">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  body {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .main-content {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    min-height: 100vh;
+    padding: calc(var(--outer-gutter) * 1.5) var(--outer-gutter);
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      margin-left: 0;
+      padding-top: 5rem;
+    }
+  }
+</style>
