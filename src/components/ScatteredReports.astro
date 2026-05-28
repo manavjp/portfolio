@@ -56,8 +56,9 @@ const { reports } = Astro.props;
 
   .reports-stack {
     position: relative;
-    width: 280px;
-    height: 340px;
+    width: 380px;
+    height: 460px;
+    overflow: visible;
   }
 
   .report-card {
@@ -65,26 +66,28 @@ const { reports } = Astro.props;
     inset: 0;
     background: var(--surface-raised);
     border: 1px solid var(--hairline);
-    padding: 1.5rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
     text-decoration: none;
-    transition: transform 0.35s var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+    transition: transform 0.4s var(--ease-out), border-color var(--dur-fast) var(--ease-out);
   }
 
-  .report-card:nth-child(1) { transform: rotate(-5deg) translate(-8px, 10px); z-index: 1; }
-  .report-card:nth-child(2) { transform: rotate(2deg)  translate(4px,  5px);  z-index: 2; }
-  .report-card:nth-child(3) { transform: rotate(0deg);                         z-index: 3; }
+  /* Thrown resting state — each card at a distinct chaotic angle */
+  .report-card:nth-child(1) { transform: rotate(-10deg) translate(-24px, 20px); z-index: 1; }
+  .report-card:nth-child(2) { transform: rotate( 5deg)  translate( 14px,  8px); z-index: 2; }
+  .report-card:nth-child(3) { transform: rotate(-2deg)  translate(  3px,  0px); z-index: 3; }
 
+  /* Wide fan on hover */
   .reports-stack:hover .report-card:nth-child(1) {
-    transform: rotate(-14deg) translate(-40px, -24px);
+    transform: rotate(-22deg) translate(-80px, -45px);
   }
   .reports-stack:hover .report-card:nth-child(2) {
-    transform: rotate(-4deg)  translate(-10px, -12px);
+    transform: rotate( -5deg) translate(-20px, -28px);
   }
   .reports-stack:hover .report-card:nth-child(3) {
-    transform: rotate(6deg)   translate(16px,  -8px);
+    transform: rotate( 10deg) translate( 36px, -16px);
   }
 
   .report-card:hover { border-color: var(--accent); }
@@ -111,7 +114,7 @@ const { reports } = Astro.props;
 
   .report-card__title {
     font-family: var(--font-display);
-    font-size: var(--text-base);
+    font-size: var(--text-md);
     font-weight: var(--fw-semibold);
     color: var(--text-100);
     line-height: var(--leading-snug);
@@ -128,7 +131,7 @@ const { reports } = Astro.props;
 
   .report-card__open {
     font-family: var(--font-mono);
-    font-size: var(--text-xs);
+    font-size: var(--text-sm);
     color: var(--text-35);
     letter-spacing: 0.06em;
     margin-top: auto;

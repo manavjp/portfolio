@@ -26,11 +26,11 @@ const reports = [
   category="UCLA Rocket Project"
   tagline="20+ pages of hydro, cold-flow & static-fire test reports"
 >
-  <section class="spec-block">
+  <section class="spec-block spec-block--reports">
     <SpecTable rows={specRows} title="Specifications" />
-    <div class="todo-block">
-      <span class="todo-label">TODO — Real PDF links</span>
-      <p>Replace <code>href: '#'</code> in the reports array with actual PDF paths once reports are placed in <code>public/assets/projects/propulsion-data-analysis/</code>.</p>
+    <div class="reports-col">
+      <ScatteredReports reports={reports} />
+      <p class="reports-pdf-note">TODO: replace <code>href: '#'</code> with real PDF paths in <code>public/assets/projects/propulsion-data-analysis/</code></p>
     </div>
   </section>
   <section class="metrics-row" aria-label="Key metrics">
@@ -55,7 +55,6 @@ const reports = [
       <h2 class="work-label">Analysis</h2>
       <div class="work-content">
         <ThrustChart />
-        <ScatteredReports reports={reports} />
       </div>
     </div>
     <div class="work-row">
@@ -72,3 +71,29 @@ const reports = [
     </div>
   </section>
 </ProjectPageLayout>
+
+<style>
+  /* Allow the thrown cards to overflow left into the specs column */
+  .spec-block--reports {
+    overflow: visible;
+    align-items: start;
+  }
+
+  .reports-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /* Shift the whole column left so thrown cards overlap the gap */
+    margin-left: -1.5rem;
+    overflow: visible;
+  }
+
+  .reports-pdf-note {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    color: var(--text-35);
+    line-height: var(--leading-normal);
+    /* Enough top margin to clear the tallest thrown card */
+    margin-top: 2.5rem;
+  }
+</style>
