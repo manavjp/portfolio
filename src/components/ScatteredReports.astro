@@ -20,23 +20,28 @@ const { reports } = Astro.props;
       <a
         href={report.href}
         class="report-card"
-        style={`--card-index: ${i}`}
         target="_blank"
         rel="noopener noreferrer"
         role="listitem"
         aria-label={`Open ${report.title}`}
       >
-        <div class="report-card__header">
-          <span class="report-card__type">Test Report</span>
-          <span class="report-card__date">{report.date}</span>
+        <div class="rc-header">
+          <span class="rc-type">Test Report</span>
+          <span class="rc-date">{report.date}</span>
         </div>
-        <p class="report-card__title">{report.title}</p>
-        <p class="report-card__subtitle">{report.subtitle}</p>
-        <span class="report-card__open">Open ↗</span>
+        <hr class="rc-rule" />
+        <div class="rc-body">
+          <p class="rc-title">{report.title}</p>
+          <p class="rc-subtitle">{report.subtitle}</p>
+        </div>
+        <hr class="rc-rule" />
+        <div class="rc-footer">
+          <span class="rc-open">View Report ↗</span>
+        </div>
       </a>
     ))}
   </div>
-  <p class="reports-hint">Hover to browse · Click to open</p>
+  <p class="reports-hint">Hover to select · Click to open</p>
 </div>
 
 <style>
@@ -54,10 +59,11 @@ const { reports } = Astro.props;
     text-transform: uppercase;
   }
 
+  /* Portrait / document proportions */
   .reports-stack {
     position: relative;
-    width: 320px;
-    height: 300px;
+    width: 230px;
+    height: 320px;
     overflow: visible;
   }
 
@@ -66,43 +72,33 @@ const { reports } = Astro.props;
     inset: 0;
     background: var(--surface-raised);
     border: 1px solid var(--hairline);
-    padding: 1.5rem;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
     text-decoration: none;
-    transition: transform 0.35s var(--ease-out), z-index 0s, border-color var(--dur-fast) var(--ease-out);
+    transition: border-color var(--dur-fast) var(--ease-out);
   }
 
   /* Thrown resting state */
-  .report-card:nth-child(1) { transform: rotate(-10deg) translate(-20px, 18px); z-index: 1; }
-  .report-card:nth-child(2) { transform: rotate(  5deg) translate( 12px,  6px); z-index: 2; }
+  .report-card:nth-child(1) { transform: rotate(-10deg) translate(-18px, 16px); z-index: 1; }
+  .report-card:nth-child(2) { transform: rotate(  5deg) translate( 10px,  5px); z-index: 2; }
   .report-card:nth-child(3) { transform: rotate( -2deg) translate(  2px,  0px); z-index: 3; }
 
-  /* Hover individual card — lifts to top, de-rotates toward viewer */
-  .report-card:nth-child(1):hover {
-    transform: rotate(-3deg) translate(-14px, 4px);
-    z-index: 10;
-    border-color: var(--accent);
-  }
-  .report-card:nth-child(2):hover {
-    transform: rotate( 2deg) translate( 8px, -4px);
-    z-index: 10;
-    border-color: var(--accent);
-  }
-  .report-card:nth-child(3):hover {
-    transform: rotate(-1deg) translate( 2px, -8px);
+  /* Hover: just replace the top — no movement, instant z-index */
+  .report-card:hover {
     z-index: 10;
     border-color: var(--accent);
   }
 
-  .report-card__header {
+  /* ── Card interior ── */
+  .rc-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.625rem;
   }
 
-  .report-card__type {
+  .rc-type {
     font-family: var(--font-label);
     font-size: var(--text-2xs);
     color: var(--text-35);
@@ -110,39 +106,58 @@ const { reports } = Astro.props;
     text-transform: uppercase;
   }
 
-  .report-card__date {
+  .rc-date {
     font-family: var(--font-mono);
     font-size: var(--text-2xs);
     color: var(--text-35);
   }
 
-  .report-card__title {
-    font-family: var(--font-display);
-    font-size: var(--text-md);
-    font-weight: var(--fw-semibold);
-    color: var(--text-100);
-    line-height: var(--leading-snug);
-    margin-top: auto;
+  .rc-rule {
+    border: none;
+    border-top: 1px solid var(--grid-line);
+    margin: 0;
   }
 
-  .report-card__subtitle {
+  .rc-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 0;
+  }
+
+  .rc-title {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: var(--fw-semibold);
+    color: var(--text-90);
+    line-height: var(--leading-snug);
+  }
+
+  .rc-subtitle {
     font-family: var(--font-label);
     font-size: var(--text-xs);
-    color: var(--text-50);
-    letter-spacing: 0.04em;
+    color: var(--text-35);
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
-  .report-card__open {
+  .rc-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0.625rem;
+  }
+
+  .rc-open {
     font-family: var(--font-mono);
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
     color: var(--text-35);
-    letter-spacing: 0.06em;
-    margin-top: auto;
+    letter-spacing: 0.05em;
     transition: color var(--dur-fast) var(--ease-out);
   }
 
-  .report-card:hover .report-card__open { color: var(--accent); }
+  .report-card:hover .rc-open { color: var(--accent); }
 
   .reports-hint {
     font-family: var(--font-mono);
@@ -152,9 +167,9 @@ const { reports } = Astro.props;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .report-card {
-      transition: border-color var(--dur-fast) var(--ease-out);
-      transform: none !important;
-    }
+    .report-card { transition: border-color var(--dur-fast) var(--ease-out); }
+    .report-card:nth-child(1),
+    .report-card:nth-child(2),
+    .report-card:nth-child(3) { transform: none; }
   }
 </style>
