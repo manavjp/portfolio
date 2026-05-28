@@ -73,17 +73,24 @@ const reports = [
 </ProjectPageLayout>
 
 <style>
+  /* Override global 1fr 1fr grid — let spec table size to its content,
+     reports side sizes to its own content; they share available space naturally */
   .spec-block--reports {
-    overflow: visible;
+    display: flex;
+    gap: 5rem;
     align-items: start;
+    overflow: visible;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .spec-block--reports > :global(.spec-table-wrap) {
+    flex: 1 1 260px;
   }
 
   .reports-col {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    /* Nudge right so the stack sits in the right half of the column */
-    margin-left: 1.5rem;
+    flex-shrink: 0;
+    margin-left: 2rem;
     overflow: visible;
   }
 

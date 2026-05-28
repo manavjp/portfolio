@@ -45,11 +45,11 @@ const TICKS = 15;
 
   <div class="reports-controls">
     <button class="rctl-btn rctl-prev" type="button" aria-label="Previous report">←</button>
-
     <div class="slider-track">
       <div class="slider-ticks">
         {Array.from({ length: TICKS }, () => <div class="stk"></div>)}
       </div>
+      <!-- Visible square is 13×13; invisible hit area is 32×32 via ::before -->
       <div
         class="slider-thumb"
         role="slider"
@@ -60,30 +60,47 @@ const TICKS = 15;
         aria-label="Select report"
       ></div>
     </div>
-
     <button class="rctl-btn rctl-next" type="button" aria-label="Next report">→</button>
   </div>
 </div>
 
 <script>
   function initDeck(root: Element) {
-    const cards  = Array.from(root.querySelectorAll<HTMLElement>('.report-card'));
-    const track  = root.querySelector<HTMLElement>('.slider-track');
-    const thumb  = root.querySelector<HTMLElement>('.slider-thumb');
-    const ticks  = Array.from(root.querySelectorAll<HTMLElement>('.stk'));
-    const n      = cards.length;
+    const cards = Array.from(root.querySelectorAll<HTMLElement>('.report-card'));
+    const track = root.querySelector<HTMLElement>('.slider-track');
+    const thumb = root.querySelector<HTMLElement>('.slider-thumb');
+    const ticks = Array.from(root.querySelectorAll<HTMLElement>('.stk'));
+    const n     = cards.length;
     if (n === 0 || !track || !thumb) return;
 
     let activeIdx = 0;
 
-    const slotTransform = [
-      'rotate(-1deg) translate( 2px,  0px)',
-      'rotate( 5deg) translate(16px,  9px)',
-      'rotate(-8deg) translate(-18px, 15px)',
+    // Slot definitions — used for both CSS initial state and JS interpolation
+    const slots = [
+      { r: -1, tx:  2, ty:  0, z: 3 }, // slot 0 = front
+      { r:  5, tx: 16, ty:  9, z: 2 }, // slot 1 = middle
+      { r: -8, tx:-18, ty: 15, z: 1 }, // slot 2 = back
     ];
-    const slotZ = [3, 2, 1];
 
-    // Left offset for thumb at a given report index
+    function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
+
+    // Interpolate all cards smoothly between two integer deck states
+    function updateCardsForFloat(floatIdx: number) {
+      const clamped = Math.max(0, Math.min(n - 1, floatIdx));
+      const lower   = Math.floor(clamped);
+      const upper   = Math.min(n - 1, lower + 1);
+      const t       = clamped - lower;
+
+      cards.forEach((card, ci) => {
+        const sA = Math.min(((ci - lower) % n + n) % n, slots.length - 1);
+        const sB = Math.min(((ci - upper) % n + n) % n, slots.length - 1);
+        const a  = slots[sA]!;
+        const b  = slots[sB]!;
+        card.style.transform = `rotate(${lerp(a.r, b.r, t)}deg) translate(${lerp(a.tx, b.tx, t)}px, ${lerp(a.ty, b.ty, t)}px)`;
+        card.style.zIndex    = String(t < 0.5 ? a.z : b.z);
+      });
+    }
+
     function snapLeft(idx: number): number {
       const tw  = track.offsetWidth;
       const thw = thumb.offsetWidth;
@@ -91,37 +108,31 @@ const TICKS = 15;
       return n > 1 ? (idx / (n - 1)) * eff : 0;
     }
 
-    // Update tick heights based on thumb center x — ticks bloom around the square
     function updateTicks(thumbCenterX: number, animated: boolean) {
-      const NT   = ticks.length;
-      const tw   = track.offsetWidth;
+      const NT  = ticks.length;
+      const tw  = track.offsetWidth;
       const step = tw / (NT - 1);
       const BASE = 10, PEAK = 26, SPREAD = step * 2.2;
-
       ticks.forEach((tick, i) => {
-        const tickX = i * step;
-        const dist  = Math.abs(tickX - thumbCenterX);
-        const t     = Math.max(0, 1 - dist / SPREAD);
-        const h     = Math.round(BASE + (PEAK - BASE) * t);
+        const dist = Math.abs(i * step - thumbCenterX);
+        const t    = Math.max(0, 1 - dist / SPREAD);
         tick.style.transition = animated ? 'height 0.25s var(--ease-out)' : 'none';
-        tick.style.height     = h + 'px';
+        tick.style.height     = Math.round(BASE + (PEAK - BASE) * t) + 'px';
       });
     }
 
     function applyDeck(animated = true) {
-      cards.forEach((card, i) => {
-        const slot = ((i - activeIdx) % n + n) % n;
-        const s    = Math.min(slot, slotTransform.length - 1);
-        card.style.transform = slotTransform[s]!;
-        card.style.zIndex    = String(slotZ[s] ?? 1);
-      });
+      if (animated) {
+        cards.forEach(c => {
+          c.style.transition = 'transform 0.4s var(--ease-out), border-color var(--dur-fast) var(--ease-out)';
+        });
+      }
+      updateCardsForFloat(activeIdx);
       const left = snapLeft(activeIdx);
       thumb.style.transition = animated ? 'left 0.35s var(--ease-out)' : 'none';
       thumb.style.left       = left + 'px';
       thumb.setAttribute('aria-valuenow', String(activeIdx));
-      // Animate ticks to their bloom position after the thumb lands
-      const thw = thumb.offsetWidth;
-      updateTicks(left + thw / 2, animated);
+      updateTicks(left + thumb.offsetWidth / 2, animated);
     }
 
     // ── Drag ──────────────────────────────────────────────────────────
@@ -133,7 +144,9 @@ const TICKS = 15;
       dragging   = true;
       dragStartX = e.clientX;
       dragStartL = parseFloat(thumb.style.left) || 0;
-      thumb.style.transition = 'none'; // instant during drag
+      thumb.style.transition = 'none';
+      // Disable card transitions so shuffling is instant during drag
+      cards.forEach(c => { c.style.transition = 'none'; });
       e.preventDefault();
     });
 
@@ -145,18 +158,21 @@ const TICKS = 15;
       const dx  = e.clientX - dragStartX;
       const nl  = Math.max(0, Math.min(eff, dragStartL + dx));
       thumb.style.left = nl + 'px';
-      updateTicks(nl + thw / 2, false); // instant tick bloom while dragging
+      // Live shuffle: map drag position to a float report index
+      const floatIdx = eff > 0 ? (nl / eff) * (n - 1) : 0;
+      updateCardsForFloat(floatIdx);
+      updateTicks(nl + thw / 2, false);
     };
 
     const onUp = () => {
       if (!dragging) return;
-      dragging  = false;
+      dragging = false;
       const tw  = track.offsetWidth;
       const thw = thumb.offsetWidth;
       const eff = Math.max(1, tw - thw);
       const frac = (parseFloat(thumb.style.left) || 0) / eff;
       activeIdx = Math.round(frac * (n - 1));
-      applyDeck(true); // smooth snap + animated tick bloom
+      applyDeck(true);
     };
 
     document.addEventListener('mousemove', onMove);
@@ -177,7 +193,7 @@ const TICKS = 15;
       if (e.key === 'ArrowRight') { activeIdx = Math.min(n - 1, activeIdx + 1); applyDeck(true); }
     });
 
-    applyDeck(false); // initial position without animation
+    applyDeck(false);
   }
 
   document.querySelectorAll('.reports-component').forEach(initDeck);
@@ -188,7 +204,7 @@ const TICKS = 15;
     display: flex;
     flex-direction: column;
     align-self: flex-start;
-    width: 260px;
+    width: 300px;
   }
 
   .reports-label {
@@ -200,11 +216,11 @@ const TICKS = 15;
     margin-bottom: 0.75rem;
   }
 
-  /* ── Deck ── */
+  /* ── Deck (larger) ── */
   .reports-deck {
     position: relative;
-    width: 200px;
-    height: 270px;
+    width: 220px;
+    height: 300px;
     overflow: visible;
   }
 
@@ -212,16 +228,16 @@ const TICKS = 15;
     position: absolute;
     top: 0;
     left: 0;
-    width: 200px;
-    height: 270px;
+    width: 220px;
+    height: 300px;
     background: var(--surface-raised);
     border: 1px solid var(--hairline);
-    padding: 1.25rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     text-decoration: none;
     cursor: pointer;
-    transition: transform 0.4s var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+    /* transition managed by JS */
   }
 
   /* Pre-JS thrown positions (activeIdx=0) */
@@ -236,7 +252,7 @@ const TICKS = 15;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.625rem;
+    margin-bottom: 0.75rem;
   }
 
   .rc-type {
@@ -264,13 +280,13 @@ const TICKS = 15;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.875rem 0;
+    gap: 0.625rem;
+    padding: 1rem 0;
   }
 
   .rc-title {
     font-family: var(--font-display);
-    font-size: var(--text-base);
+    font-size: var(--text-md);
     font-weight: var(--fw-semibold);
     color: var(--text-90);
     line-height: var(--leading-snug);
@@ -287,7 +303,7 @@ const TICKS = 15;
   .rc-footer {
     display: flex;
     justify-content: flex-end;
-    padding-top: 0.625rem;
+    padding-top: 0.75rem;
   }
 
   .rc-open {
@@ -297,7 +313,6 @@ const TICKS = 15;
     letter-spacing: 0.05em;
     transition: color var(--dur-fast) var(--ease-out);
   }
-
   .report-card:hover .rc-open { color: var(--accent); }
 
   /* ── Controls ── */
@@ -306,7 +321,7 @@ const TICKS = 15;
     flex-direction: row;
     align-items: center;
     gap: 0.625rem;
-    margin-top: 2.25rem;
+    margin-top: 2.5rem;
     width: 100%;
   }
 
@@ -325,11 +340,11 @@ const TICKS = 15;
   }
   .rctl-btn:hover { border-color: var(--accent); color: var(--text-100); }
 
-  /* ── Slider track ── */
+  /* ── Slider ── */
   .slider-track {
     position: relative;
     flex: 1;
-    height: 32px;
+    height: 34px;
     display: flex;
     align-items: center;
   }
@@ -341,37 +356,44 @@ const TICKS = 15;
     width: 100%;
   }
 
-  /* Ticks: start at base height; JS adjusts dynamically */
   .stk {
     width: 2px;
-    height: 10px; /* baseline — JS overrides */
+    height: 10px;
     background: var(--hairline);
     flex-shrink: 0;
+    /* height managed by JS */
   }
 
-  /* Draggable square */
+  /* Visible square: 13×13 */
   .slider-thumb {
     position: absolute;
     top: 50%;
     left: 0;
-    transform: translateY(-50%);
     width: 13px;
     height: 13px;
+    transform: translateY(-50%);
     background: var(--accent);
     cursor: grab;
     user-select: none;
-    /* left + transition managed by JS */
   }
 
-  .slider-thumb:active   { cursor: grabbing; }
-  .slider-thumb:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
+  /* Invisible hit-area extension — 20px larger on each side */
+  .slider-thumb::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
   }
+
+  .slider-thumb:active       { cursor: grabbing; }
+  .slider-thumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
 
   @media (prefers-reduced-motion: reduce) {
-    .report-card   { transition: border-color var(--dur-fast) var(--ease-out); }
-    .slider-thumb  { transition: none !important; }
-    .stk           { transition: none !important; }
+    .report-card,
+    .slider-thumb { transition: none !important; }
+    .stk          { transition: none !important; }
   }
 </style>
