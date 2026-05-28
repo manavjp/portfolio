@@ -5,25 +5,24 @@ interface ReportCard {
   date: string;
   href: string;
 }
-
 interface Props {
   reports: ReportCard[];
 }
-
 const { reports } = Astro.props;
 ---
 
-<div class="reports-section">
+<div class="reports-component">
   <p class="reports-label">Test Reports</p>
-  <div class="reports-stack" role="list">
+
+  <div class="reports-deck">
     {reports.map((report, i) => (
       <a
         href={report.href}
         class="report-card"
+        data-index={String(i)}
         target="_blank"
         rel="noopener noreferrer"
-        role="listitem"
-        aria-label={`Open ${report.title}`}
+        aria-label={`Open: ${report.title}`}
       >
         <div class="rc-header">
           <span class="rc-type">Test Report</span>
@@ -41,14 +40,96 @@ const { reports } = Astro.props;
       </a>
     ))}
   </div>
-  <p class="reports-hint">Hover to select · Click to open</p>
+
+  <!-- Vast-style controls -->
+  <div class="reports-controls">
+    <button class="rctl-btn rctl-prev" type="button" aria-label="Previous report">←</button>
+    <div class="rctl-indicators">
+      {reports.map((_, i) => (
+        <button
+          class:list={['rctl-tick', { 'is-active': i === 0 }]}
+          data-idx={String(i)}
+          type="button"
+          aria-label={`Report ${i + 1}`}
+        ></button>
+      ))}
+    </div>
+    <button class="rctl-btn rctl-next" type="button" aria-label="Next report">→</button>
+  </div>
 </div>
 
+<script>
+  function initDeck(root: Element) {
+    const cards = Array.from(root.querySelectorAll<HTMLElement>('.report-card'));
+    const ticks = Array.from(root.querySelectorAll<HTMLElement>('.rctl-tick'));
+    const n = cards.length;
+    if (n === 0) return;
+
+    let activeIdx = 0;
+    let hovering = false;
+
+    // Deck slot transforms — slot 0 is front, higher = further back
+    const slotTransform = [
+      'rotate(-1deg) translate(2px,   0px)',
+      'rotate( 5deg) translate(16px,  9px)',
+      'rotate(-8deg) translate(-18px, 15px)',
+    ];
+    const slotZ = [3, 2, 1];
+
+    function applyDeck() {
+      cards.forEach((card, i) => {
+        const slot = ((i - activeIdx) % n + n) % n;
+        const s = Math.min(slot, slotTransform.length - 1);
+        card.style.transform = slotTransform[s]!;
+        card.style.zIndex    = String(slotZ[s] ?? 1);
+      });
+      ticks.forEach((tick, i) => {
+        tick.classList.toggle('is-active', i === activeIdx);
+      });
+    }
+
+    // Hover: lift to front for reading
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        hovering = true;
+        card.style.transform = 'rotate(-0.5deg) translate(0, -6px)';
+        card.style.zIndex    = '10';
+      });
+      card.addEventListener('mouseleave', () => {
+        hovering = false;
+        applyDeck();
+      });
+    });
+
+    // Prev / next shuffle
+    root.querySelector('.rctl-prev')?.addEventListener('click', () => {
+      activeIdx = ((activeIdx - 1) + n) % n;
+      applyDeck();
+    });
+    root.querySelector('.rctl-next')?.addEventListener('click', () => {
+      activeIdx = (activeIdx + 1) % n;
+      applyDeck();
+    });
+
+    // Tick click
+    ticks.forEach((tick, i) => {
+      tick.addEventListener('click', () => {
+        activeIdx = i;
+        applyDeck();
+      });
+    });
+
+    applyDeck();
+  }
+
+  document.querySelectorAll('.reports-component').forEach(initDeck);
+</script>
+
 <style>
-  .reports-section {
-    display: flex;
+  .reports-component {
+    display: inline-flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0;
   }
 
   .reports-label {
@@ -57,14 +138,14 @@ const { reports } = Astro.props;
     color: var(--text-35);
     letter-spacing: 0.10em;
     text-transform: uppercase;
+    margin-bottom: 0.75rem;
   }
 
-  /* Portrait / document proportions — explicit on both container AND card */
-  .reports-stack {
+  /* ── Deck ── */
+  .reports-deck {
     position: relative;
     width: 200px;
-    height: 290px;
-    flex-shrink: 0;
+    height: 270px;
     overflow: visible;
   }
 
@@ -73,26 +154,20 @@ const { reports } = Astro.props;
     top: 0;
     left: 0;
     width: 200px;
-    height: 290px;
+    height: 270px;
     background: var(--surface-raised);
     border: 1px solid var(--hairline);
     padding: 1.25rem;
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    transition: border-color var(--dur-fast) var(--ease-out);
+    cursor: pointer;
+    transition:
+      transform 0.4s var(--ease-out),
+      border-color var(--dur-fast) var(--ease-out);
   }
 
-  /* Thrown resting state */
-  .report-card:nth-child(1) { transform: rotate(-10deg) translate(-18px, 16px); z-index: 1; }
-  .report-card:nth-child(2) { transform: rotate(  5deg) translate( 10px,  5px); z-index: 2; }
-  .report-card:nth-child(3) { transform: rotate( -2deg) translate(  2px,  0px); z-index: 3; }
-
-  /* Hover: just replace the top — no movement, instant z-index */
-  .report-card:hover {
-    z-index: 10;
-    border-color: var(--accent);
-  }
+  .report-card:hover { border-color: var(--accent); }
 
   /* ── Card interior ── */
   .rc-header {
@@ -163,17 +238,67 @@ const { reports } = Astro.props;
 
   .report-card:hover .rc-open { color: var(--accent); }
 
-  .reports-hint {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    color: var(--text-35);
-    letter-spacing: 0.04em;
+  /* ── Controls ── */
+  .reports-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2.25rem;
   }
 
+  .rctl-btn {
+    background: none;
+    border: 1px solid var(--hairline);
+    color: var(--text-35);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    line-height: 1;
+    transition:
+      border-color var(--dur-fast) var(--ease-out),
+      color var(--dur-fast) var(--ease-out);
+  }
+
+  .rctl-btn:hover {
+    border-color: var(--accent);
+    color: var(--text-100);
+  }
+
+  /* Vast-style indicators: thin bars, active grows to square */
+  .rctl-indicators {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .rctl-tick {
+    width: 3px;
+    height: 18px;
+    background: var(--hairline);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition:
+      width  var(--dur-base) var(--ease-out),
+      height var(--dur-base) var(--ease-out),
+      background var(--dur-base) var(--ease-out);
+  }
+
+  .rctl-tick.is-active {
+    width: 13px;
+    height: 13px;
+    background: var(--accent);
+  }
+
+  .rctl-tick:hover:not(.is-active) {
+    background: var(--text-35);
+  }
+
+  /* ── Reduced motion ── */
   @media (prefers-reduced-motion: reduce) {
     .report-card { transition: border-color var(--dur-fast) var(--ease-out); }
-    .report-card:nth-child(1),
-    .report-card:nth-child(2),
-    .report-card:nth-child(3) { transform: none; }
+    .rctl-tick   { transition: none; }
   }
 </style>
