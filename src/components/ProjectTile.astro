@@ -5,9 +5,10 @@ interface Props {
   href?: string;
   featured?: boolean;
   image?: string;
-  alwaysShowTagline?: boolean; // opt out of hide-until-hover
+  imagePosition?: string; // CSS object-position, default 'center'
+  alwaysShowTagline?: boolean;
 }
-const { title, tagline, href, featured = false, image, alwaysShowTagline = false } = Astro.props;
+const { title, tagline, href, featured = false, image, imagePosition = 'center', alwaysShowTagline = false } = Astro.props;
 const classes = [
   'tile',
   featured && 'tile--featured',
@@ -20,7 +21,7 @@ const classes = [
 {href ? (
   <a href={href} class:list={classes}>
     {image
-      ? <img src={image} alt="" class="tile__photo" aria-hidden="true" loading="lazy" />
+      ? <img src={image} alt="" class="tile__photo" aria-hidden="true" loading="lazy" style={`object-position: ${imagePosition}`} />
       : <div class="tile__bg" aria-hidden="true"></div>
     }
     {image && <div class="tile__scrim" aria-hidden="true"></div>}
@@ -35,7 +36,7 @@ const classes = [
 ) : (
   <div class:list={classes}>
     {image
-      ? <img src={image} alt="" class="tile__photo" aria-hidden="true" loading="lazy" />
+      ? <img src={image} alt="" class="tile__photo" aria-hidden="true" loading="lazy" style={`object-position: ${imagePosition}`} />
       : <div class="tile__bg" aria-hidden="true"></div>
     }
     {image && <div class="tile__scrim" aria-hidden="true"></div>}
