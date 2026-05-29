@@ -1,9 +1,9 @@
 ---
 interface Props {
   title: string;
-  tagline: string;
+  tagline?: string; // kept for backward compat but not rendered
 }
-const { title, tagline } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <div class="itar-tile" aria-label={`${title} — ITAR Restricted`}>
@@ -12,7 +12,6 @@ const { title, tagline } = Astro.props;
   <div class="tile__content">
     <div class="tile__text">
       <span class="tile__title">{title}</span>
-      <span class="tile__tagline">{tagline}</span>
     </div>
   </div>
 
@@ -71,7 +70,6 @@ const { title, tagline } = Astro.props;
   .tile__text {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
   }
 
   .tile__title {
@@ -80,14 +78,6 @@ const { title, tagline } = Astro.props;
     font-weight: var(--fw-bold);
     color: var(--text-100);
     line-height: var(--leading-snug);
-  }
-
-  .tile__tagline {
-    font-family: var(--font-label);
-    font-size: var(--text-xs);
-    color: var(--text-35);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
   }
 
   /* ── ITAR Overlay ── */

@@ -5,14 +5,13 @@ interface SpecRow {
 }
 interface Props {
   rows: SpecRow[];
-  title?: string;
+  title?: string; // kept for compat but no longer rendered
 }
-const { rows, title } = Astro.props;
+const { rows } = Astro.props;
 ---
 
 <div class="spec-table-wrap">
-  {title && <h3 class="spec-table-title">{title}</h3>}
-  <table class="spec-table" aria-label={title ?? 'Project specifications'}>
+  <table class="spec-table" aria-label="Project specifications">
     <tbody>
       {rows.map(row => (
         <tr class="spec-row">
@@ -25,15 +24,6 @@ const { rows, title } = Astro.props;
 </div>
 
 <style>
-  .spec-table-title {
-    font-family: var(--font-label);
-    font-size: var(--text-xs);
-    color: var(--text-35);
-    letter-spacing: 0.10em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-
   .spec-table {
     width: 100%;
     border-collapse: collapse;
@@ -47,10 +37,11 @@ const { rows, title } = Astro.props;
     border-top: 1px solid var(--grid-line);
   }
 
+  /* Both label and value: same white — unified row */
   .spec-label {
     font-family: var(--font-label);
     font-size: var(--text-xs);
-    color: var(--text-50);
+    color: var(--text-100);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 0.875rem 0;

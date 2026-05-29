@@ -118,7 +118,7 @@ const classes = ['tile', featured && 'tile--featured', !href && 'tile--static', 
   .tile__text {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0; /* gap added via tagline margin-top on hover */
   }
 
   .tile__title {
@@ -140,13 +140,22 @@ const classes = ['tile', featured && 'tile--featured', !href && 'tile--static', 
     color: var(--text-35);
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    /* Hidden by default — revealed on hover via scramble animation */
+    /* Collapsed + invisible by default — title sits lower */
     opacity: 0;
-    transition: opacity 0.1s var(--ease-out);
+    max-height: 0;
+    overflow: hidden;
+    margin-top: 0;
+    transition:
+      opacity      0.15s var(--ease-out),
+      max-height   0.25s var(--ease-out),
+      margin-top   0.25s var(--ease-out);
   }
 
+  /* On hover: tagline expands, title rises naturally */
   .tile:hover .tile__tagline {
     opacity: 1;
+    max-height: 3em;
+    margin-top: 0.3rem;
   }
 
   /* On image tiles the tagline reads better slightly brighter */
