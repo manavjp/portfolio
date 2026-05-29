@@ -25,6 +25,7 @@ const { title, description, ghostText, category, tagline } = Astro.props;
   </section>
 
   <div class="proj-body page-padded">
+    <h2 class="section-overview">Overview</h2>
     <slot />
   </div>
 </Layout>
@@ -124,5 +125,17 @@ const { title, description, ghostText, category, tagline } = Astro.props;
   .proj-body {
     padding-top: 3rem;
     padding-bottom: 5rem;
+  }
+
+  /* Section heading — same display font as hero name, smaller scale */
+  .section-overview {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: var(--fw-black);
+    color: var(--text-100);
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
   }
 </style>
