@@ -21,7 +21,7 @@ const specRows = [
   tagline="Isolating 5,635 lbf-s onto linear rails — 2 Mojave static fires"
 >
   <!-- Override global 1fr/1fr: video is the feature, specs center alongside it -->
-  <section class="spec-block" style="grid-template-columns: 1fr 1.5fr; align-items: center; gap: 4rem;">
+  <section class="spec-block" style="grid-template-columns: 1fr 1.5fr; align-items: center; gap: 1.5rem;">
     <SpecTable rows={specRows} title="Specifications" />
     <div class="model-wrap">
       <video
@@ -89,10 +89,13 @@ const specRows = [
 
 <style>
   .model-wrap {
-    overflow: hidden;
-    width: 85%;
+    overflow: visible;
+    width: 120%;
     aspect-ratio: 1 / 1;
-    margin-left: auto;
+    /* Pull up into the hero ghost-text zone */
+    margin-top: -6rem;
+    position: relative;
+    z-index: 2;
   }
 
   .model-video {

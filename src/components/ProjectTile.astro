@@ -4,10 +4,17 @@ interface Props {
   tagline: string;
   href?: string;
   featured?: boolean;
-  image?: string; // optional cover photo — shown as full-bleed background
+  image?: string;
+  alwaysShowTagline?: boolean; // opt out of hide-until-hover
 }
-const { title, tagline, href, featured = false, image } = Astro.props;
-const classes = ['tile', featured && 'tile--featured', !href && 'tile--static', image && 'tile--image'].filter(Boolean) as string[];
+const { title, tagline, href, featured = false, image, alwaysShowTagline = false } = Astro.props;
+const classes = [
+  'tile',
+  featured && 'tile--featured',
+  !href && 'tile--static',
+  image && 'tile--image',
+  alwaysShowTagline && 'tile--tagline-visible',
+].filter(Boolean) as string[];
 ---
 
 {href ? (
@@ -156,6 +163,14 @@ const classes = ['tile', featured && 'tile--featured', !href && 'tile--static', 
     opacity: 1;
     max-height: 3em;
     margin-top: 0.3rem;
+  }
+
+  /* Always-visible tagline (no hover required) */
+  .tile--tagline-visible .tile__tagline {
+    opacity: 1;
+    max-height: 3em;
+    margin-top: 0.3rem;
+    transition: none;
   }
 
   /* On image tiles the tagline reads better slightly brighter */
