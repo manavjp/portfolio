@@ -37,11 +37,10 @@ const { rows } = Astro.props;
     border-top: 1px solid var(--grid-line);
   }
 
-  /* Both label and value: same white — unified row */
   .spec-label {
     font-family: var(--font-label);
     font-size: var(--text-xs);
-    color: var(--text-100);
+    color: var(--text-100) !important;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 0.875rem 0;
@@ -52,7 +51,7 @@ const { rows } = Astro.props;
   .spec-value {
     font-family: var(--font-mono);
     font-size: var(--text-sm);
-    color: var(--text-100);
+    color: var(--text-100) !important;
     padding: 0.875rem 0;
     text-align: right;
     vertical-align: middle;
