@@ -140,6 +140,13 @@ const classes = ['tile', featured && 'tile--featured', !href && 'tile--static', 
     color: var(--text-35);
     letter-spacing: 0.04em;
     text-transform: uppercase;
+    /* Hidden by default — revealed on hover via scramble animation */
+    opacity: 0;
+    transition: opacity 0.1s var(--ease-out);
+  }
+
+  .tile:hover .tile__tagline {
+    opacity: 1;
   }
 
   /* On image tiles the tagline reads better slightly brighter */
@@ -164,3 +171,52 @@ const classes = ['tile', featured && 'tile--featured', !href && 'tile--static', 
     transform: translate(0, 0);
   }
 </style>
+
+<script>
+  const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+  function scramble(el: HTMLElement, finalText: string): ReturnType<typeof setInterval> {
+    const len = finalText.length;
+    const FRAMES = 16; // ~480 ms at 30 ms per frame — short & snappy
+    let frame = 0;
+
+    // Start with all-random so text "arrives" rather than just appearing
+    el.textContent = finalText
+      .split('')
+      .map(ch => (/[a-zA-Z0-9]/.test(ch)
+        ? CHARS[Math.floor(Math.random() * CHARS.length)]
+        : ch) ?? ch)
+      .join('');
+
+    return setInterval(() => {
+      frame++;
+      const resolved = Math.floor((frame / FRAMES) * len);
+      el.textContent = finalText
+        .split('')
+        .map((ch, i) => {
+          if (i < resolved) return ch;
+          if (!/[a-zA-Z0-9]/.test(ch)) return ch;
+          return CHARS[Math.floor(Math.random() * CHARS.length)] ?? ch;
+        })
+        .join('');
+      if (frame >= FRAMES) el.textContent = finalText;
+    }, 30);
+  }
+
+  document.querySelectorAll<HTMLElement>('.tile').forEach(tile => {
+    const tagEl = tile.querySelector<HTMLElement>('.tile__tagline');
+    if (!tagEl) return;
+    const original = tagEl.textContent ?? '';
+    let timer: ReturnType<typeof setInterval> | null = null;
+
+    tile.addEventListener('mouseenter', () => {
+      if (timer) clearInterval(timer);
+      timer = scramble(tagEl, original);
+    });
+
+    tile.addEventListener('mouseleave', () => {
+      if (timer) { clearInterval(timer); timer = null; }
+      tagEl.textContent = original;
+    });
+  });
+</script>
