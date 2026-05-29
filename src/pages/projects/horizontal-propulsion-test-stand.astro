@@ -69,10 +69,12 @@ const specRows = [
       <h2 class="work-label">Result</h2>
       <div class="work-content">
         <p class="work-text">The stand completed two full-duration static fires at Mojave Air &amp; Space Port with no structural failure or permanent deformation. Thrust data was captured through both campaigns.</p>
-        <div class="todo-block">
-          <span class="todo-label">TODO — Fire photos &amp; video</span>
-          <p>Static-fire photos and H.264 video. Place at <code>public/assets/projects/horizontal-propulsion-test-stand/static-fire.mp4</code>.</p>
-        </div>
+        <video
+          class="static-fire-video"
+          src="/assets/projects/horizontal-propulsion-test-stand/static_fire.mp4"
+          autoplay loop muted playsinline
+          aria-label="Static fire at Mojave Air & Space Port"
+        ></video>
       </div>
     </div>
     <div class="work-row">
@@ -102,5 +104,13 @@ const specRows = [
      before the model geometry begins */
   .spec-block > :global(.spec-table-wrap) {
     margin-top: -2rem;
+  }
+
+  /* Static fire video — full width, no border, 16:9 */
+  .static-fire-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    object-fit: cover;
   }
 </style>
