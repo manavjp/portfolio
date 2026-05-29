@@ -22,9 +22,16 @@ const specRows = [
 >
   <section class="spec-block">
     <SpecTable rows={specRows} title="Specifications" />
-    <div class="todo-block">
-      <span class="todo-label">TODO — Rotating model</span>
-      <p>360° rotating GIF or MP4 of the test stand CAD from SolidWorks. Target: 24 fps, ~5 s loop. Place at <code>public/assets/projects/horizontal-propulsion-test-stand/model-rotate.mp4</code>.</p>
+    <div class="model-wrap">
+      <video
+        class="model-video"
+        src="/assets/projects/horizontal-propulsion-test-stand/hts_model.mp4"
+        autoplay
+        loop
+        muted
+        playsinline
+        aria-label="Rotating SolidWorks model of the horizontal propulsion test stand"
+      ></video>
     </div>
   </section>
 
@@ -78,3 +85,22 @@ const specRows = [
     </div>
   </section>
 </ProjectPageLayout>
+
+<style>
+  .model-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px solid var(--grid-line);
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+  }
+
+  .model-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+</style>

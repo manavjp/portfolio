@@ -4,14 +4,19 @@ interface Props {
   tagline: string;
   href?: string;
   featured?: boolean;
+  image?: string; // optional cover photo — shown as full-bleed background
 }
-const { title, tagline, href, featured = false } = Astro.props;
-const classes = ['tile', featured && 'tile--featured', !href && 'tile--static'].filter(Boolean) as string[];
+const { title, tagline, href, featured = false, image } = Astro.props;
+const classes = ['tile', featured && 'tile--featured', !href && 'tile--static', image && 'tile--image'].filter(Boolean) as string[];
 ---
 
 {href ? (
   <a href={href} class:list={classes}>
-    <div class="tile__bg" aria-hidden="true"></div>
+    {image
+      ? <img src={image} alt="" class="tile__photo" aria-hidden="true" loading="lazy" />
+      : <div class="tile__bg" aria-hidden="true"></div>
+    }
+    {image && <div class="tile__scrim" aria-hidden="true"></div>}
     <div class="tile__content">
       <div class="tile__text">
         <span class="tile__title">{title}</span>
@@ -22,7 +27,11 @@ const classes = ['tile', featured && 'tile--featured', !href && 'tile--static'].
   </a>
 ) : (
   <div class:list={classes}>
-    <div class="tile__bg" aria-hidden="true"></div>
+    {image
+      ? <img src={image} alt="" class="tile__photo" aria-hidden="true" loading="lazy" />
+      : <div class="tile__bg" aria-hidden="true"></div>
+    }
+    {image && <div class="tile__scrim" aria-hidden="true"></div>}
     <div class="tile__content">
       <div class="tile__text">
         <span class="tile__title">{title}</span>
@@ -48,6 +57,7 @@ const classes = ['tile', featured && 'tile--featured', !href && 'tile--static'].
   .tile--static { cursor: default; }
   a.tile:hover  { border-color: var(--accent); }
 
+  /* Engineering grid bg (no image) */
   .tile__bg {
     position: absolute;
     inset: 0;
@@ -62,6 +72,35 @@ const classes = ['tile', featured && 'tile--featured', !href && 'tile--static'].
         var(--grid-line) 0px, var(--grid-line) 1px,
         transparent 1px, transparent 40px
       );
+    pointer-events: none;
+  }
+
+  /* Full-bleed cover photo */
+  .tile__photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  a.tile--image:hover .tile__photo {
+    transform: scale(1.03);
+  }
+
+  /* Gradient scrim so text is legible over photos */
+  .tile__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(1, 1, 1, 0.80) 0%,
+      rgba(1, 1, 1, 0.35) 40%,
+      rgba(1, 1, 1, 0.10) 70%,
+      transparent 100%
+    );
     pointer-events: none;
   }
 
@@ -101,6 +140,11 @@ const classes = ['tile', featured && 'tile--featured', !href && 'tile--static'].
     color: var(--text-35);
     letter-spacing: 0.04em;
     text-transform: uppercase;
+  }
+
+  /* On image tiles the tagline reads better slightly brighter */
+  .tile--image .tile__tagline {
+    color: var(--text-50);
   }
 
   .tile__arrow {
