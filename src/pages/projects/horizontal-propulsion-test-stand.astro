@@ -20,7 +20,8 @@ const specRows = [
   category="UCLA Rocket Project"
   tagline="Isolating 5,635 lbf-s onto linear rails — 2 Mojave static fires"
 >
-  <section class="spec-block">
+  <!-- Override global 1fr/1fr: video is the feature, specs center alongside it -->
+  <section class="spec-block" style="grid-template-columns: 1fr 1.5fr; align-items: center; gap: 4rem;">
     <SpecTable rows={specRows} title="Specifications" />
     <div class="model-wrap">
       <video
@@ -89,8 +90,7 @@ const specRows = [
 <style>
   .model-wrap {
     overflow: hidden;
-    /* Size to roughly match the spec table height */
-    max-width: 280px;
+    width: 100%;
     aspect-ratio: 1 / 1;
   }
 
