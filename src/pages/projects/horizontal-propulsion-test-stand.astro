@@ -97,50 +97,44 @@ const specRows = [
   const canvas = document.getElementById('hts-canvas') as HTMLCanvasElement | null;
 
   if (video && canvas) {
-    // willReadFrequently tells the browser to keep the canvas in CPU memory
-    // so getImageData calls are fast (avoids GPU readback stall).
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
-    if (!ctx) throw new Error('canvas 2d unavailable');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true })!;
 
-    function render() {
-      if (video!.paused || video!.ended) return;
-
-      // Resize canvas to match display size once
-      const w = canvas!.offsetWidth  || 600;
-      const h = canvas!.offsetHeight || 600;
+    function drawFrame() {
+      // Sync canvas resolution to display size
+      const w = canvas!.offsetWidth  || canvas!.clientWidth  || 600;
+      const h = canvas!.offsetHeight || canvas!.clientHeight || 600;
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width  = w;
         canvas!.height = h;
       }
-
-      // Draw the current video frame
+      // Draw frame
       ctx.drawImage(video!, 0, 0, w, h);
-
       // Key out black: alpha = max(R, G, B)
       const frame = ctx.getImageData(0, 0, w, h);
-      const d     = frame.data;
+      const d = frame.data;
       for (let i = 0; i < d.length; i += 4) {
         d[i + 3] = Math.max(d[i], d[i + 1], d[i + 2]);
       }
       ctx.putImageData(frame, 0, 0);
-
-      requestAnimationFrame(render);
+      // Continue loop only while playing
+      if (!video!.paused && !video!.ended) requestAnimationFrame(drawFrame);
     }
 
-    video.addEventListener('play', render);
-    // If video already playing (autoplay resolved before listener attached)
-    if (!video.paused) render();
+    // Start the loop when the video begins playing
+    video.addEventListener('play', () => requestAnimationFrame(drawFrame));
+    // Handle autoplay that may fire before the listener is attached
+    video.addEventListener('loadeddata', () => {
+      if (!video!.paused) requestAnimationFrame(drawFrame);
+    });
+    if (!video.paused && video.readyState >= 2) requestAnimationFrame(drawFrame);
   }
 </script>
 
 <style>
   .model-wrap {
-    overflow: visible;
-    width: 120%;
+    width: 100%;
     aspect-ratio: 1 / 1;
-    margin-top: -6rem;
-    position: relative;
-    z-index: 2;
+    overflow: hidden;
   }
 
   .model-canvas {

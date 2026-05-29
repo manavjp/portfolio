@@ -228,6 +228,9 @@ const classes = [
   }
 
   document.querySelectorAll<HTMLElement>('.tile').forEach(tile => {
+    // Skip tiles whose tagline is always visible (no scramble needed)
+    if (tile.classList.contains('tile--tagline-visible')) return;
+
     const tagEl = tile.querySelector<HTMLElement>('.tile__tagline');
     if (!tagEl) return;
     const original = tagEl.textContent ?? '';
