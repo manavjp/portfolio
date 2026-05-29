@@ -20,9 +20,11 @@ const specRows = [
   category="UCLA Rocket Project"
   tagline="Isolating 5,635 lbf-s onto linear rails — 2 Mojave static fires"
 >
-  <!-- Override global 1fr/1fr: video is the feature, specs center alongside it -->
-  <section class="spec-block" style="grid-template-columns: 1fr 1.5fr; align-items: start; gap: 1.5rem;">
-    <SpecTable rows={specRows} title="Specifications" />
+  <!-- Left col stretches to video height; flex centres spec table within it -->
+  <section class="spec-block" style="grid-template-columns: 1fr 1.5fr; align-items: stretch; gap: 1.5rem;">
+    <div class="spec-left">
+      <SpecTable rows={specRows} title="Specifications" />
+    </div>
     <div class="model-wrap">
       <video
         class="model-video"
@@ -100,10 +102,10 @@ const specRows = [
     display: block;
   }
 
-  /* Shift specs up slightly — video has empty space at the top
-     before the model geometry begins */
-  .spec-block > :global(.spec-table-wrap) {
-    margin-top: -2rem;
+  /* Left column stretches to video height; flex centres spec table within it */
+  .spec-left {
+    display: flex;
+    align-items: center;
   }
 
   /* Static fire video — full width, no border, 16:9 */
