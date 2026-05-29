@@ -7,9 +7,10 @@ interface Props {
   ghostText: string;
   category: string;
   tagline: string;
+  showOverview?: boolean;
 }
 
-const { title, description, ghostText, category, tagline } = Astro.props;
+const { title, description, ghostText, category, tagline, showOverview = true } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
@@ -25,7 +26,7 @@ const { title, description, ghostText, category, tagline } = Astro.props;
   </section>
 
   <div class="proj-body page-padded">
-    <h2 class="section-overview">Overview</h2>
+    {showOverview && <h2 class="section-overview">Overview</h2>}
     <slot />
   </div>
 </Layout>

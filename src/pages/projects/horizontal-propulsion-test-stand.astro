@@ -19,9 +19,14 @@ const specRows = [
   ghostText="TEST STAND"
   category="UCLA Rocket Project"
   tagline="Isolating 5,635 lbf-s onto linear rails — 2 Mojave static fires"
+  showOverview={false}
 >
-  <section class="spec-block" style="grid-template-columns: 1fr 1.5fr; align-items: start; gap: 1.5rem;">
-    <SpecTable rows={specRows} title="Specifications" />
+  <!-- Overview + specs together so they center as a unit alongside the video -->
+  <section class="spec-block" style="grid-template-columns: 1fr 1.5fr; align-items: center; gap: 1.5rem;">
+    <div class="spec-col">
+      <h2 class="section-overview">Overview</h2>
+      <SpecTable rows={specRows} title="Specifications" />
+    </div>
     <div class="model-wrap">
       <video
         class="model-video"
@@ -99,6 +104,24 @@ const specRows = [
     display: block;
   }
 
+
+  /* Left column: overview + spec table as a unit */
+  .spec-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Use the layout's overview style (already defined in ProjectPageLayout) */
+  .spec-col :global(.section-overview) {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: var(--fw-black);
+    color: var(--text-100);
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
 
   /* Static fire video — full width, no border, 16:9 */
   .static-fire-video {
