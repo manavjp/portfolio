@@ -24,20 +24,12 @@ const specRows = [
   <section class="spec-block" style="grid-template-columns: 1fr 1.5fr; align-items: center; gap: 1.5rem;">
     <SpecTable rows={specRows} title="Specifications" />
     <div class="model-wrap">
-      <!-- Hidden video source — GPU decode happens here -->
       <video
-        id="hts-src"
+        class="model-video"
         src="/assets/projects/horizontal-propulsion-test-stand/hts_model.mp4"
         autoplay loop muted playsinline
-        style="display:none"
-        aria-hidden="true"
-      ></video>
-      <!-- Canvas composites each frame with black→alpha keying -->
-      <canvas
-        id="hts-canvas"
-        class="model-canvas"
         aria-label="Rotating SolidWorks model of the horizontal propulsion test stand"
-      ></canvas>
+      ></video>
     </div>
   </section>
 
@@ -92,44 +84,6 @@ const specRows = [
   </section>
 </ProjectPageLayout>
 
-<script>
-  const video  = document.getElementById('hts-src') as HTMLVideoElement | null;
-  const canvas = document.getElementById('hts-canvas') as HTMLCanvasElement | null;
-
-  if (video && canvas) {
-    const ctx = canvas.getContext('2d', { willReadFrequently: true })!;
-
-    function drawFrame() {
-      // Sync canvas resolution to display size
-      const w = canvas!.offsetWidth  || canvas!.clientWidth  || 600;
-      const h = canvas!.offsetHeight || canvas!.clientHeight || 600;
-      if (canvas!.width !== w || canvas!.height !== h) {
-        canvas!.width  = w;
-        canvas!.height = h;
-      }
-      // Draw frame
-      ctx.drawImage(video!, 0, 0, w, h);
-      // Key out black: alpha = max(R, G, B)
-      const frame = ctx.getImageData(0, 0, w, h);
-      const d = frame.data;
-      for (let i = 0; i < d.length; i += 4) {
-        d[i + 3] = Math.max(d[i], d[i + 1], d[i + 2]);
-      }
-      ctx.putImageData(frame, 0, 0);
-      // Continue loop only while playing
-      if (!video!.paused && !video!.ended) requestAnimationFrame(drawFrame);
-    }
-
-    // Start the loop when the video begins playing
-    video.addEventListener('play', () => requestAnimationFrame(drawFrame));
-    // Handle autoplay that may fire before the listener is attached
-    video.addEventListener('loadeddata', () => {
-      if (!video!.paused) requestAnimationFrame(drawFrame);
-    });
-    if (!video.paused && video.readyState >= 2) requestAnimationFrame(drawFrame);
-  }
-</script>
-
 <style>
   .model-wrap {
     width: 100%;
@@ -137,9 +91,10 @@ const specRows = [
     overflow: hidden;
   }
 
-  .model-canvas {
+  .model-video {
     width: 100%;
     height: 100%;
+    object-fit: cover;
     display: block;
   }
 </style>
