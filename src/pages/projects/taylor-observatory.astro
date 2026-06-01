@@ -18,17 +18,24 @@ const specRows = [
 >
   <section class="spec-block">
     <SpecTable rows={specRows} title="Details" />
-    <div class="todo-block">
-      <span class="todo-label">TODO — Observatory photos</span>
-      <p>2–3 photos: dome exterior, telescope setup, and a sample astrometric field image. Place at <code>public/assets/projects/taylor-observatory/</code>.</p>
-    </div>
+    <figure class="proj-figure">
+      <img src="/assets/projects/observatory/dome_night.jpg"
+           alt="Taylor Observatory dome at night under the stars" loading="lazy" />
+      <figcaption>Taylor Observatory — dome at night</figcaption>
+    </figure>
   </section>
 
-  <section class="obs-desc">
-    <p class="work-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <section class="obs-body">
+    <!-- FILL IN - General: section text -->
+    <figure class="proj-figure obs-figure--wide">
+      <img src="/assets/projects/observatory/foto_cover.jpg"
+           alt="Telescope pointed at a star field for astrometric data collection" loading="lazy" />
+      <figcaption>Astrometric observation session</figcaption>
+    </figure>
   </section>
 </ProjectPageLayout>
 
 <style>
-  .obs-desc { margin-top: 2rem; max-width: 72ch; }
+  .obs-body { margin-top: 2rem; max-width: 72ch; display: flex; flex-direction: column; gap: 1.5rem; }
+  .obs-figure--wide { max-width: 100%; }
 </style>

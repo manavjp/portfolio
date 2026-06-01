@@ -1,11 +1,16 @@
 ---
 import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
 import SpecTable from '../../components/SpecTable.astro';
+import MetricCallout from '../../components/MetricCallout.astro';
+import PdfViewer from '../../components/PdfViewer.astro';
 
 const specRows = [
-  { label: 'Manufacturing',  value: 'FDM 3D Printing'         },
-  { label: 'Design Tools',   value: 'OpenRocket, SolidWorks'  },
-  { label: 'Class',          value: 'E1RK — UCLA'             },
+  { label: 'Course',    value: 'Engr. 1, Intro. to Rocketry (E1RK)'                    },
+  { label: 'Mentors',   value: 'Nicholas Veracruz (SpaceX, Relativity) · Caitlyn Hill (SpaceX)' },
+  { label: 'Design',    value: 'SolidWorks · OpenRocket · Theodore von Kármán'         },
+  { label: 'Build',     value: 'FDM 3D Print'                                           },
+  { label: 'Material',  value: 'Polylactic Acid (PLA)'                                  },
+  { label: 'Color',     value: 'Grass Green'                                            },
 ];
 ---
 <ProjectPageLayout
@@ -14,25 +19,162 @@ const specRows = [
   ghostText="E1RK 3DPR"
   category="E1RK — UCLA"
   tagline="FDM sounding rocket — OpenRocket design + SolidWorks CAD"
+  showOverview={false}
 >
-  <section class="spec-block">
-    <SpecTable rows={specRows} title="Specifications" />
-    <div class="todo-block">
-      <span class="todo-label">TODO — Photos & renders</span>
-      <p>Photos of the printed rocket, SolidWorks render, and OpenRocket simulation screenshots. Place at <code>public/assets/projects/3d-printed-rocket/</code>.</p>
+  <!-- Overview + launch video on right (16:9 landscape) -->
+  <section class="spec-block" style="grid-template-columns: 1fr 1.5fr; align-items: start; gap: 1.5rem;">
+    <div class="spec-col">
+      <h2 class="section-overview">Overview</h2>
+      <SpecTable rows={specRows} title="Specifications" />
     </div>
+    <div class="launch-wrap">
+      <video class="launch-video" autoplay loop muted playsinline
+             aria-label="3D printed rocket launch footage">
+        <source src="/assets/projects/3dpr/launch_video.MP4" type="video/mp4" />
+      </video>
+    </div>
+  </section>
+
+  <section class="metrics-row" aria-label="Key metrics">
+    <MetricCallout value="20.2" unit="g"   description="Fuselage weight"      />
+    <MetricCallout value="???"  unit="ft"  description="Apogee"               />
+    <MetricCallout value="12"   unit="in"  description="Height"               />
   </section>
 
   <section class="the-work">
     <div class="work-row">
-      <h2 class="work-label">Overview</h2>
+      <h2 class="work-label">Problem</h2>
       <div class="work-content">
-        <p class="work-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
-        <div class="todo-block">
-          <span class="todo-label">TODO — Full writeup</span>
-          <p>Design details, print settings, stability analysis, flight data.</p>
+        <!-- FILL IN - Problem: Describe the engineering challenge that motivated this project -->
+      </div>
+    </div>
+
+    <div class="work-row">
+      <h2 class="work-label">Approach</h2>
+      <div class="work-content">
+        <!-- FILL IN - Approach: Explain the methodology, key decisions, and tools used -->
+        <!-- Design review slide deck — 7 pages, arrow-navigable -->
+        <PdfViewer
+          src="/assets/projects/3dpr/review_slides.pdf"
+          pages={7}
+          label="3DPR design review slides"
+          aspectRatio="16 / 9"
+        />
+      </div>
+    </div>
+
+    <div class="work-row">
+      <h2 class="work-label">Build</h2>
+      <div class="work-content">
+        <!-- FILL IN - Build: Manufacturing process, materials, and fabrication steps -->
+        <!-- 3d_print (portrait 3:4) + prototype_B (portrait 3:4) — side by side -->
+        <div class="proj-gallery proj-gallery--2">
+          <figure class="proj-figure">
+            <img src="/assets/projects/3dpr/3d_print.jpg"
+                 alt="First layer of 3D print on Bambu Lab P1S" loading="lazy"
+                 style="aspect-ratio: 4/3; object-fit: cover;" />
+            <figcaption>First layer of 3D print on Bambu Lab P1S</figcaption>
+          </figure>
+          <figure class="proj-figure">
+            <img src="/assets/projects/3dpr/prototype_B.jpg"
+                 alt="3D printed rocket prototype" loading="lazy"
+                 style="aspect-ratio: 4/3; object-fit: cover;" />
+          </figure>
         </div>
+        <!-- fins (4:3) + nose_cone (4:3) — side by side -->
+        <div class="proj-gallery proj-gallery--2">
+          <figure class="proj-figure">
+            <img src="/assets/projects/3dpr/fins.jpg"
+                 alt="Printed rocket fins" loading="lazy" />
+          </figure>
+          <figure class="proj-figure">
+            <img src="/assets/projects/3dpr/nose_cone.jpg"
+                 alt="3D printed nose cone" loading="lazy" />
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-row">
+      <h2 class="work-label">Analysis</h2>
+      <div class="work-content">
+        <!-- FILL IN - Analysis: Share data, calculations, test results, FEA, or simulation findings -->
+        <figure class="proj-figure">
+          <img src="/assets/projects/3dpr/body_weight.jpg"
+               alt="Weighing rocket components for OpenRocket simulation input" loading="lazy" />
+          <figcaption>Weights of components were plugged into OpenRocket simulations to streamline the design loop</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="work-row">
+      <h2 class="work-label">Result</h2>
+      <div class="work-content">
+        <!-- FILL IN - Result: Describe what was achieved — metrics, validation, outcomes -->
+      </div>
+    </div>
+
+    <div class="work-row">
+      <h2 class="work-label">Reflection</h2>
+      <div class="work-content">
+        <!-- FILL IN - Reflection: Lessons learned and what would be done differently -->
+        <figure class="proj-figure">
+          <img src="/assets/projects/3dpr/team_picture.JPG"
+               alt="E1RK team photo" loading="lazy" />
+        </figure>
       </div>
     </div>
   </section>
 </ProjectPageLayout>
+
+<style>
+  /* ── Launch video — 16:9 in spec-block ──────────────── */
+  .launch-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .launch-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .spec-col { display: flex; flex-direction: column; }
+  .spec-col :global(.section-overview) {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: var(--fw-black);
+    color: var(--text-100);
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+</style>
+
+<script>
+  // Scramble the "???" apogee counter
+  document.addEventListener('astro:page-load', () => {
+    const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#';
+    const el = document.querySelector<HTMLElement>('.metric__value[data-target="???"]');
+    if (!el) return;
+
+    let frame = 0;
+    const FRAMES = 24;
+
+    const timer = setInterval(() => {
+      frame++;
+      el.textContent = '???'
+        .split('')
+        .map(() => CHARS[Math.floor(Math.random() * CHARS.length)])
+        .join('');
+      if (frame >= FRAMES) {
+        el.textContent = '???';
+        clearInterval(timer);
+      }
+    }, 60);
+  });
+</script>

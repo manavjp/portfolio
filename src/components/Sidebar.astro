@@ -1,4 +1,6 @@
 ---
+import { RESUME_URL } from '../config';
+
 interface Props {
   currentPath: string;
 }
@@ -42,13 +44,25 @@ function isActive(href: string): boolean {
     </nav>
   </div>
 
+  <!-- Preview mode badge — only visible when ?preview=1 is active -->
+  <div class="sidebar__preview" id="sidebar-preview" aria-hidden="true">◆ PREVIEW</div>
+
   <div class="sidebar__bottom">
     <div class="sidebar__status">
       <span class="dot" aria-hidden="true"></span>
       <span class="status-text">Open to opportunities</span>
     </div>
-    <a href="mailto:manavjpatel@ucla.edu" class="sidebar__email">
-      manavjpatel@ucla.edu
+    <a
+      href={RESUME_URL}
+      class="sidebar__link"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="View resume"
+    >
+      View Resume ↗
+    </a>
+    <a href="/contact" class="sidebar__link">
+      Contact ↗
     </a>
   </div>
 </aside>
@@ -66,6 +80,17 @@ function isActive(href: string): boolean {
     justify-content: space-between;
     padding: 2rem 1.5rem;
     z-index: var(--z-sidebar);
+    transition:
+      background var(--dur-base) var(--ease-out),
+      border-color var(--dur-base) var(--ease-out),
+      backdrop-filter var(--dur-base) var(--ease-out);
+  }
+
+  .sidebar.is-scrolled {
+    background: rgba(1, 1, 1, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-right-color: rgba(241, 240, 234, 0.10);
   }
 
   .sidebar__wordmark {
@@ -136,6 +161,16 @@ function isActive(href: string): boolean {
     border-radius: 50%;
     background: var(--status-green);
     flex-shrink: 0;
+    animation: dot-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 1;   transform: scale(1.00); }
+    50%       { opacity: 0.5; transform: scale(0.80); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dot { animation: none; }
   }
 
   .status-text {
@@ -146,15 +181,39 @@ function isActive(href: string): boolean {
     letter-spacing: 0.04em;
   }
 
-  .sidebar__email {
+  .sidebar__link {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
-    color: var(--text-35);
-    transition: color var(--dur-fast) var(--ease-out);
+    color: var(--text-100);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--text-35);
+    transition: color var(--dur-fast) var(--ease-out),
+                text-decoration-color var(--dur-fast) var(--ease-out);
   }
 
-  .sidebar__email:hover {
-    color: var(--text-70);
+  .sidebar__link:hover {
+    text-decoration-color: var(--text-70);
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .sidebar.is-scrolled {
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+  }
+
+  /* ── Preview badge ── */
+  .sidebar__preview {
+    display: none; /* shown by JS when preview is active */
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0;
+    margin-bottom: 0.75rem;
   }
 
   /* ── Mobile: collapse to top bar ── */
@@ -183,3 +242,53 @@ function isActive(href: string): boolean {
     }
   }
 </style>
+
+<script>
+  // ── Frost on scroll (add listener only once — sidebar persists) ───────────
+  let frostReady = false;
+  function initFrost() {
+    const sidebar = document.querySelector<HTMLElement>('.sidebar');
+    if (!sidebar) return;
+    const toggle = () => sidebar.classList.toggle('is-scrolled', window.scrollY > 40);
+    toggle();
+    if (!frostReady) {
+      window.addEventListener('scroll', toggle, { passive: true });
+      frostReady = true;
+    }
+  }
+  document.addEventListener('astro:page-load', initFrost);
+
+  // ── Preview badge + About link gating ────────────────────────────────────
+  function applyPreview() {
+    const isPreview = localStorage.getItem('preview') === '1';
+    const badge = document.getElementById('sidebar-preview');
+    if (badge) badge.style.display = isPreview ? 'block' : 'none';
+
+    // Grey-out the About nav link when preview is off
+    document.querySelectorAll<HTMLAnchorElement>('.nav-item[href="/about"]').forEach(el => {
+      el.style.opacity       = isPreview ? '' : '0.3';
+      el.style.pointerEvents = isPreview ? '' : 'none';
+      el.title               = isPreview ? '' : 'Coming soon';
+    });
+  }
+  document.addEventListener('astro:page-load', applyPreview);
+
+  // ── Same-page no-reload (capture phase — fires before Astro's router) ─────
+  // Prevents navigating to the page you're already on.
+  document.addEventListener('click', (e) => {
+    const link = (e.target as HTMLElement).closest('a[href]') as HTMLAnchorElement | null;
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('http') || href.startsWith('mailto')) return;
+
+    const current = window.location.pathname.replace(/\/$/, '') || '/';
+    const target  = href.replace(/\/$/, '') || '/';
+
+    if (target === current) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      // Scroll to top smoothly if the user clicks the logo/home while on home
+      if (target === '/') window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, true); // capture phase
+</script>

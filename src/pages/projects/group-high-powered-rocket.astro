@@ -1,13 +1,16 @@
 ---
 import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
 import SpecTable from '../../components/SpecTable.astro';
+import MetricCallout from '../../components/MetricCallout.astro';
+import PdfViewer from '../../components/PdfViewer.astro';
 
 const specRows = [
-  { label: 'Airframe',       value: 'Fiberglass'                        },
-  { label: 'Nose Cone',      value: '3D Printed'                        },
-  { label: 'Boat Tail',      value: '3D Printed'                        },
-  { label: 'Design Tools',   value: 'OpenRocket, SolidWorks'            },
-  { label: 'Class',          value: 'E1RK — UCLA'                       },
+  { label: 'Course',    value: 'Engr. 1, Intro. to Rocketry (E1RK)'                    },
+  { label: 'Mentors',   value: 'Nicholas Veracruz (SpaceX, Relativity) · Caitlyn Hill (SpaceX)' },
+  { label: 'Design',    value: 'SolidWorks · OpenRocket · Theodore von Kármán'         },
+  { label: 'Build',     value: 'Fiberglass Layup · FDM · Laser Cut'                    },
+  { label: 'Material',  value: 'PLA · Fiberglass (body) · Birch (fins)'                },
+  { label: 'Color',     value: 'Sky Blue'                                               },
 ];
 ---
 <ProjectPageLayout
@@ -15,26 +18,142 @@ const specRows = [
   description="Fiberglass high-powered rocket with 3D-printed nose cone and boat tail, designed in OpenRocket and SolidWorks for UCLA's E1RK course."
   ghostText="E1RK GMPR"
   category="E1RK — UCLA"
-  tagline="Fiberglass airframe, 3D-printed nose cone & boat tail"
+  tagline="Fiberglass airframe, 3D-printed nose cone &amp; boat tail"
+  showOverview={false}
 >
-  <section class="spec-block">
-    <SpecTable rows={specRows} title="Specifications" />
-    <div class="todo-block">
-      <span class="todo-label">TODO — Photos & renders</span>
-      <p>Photos of the assembled rocket, SolidWorks renders of nose cone and boat tail, OpenRocket simulation screenshots. Place at <code>public/assets/projects/group-high-powered-rocket/</code>.</p>
+  <!-- Overview + cover image — keep current image, no figcaption -->
+  <section class="spec-block" style="grid-template-columns: 1fr 1.5fr; align-items: start; gap: 1.5rem;">
+    <div class="spec-col">
+      <h2 class="section-overview">Overview</h2>
+      <SpecTable rows={specRows} title="Specifications" />
     </div>
+    <div class="cover-wrap">
+      <img src="/assets/projects/gmpr/gmpr_cover.jpg"
+           alt="Group high-powered rocket — assembled fiberglass airframe"
+           loading="lazy" class="cover-img" />
+    </div>
+  </section>
+
+  <section class="metrics-row" aria-label="Key metrics">
+    <MetricCallout value="2"   unit="rockets"  description="Rockets built"        />
+    <MetricCallout value="1"   unit="launches" description="Successful launches"  />
+    <MetricCallout value="12"  unit="members"  description="Team members"         />
   </section>
 
   <section class="the-work">
     <div class="work-row">
-      <h2 class="work-label">Overview</h2>
+      <h2 class="work-label">Problem</h2>
       <div class="work-content">
-        <p class="work-text">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
-        <div class="todo-block">
-          <span class="todo-label">TODO — Full writeup</span>
-          <p>Design process, manufacturing steps, team roles, stability analysis, flight data.</p>
+        <!-- FILL IN - Problem: Describe the engineering challenge that motivated this project -->
+      </div>
+    </div>
+
+    <div class="work-row">
+      <h2 class="work-label">Approach</h2>
+      <div class="work-content">
+        <!-- FILL IN - Approach: Explain the methodology, key decisions, and tools used -->
+        <!-- Design review slide deck — 6 pages, arrow-navigable -->
+        <PdfViewer
+          src="/assets/projects/gmpr/review_slides.pdf"
+          pages={6}
+          label="GMPR design review slides"
+          aspectRatio="16 / 9"
+        />
+        <!-- nosecone_cap prototype + CAD — both portrait 3:4, side by side -->
+        <div class="proj-gallery proj-gallery--2">
+          <figure class="proj-figure">
+            <img src="/assets/projects/gmpr/nosecone_cap_prototype.jpg"
+                 alt="Functional prototype of the nose cone mechanical push-up cap"
+                 loading="lazy" style="aspect-ratio: 3/4; object-fit: cover;" />
+            <figcaption>Functional prototype of the nose cone's mechanical push-up cap</figcaption>
+          </figure>
+          <figure class="proj-figure">
+            <img src="/assets/projects/gmpr/nosecone_cap_CAD.jpg"
+                 alt="CAD of the nose cone cap slit design" loading="lazy"
+                 style="aspect-ratio: 3/4; object-fit: cover;" />
+            <figcaption>CAD of the nose cone cap's slit</figcaption>
+          </figure>
         </div>
+      </div>
+    </div>
+
+    <div class="work-row">
+      <h2 class="work-label">Build</h2>
+      <div class="work-content">
+        <!-- FILL IN - Build: Manufacturing process, materials, and fabrication steps -->
+        <!-- body_tube_layup (4:3) + layup_b (portrait 3:4) — side by side, 4:3 crop -->
+        <div class="proj-gallery proj-gallery--2">
+          <figure class="proj-figure">
+            <img src="/assets/projects/gmpr/body_tube_layup.jpeg"
+                 alt="Fiberglass body tube wet layup in progress" loading="lazy" />
+          </figure>
+          <figure class="proj-figure">
+            <img src="/assets/projects/gmpr/layup_b.png"
+                 alt="Composite wet layup detail" loading="lazy"
+                 style="aspect-ratio: 4/3; object-fit: cover;" />
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-row">
+      <h2 class="work-label">Analysis</h2>
+      <div class="work-content">
+        <!-- FILL IN - Analysis: Share data, calculations, test results, FEA, or simulation findings -->
+      </div>
+    </div>
+
+    <div class="work-row">
+      <h2 class="work-label">Result</h2>
+      <div class="work-content">
+        <!-- FILL IN - Result: Describe what was achieved — metrics, validation, outcomes -->
+        <!-- launch (portrait 0.57:1) + flight_config (4:3) — side by side, 4:3 crop -->
+        <div class="proj-gallery proj-gallery--2">
+          <figure class="proj-figure">
+            <img src="/assets/projects/gmpr/launch.PNG"
+                 alt="Rocket on the launchpad for flight" loading="lazy"
+                 style="aspect-ratio: 4/3; object-fit: cover;" />
+          </figure>
+          <figure class="proj-figure">
+            <img src="/assets/projects/gmpr/flight_config.jpg"
+                 alt="Assembled rocket in flight configuration" loading="lazy" />
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-row">
+      <h2 class="work-label">Reflection</h2>
+      <div class="work-content">
+        <!-- FILL IN - Reflection: Lessons learned and what would be done differently -->
       </div>
     </div>
   </section>
 </ProjectPageLayout>
+
+<style>
+  .spec-col { display: flex; flex-direction: column; }
+  .spec-col :global(.section-overview) {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: var(--fw-black);
+    color: var(--text-100);
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Cover image in overview — 4:3 crop to match spec column height */
+  .cover-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  .cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+</style>

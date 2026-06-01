@@ -4,6 +4,7 @@ interface ReportCard {
   subtitle: string;
   date: string;
   href: string;
+  image?: string; // optional: first-page thumbnail replaces the text body
 }
 interface Props {
   reports: ReportCard[];
@@ -20,25 +21,31 @@ const TICKS = 15;
     {reports.map((report, i) => (
       <a
         href={report.href}
-        class="report-card"
+        class:list={['report-card', { 'report-card--full-img': !!report.image }]}
         data-index={String(i)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Open: ${report.title}`}
       >
-        <div class="rc-header">
-          <span class="rc-type">Test Report</span>
-          <span class="rc-date">{report.date}</span>
-        </div>
-        <hr class="rc-rule" />
-        <div class="rc-body">
-          <p class="rc-title">{report.title}</p>
-          <p class="rc-subtitle">{report.subtitle}</p>
-        </div>
-        <hr class="rc-rule" />
-        <div class="rc-footer">
-          <span class="rc-open">View Report ↗</span>
-        </div>
+        {report.image ? (
+          <img src={report.image} alt={report.title} class="rc-full-img" loading="lazy" />
+        ) : (
+          <>
+            <div class="rc-header">
+              <span class="rc-type">Test Report</span>
+              <span class="rc-date">{report.date}</span>
+            </div>
+            <hr class="rc-rule" />
+            <div class="rc-body">
+              <p class="rc-title">{report.title}</p>
+              <p class="rc-subtitle">{report.subtitle}</p>
+            </div>
+            <hr class="rc-rule" />
+            <div class="rc-footer">
+              <span class="rc-open">View Report ↗</span>
+            </div>
+          </>
+        )}
       </a>
     ))}
   </div>
@@ -196,7 +203,16 @@ const TICKS = 15;
     applyDeck(false);
   }
 
-  document.querySelectorAll('.reports-component').forEach(initDeck);
+  function initAllDecks() {
+    document.querySelectorAll('.reports-component').forEach(root => {
+      if (!(root as HTMLElement).dataset.deckInit) {
+        (root as HTMLElement).dataset.deckInit = '1';
+        initDeck(root);
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', initAllDecks);
 </script>
 
 <style>
@@ -282,6 +298,22 @@ const TICKS = 15;
     justify-content: center;
     gap: 0.625rem;
     padding: 1rem 0;
+    overflow: hidden;
+  }
+
+  /* Full-image card — entire card is the PDF first page */
+  .report-card--full-img {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .rc-full-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .rc-title {

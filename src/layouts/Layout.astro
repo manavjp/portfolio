@@ -1,10 +1,14 @@
 ---
+import ClientRouter from 'astro/components/ClientRouter.astro';
 import '@fontsource-variable/geist';
 import '@fontsource-variable/geist-mono';
 import '../styles/tokens.css';
 import '../styles/global.css';
 import Sidebar from '../components/Sidebar.astro';
 import StatusPill from '../components/StatusPill.astro';
+import TransitionOverlay from '../components/TransitionOverlay.astro';
+import ProgressBar from '../components/ProgressBar.astro';
+import LogoStack from '../components/LogoStack.astro';
 
 interface Props {
   title: string;
@@ -27,23 +31,25 @@ const currentPath = Astro.url.pathname;
     <meta name="description" content={description} />
     <title>{title} — Manav Patel</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <ClientRouter />
 
-    <!-- ACCESS GATE — remove this block for public launch -->
+    <!-- PREVIEW TOGGLE — ?preview=1 to enable, ?preview=0 to disable -->
+    <!-- When preview is OFF (public default): About page redirects, incomplete project tiles are non-clickable -->
     <script is:inline>
-      const SECRET = "dev9";
-      const params = new URLSearchParams(window.location.search);
-      if (params.get("token") === SECRET) {
-        localStorage.setItem("access", SECRET);
-      }
-      if (localStorage.getItem("access") !== SECRET) {
-        window.location.href = "https://www.linkedin.com/in/manavjp/";
-      }
+      (function () {
+        const p = new URLSearchParams(window.location.search).get('preview');
+        if (p === '1') localStorage.setItem('preview', '1');
+        if (p === '0') localStorage.removeItem('preview');
+      })();
     </script>
-    <!-- END ACCESS GATE -->
+    <!-- END PREVIEW TOGGLE -->
   </head>
   <body>
-    <Sidebar currentPath={currentPath} />
-    <StatusPill />
+    <TransitionOverlay />
+    <ProgressBar />
+    <LogoStack currentPath={currentPath} />
+    <Sidebar currentPath={currentPath} transition:persist="sidebar" />
+    <StatusPill transition:persist="status-pill" />
     <main class="main-content">
       <slot />
     </main>
@@ -67,4 +73,120 @@ const currentPath = Astro.url.pathname;
       margin-left: 0;
     }
   }
+
+  /* ── Disable Astro's default cross-fade — our overlay handles the visual ── */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
 </style>
+
+<script>
+  // ── Scroll reveals ──────────────────────────────────────────────────────────
+  // Targets known section-row classes across all pages; adds is-revealed on
+  // intersection. Re-runs on every page load (including initial) via astro:page-load.
+  function initReveal() {
+    // .spec-block and .metrics-row are excluded — they sit at the top of
+    // project pages and are visible on load; opacity:0 would break video rendering.
+    const SELECTORS = [
+      '.work-row',
+      '.skill-group',
+      '.about-row',
+      '.contact-item',
+    ].join(',');
+
+    const els = document.querySelectorAll<HTMLElement>(SELECTORS);
+    if (!els.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          // Stagger siblings of the same class for a wave effect
+          const parent  = entry.target.parentElement;
+          const cls     = (entry.target as HTMLElement).classList[0];
+          const siblings = parent
+            ? Array.from(parent.querySelectorAll(`:scope > .${cls}`))
+            : [entry.target];
+          const idx   = siblings.indexOf(entry.target as Element);
+          const delay = Math.min(idx * 80, 320); // max 320ms total lag
+
+          setTimeout(() => {
+            (entry.target as HTMLElement).classList.add('is-revealed');
+          }, delay);
+
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
+    );
+
+    els.forEach((el) => {
+      // Skip elements already tagged from a previous page load
+      if (!el.classList.contains('will-reveal')) {
+        el.classList.add('will-reveal');
+      }
+      // Reset visibility so re-navigation triggers the reveal again
+      el.classList.remove('is-revealed');
+      observer.observe(el);
+    });
+  }
+
+  // ── Active nav state after client-side navigation ──────────────────────────
+  // The sidebar is persisted across transitions (transition:persist), so its
+  // Astro-rendered aria-current/is-active attributes won't update automatically.
+  function updateNavActive() {
+    const path = window.location.pathname;
+    document.querySelectorAll<HTMLAnchorElement>('.nav-item').forEach((el) => {
+      const href   = el.getAttribute('href') ?? '';
+      const active = href === '/' ? (path === '/' || path === '') : path.startsWith(href);
+      el.classList.toggle('is-active', active);
+      if (active) el.setAttribute('aria-current', 'page');
+      else        el.removeAttribute('aria-current');
+    });
+  }
+
+  // ── Logo stack visibility ──────────────────────────────────────────────────
+  // Show on: /, /skills, /contact   Hide on: /projects/*, /about
+  function updateLogoStack() {
+    const logos = document.getElementById('logo-stack');
+    if (!logos) return;
+    const path = window.location.pathname;
+    const hide = path.startsWith('/projects') || path === '/about';
+    logos.classList.toggle('is-hidden', hide);
+  }
+
+  // ── Lenis smooth scroll ────────────────────────────────────────────────────
+  import Lenis from 'lenis';
+
+  let lenis: InstanceType<typeof Lenis> | null = null;
+  let rafId: number | null = null;
+
+  function startLenis() {
+    if (lenis) lenis.destroy();
+    if (rafId)  cancelAnimationFrame(rafId);
+
+    // lerp-based: more responsive than duration/easing — 0.12 = snappy but smooth
+    lenis = new Lenis({ lerp: 0.12, smoothWheel: true });
+
+    function tick(t: number) {
+      lenis!.raf(t);
+      rafId = requestAnimationFrame(tick);
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
+  document.addEventListener('astro:after-swap', () => {
+    // Instant jump to top after swap (before overlay sweeps out)
+    lenis?.scrollTo(0, { immediate: true });
+  });
+
+  document.addEventListener('astro:page-load', () => {
+    startLenis();
+    initReveal();
+    updateNavActive();
+    updateLogoStack();
+  });
+</script>

@@ -2,26 +2,118 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
+<!-- Redirect to home when preview mode is off — about page not yet complete -->
+<script is:inline>
+  if (localStorage.getItem('preview') !== '1') {
+    window.location.replace('/');
+  }
+</script>
+
 <Layout title="About">
   <div class="page-padded">
-  <div class="page-header">
-    <span class="page-label">// 003</span>
-    <h1 class="page-title">About</h1>
-  </div>
-  <div class="todo-block">
-    <span class="todo-label">TODO — Milestone 5</span>
-    <p>
-      Short, technical, about the work and the approach — not a resume reprint.
-      Core: propulsion test, additive/DfAM, CAD (SolidWorks, Creo, NX),
-      FEA (Ansys), Python/CoolProp, GD&amp;T.
-      B.S. Aerospace Engineering, UCLA (exp. Jun 2028).
-    </p>
-  </div>
+
+    <div class="page-header">
+      <span class="page-label">// 003</span>
+      <h1 class="page-title">About</h1>
+    </div>
+
+    <div class="about-body">
+
+      <!-- Philosophy -->
+      <div class="about-row">
+        <h2 class="about-label">// Philosophy</h2>
+        <div class="about-content">
+          <div class="todo-block">
+            <span class="todo-label">Content slot — Philosophy</span>
+            <p>
+              2–3 short paragraphs on your engineering approach: first-principles thinking,
+              test-validated design, the bias toward building. What drives you beyond the
+              resume bullet? What does good engineering look like to you?
+            </p>
+          </div>
+          <div class="media-slot">
+            <span class="media-slot__label">↳ Image or Video</span>
+            <p class="media-slot__desc">
+              A photo or still that represents your approach — test stand, hardware in hand,
+              Mojave static fire, lab setup. No portraits. Recommended: landscape, 1200 px+ wide.
+              Drop file into <code>/public/assets/about/</code> and update the src below.
+            </p>
+            <!-- Uncomment and fill when ready:
+            <img
+              src="/assets/about/YOUR-IMAGE.jpg"
+              alt="[descriptive alt text]"
+              class="media-slot__img"
+            />
+            -->
+          </div>
+        </div>
+      </div>
+
+      <!-- The Work -->
+      <div class="about-row">
+        <h2 class="about-label">// The Work</h2>
+        <div class="about-content">
+          <div class="todo-block">
+            <span class="todo-label">Content slot — The Work</span>
+            <p>
+              2–3 short paragraphs on what you build and why. What's the through-line across
+              propulsion, structures, UAV, and embedded? What kinds of problems do you seek out?
+              What does it mean to you that every project has real data behind it?
+            </p>
+          </div>
+          <div class="media-slot">
+            <span class="media-slot__label">↳ Image or Video</span>
+            <p class="media-slot__desc">
+              Build photo or lab shot — process, not product. Test stand prep, parts laid out,
+              cold-flow setup, wiring bench, anything that shows the work in progress.
+              Drop into <code>/public/assets/about/</code> and uncomment below.
+            </p>
+            <!-- Uncomment and fill when ready:
+            <img
+              src="/assets/about/YOUR-IMAGE.jpg"
+              alt="[descriptive alt text]"
+              class="media-slot__img"
+            />
+            -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Background -->
+      <div class="about-row">
+        <h2 class="about-label">// Background</h2>
+        <div class="about-content">
+          <dl class="fact-table">
+            <div class="fact-row">
+              <dt class="fact-key">Institution</dt>
+              <dd class="fact-val">UCLA — B.S. Aerospace Engineering</dd>
+            </div>
+            <div class="fact-row">
+              <dt class="fact-key">Expected</dt>
+              <dd class="fact-val">June 2028</dd>
+            </div>
+            <div class="fact-row">
+              <dt class="fact-key">Location</dt>
+              <dd class="fact-val">Los Angeles, CA</dd>
+            </div>
+            <div class="fact-row">
+              <dt class="fact-key">Citizenship</dt>
+              <dd class="fact-val">U.S. Citizen</dd>
+            </div>
+            <div class="fact-row">
+              <dt class="fact-key">Core Areas</dt>
+              <dd class="fact-val">Propulsion Test · Additive / DfAM · CAD · FEA · Python</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+    </div>
   </div>
 </Layout>
 
 <style>
-  .page-header { margin-bottom: 2rem; }
+  .page-header { margin-bottom: 3rem; }
 
   .page-label {
     display: block;
@@ -40,5 +132,112 @@ import Layout from '../layouts/Layout.astro';
     letter-spacing: -0.01em;
     line-height: var(--leading-tight);
     text-transform: uppercase;
+  }
+
+  /* ── Section rows ── */
+  .about-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .about-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .about-label {
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding-top: 0.2rem;
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* ── Media slot ── */
+  .media-slot {
+    border: 1px dashed var(--hairline);
+    padding: 1.5rem;
+    background: var(--surface);
+  }
+
+  .media-slot__label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .media-slot__desc {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-35);
+    line-height: var(--leading-normal);
+  }
+
+  .media-slot__desc code {
+    color: var(--text-50);
+    font-size: var(--text-xs);
+  }
+
+  .media-slot__img {
+    width: 100%;
+    margin-top: 1rem;
+    display: block;
+  }
+
+  /* ── Background fact table ── */
+  .fact-table {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--grid-line);
+  }
+
+  .fact-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1.5rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--grid-line);
+    align-items: baseline;
+  }
+
+  .fact-key {
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+  }
+
+  .fact-val {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-70);
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 768px) {
+    .about-row {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .fact-row {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
   }
 </style>

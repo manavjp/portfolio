@@ -16,7 +16,7 @@ import ITARTile from '../components/ITARTile.astro';
       <div class="t-hub">
         <ProjectTile
           title="UCLA Rocket Project"
-          tagline="5 projects · Propulsion · Structures · Data"
+          tagline="4 projects · Propulsion · Structures · Analysis"
           featured={true}
           alwaysShowTagline={true}
           image="/assets/projects/rocket-project/rocketproject_cover.JPG"
@@ -24,38 +24,108 @@ import ITARTile from '../components/ITARTile.astro';
       </div>
       <div class="t-hts">
         <ProjectTile
-          title="Horizontal Propulsion Test Stand"
+          title="Horizontal Test Stand"
           tagline="Isolating 5,635 lbf-s onto linear rails"
           href="/projects/horizontal-propulsion-test-stand"
-          image="/assets/projects/horizontal-propulsion-test-stand/hts_cover.png"
+          image="/assets/projects/horizontal-propulsion-test-stand/hts_cover.jpg"
         />
       </div>
       <div class="t-inj">
         <ProjectTile
-          title="N2O Two-Phase Flow Model"
+          title="N₂O Flow Model (for Injector Sizing)"
           tagline="Two-phase N₂O model, 35% → 10.3% error"
           href="/projects/injector-orifice-sizing"
+          image="/assets/projects/flow_model/n2omodel_cover.JPG"
         />
       </div>
       <div class="t-vstand">
         <ProjectTile
           title="Vertical Tank Mount"
-          tagline="Structural validation in Ansys Mechanical"
+          tagline="Flight tank config. for static fire / cold flow"
           href="/projects/vertical-test-stand"
-        />
-      </div>
-      <div class="t-wflows">
-        <ProjectTile
-          title="Injector Water Flows"
-          tagline="Cold-flow characterization before hot fire"
-          href="/projects/injector-water-flows"
+          image="/assets/projects/tank_mount/tankmount_cover.jpg"
         />
       </div>
       <div class="t-data">
         <ProjectTile
-          title="Propulsion Data Analysis"
+          title="Data Analysis"
           tagline="20+ pages of hydro, cold-flow & static-fire reports"
           href="/projects/propulsion-data-analysis"
+          image="/assets/projects/analysis/analysis_cover.jpg"
+        />
+      </div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">Mechatronics & Controls Lab</span>
+      <hr class="section-rule" aria-hidden="true" />
+    </div>
+
+    <div class="mosaic">
+      <div class="t-uav">
+        <ProjectTile
+          title="Unmanned Aerial Vehicle Research"
+          tagline="DfAM gimbal joint, 6-DoF singularity elimination"
+          href="/projects/uav-gimbal-joint"
+          image="/assets/projects/maclab/drone_cover.jpg"
+        />
+      </div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">AdvancingX</span>
+      <hr class="section-rule" aria-hidden="true" />
+    </div>
+
+    <div class="mosaic">
+      <div class="t-sub">
+        <ProjectTile
+          title="EVA Training Submersible"
+          tagline="16-ft neutrally buoyant open-frame EVA trainer"
+          href="/projects/submersible-v3"
+          image="/assets/projects/advancingx/SubX_cover.jpg"
+          imagePosition="right 45%"
+        />
+      </div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">Standalone</span>
+      <hr class="section-rule" aria-hidden="true" />
+    </div>
+
+    <div class="mosaic">
+      <div class="t-e1rk">
+        <ProjectTile
+          title="3D Printed Model Rocket"
+          tagline="E1RK · FDM sounding rocket — OpenRocket + SolidWorks"
+          href="/projects/3d-printed-rocket"
+          image="/assets/projects/3dpr/3DPR_cover.JPG"
+        />
+      </div>
+      <div class="t-e1rk">
+        <ProjectTile
+          title="Group High Powered Rocket"
+          tagline="E1RK · Fiberglass airframe, 3D-printed nose cone & boat tail"
+          href="/projects/group-high-powered-rocket"
+          image="/assets/projects/gmpr/gmpr_cover.jpg"
+        />
+      </div>
+      <div class="t-obst">
+        <ProjectTile
+          title="Autonomous Obstacle Avoidance Vehicle"
+          tagline="Ultrasonic Sensing · Arduino IDE · Embedded Systems"
+          href="/projects/obstacle-avoidance-robot"
+          image="/assets/projects/arduino_car/arduniocar_cover.jpg"
+        />
+      </div>
+      <div class="t-obs">
+        <ProjectTile
+          title="Observatory Research & Service"
+          tagline="Astrometry · Photometry · Education"
+          href="/projects/taylor-observatory"
+          image="/assets/projects/observatory/foto_cover.jpg"
+          imagePosition="top"
         />
       </div>
     </div>
@@ -80,82 +150,43 @@ import ITARTile from '../components/ITARTile.astro';
       </div>
     </div>
 
-    <div class="section-header">
-      <span class="section-label">AdvancingX</span>
-      <hr class="section-rule" aria-hidden="true" />
-    </div>
-
-    <div class="mosaic">
-      <div class="t-sub">
-        <ProjectTile
-          title="EVA Training Submersible"
-          tagline="16-ft neutrally buoyant open-frame EVA trainer"
-          href="/projects/submersible-v3"
-          image="/assets/projects/advancingx/SubX_cover.png"
-          imagePosition="right 25%"
-        />
-      </div>
-    </div>
-
-    <div class="section-header">
-      <span class="section-label">Mechatronics & Controls Lab</span>
-      <hr class="section-rule" aria-hidden="true" />
-    </div>
-
-    <div class="mosaic">
-      <div class="t-uav">
-        <ProjectTile
-          title="UAV Research"
-          tagline="DfAM gimbal joint, 6-DoF singularity elimination"
-          href="/projects/uav-gimbal-joint"
-          image="/assets/projects/maclab/drone_cover.png"
-        />
-      </div>
-    </div>
-
-    <div class="section-header">
-      <span class="section-label">Standalone</span>
-      <hr class="section-rule" aria-hidden="true" />
-    </div>
-
-    <div class="mosaic">
-      <div class="t-e1rk">
-        <ProjectTile
-          title="3D Printed Model Rocket"
-          tagline="E1RK · FDM sounding rocket — OpenRocket + SolidWorks"
-          href="/projects/3d-printed-rocket"
-          image="/assets/projects/3dpr/3DPR_cover.JPG"
-        />
-      </div>
-      <div class="t-e1rk">
-        <ProjectTile
-          title="Group High Powered Rocket"
-          tagline="E1RK · Fiberglass airframe, 3D-printed nose cone & boat tail"
-          href="/projects/group-high-powered-rocket"
-          image="/assets/projects/gmpr/gmpr_cover.png"
-        />
-      </div>
-      <div class="t-obst">
-        <ProjectTile
-          title="Autonomous Obstacle Avoidance Vehicle"
-          tagline="Ultrasonic Sensing · Arduino IDE · Embedded Systems"
-          href="/projects/obstacle-avoidance-robot"
-          image="/assets/projects/arduino_car/arduniocar_cover.jpg"
-        />
-      </div>
-      <div class="t-obs">
-        <ProjectTile
-          title="Observatory Research & Service"
-          tagline="Astrometry · Photometry · Education"
-          href="/projects/taylor-observatory"
-          image="/assets/projects/observatory/foto_cover.jpg"
-          imagePosition="top"
-        />
-      </div>
-    </div>
-
   </div>
 </Layout>
+
+<script>
+  // When preview mode is OFF, disable tiles for pages that aren't ready yet.
+  // Tiles become non-interactive — no navigation happens on click.
+  const HIDDEN_HREFS = [
+    '/projects/uav-gimbal-joint',
+    '/projects/obstacle-avoidance-robot',
+    '/projects/taylor-observatory',
+  ];
+
+  function applyPreviewGating() {
+    if (localStorage.getItem('preview') === '1') {
+      // Preview ON — restore all tiles to their normal state
+      HIDDEN_HREFS.forEach(href => {
+        document.querySelectorAll<HTMLElement>(`a.tile[href="${href}"]`).forEach(el => {
+          el.style.opacity       = '';
+          el.style.pointerEvents = '';
+          el.title               = '';
+        });
+      });
+      return;
+    }
+
+    // Preview OFF (public mode) — lock incomplete tiles
+    HIDDEN_HREFS.forEach(href => {
+      document.querySelectorAll<HTMLElement>(`a.tile[href="${href}"]`).forEach(el => {
+        el.style.opacity       = '0.35';
+        el.style.pointerEvents = 'none';
+        el.title               = 'Coming soon';
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', applyPreviewGating);
+</script>
 
 <style>
   .projects-page { padding-bottom: 4rem; }
@@ -194,8 +225,7 @@ import ITARTile from '../components/ITARTile.astro';
   .t-hts    { grid-column: span 5; min-height: 300px; }
   .t-inj    { grid-column: span 4; min-height: 180px; }
   .t-vstand { grid-column: span 4; min-height: 180px; }
-  .t-wflows { grid-column: span 4; min-height: 180px; }
-  .t-data   { grid-column: span 12; min-height: 120px; }
+  .t-data   { grid-column: span 4; min-height: 180px; }
 
   /* Reynolds Systems — 4 equal tiles */
   .t-rs { grid-column: span 3; min-height: 200px; }
@@ -213,7 +243,7 @@ import ITARTile from '../components/ITARTile.astro';
 
   @media (max-width: 900px) {
     .t-hub, .t-hts,
-    .t-inj, .t-vstand, .t-wflows { grid-column: span 6; }
+    .t-inj, .t-vstand { grid-column: span 6; }
     .t-rs                         { grid-column: span 6; }
     .t-sub, .t-uav               { grid-column: span 10; }
     .t-e1rk, .t-obst, .t-obs    { grid-column: span 6; }
@@ -221,7 +251,7 @@ import ITARTile from '../components/ITARTile.astro';
 
   @media (max-width: 600px) {
     .t-hub, .t-hts,
-    .t-inj, .t-vstand, .t-wflows,
+    .t-inj, .t-vstand,
     .t-rs,
     .t-sub, .t-uav,
     .t-e1rk,

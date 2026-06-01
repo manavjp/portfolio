@@ -228,23 +228,32 @@ const classes = [
     }, 30);
   }
 
-  document.querySelectorAll<HTMLElement>('.tile').forEach(tile => {
-    // Skip tiles whose tagline is always visible (no scramble needed)
-    if (tile.classList.contains('tile--tagline-visible')) return;
+  function initScramble() {
+    document.querySelectorAll<HTMLElement>('.tile').forEach(tile => {
+      // Skip hub/static tiles and always-visible-tagline tiles
+      if (tile.classList.contains('tile--tagline-visible')) return;
+      if (tile.classList.contains('tile--static'))          return;
+      // Skip tiles that already have listeners (re-navigation guard)
+      if (tile.dataset.scrambleInit) return;
+      tile.dataset.scrambleInit = '1';
 
-    const tagEl = tile.querySelector<HTMLElement>('.tile__tagline');
-    if (!tagEl) return;
-    const original = tagEl.textContent ?? '';
-    let timer: ReturnType<typeof setInterval> | null = null;
+      const tagEl = tile.querySelector<HTMLElement>('.tile__tagline');
+      if (!tagEl) return;
+      const original = tagEl.textContent ?? '';
+      let timer: ReturnType<typeof setInterval> | null = null;
 
-    tile.addEventListener('mouseenter', () => {
-      if (timer) clearInterval(timer);
-      timer = scramble(tagEl, original);
+      tile.addEventListener('mouseenter', () => {
+        if (timer) clearInterval(timer);
+        timer = scramble(tagEl, original);
+      });
+
+      tile.addEventListener('mouseleave', () => {
+        if (timer) { clearInterval(timer); timer = null; }
+        tagEl.textContent = original;
+      });
     });
+  }
 
-    tile.addEventListener('mouseleave', () => {
-      if (timer) { clearInterval(timer); timer = null; }
-      tagEl.textContent = original;
-    });
-  });
+  // Run on initial load and every client-side navigation
+  document.addEventListener('astro:page-load', initScramble);
 </script>

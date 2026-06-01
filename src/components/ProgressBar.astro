@@ -1,0 +1,43 @@
+<!-- Accent progress bar — fires on every page load / route change -->
+<div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+
+<style>
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
+    z-index: 10000;
+    transform-origin: left center;
+    transform: scaleX(0);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @keyframes bar-run {
+    0%   { transform: scaleX(0);    opacity: 1; }
+    65%  { transform: scaleX(0.85); opacity: 1; }
+    85%  { transform: scaleX(1);    opacity: 1; }
+    100% { transform: scaleX(1);    opacity: 0; }
+  }
+
+  .progress-bar.is-running {
+    animation: bar-run 650ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .progress-bar { display: none; }
+  }
+</style>
+
+<script>
+  const bar = document.getElementById('progress-bar') as HTMLElement;
+
+  document.addEventListener('astro:page-load', () => {
+    bar.classList.remove('is-running');
+    void bar.offsetWidth; // reset animation
+    bar.classList.add('is-running');
+  });
+</script>

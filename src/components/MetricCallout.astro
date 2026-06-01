@@ -46,21 +46,28 @@ const { value, unit, description, prefix = '' } = Astro.props;
     requestAnimationFrame(tick);
   }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCountUp(entry.target as HTMLElement);
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
+  function initMetrics() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCountUp(entry.target as HTMLElement);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
 
-  document.querySelectorAll<HTMLElement>('.metric__value[data-target]').forEach(el => {
-    observer.observe(el);
-  });
+    document.querySelectorAll<HTMLElement>('.metric__value[data-target]').forEach(el => {
+      // Reset to show original value so re-navigation re-triggers the count-up
+      el.textContent = el.dataset.target ?? '';
+      observer.observe(el);
+    });
+  }
+
+  // Re-initialise on every page load (works with Astro View Transitions)
+  document.addEventListener('astro:page-load', initMetrics);
 </script>
 
 <style>

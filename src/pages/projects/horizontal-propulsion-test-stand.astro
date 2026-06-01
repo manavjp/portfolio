@@ -4,12 +4,14 @@ import SpecTable from '../../components/SpecTable.astro';
 import MetricCallout from '../../components/MetricCallout.astro';
 
 const specRows = [
-  { label: 'Impulse Isolated',  value: '5,635 lbf-s'             },
-  { label: 'Factor of Safety',  value: '> 2.0'                    },
-  { label: 'Static Fires',      value: '2 (Mojave, CA)'           },
-  { label: 'Configuration',     value: 'Cantilever, linear rails' },
-  { label: 'Load Method',       value: 'Hand-calc, bolt/bracket'  },
-  { label: 'Design Tool',       value: 'SolidWorks'               },
+  { label: 'Stand Weight',        value: '33.7 lbm'                      },
+  { label: 'Engine Weight',       value: '25.9 lbm'                      },
+  { label: 'Engine Thrust',       value: '640 lbf'                       },
+  { label: 'Factor of Safety',    value: '> 2.0'                         },
+  { label: 'C-Strut Ult. Str.',   value: '45 ksi'                        },
+  { label: 'Bolt Ult. Str.',      value: '120 ksi'                       },
+  { label: 'Design',              value: 'SolidWorks · Whiteboard · Napkin' },
+  { label: 'Analysis',            value: 'Microsoft Excel · Ansys Mechanical' },
 ];
 ---
 
@@ -21,8 +23,8 @@ const specRows = [
   tagline="Isolating 5,635 lbf-s onto linear rails — 2 Mojave static fires"
   showOverview={false}
 >
-  <!-- Overview + specs together so they center as a unit alongside the video -->
-  <section class="spec-block" style="grid-template-columns: 1fr 1.5fr; align-items: center; gap: 1.5rem;">
+  <!-- Overview top aligned with video top -->
+  <section class="spec-block" style="grid-template-columns: 1fr 1.5fr; align-items: start; gap: 1.5rem;">
     <div class="spec-col">
       <h2 class="section-overview">Overview</h2>
       <SpecTable rows={specRows} title="Specifications" />
@@ -38,65 +40,167 @@ const specRows = [
   </section>
 
   <section class="metrics-row" aria-label="Key metrics">
-    <MetricCallout value="5,635" unit="lbf-s" description="Impulse isolated"        />
-    <MetricCallout value="2.0"   unit=""       description="Factor of Safety (min)"  prefix=">" />
-    <MetricCallout value="2"     unit="fires"  description="Static fires, Mojave CA" />
+    <MetricCallout value="21"    unit="days"   description="Concept to prototype"     />
+    <MetricCallout value="5,635" unit="lbf-s"  description="Impulse isolated"         />
+    <MetricCallout value="1,211" unit="ft-lbs" description="Reaction moment"             />
   </section>
 
   <section class="the-work">
+
+    <!-- ── Problem ──────────────────────────────────────────── -->
     <div class="work-row">
       <h2 class="work-label">Problem</h2>
       <div class="work-content">
-        <p class="work-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+        <!-- FILL IN - Problem: Describe the engineering challenge that motivated this project -->
+        <!-- heritage (portrait 3:4) + broken_plate (landscape 4:3) — uniform 4:3 crop -->
+        <div class="proj-gallery proj-gallery--2">
+          <figure class="proj-figure media-crop-4-3">
+            <img src="/assets/projects/horizontal-propulsion-test-stand/heritage.jpg"
+                 alt="Bare bones heritage test stand design from 2024" loading="lazy" />
+            <figcaption>Bare bones heritage design from 2024</figcaption>
+          </figure>
+          <figure class="proj-figure media-crop-4-3">
+            <img src="/assets/projects/horizontal-propulsion-test-stand/broken_plate.jpg"
+                 alt="Broken aluminum base plate from the previous test stand" loading="lazy" />
+            <figcaption>Broken stand base plate</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
+
+    <!-- ── Approach ─────────────────────────────────────────── -->
     <div class="work-row">
       <h2 class="work-label">Approach</h2>
       <div class="work-content">
-        <p class="work-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        <!-- FILL IN - Approach: Explain the methodology, key decisions, and tools used -->
+
+        <!-- marker_drawing (portrait 3:4) + sketch (landscape 16:10) — uniform 4:3 crop -->
+        <div class="proj-gallery proj-gallery--2">
+          <figure class="proj-figure media-crop-4-3">
+            <img src="/assets/projects/horizontal-propulsion-test-stand/marker_drawing.jpg"
+                 alt="Groundwork sketch drawn on university lounge windows with marker"
+                 loading="lazy" />
+            <figcaption>Groundwork sketch on university lounge window</figcaption>
+          </figure>
+          <figure class="proj-figure media-crop-4-3">
+            <img src="/assets/projects/horizontal-propulsion-test-stand/sketch.jpg"
+                 alt="Pre-CAD digital sketch of the horizontal test stand design"
+                 loading="lazy" />
+            <figcaption>Pre-CAD digital sketch</figcaption>
+          </figure>
+        </div>
+
+        <!-- thrust interface — position 2 (swapped with drill+hf2) -->
+        <figure class="proj-figure">
+          <img src="/assets/projects/horizontal-propulsion-test-stand/thrust_interface.jpg"
+               alt="Load cell stand-off plate for thrust measurement" loading="lazy" />
+          <figcaption>Load cell stand-off plate for thrust measurement</figcaption>
+        </figure>
+
+        <!-- rails test + camera test — side by side portrait videos -->
+        <div class="proj-gallery proj-gallery--2">
+          <figure class="proj-figure">
+            <video class="media-portrait" autoplay loop muted playsinline
+                   aria-label="First integration of the engine carriage, linear rails, and aluminum base plate">
+              <source src="/assets/projects/horizontal-propulsion-test-stand/rails_test.mp4" type="video/mp4" />
+            </video>
+            <figcaption>First integration of the engine carriage, linear rails, and aluminum base plate</figcaption>
+          </figure>
+          <figure class="proj-figure">
+            <video class="media-portrait" autoplay loop muted playsinline
+                   aria-label="Testing of the magnetic camera mount for visual analysis purposes">
+              <source src="/assets/projects/horizontal-propulsion-test-stand/camera_test.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Testing of high-speed camera mount for test analysis</figcaption>
+          </figure>
+        </div>
+
+        <!-- drill press (left, 4:3) + hf2 config (right) — position 4 (swapped with thrust) -->
+        <div class="proj-gallery proj-gallery--2">
+          <figure class="proj-figure media-crop-4-3">
+            <img src="/assets/projects/horizontal-propulsion-test-stand/drill_press.jpeg"
+                 alt="Drilling pilot holes into the aluminum base plate for 1/2 in. bolt holes"
+                 loading="lazy" />
+            <figcaption>Drilling pilot holes into aluminum base plate for 1/2 in. bolt holes</figcaption>
+          </figure>
+          <figure class="proj-figure media-crop-4-3">
+            <img src="/assets/projects/horizontal-propulsion-test-stand/hf2_config.jpg"
+                 alt="Completed test stand for the first SRAD static fire" loading="lazy" />
+            <figcaption>Completed stand for the first SRAD (Student Researched &amp; Developed) static fire</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
+
+    <!-- ── Analysis ─────────────────────────────────────────── -->
     <div class="work-row">
       <h2 class="work-label">Analysis</h2>
       <div class="work-content">
-        <div class="todo-block">
-          <span class="todo-label">TODO — FEA stress contour</span>
-          <p>Ansys Mechanical von Mises stress contour at peak thrust load. Export as high-res PNG; caption with peak stress and FoS.</p>
-        </div>
-        <div class="todo-block">
-          <span class="todo-label">TODO — Load-path diagram</span>
-          <p>Annotated diagram: motor mount → cantilever arm → linear rail interface → anchor bolts → ground frame.</p>
-        </div>
+        <!-- FILL IN - Analysis: Share data, calculations, test results, FEA, or simulation findings -->
+        <!-- Excel sheet — very wide, let it breathe at natural ratio -->
+        <figure class="proj-figure">
+          <img src="/assets/projects/horizontal-propulsion-test-stand/Excel_sheet.png"
+               alt="Microsoft Excel spreadsheet used for structural load calculations"
+               loading="lazy" class="media-wide" />
+          <figcaption>Structural load calculations on a spreadsheet</figcaption>
+        </figure>
+
+        <!-- Ansys mesh — 16:9-ish landscape -->
+        <figure class="proj-figure">
+          <img src="/assets/projects/horizontal-propulsion-test-stand/ansys_mesh.png"
+               alt="Ansys Mechanical finite element mesh — low quality due to student version node limits"
+               loading="lazy" />
+          <figcaption>Finite Element Mesh in Ansys - Due to student node limits, the mesh is low quality.</figcaption>
+        </figure>
       </div>
     </div>
+
+    <!-- ── Result ───────────────────────────────────────────── -->
     <div class="work-row">
       <h2 class="work-label">Result</h2>
       <div class="work-content">
-        <p class="work-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+        <!-- FILL IN - Result: Describe what was achieved — metrics, validation, outcomes -->
         <video
           class="static-fire-video"
           src="/assets/projects/horizontal-propulsion-test-stand/static_fire.mp4"
           autoplay loop muted playsinline
           aria-label="Static fire at Mojave Air & Space Port"
         ></video>
+        <!-- hf3 config — updated stand for second SRAD static fire -->
+        <figure class="proj-figure">
+          <img src="/assets/projects/horizontal-propulsion-test-stand/hf3_config.jpg"
+               alt="Updated test stand configuration for the second SRAD static fire at Mojave"
+               loading="lazy" />
+          <figcaption>Updated configuration for the second SRAD static fire, with a camera mount, flame resistant cloth, and improved adjustability for the Reaction Research Society (Mojave, CA) site.</figcaption>
+        </figure>
       </div>
     </div>
+
+    <!-- ── Reflection ───────────────────────────────────────── -->
     <div class="work-row">
       <h2 class="work-label">Reflection</h2>
       <div class="work-content">
-        <p class="work-text">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+        <!-- FILL IN - Reflection: Lessons learned and what would be done differently -->
+        <figure class="proj-figure">
+          <img src="/assets/projects/horizontal-propulsion-test-stand/red_light.jpg"
+               alt="Red light during test stand operations at the static fire site"
+               loading="lazy" />
+        </figure>
       </div>
     </div>
+
   </section>
 </ProjectPageLayout>
 
 <style>
+  /* ── Model video block ─────────────────────────────────────── */
   .model-wrap {
+    display: block;
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;
+    background: var(--bg);
   }
-
   .model-video {
     width: 100%;
     height: 100%;
@@ -104,15 +208,11 @@ const specRows = [
     display: block;
   }
 
-
-  /* Left column: overview + spec table as a unit, shifted up slightly */
+  /* Overview heading */
   .spec-col {
     display: flex;
     flex-direction: column;
-    margin-top: -5rem;
   }
-
-  /* Use the layout's overview style (already defined in ProjectPageLayout) */
   .spec-col :global(.section-overview) {
     font-family: var(--font-display);
     font-size: clamp(1.5rem, 3vw, 2.25rem);
@@ -121,14 +221,40 @@ const specRows = [
     letter-spacing: -0.01em;
     line-height: var(--leading-tight);
     text-transform: uppercase;
-    margin-bottom: 0;
+    margin-bottom: 0.75rem;
   }
 
-  /* Static fire video — full width, no border, 16:9 */
+  /* ── Static fire video — full width 16:9 ──────────────────── */
   .static-fire-video {
     width: 100%;
     aspect-ratio: 16 / 9;
     display: block;
     object-fit: cover;
+  }
+
+  /* ── Uniform 4:3 crop for mixed-ratio image pairs ─────────── */
+  /* Constraints go on the img, NOT the figure — overflow:hidden on the figure
+     clips the figcaption that lives inside it. */
+  .media-crop-4-3 img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Portrait vertical videos (9:16 source, shown at 3:4) ─── */
+  .media-portrait {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    background: var(--surface);
+  }
+
+  /* ── Wide screenshot — natural ultra-wide ratio ─────────────── */
+  .media-wide {
+    width: 100%;
+    display: block;
+    /* Let the natural ultra-wide ratio show; object-fit defaults to fill */
   }
 </style>

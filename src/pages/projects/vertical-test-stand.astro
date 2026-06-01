@@ -4,69 +4,150 @@ import SpecTable from '../../components/SpecTable.astro';
 import MetricCallout from '../../components/MetricCallout.astro';
 
 const specRows = [
-  { label: 'Configuration',  value: 'Vertical, tank-mount'  },
-  { label: 'Analysis Tool',  value: 'Ansys Mechanical'       },
-  { label: 'Validation',     value: 'FEA structural safety'  },
-  { label: 'Design Tool',    value: 'SolidWorks'             },
-  { label: 'Load Cases',     value: 'Tank mass + motor thrust' },
+  { label: 'Design',         value: 'SolidWorks'                  },
+  { label: 'Height',         value: '6 ft'                        },
+  { label: 'Width',          value: '13 in'                       },
+  { label: 'Weight',         value: '30 lbm'                      },
+  { label: 'Structure',      value: 'Strut Channels & Brackets'   },
+  { label: 'Configuration',  value: 'Vertically mounted'          },
+  { label: 'Main Component', value: 'Eye Bolt & Rod'              },
 ];
 ---
 <ProjectPageLayout
   title="Vertical Tank Mount"
   description="Flight tank structural mount and vertical stand infrastructure, FEA-validated in Ansys Mechanical."
-  ghostText="VERTICAL"
+  ghostText="TANK MOUNT"
   category="UCLA Rocket Project"
   tagline="Flight tank structural mount, FEA-validated in Ansys Mechanical"
+  showOverview={false}
 >
-  <section class="spec-block">
-    <SpecTable rows={specRows} title="Specifications" />
-    <div class="todo-block">
-      <span class="todo-label">TODO — CAD render + rotating model</span>
-      <p>SolidWorks render of the vertical stand and tank mount assembly. 360° rotating MP4 or high-res isometric PNG. Place at <code>public/assets/projects/vertical-test-stand/</code>.</p>
+  <!-- Overview + specs alongside rotating model -->
+  <section class="spec-block" style="grid-template-columns: 1fr 1.5fr; align-items: start; gap: 1.5rem;">
+    <div class="spec-col">
+      <h2 class="section-overview">Overview</h2>
+      <SpecTable rows={specRows} title="Specifications" />
+    </div>
+    <div class="model-wrap">
+      <video
+        class="model-video"
+        src="/assets/projects/tank_mount/mount_model.mp4"
+        autoplay loop muted playsinline
+        aria-label="Rotating SolidWorks model of the vertical tank mount"
+      ></video>
     </div>
   </section>
+
   <section class="metrics-row" aria-label="Key metrics">
-    <MetricCallout value="2.0" unit=""      description="Factor of Safety (min)" prefix=">" />
-    <MetricCallout value="3"   unit="cases" description="FEA load cases analyzed"           />
-    <MetricCallout value="2"   unit="iters" description="CAD design iterations"             />
+    <MetricCallout value="1.5" unit=""     description="Factor of Safety (min)" prefix=">" />
+    <MetricCallout value="30"  unit="lbm" description="Oxidizer mass"                     />
+    <MetricCallout value="18"  unit="ft"  description="Cumulative strut lengths"          />
   </section>
+
   <section class="the-work">
     <div class="work-row">
       <h2 class="work-label">Problem</h2>
       <div class="work-content">
-        <p class="work-text">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+        <!-- FILL IN - Problem: Describe the engineering challenge that motivated this project -->
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Approach</h2>
       <div class="work-content">
-        <p class="work-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+        <!-- FILL IN - Approach: Explain the methodology, key decisions, and tools used -->
+        <!-- restraint drawing — ultra-wide (4.3:1), show full width at natural ratio -->
+        <figure class="proj-figure">
+          <img src="/assets/projects/tank_mount/restraint_drawing.png"
+               alt="Technical sketches of tank restraint boards" loading="lazy"
+               class="img-natural-wide" />
+          <figcaption>Sketches of tank restraint boards</figcaption>
+        </figure>
+        <!-- cad v1 — very tall portrait (1:2), constrain height -->
+        <figure class="proj-figure cad-figure">
+          <img src="/assets/projects/tank_mount/cad_v1.png"
+               alt="Version one CAD of the vertical tank mount" loading="lazy"
+               class="img-portrait-constrained" />
+          <figcaption>Version one of the CAD</figcaption>
+        </figure>
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Analysis</h2>
       <div class="work-content">
+        <!-- FILL IN - Analysis: Share data, calculations, test results, FEA, or simulation findings -->
         <div class="todo-block">
           <span class="todo-label">TODO — FEA stress contours</span>
           <p>Ansys Mechanical von Mises stress contours for each load case. Export as high-res PNG with colorbar and FoS annotation.</p>
-        </div>
-        <div class="todo-block">
-          <span class="todo-label">TODO — Mount detail photos</span>
-          <p>Fabricated mount detail photographs showing weld quality and bracket hardware.</p>
         </div>
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Result</h2>
       <div class="work-content">
-        <p class="work-text">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+        <!-- FILL IN - Result: Describe what was achieved — metrics, validation, outcomes -->
+        <div class="proj-gallery proj-gallery--2">
+          <figure class="proj-figure">
+            <img src="/assets/projects/tank_mount/tank_restraint.jpg"
+                 alt="Tank restraint boards laser cut and assembled" loading="lazy" />
+            <figcaption>Tank restraint boards laser cut</figcaption>
+          </figure>
+          <figure class="proj-figure">
+            <img src="/assets/projects/tank_mount/tank_stand_a.jpg"
+                 alt="Physical loading tests on the vertical tank stand" loading="lazy" />
+            <figcaption>Unofficial physical loading tests</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Reflection</h2>
       <div class="work-content">
-        <p class="work-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+        <!-- FILL IN - Reflection: Lessons learned and what would be done differently -->
       </div>
     </div>
   </section>
 </ProjectPageLayout>
+
+<style>
+  .model-wrap {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .model-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .spec-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .spec-col :global(.section-overview) {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: var(--fw-black);
+    color: var(--text-100);
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Ultra-wide drawing — display at natural ultra-wide ratio */
+  .img-natural-wide {
+    width: 100%;
+    display: block;
+  }
+
+  /* Very tall portrait CAD — cap height so it doesn't dominate the page */
+  .cad-figure {
+    max-width: 45%;
+  }
+  .img-portrait-constrained {
+    width: 100%;
+    display: block;
+  }
+</style>

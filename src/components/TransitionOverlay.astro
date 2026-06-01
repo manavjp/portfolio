@@ -1,0 +1,230 @@
+<!--
+  Page transition overlay.
+
+  Design elements
+  • Dark panel (var(--bg)) covers the full viewport
+  • "Manav Patel" rises from below; "Engineering Portfolio" expands in mono / accent red
+  • 3 px accent progress bar sweeps left → right along the top edge
+  • Panel exits by translating off-screen to the right
+
+  Architecture (why it's written this way)
+  • NO CSS `animation` on the panel — CSS animations restart whenever Astro's View
+    Transitions API touches the persisted element, causing the double-wipe bug.
+    Only CSS *transitions* and JS inline-style changes are used.
+  • The overlay starts visible in HTML/CSS so it covers the page before any JS runs.
+  • Text elements start opacity: 0; JS animates them in.
+  • Three event hooks, each doing exactly one job:
+      click (capture)           — cover screen the instant the user clicks
+      astro:before-preparation  — increment navGen, replay text animation
+      astro:page-load           — fill bar, hold, then wipe out
+-->
+
+<div id="page-overlay" class="page-overlay" aria-hidden="true" transition:persist="page-overlay">
+  <div  id="overlay-bar"  class="overlay-bar"></div>
+  <div class="overlay-inner">
+    <p id="overlay-name" class="overlay-name">Manav Patel</p>
+    <p id="overlay-sub"  class="overlay-sub">Engineering Portfolio</p>
+  </div>
+</div>
+
+<style>
+  /* ── Panel ──────────────────────────────────────────────────────────────── */
+  .page-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 9990;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+
+    /* Visible by default (covers page before JS loads). */
+    transform: translateX(0);
+
+    /*
+      Transition used only by wipeOut().
+      No `animation` property — would restart on every view-transition touch.
+    */
+    transition: transform 440ms cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  /* ── Progress bar ───────────────────────────────────────────────────────── */
+  .overlay-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+
+  /* ── Content ────────────────────────────────────────────────────────────── */
+  .overlay-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    text-align: center;
+  }
+
+  .overlay-name {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-weight: var(--fw-black);
+    color: var(--text-100);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    opacity: 1; /* static — no animation */
+  }
+
+  .overlay-sub {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--accent);
+    text-transform: uppercase;
+    /* Always visible — animation only expands the tracking */
+    letter-spacing: 0.14em;
+    opacity: 1;
+  }
+
+  /* ── Keyframes (only referenced via JS inline animation strings) ────────── */
+  @keyframes text-expand {
+    /* Opacity intentionally unchanged — text is always visible.
+       Animation only expands letter-spacing for the "grows" effect. */
+    from { letter-spacing: 0.14em; }
+    to   { letter-spacing: 0.26em; }
+  }
+  @keyframes bar-fill {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-overlay { display: none !important; }
+  }
+</style>
+
+<script>
+  const HOLD     = 380; // ms panel stays fully visible after page load
+  const WIPE_OUT = 440; // ms — matches the CSS transition duration above
+
+  // navGen cancels a stale hold timer if a new nav starts during the hold.
+  let navGen = 0;
+
+  // ── Element helpers (fresh lookup each call — safe with transition:persist) ──
+  const el = {
+    overlay: () => document.getElementById('page-overlay') as HTMLElement | null,
+    bar:     () => document.getElementById('overlay-bar')  as HTMLElement | null,
+    name:    () => document.getElementById('overlay-name') as HTMLElement | null,
+    sub:     () => document.getElementById('overlay-sub')  as HTMLElement | null,
+  };
+
+  // ── Cover: snap panel on-screen instantly (no visible transition) ────────
+  function cover() {
+    const o = el.overlay();
+    if (!o) return;
+    o.style.transition    = 'none';
+    o.style.transform     = 'translateX(0)';
+    o.style.pointerEvents = 'auto';
+    void o.offsetWidth; // flush: ensure 'none' is committed before next step
+    o.style.transition    = `transform ${WIPE_OUT}ms cubic-bezier(0.76,0,0.24,1)`;
+  }
+
+  // ── Text: replay tagline animation (name is static, no animation) ────────
+  function animateText() {
+    const s = el.sub(), o = el.overlay();
+    if (!s || !o) return;
+    s.style.animation = 'none';
+    void o.offsetWidth;
+    s.style.animation = 'text-expand 0.65s 0.12s cubic-bezier(0.16,1,0.30,1) both';
+  }
+
+  // ── Bar: replay progress fill ────────────────────────────────────────────
+  function animateBar() {
+    const b = el.bar();
+    if (!b) return;
+    b.style.animation = 'none';
+    void b.offsetWidth;
+    b.style.animation = `bar-fill ${HOLD - 30}ms cubic-bezier(0.25,0.46,0.45,0.94) forwards`;
+  }
+
+  // ── Wipe out: slide panel off to the right ───────────────────────────────
+  function wipeOut() {
+    const o = el.overlay();
+    if (!o) return;
+    o.style.transform     = 'translateX(105%)';
+    o.style.pointerEvents = 'none';
+
+    // Once the panel is fully off-screen, clear the text animation forwards-fills.
+    // Without this, the next animateText() call would reset animation to 'none',
+    // which drops the forwards-fill opacity:1 → CSS opacity:0 instantly — the
+    // brief name "flash" the user sees on 2nd+ navigation.
+    // Clearing here (off-screen) is invisible; next animateText() starts clean.
+    setTimeout(() => {
+      const s = el.sub(), b = el.bar();
+      // Reset tagline + bar forwards-fills while off-screen so next transition starts clean.
+      if (s) s.style.animation = 'none';
+      if (b) { b.style.animation = 'none'; b.style.transform = 'scaleX(0)'; }
+    }, WIPE_OUT + 20);
+  }
+
+  // ── 1. CLICK (capture phase) ─────────────────────────────────────────────
+  //    Cover the screen the instant the user's finger/cursor lifts on a link,
+  //    before Astro's router even processes the event.
+  //    This closes the 1–2 frame gap between click and astro:before-preparation.
+  document.addEventListener('click', (e) => {
+    const link = (e.target as HTMLElement).closest('a[href]') as HTMLAnchorElement | null;
+    if (!link) return;
+
+    const href = link.getAttribute('href') ?? '';
+    // Skip external links, hash links, and mailto/tel
+    if (!href || href.startsWith('http') || href.startsWith('#') ||
+        href.startsWith('mailto') || href.startsWith('tel')) return;
+
+    // Skip same-page links (sidebar already prevents navigation for these)
+    const cur = window.location.pathname.replace(/\/$/, '') || '/';
+    const dst = href.replace(/\/$/, '') || '/';
+    if (dst === cur) return;
+
+    cover();
+  }, true); // capture phase — fires before Astro's router
+
+  // ── 2. BEFORE PREPARATION ────────────────────────────────────────────────
+  //    Increments navGen and starts text animation.
+  //    Also covers in case navigation was triggered by keyboard / history API
+  //    (those don't fire a click event we can intercept above).
+  document.addEventListener('astro:before-preparation', () => {
+    navGen++;
+    cover();       // no-op if already covered by the click handler
+    animateText(); // start name + tagline as soon as nav is confirmed
+  });
+
+  // ── 3. PAGE LOAD ─────────────────────────────────────────────────────────
+  //    Fires on the initial page load AND after every client-side navigation.
+  //    On initial load (navGen === 0): plays all content then wipes out.
+  //    On navigation (navGen > 0): text is already animating from step 2;
+  //    just fill the bar, hold, then wipe out.
+  document.addEventListener('astro:page-load', async () => {
+    const o = el.overlay();
+    if (!o) return;
+
+    const myGen = navGen;
+
+    if (myGen === 0) {
+      // Initial page load — panel is already visible from CSS default.
+      // Ensure the wipe-out transition is set (inline overrides CSS class
+      // in case a previous session left stale inline styles).
+      o.style.transition = `transform ${WIPE_OUT}ms cubic-bezier(0.76,0,0.24,1)`;
+      animateText(); // first-ever text animation
+    }
+    // Navigation: text already running from astro:before-preparation.
+
+    animateBar();
+
+    await new Promise(r => setTimeout(r, HOLD));
+    if (navGen !== myGen) return; // newer nav cancelled this one
+    wipeOut();
+  });
+</script>

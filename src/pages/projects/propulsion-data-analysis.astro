@@ -3,102 +3,128 @@ import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
 import SpecTable from '../../components/SpecTable.astro';
 import MetricCallout from '../../components/MetricCallout.astro';
 import ThrustChart from '../../components/ThrustChart.astro';
+import PdfViewer from '../../components/PdfViewer.astro';
 import ScatteredReports from '../../components/ScatteredReports.astro';
 
 const specRows = [
-  { label: 'Test Campaigns',  value: '3 (Hydro, Cold-Flow, Static-Fire)' },
-  { label: 'Test Reports',    value: '20+ pages'                          },
-  { label: 'Peak Thrust',     value: '~950 lbf (representative)'          },
-  { label: 'Total Impulse',   value: '5,635 lbf-s'                        },
-  { label: 'Data Systems',    value: 'Load cell, pressure transducer'     },
+  { label: 'Test Campaigns', value: '15 (Hydro, Cold Flow, Static Fire)'                     },
+  { label: 'Test Reports',   value: '20+ pages'                                               },
+  { label: 'Instruments',    value: 'Load Cell · Pressure Transducer · Gauge · Video · Audio' },
+  { label: 'Software',       value: 'Microsoft Excel · Python 3 · Matplotlib · Plotly'        },
 ];
 
+/**
+ * Reports — set href to the Google Drive share link when ready.
+ * image: first-page thumbnails extracted from PDFs (PyMuPDF @ 150 dpi).
+ */
 const reports = [
-  { title: 'Static Fire #1 — Summary',    subtitle: 'Mojave Air & Space Port',    date: '2024', href: '#' },
-  { title: 'Cold-Flow Test Campaign',     subtitle: 'Injector characterization',  date: '2024', href: '#' },
-  { title: 'Hydrostatic Test — Summary',  subtitle: 'Tank pressure validation',   date: '2024', href: '#' },
+  {
+    title:    'Cold Flow — 001',
+    subtitle: 'Injector cold-flow characterization',
+    date:     '2026',
+    href:     'https://drive.google.com/file/d/16FsHAieUCGg0NhS79kpLV1hK8QHQs-hb/view?usp=sharing',  // TODO: replace with Google Drive link
+    image:    '/assets/projects/analysis/cold_flow_cover.jpg',
+  },
+  {
+    title:    'Hydrostatic — 003',
+    subtitle: 'Tank pressure validation',
+    date:     '2026',
+    href:     'https://drive.google.com/file/d/1T9eHZm6w2rG5v9pwIlipGpiOyN7-8j56/view?usp=sharing',  // TODO: replace with Google Drive link
+    image:    '/assets/projects/analysis/hydrostatic_cover.jpg',
+  },
 ];
 ---
 <ProjectPageLayout
-  title="Propulsion Data Analysis"
-  description="20+ pages of hydro, cold-flow, and static-fire test reports across three UCLA Rocket Project test campaigns."
-  ghostText="DATA"
+  title="Propulsion Test &amp; Analysis"
+  description="20+ pages of hydro, cold-flow, and static-fire test reports across fifteen UCLA Rocket Project test campaigns."
+  ghostText="ANALYSIS"
   category="UCLA Rocket Project"
-  tagline="20+ pages of hydro, cold-flow & static-fire test reports"
+  tagline="20+ pages of hydro, cold-flow &amp; static-fire test reports"
 >
+  <!-- Spec table left, scattered report card deck right (original format) -->
   <section class="spec-block spec-block--reports">
     <SpecTable rows={specRows} title="Specifications" />
     <div class="reports-col">
       <ScatteredReports reports={reports} />
-      <p class="reports-pdf-note">TODO: replace <code>href: '#'</code> with real PDF paths in <code>public/assets/projects/propulsion-data-analysis/</code></p>
     </div>
   </section>
+
   <section class="metrics-row" aria-label="Key metrics">
-    <MetricCallout value="3"     unit="campaigns" description="Test campaign types"        />
-    <MetricCallout value="20"    unit="+ pages"   description="Test report documentation" />
-    <MetricCallout value="5,635" unit="lbf-s"     description="Peak static fire impulse"  />
+    <MetricCallout value="50"  unit="+"  description="Injector water flows"        />
+    <MetricCallout value="15"  unit="+"  description="Hydrostatic pressure cycles" />
+    <MetricCallout value="100" unit="+"  description="Bubble leak checks"          />
   </section>
+
   <section class="the-work">
     <div class="work-row">
       <h2 class="work-label">Problem</h2>
       <div class="work-content">
-        <p class="work-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        <!-- FILL IN - Problem: Describe the engineering challenge that motivated this project -->
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Approach</h2>
       <div class="work-content">
-        <p class="work-text">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus.</p>
+        <!-- FILL IN - Approach: Explain the methodology, key decisions, and tools used -->
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Analysis</h2>
       <div class="work-content">
         <ThrustChart />
+        <!-- Injector Waterflow Analysis — 3-page PDF, arrow-navigable -->
+        <PdfViewer
+          src="/assets/projects/analysis/_Particularity_ Injector Waterflow Analysis - Google Sheets.pdf"
+          pages={3}
+          label="Injector Waterflow Analysis"
+          aspectRatio="2 / 1"
+        />
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Result</h2>
       <div class="work-content">
-        <p class="work-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+        <!-- FILL IN - Result: Describe what was achieved — metrics, validation, outcomes -->
+        <!-- CO2 cold flow with data overlay — landscape 16:9 -->
+        <figure class="proj-figure">
+          <video class="result-video" autoplay loop muted playsinline
+                 aria-label="Data overlay on CO2 cold flow test">
+            <source src="/assets/projects/analysis/cold_flow_slow.mp4" type="video/mp4" />
+          </video>
+          <figcaption>Data overlay on CO₂ Cold Flow test</figcaption>
+        </figure>
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Reflection</h2>
       <div class="work-content">
-        <p class="work-text">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+        <!-- FILL IN - Reflection: Lessons learned and what would be done differently -->
       </div>
     </div>
   </section>
 </ProjectPageLayout>
 
 <style>
-  /* Override global 1fr 1fr grid — let spec table size to its content,
-     reports side sizes to its own content; they share available space naturally */
+  /* ── Spec + scattered reports ───────────────────────── */
   .spec-block--reports {
     display: flex;
     gap: 5rem;
     align-items: start;
-    overflow: visible;
-    margin-bottom: 4rem;
     flex-wrap: wrap;
+    margin-bottom: 4rem;
+    overflow: visible;
   }
-
-  .spec-block--reports > :global(.spec-table-wrap) {
-    flex: 1 1 260px;
-  }
-
+  .spec-block--reports > :global(.spec-table-wrap) { flex: 1 1 260px; }
   .reports-col {
     flex: 1;
-    margin-left: 2rem;
     overflow: visible;
   }
 
-  .reports-pdf-note {
-    font-family: var(--font-mono);
-    font-size: var(--text-2xs);
-    color: var(--text-35);
-    line-height: var(--leading-normal);
-    margin-top: 0.5rem;
+  /* ── Result video ───────────────────────────────────── */
+  .result-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    object-fit: cover;
   }
 </style>

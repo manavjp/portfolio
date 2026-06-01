@@ -15,6 +15,27 @@ html {
   font-weight: var(--fw-regular);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+
+  /* ── Custom scrollbar (Firefox) ── */
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+/* ── Custom scrollbar (Webkit / Blink) ── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 2px;
+  /* Adds breathing room so the thumb appears shorter than full height */
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid transparent;
+  background-clip: padding-box;
 }
 
 body {
@@ -76,6 +97,12 @@ img, video {
   }
 }
 
+/* ── Text selection ── */
+::selection {
+  background-color: var(--accent);
+  color: var(--bg);
+}
+
 /* ── Accessible focus ring ── */
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -87,6 +114,23 @@ img, video {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Scroll reveals (opacity-only — no transform, avoids GPU layer promotion) ── */
+.will-reveal {
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out);
+}
+
+.will-reveal.is-revealed {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .will-reveal {
+    opacity: 1;
+    transition: none;
   }
 }
 
@@ -150,6 +194,43 @@ img, video {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+}
+
+/* ── Engineering figures ── */
+.proj-figure {
+  margin: 0;
+}
+
+.proj-figure img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  background: var(--surface);
+}
+
+.proj-figure figcaption {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-35);
+  letter-spacing: 0.04em;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--grid-line);
+}
+
+/* Responsive image grids */
+.proj-gallery {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+.proj-gallery--2   { grid-template-columns: 1fr 1fr; }
+.proj-gallery--3   { grid-template-columns: 1fr 1fr 1fr; }
+.proj-gallery--auto { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+@media (max-width: 768px) {
+  .proj-gallery--2,
+  .proj-gallery--3 { grid-template-columns: 1fr; }
 }
 
 .work-text {

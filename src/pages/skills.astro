@@ -1,26 +1,123 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const skillGroups = [
+  {
+    label: 'Design',
+    skills: [
+      'SolidWorks',
+      'Siemens NX',
+      'PTC Creo',
+      'GD&T ASME Y14.5',
+      'DfM',
+      'DfAM',
+      'Design Reviews',
+      'Embedded Systems',
+      'Bill of Materials (BOM)',
+    ],
+  },
+  {
+    label: 'Build',
+    skills: [
+      'CNC / G-Code',
+      'Mill',
+      'Lathe',
+      'Waterjet',
+      'Composite Layup',
+      '3D Printing & Slicing',
+      'Laser Cut',
+      'Drill Press',
+      'Band Saw',
+      'Sander',
+      'Soldering',
+    ],
+  },
+  {
+    label: 'Test',
+    skills: [
+      'Data Acquisition (DAQ)',
+      'Load Cell',
+      'Pressure Transducer',
+      'Telemetry',
+      'Static Fire',
+      'Cold Flow',
+      'Water Flow',
+      'Calibration',
+      'Proof Pressure',
+      'Test Matrices',
+      'Test Reports',
+      'Solenoids',
+      'Standard Operating Procedure (SOP)',
+      'Meteorology',
+    ],
+  },
+  {
+    label: 'Analysis',
+    skills: [
+      'Ansys Mechanical',
+      'MATLAB',
+      'Simulink',
+      'NASA CEA',
+      'Abaqus',
+      'Matplotlib',
+      'CoolProp',
+    ],
+  },
+  {
+    label: 'Software',
+    skills: [
+      'Python',
+      'C',
+      'C++',
+      'pandas',
+      'GitHub',
+      'Arduino IDE',
+      'Linux',
+      'C#',
+      'HTML',
+    ],
+  },
+  {
+    label: 'Fluids',
+    skills: [
+      'P&ID',
+      'Pneumatics',
+      'Bubble Leak Test',
+      'Relief valve',
+      'Check valve',
+      'Manifolds',
+      'Plumbing',
+    ],
+  },
+];
 ---
 
 <Layout title="Skills">
   <div class="page-padded">
-  <div class="page-header">
-    <span class="page-label">// 004</span>
-    <h1 class="page-title">Skills</h1>
-  </div>
-  <div class="todo-block">
-    <span class="todo-label">TODO — Milestone 5</span>
-    <p>
-      Concise, grouped — Design: SolidWorks, Creo, NX, Ansys FEA, GD&amp;T /
-      Software: Python, CoolProp, C++, Arduino, MATLAB /
-      Manufacturing: machining, additive/DfAM, composites.
-    </p>
-  </div>
+
+    <div class="page-header">
+      <span class="page-label">// 004</span>
+      <h1 class="page-title">Skills</h1>
+    </div>
+
+    <div class="skill-groups">
+      {skillGroups.map((group) => (
+        <div class="skill-group">
+          <h2 class="group-label">{group.label}</h2>
+          <div class="pill-grid">
+            {group.skills.map((skill) => (
+              <span class="pill" set:html={skill} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
   </div>
 </Layout>
 
 <style>
-  .page-header { margin-bottom: 2rem; }
+  .page-header { margin-bottom: 3rem; }
 
   .page-label {
     display: block;
@@ -39,5 +136,65 @@ import Layout from '../layouts/Layout.astro';
     letter-spacing: -0.01em;
     line-height: var(--leading-tight);
     text-transform: uppercase;
+  }
+
+  /* ── Groups ── */
+  .skill-groups {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .skill-group {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 2rem;
+    align-items: start;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--grid-line);
+  }
+
+  .skill-group:last-child {
+    border-bottom: 1px solid var(--grid-line);
+  }
+
+  .group-label {
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding-top: 0.35rem;
+  }
+
+  /* ── Pills ── */
+  .pill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .pill {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-70);
+    background: var(--surface-raised);
+    border: 1px solid var(--hairline);
+    padding: 0.35rem 0.85rem;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    transition: border-color var(--dur-fast) var(--ease-out),
+                color var(--dur-fast) var(--ease-out);
+  }
+
+  .pill:hover {
+    border-color: var(--text-35);
+    color: var(--text-100);
+  }
+
+  @media (max-width: 768px) {
+    .skill-group {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
   }
 </style>

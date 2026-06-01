@@ -1,0 +1,329 @@
+---
+/**
+ * PdfViewer — page-by-page PDF slideshow.
+ * Uses the exact same tick-slider controls as ScatteredReports.
+ */
+interface Props {
+  src: string;
+  pages: number;
+  label?: string;
+  aspectRatio?: string;
+}
+const {
+  src,
+  pages,
+  label       = 'Document',
+  aspectRatio = '4 / 3',
+} = Astro.props;
+
+const uid   = `pdf-${Math.random().toString(36).slice(2, 9)}`;
+const TICKS = 15;
+---
+
+<div class="pdf-viewer" id={uid} data-src={src} data-pages={pages}
+     role="region" aria-label={label} tabindex="0">
+
+  <!-- PDF canvas -->
+  <div class="pdf-stage" style={`aspect-ratio: ${aspectRatio};`}>
+    <canvas class="pdf-canvas" aria-label={label}></canvas>
+    <div class="pdf-loading" aria-live="polite">Loading…</div>
+  </div>
+
+  <!-- Tick-slider controls — identical structure to ScatteredReports -->
+  <div class="pdf-controls">
+    <button class="rctl-btn rctl-prev" type="button" aria-label="Previous page">←</button>
+    <div class="slider-track">
+      <div class="slider-ticks">
+        {Array.from({ length: TICKS }, () => <div class="stk"></div>)}
+      </div>
+      <div
+        class="slider-thumb"
+        role="slider"
+        tabindex="0"
+        aria-valuemin="0"
+        aria-valuemax={String(pages - 1)}
+        aria-valuenow="0"
+        aria-label="Select page"
+      ></div>
+    </div>
+    <button class="rctl-btn rctl-next" type="button" aria-label="Next page">→</button>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"
+        is:inline></script>
+
+<script define:vars={{ uid, src, pages }}>
+(function () {
+  const TICKS = 15;
+
+  function init() {
+    const root    = document.getElementById(uid);
+    if (!root) return;
+
+    const canvas  = root.querySelector('.pdf-canvas');
+    const loading = root.querySelector('.pdf-loading');
+    const track   = root.querySelector('.slider-track');
+    const thumb   = root.querySelector('.slider-thumb');
+    const ticks   = Array.from(root.querySelectorAll('.stk'));
+    const btnPrev = root.querySelector('.rctl-prev');
+    const btnNext = root.querySelector('.rctl-next');
+
+    const pdfjsLib = globalThis.pdfjsLib;
+    if (!pdfjsLib) return;
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    let pdfDoc      = null;
+    let currentPage = 1;   // 1-indexed
+    let rendering   = false;
+    let activeIdx   = 0;   // 0-indexed, mirrors currentPage-1
+
+    // ── Rendering ───────────────────────────────────────────────────────
+    async function renderPage(num) {
+      if (rendering || !pdfDoc) return;
+      rendering = true;
+      loading.style.display = 'flex';
+
+      const page    = await pdfDoc.getPage(num);
+      const stageW  = canvas.parentElement.clientWidth || 800;
+      const base    = page.getViewport({ scale: 1 });
+      const scale   = stageW / base.width;
+      const vp      = page.getViewport({ scale });
+
+      canvas.width  = vp.width;
+      canvas.height = vp.height;
+
+      await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+
+      loading.style.display = 'none';
+      currentPage = num;
+      activeIdx   = num - 1;
+      thumb.setAttribute('aria-valuenow', String(activeIdx));
+      btnPrev.disabled = num <= 1;
+      btnNext.disabled = num >= pages;
+      rendering = false;
+    }
+
+    // ── Slider helpers (identical logic to ScatteredReports) ─────────────
+    function snapLeft(idx) {
+      const tw  = track.offsetWidth;
+      const thw = thumb.offsetWidth;
+      const eff = Math.max(0, tw - thw);
+      return pages > 1 ? (idx / (pages - 1)) * eff : 0;
+    }
+
+    function updateTicks(thumbCenterX, animated) {
+      const tw   = track.offsetWidth;
+      const step = tw / (TICKS - 1);
+      const BASE = 10, PEAK = 26, SPREAD = step * 2.2;
+      ticks.forEach((tick, i) => {
+        const dist = Math.abs(i * step - thumbCenterX);
+        const t    = Math.max(0, 1 - dist / SPREAD);
+        tick.style.transition = animated ? 'height 0.25s var(--ease-out)' : 'none';
+        tick.style.height     = Math.round(BASE + (PEAK - BASE) * t) + 'px';
+      });
+    }
+
+    function applySlider(animated = true) {
+      const left = snapLeft(activeIdx);
+      thumb.style.transition = animated ? 'left 0.35s var(--ease-out)' : 'none';
+      thumb.style.left       = left + 'px';
+      thumb.setAttribute('aria-valuenow', String(activeIdx));
+      updateTicks(left + thumb.offsetWidth / 2, animated);
+    }
+
+    // ── Drag ─────────────────────────────────────────────────────────────
+    let dragging   = false;
+    let dragStartX = 0;
+    let dragStartL = 0;
+
+    thumb.addEventListener('mousedown', (e) => {
+      dragging   = true;
+      dragStartX = e.clientX;
+      dragStartL = parseFloat(thumb.style.left) || 0;
+      thumb.style.transition = 'none';
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!dragging) return;
+      const tw  = track.offsetWidth;
+      const thw = thumb.offsetWidth;
+      const eff = Math.max(0, tw - thw);
+      const nl  = Math.max(0, Math.min(eff, dragStartL + (e.clientX - dragStartX)));
+      thumb.style.left = nl + 'px';
+      updateTicks(nl + thw / 2, false);
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (!dragging) return;
+      dragging = false;
+      const tw  = track.offsetWidth;
+      const thw = thumb.offsetWidth;
+      const eff = Math.max(1, tw - thw);
+      const frac = (parseFloat(thumb.style.left) || 0) / eff;
+      activeIdx = Math.round(frac * (pages - 1));
+      applySlider(true);
+      renderPage(activeIdx + 1);
+    });
+
+    // ── Buttons ──────────────────────────────────────────────────────────
+    btnPrev.addEventListener('click', () => {
+      if (activeIdx > 0) { activeIdx--; applySlider(true); renderPage(activeIdx + 1); }
+    });
+    btnNext.addEventListener('click', () => {
+      if (activeIdx < pages - 1) { activeIdx++; applySlider(true); renderPage(activeIdx + 1); }
+    });
+
+    // ── Keyboard (slider thumb + viewer root) ────────────────────────────
+    function keyNav(e) {
+      if (e.key === 'ArrowLeft'  && activeIdx > 0)          { activeIdx--; applySlider(true); renderPage(activeIdx + 1); }
+      if (e.key === 'ArrowRight' && activeIdx < pages - 1)  { activeIdx++; applySlider(true); renderPage(activeIdx + 1); }
+    }
+    thumb.addEventListener('keydown', keyNav);
+    root.addEventListener('keydown',  keyNav);
+
+    // ── Load ─────────────────────────────────────────────────────────────
+    pdfjsLib.getDocument(src).promise.then(doc => {
+      pdfDoc = doc;
+      applySlider(false);
+      renderPage(1);
+    });
+  }
+
+  // Poll until PDF.js CDN script is ready
+  let attempts = 0;
+  const poll = setInterval(() => {
+    attempts++;
+    if (globalThis.pdfjsLib || attempts > 40) { clearInterval(poll); init(); }
+  }, 100);
+
+  // Re-init on client-side navigation
+  document.addEventListener('astro:page-load', () => {
+    attempts = 0;
+    const repoll = setInterval(() => {
+      attempts++;
+      if (globalThis.pdfjsLib || attempts > 40) { clearInterval(repoll); init(); }
+    }, 100);
+  });
+})();
+</script>
+
+<style>
+  .pdf-viewer {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--grid-line);
+    overflow: hidden;
+  }
+
+  /* ── Canvas stage ───────────────────────────────────── */
+  .pdf-stage {
+    position: relative;
+    width: 100%;
+    background: var(--surface);
+  }
+
+  .pdf-canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .pdf-loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.08em;
+    background: var(--surface);
+  }
+
+  /* ── Controls — identical to ScatteredReports ───────── */
+  .pdf-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.625rem 1rem;
+    border-top: 1px solid var(--grid-line);
+  }
+
+  .rctl-btn {
+    background: none;
+    border: 1px solid var(--hairline);
+    color: var(--text-35);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    padding: 0.2rem 0.45rem;
+    cursor: pointer;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: border-color var(--dur-fast) var(--ease-out),
+                color        var(--dur-fast) var(--ease-out);
+  }
+  .rctl-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--text-100); }
+  .rctl-btn:disabled { opacity: 0.3; cursor: default; }
+
+  .slider-track {
+    position: relative;
+    flex: 1;
+    height: 34px;
+    display: flex;
+    align-items: center;
+  }
+
+  .slider-ticks {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .stk {
+    width: 2px;
+    height: 10px;
+    background: var(--hairline);
+    flex-shrink: 0;
+  }
+
+  /* Visible square: 13×13 */
+  .slider-thumb {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 13px;
+    height: 13px;
+    transform: translateY(-50%);
+    background: var(--accent);
+    cursor: grab;
+    user-select: none;
+  }
+
+  /* Invisible extended hit-area */
+  .slider-thumb::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+  }
+
+  .slider-thumb:active        { cursor: grabbing; }
+  .slider-thumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slider-thumb { transition: none !important; }
+    .stk          { transition: none !important; }
+  }
+</style>

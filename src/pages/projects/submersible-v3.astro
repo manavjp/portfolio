@@ -4,13 +4,15 @@ import SpecTable from '../../components/SpecTable.astro';
 import MetricCallout from '../../components/MetricCallout.astro';
 
 const specRows = [
-  { label: 'Length',           value: '16 ft'                 },
-  { label: 'Operating Depth',  value: '35 ft'                 },
-  { label: 'Buoyancy',         value: 'Neutral'               },
-  { label: 'Scale Prototype',  value: '1/20'                  },
-  { label: 'Frame Type',       value: 'Open-frame'            },
-  { label: 'Application',      value: 'Civilian EVA training' },
-  { label: 'Design Tool',      value: 'SolidWorks'            },
+  { label: 'Length',        value: '16 ft'                                                        },
+  { label: 'Diameter',      value: '9 ft'                                                         },
+  { label: 'Operating Depth', value: '35 ft'                                                      },
+  { label: 'Buoyancy',      value: 'Neutral'                                                      },
+  { label: 'Configuration', value: 'Open-frame, wet-sub'                                          },
+  { label: 'Design',        value: 'SolidWorks · Whiteboard'                                      },
+  { label: 'Application',   value: 'Civilian EVA Training'                                        },
+  { label: 'Research',      value: 'Human Factors · Teamwork'                                     },
+  { label: 'Mentors',       value: 'Eduardo Diaz (CEO, NASA Ames) · Yi So-yeon (Korean Astronaut, KAIST)' },
 ];
 ---
 <ProjectPageLayout
@@ -19,56 +21,142 @@ const specRows = [
   ghostText="SUB-X V3"
   category="AdvancingX"
   tagline="16-ft neutrally buoyant open-frame EVA trainer"
+  showOverview={false}
 >
-  <section class="spec-block">
-    <SpecTable rows={specRows} title="Specifications" />
-    <div class="todo-block">
-      <span class="todo-label">TODO — SolidWorks model &amp; rotating render</span>
-      <p>SolidWorks CAD render of the open-frame assembly (isometric + rotating MP4). Place at <code>public/assets/projects/submersible-v3/</code>.</p>
+  <!-- Overview + specs alongside diver image -->
+  <section class="spec-block" style="grid-template-columns: 1fr 1fr; align-items: start; gap: 1.5rem;">
+    <div class="spec-col">
+      <h2 class="section-overview">Overview</h2>
+      <SpecTable rows={specRows} title="Specifications" />
     </div>
+    <!-- divers.jpeg is 1:1 square -->
+    <figure class="proj-figure overview-image">
+      <img src="/assets/projects/advancingx/divers.jpeg"
+           alt="Career astronaut candidates training with SubX V2"
+           loading="lazy" class="overview-img" />
+      <figcaption>Career astronaut candidates training with SubX V2</figcaption>
+    </figure>
   </section>
+
   <section class="metrics-row" aria-label="Key metrics">
-    <MetricCallout value="16" unit="ft"    description="Full-scale length"         />
-    <MetricCallout value="35" unit="ft"    description="Operating depth"           />
-    <MetricCallout value="20" unit=":1"    description="Prototype scale ratio"     />
+    <MetricCallout value="16" unit="ft"  description="Full-scale length"     />
+    <MetricCallout value="35" unit="ft"  description="Operating depth"       />
+    <MetricCallout value="20" unit=":1"  description="Prototype scale ratio" />
   </section>
+
   <section class="the-work">
     <div class="work-row">
       <h2 class="work-label">Problem</h2>
       <div class="work-content">
-        <p class="work-text">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus.</p>
+        <!-- FILL IN - Problem: Describe the engineering challenge that motivated this project -->
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Approach</h2>
       <div class="work-content">
-        <p class="work-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+        <!-- FILL IN - Approach: Explain the methodology, key decisions, and tools used -->
+        <!-- board sketch + board calculations — both 4:3 landscape, side by side -->
+        <div class="proj-gallery proj-gallery--2">
+          <figure class="proj-figure">
+            <img src="/assets/projects/advancingx/board_sketch.JPG"
+                 alt="Visual representation sketch on whiteboard" loading="lazy" />
+            <figcaption>Visual representation</figcaption>
+          </figure>
+          <figure class="proj-figure">
+            <img src="/assets/projects/advancingx/board_calculations.JPG"
+                 alt="Preliminary sizing calculations on whiteboard" loading="lazy" />
+            <figcaption>Preliminary sizing calculations</figcaption>
+          </figure>
+        </div>
+        <!-- prototype (4:3) + PVC tubes (4:3) — side by side -->
+        <div class="proj-gallery proj-gallery--2">
+          <figure class="proj-figure">
+            <img src="/assets/projects/advancingx/prototype.png"
+                 alt="1/20 scale operational prototype of the submersible" loading="lazy" />
+            <figcaption>1/20 scale operational prototype</figcaption>
+          </figure>
+          <figure class="proj-figure">
+            <img src="/assets/projects/advancingx/PVC_tubes.jpg"
+                 alt="PVC structural tube members for the submersible frame" loading="lazy" />
+            <figcaption>PVC structural members</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Analysis</h2>
       <div class="work-content">
-        <div class="todo-block">
-          <span class="todo-label">TODO — Buoyancy calculation document</span>
-          <p>Component-level buoyancy breakdown: volume, mass, and net buoyant force per member. PDF or rendered summary.</p>
+        <!-- test_1 + test_1a — side by side, combined caption -->
+        <div class="proj-gallery proj-gallery--2">
+          <figure class="proj-figure">
+            <img src="/assets/projects/advancingx/test_1.jpg"
+                 alt="Prototype deployment buoyancy test in Clear Lake CA" loading="lazy" />
+          </figure>
+          <figure class="proj-figure">
+            <img src="/assets/projects/advancingx/test_1a.jpg"
+                 alt="Prototype structural test in Clear Lake CA" loading="lazy" />
+          </figure>
         </div>
-        <div class="todo-block">
-          <span class="todo-label">TODO — Prototype test footage</span>
-          <p>1/20-scale prototype pool test video showing neutral buoyancy behavior. Place at <code>public/assets/projects/submersible-v3/prototype-test.mp4</code>.</p>
-        </div>
+        <p class="gallery-caption">Prototype deployment for buoyancy and structural testing in Clear Lake, CA</p>
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Result</h2>
       <div class="work-content">
-        <p class="work-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <!-- FILL IN - Result: Describe what was achieved — metrics, validation, outcomes -->
+        <!-- divers (1:1 square) + final_config (4:3 landscape) — side by side, no captions -->
+        <div class="proj-gallery proj-gallery--2">
+          <figure class="proj-figure">
+            <img src="/assets/projects/advancingx/divers.jpeg"
+                 alt="Divers with the EVA training submersible" loading="lazy"
+                 style="aspect-ratio: 4/3; object-fit: cover;" />
+          </figure>
+          <figure class="proj-figure">
+            <img src="/assets/projects/advancingx/final_config.png"
+                 alt="Final open-frame submersible configuration" loading="lazy" />
+          </figure>
+        </div>
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Reflection</h2>
       <div class="work-content">
-        <p class="work-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <!-- FILL IN - Reflection: Lessons learned and what would be done differently -->
       </div>
     </div>
   </section>
 </ProjectPageLayout>
+
+<style>
+  .spec-col { display: flex; flex-direction: column; }
+  .spec-col :global(.section-overview) {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: var(--fw-black);
+    color: var(--text-100);
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Square diver image in overview — show 1:1 ratio */
+  .overview-image { margin: 0; }
+  .overview-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Shared caption below a two-image gallery */
+  .gallery-caption {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.04em;
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--grid-line);
+  }
+</style>

@@ -1,0 +1,70 @@
+---
+interface Props {
+  currentPath: string;
+}
+const { currentPath } = Astro.props;
+
+// Pages where logos should be hidden (evaluated server-side for correct initial state)
+const hide = currentPath.startsWith('/projects') || currentPath === '/about';
+---
+
+<!-- Affiliation logos — fixed bottom-right.
+     Shown on: /, /skills, /contact
+     Hidden on: /projects, /projects/*, /about
+     Server-side class prevents flash; JS keeps in sync during client-side navigation. -->
+<div
+  id="logo-stack"
+  class:list={['logo-stack', { 'is-hidden': hide }]}
+  aria-label="Affiliations"
+  transition:persist="logo-stack"
+>
+  <img
+    src="/assets/projects/hero/aiaa_logo.png"
+    alt="AIAA — American Institute of Aeronautics and Astronautics"
+    class="logo-stack__img"
+  />
+  <img
+    src="/assets/projects/hero/ucla_logo.png"
+    alt="UCLA — University of California, Los Angeles"
+    class="logo-stack__img"
+  />
+</div>
+
+<style>
+  .logo-stack {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    z-index: 80;
+    transition: opacity var(--dur-base) var(--ease-out);
+    pointer-events: auto;
+  }
+
+  .logo-stack.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .logo-stack__img {
+    height: 36px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.55;
+    transition: opacity var(--dur-fast) var(--ease-out);
+  }
+
+  .logo-stack__img:hover {
+    opacity: 0.9;
+  }
+
+  @media (max-width: 768px) {
+    .logo-stack { bottom: 5rem; right: 1.25rem; }
+    .logo-stack__img { height: 28px; }
+  }
+</style>

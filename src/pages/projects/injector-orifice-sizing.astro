@@ -4,70 +4,119 @@ import SpecTable from '../../components/SpecTable.astro';
 import MetricCallout from '../../components/MetricCallout.astro';
 
 const specRows = [
-  { label: 'Injector Orifices',   value: '69'                    },
-  { label: 'N₂O Error (Initial)', value: '35%'                   },
-  { label: 'N₂O Error (Final)',   value: '10.3%'                 },
-  { label: 'Model Type',          value: 'Two-phase, real-fluid' },
-  { label: 'Thermodynamic Lib',   value: 'CoolProp'              },
-  { label: 'Language',            value: 'Python 3'              },
+  { label: 'Language',              value: 'Python 3'          },
+  { label: 'Thermo. Property Lib.', value: 'CoolProp'          },
+  { label: 'N₂O Error (Initial)',   value: '35%'               },
+  { label: 'N₂O Error (After)',     value: '10.3%'             },
+  { label: 'Orifice Diameter',      value: "0.0468''"          },
+  { label: 'Area per Orifice',      value: "0.00172'' ²"       },
+  { label: 'Sized Injector To',     value: '69 Orifices'       },
+  { label: 'Discharge Coefficient', value: '0.4522'            },
 ];
 ---
+
 <ProjectPageLayout
-  title="Two-Phase N2O Flow Model"
+  title="Two-Phase N₂O Flow Model"
   description="Python/CoolProp two-phase model reducing N₂O mass-flow error from 35% to 10.3%."
-  ghostText="INJECTOR"
+  ghostText="NITROUS OXIDE"
   category="UCLA Rocket Project"
   tagline="Two-phase N₂O model — 35% → 10.3% mass-flow error"
+  showOverview={false}
 >
-  <section class="spec-block">
-    <SpecTable rows={specRows} title="Specifications" />
-    <div class="todo-block">
-      <span class="todo-label">TODO — Orifice pattern diagram</span>
-      <p>Annotated diagram of the 69-orifice pattern: oxidizer/fuel port arrangement, orifice diameter, spacing.</p>
+  <!-- Overview + specs alongside rotating injector model (portrait video) -->
+  <section class="spec-block" style="grid-template-columns: 1fr 1.2fr; align-items: start; gap: 1.5rem;">
+    <div class="spec-col">
+      <h2 class="section-overview">Overview</h2>
+      <SpecTable rows={specRows} title="Specifications" />
+    </div>
+    <div class="model-wrap">
+      <video
+        class="model-video"
+        src="/assets/projects/flow_model/injector_model.mp4"
+        autoplay loop muted playsinline
+        aria-label="Rotating SolidWorks model of the hybrid injector"
+      ></video>
     </div>
   </section>
+
   <section class="metrics-row" aria-label="Key metrics">
-    <MetricCallout value="69"   unit="orifices" description="Flight injector orifices"  />
-    <MetricCallout value="10.3" unit="%"         description="Final N₂O mass-flow error" />
-    <MetricCallout value="3.4"  unit="×"         description="Error reduction factor"    />
+    <MetricCallout value="69"    unit="orifices" description="Injector orifices"          />
+    <MetricCallout value="10.3"  unit="%"         description="Final N₂O mass-flow error" />
+    <MetricCallout value="2.654" unit="lbm/s"     description="Predicted ox flow rate"    />
   </section>
+
   <section class="the-work">
     <div class="work-row">
       <h2 class="work-label">Problem</h2>
       <div class="work-content">
-        <p class="work-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <!-- FILL IN - Problem: Describe the engineering challenge that motivated this project -->
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Approach</h2>
       <div class="work-content">
-        <p class="work-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <!-- FILL IN - Approach: Explain the methodology, key decisions, and tools used -->
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Analysis</h2>
       <div class="work-content">
-        <div class="todo-block">
-          <span class="todo-label">TODO — Predicted vs. actual plot</span>
-          <p>Chart comparing single-phase model, two-phase model, and static-fire measured mass flow. Interactive version lives on the Propulsion Data Analysis page.</p>
-        </div>
-        <div class="todo-block">
-          <span class="todo-label">TODO — Model derivation writeup</span>
-          <p>Governing equations, CoolProp integration method, and validation methodology. Rendered Markdown or PDF summary.</p>
-        </div>
+        <!-- Calibration curves — ~16:10 landscape chart -->
+        <figure class="proj-figure">
+          <img src="/assets/projects/flow_model/calibration_curves_at_best_kappa.png"
+               alt="SPI vs HEM calibration curves at best kappa — mass-flow comparison" loading="lazy" />
+          <figcaption>Shows the SPI model substantially overpredicts mass flow relative to the clamped HEM behavior, with the measured flow rate landing below the HEM critical limit</figcaption>
+        </figure>
+        <!-- Iteration results — ~16:9 landscape chart -->
+        <figure class="proj-figure">
+          <img src="/assets/projects/flow_model/iteration_results.png"
+               alt="Orifice count sweep optimization results" loading="lazy" />
+          <figcaption>The optimization works by sweeping the number of orifices, comparing the predicted mass flow against the target, and selecting the recommended count of 69 where the design-point curve intersects the target</figcaption>
+        </figure>
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Result</h2>
       <div class="work-content">
-        <p class="work-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+        <!-- FILL IN - Result: Describe what was achieved — metrics, validation, outcomes -->
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Reflection</h2>
       <div class="work-content">
-        <p class="work-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+        <!-- FILL IN - Reflection: Lessons learned and what would be done differently -->
       </div>
     </div>
   </section>
 </ProjectPageLayout>
+
+<style>
+  /* Portrait model wrap — injector_model.mp4 is 9:16, shown at 3:4 crop */
+  .model-wrap {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .model-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .spec-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .spec-col :global(.section-overview) {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: var(--fw-black);
+    color: var(--text-100);
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+</style>
