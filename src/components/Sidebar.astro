@@ -58,10 +58,17 @@ function isActive(href: string): boolean {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="View resume"
+      data-umami-event="resume_click"
+      data-umami-event-location="sidebar"
     >
       View Resume ↗
     </a>
-    <a href="/contact" class="sidebar__link">
+    <a
+      href="/contact"
+      class="sidebar__link"
+      data-umami-event="contact_click"
+      data-umami-event-location="sidebar"
+    >
       Contact ↗
     </a>
   </div>

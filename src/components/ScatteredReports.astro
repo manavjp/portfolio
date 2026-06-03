@@ -26,6 +26,8 @@ const TICKS = 15;
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Open: ${report.title}`}
+        data-umami-event="report_open"
+        data-umami-event-title={report.title}
       >
         {report.image ? (
           <img src={report.image} alt={report.title} class="rc-full-img" loading="lazy" />

@@ -13,7 +13,7 @@ import { RESUME_URL } from '../config';
 
     <div class="contact-list">
 
-      <a href="mailto:manavjpatel@g.ucla.edu" class="contact-item">
+      <a href="mailto:manavjpatel@g.ucla.edu" class="contact-item" data-umami-event="email_click">
         <span class="contact-item__label">Email</span>
         <span class="contact-item__value">
           manavjpatel@ucla.edu
@@ -26,6 +26,7 @@ import { RESUME_URL } from '../config';
         class="contact-item"
         target="_blank"
         rel="noopener noreferrer"
+        data-umami-event="linkedin_click"
       >
         <span class="contact-item__label">LinkedIn</span>
         <span class="contact-item__value">
@@ -35,10 +36,26 @@ import { RESUME_URL } from '../config';
       </a>
 
       <a
+        href="https://app.reclaim.ai/m/manavp"
+        class="contact-item"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-umami-event="meeting_click"
+      >
+        <span class="contact-item__label">Meeting</span>
+        <span class="contact-item__value">
+          app.reclaim.ai/m/manavp
+          <span class="contact-item__arrow" aria-hidden="true">↗</span>
+        </span>
+      </a>
+
+      <a
         href={RESUME_URL}
         class="contact-item"
         target="_blank"
         rel="noopener noreferrer"
+        data-umami-event="resume_click"
+        data-umami-event-location="contact"
       >
         <span class="contact-item__label">Resume</span>
         <span class="contact-item__value">
