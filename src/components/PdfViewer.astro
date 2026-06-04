@@ -178,6 +178,21 @@ const TICKS = 15;
       if (activeIdx < pages - 1) { activeIdx++; applySlider(true); renderPage(activeIdx + 1); }
     });
 
+    // ── Stage click — left half = prev, right half = next ────────────────
+    const stage = root.querySelector('.pdf-stage');
+    stage.addEventListener('click', (e) => {
+      const goRight = e.offsetX >= stage.offsetWidth / 2;
+      if (goRight && activeIdx < pages - 1) { activeIdx++; applySlider(true); renderPage(activeIdx + 1); }
+      if (!goRight && activeIdx > 0)        { activeIdx--; applySlider(true); renderPage(activeIdx + 1); }
+    });
+    stage.addEventListener('mousemove', (e) => {
+      const goRight = e.offsetX >= stage.offsetWidth / 2;
+      if      (goRight && activeIdx < pages - 1) stage.style.cursor = 'e-resize';
+      else if (!goRight && activeIdx > 0)        stage.style.cursor = 'w-resize';
+      else                                       stage.style.cursor = 'default';
+    });
+    stage.addEventListener('mouseleave', () => { stage.style.cursor = ''; });
+
     // ── Keyboard (slider thumb + viewer root) ────────────────────────────
     function keyNav(e) {
       if (e.key === 'ArrowLeft'  && activeIdx > 0)          { activeIdx--; applySlider(true); renderPage(activeIdx + 1); }

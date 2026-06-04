@@ -1,28 +1,26 @@
 <div class="chart-wrap">
-  <p class="chart-label">THRUST VS. TIME — REPRESENTATIVE STATIC FIRE DATA</p>
+  <p class="chart-label">THRUST VS. TIME — HOTFIRE ENGINE 2 · 05/09</p>
   <div id="thrust-chart" class="chart-container"></div>
-  <p class="chart-caption">
-    ⚠ Representative data — TODO: replace with real telemetry from
-    <code>public/assets/projects/propulsion-data-analysis/static-fire-thrust.json</code>
-  </p>
+  <p class="chart-caption">1× median-filtered thrust · Load cell telemetry · Total impulse 5,336 lbf·s</p>
 </div>
 
 <script>
   import Plotly from 'plotly.js-dist-min';
 
-  const time   = [0, 0.15, 0.35, 0.55, 0.80, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.25, 5.50, 5.70, 5.85, 6.0];
-  const thrust = [0,   95,  420,  760,  890, 935, 948, 952, 945, 930, 915, 898, 875, 840,  640,  320,  120,   30,   0];
+  const data = await fetch('/assets/projects/analysis/hotfire-thrust.json').then(r => r.json());
+  const time   = data.time;
+  const thrust = data.median;
 
   const trace = {
     x: time,
     y: thrust,
     type: 'scatter',
     mode: 'lines',
-    line: { color: '#ff2d20', width: 2, shape: 'spline' },
+    line: { color: '#ff6f61', width: 1.5, shape: 'linear' },
     fill: 'tozeroy',
-    fillcolor: 'rgba(255,45,32,0.07)',
+    fillcolor: 'rgba(255,111,97,0.07)',
     name: 'Thrust (lbf)',
-    hovertemplate: 'T+%{x:.2f}s<br>%{y} lbf<extra></extra>',
+    hovertemplate: 'T+%{x:.3f}s<br>%{y:.1f} lbf<extra></extra>',
   };
 
   const layout = {
