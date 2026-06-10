@@ -7,6 +7,11 @@ import ITARTile from '../components/ITARTile.astro';
 <Layout title="Projects">
   <div class="page-padded projects-page">
 
+    <div class="page-header">
+      <span class="page-label">// 002</span>
+      <h1 class="page-title">Projects</h1>
+    </div>
+
     <div class="section-header">
       <span class="section-label">UCLA Rocket Project</span>
       <hr class="section-rule" aria-hidden="true" />
@@ -25,7 +30,7 @@ import ITARTile from '../components/ITARTile.astro';
       <div class="t-hts">
         <ProjectTile
           title="Horizontal Test Stand"
-          tagline="Isolating 5,635 lbf-s onto linear rails"
+          tagline="Isolating 600 lbf thrust for static fires"
           href="/projects/horizontal-propulsion-test-stand"
           image="/assets/projects/horizontal-propulsion-test-stand/hts_cover.jpg"
         />
@@ -33,7 +38,7 @@ import ITARTile from '../components/ITARTile.astro';
       <div class="t-inj">
         <ProjectTile
           title="N₂O Flow Model (for Injector Sizing)"
-          tagline="Two-phase N₂O model, 35% → 10.3% error"
+          tagline="To better predict oxidizer mass flow rate"
           href="/projects/injector-orifice-sizing"
           image="/assets/projects/flow_model/n2omodel_cover.JPG"
         />
@@ -41,7 +46,7 @@ import ITARTile from '../components/ITARTile.astro';
       <div class="t-vstand">
         <ProjectTile
           title="Vertical Tank Mount"
-          tagline="Flight tank config. for static fire / cold flow"
+          tagline="Ox. tank infrastructure for static fire / cold flow"
           href="/projects/vertical-test-stand"
           image="/assets/projects/tank_mount/tankmount_cover.jpg"
         />
@@ -49,7 +54,7 @@ import ITARTile from '../components/ITARTile.astro';
       <div class="t-data">
         <ProjectTile
           title="Data Analysis"
-          tagline="20+ pages of hydro, cold-flow & static-fire reports"
+          tagline="20+ pages of test reports, Excel Sheets"
           href="/projects/propulsion-data-analysis"
           image="/assets/projects/analysis/analysis_cover.jpg"
         />
@@ -64,8 +69,8 @@ import ITARTile from '../components/ITARTile.astro';
     <div class="mosaic">
       <div class="t-uav">
         <ProjectTile
-          title="Unmanned Aerial Vehicle Research"
-          tagline="DfAM gimbal joint, 6-DoF singularity elimination"
+          title="Omnidirectional Thrust-Vectored Quadrotor Research"
+          tagline="Overactuated 6-DOF UAV with 4 passive gimbals"
           href="/projects/uav-gimbal-joint"
           image="/assets/projects/maclab/drone_cover.jpg"
         />
@@ -81,7 +86,7 @@ import ITARTile from '../components/ITARTile.astro';
       <div class="t-sub">
         <ProjectTile
           title="EVA Training Submersible"
-          tagline="16-ft neutrally buoyant open-frame EVA trainer"
+          tagline="Neutrally buoyant open-frame EVA trainer"
           href="/projects/submersible-v3"
           image="/assets/projects/advancingx/SubX_cover.jpg"
           imagePosition="right 45%"
@@ -97,7 +102,7 @@ import ITARTile from '../components/ITARTile.astro';
     <div class="mosaic">
       <div class="t-e1rk">
         <ProjectTile
-          title="3D Printed Model Rocket"
+          title="3D Printed A-Class Rocket"
           tagline="E1RK · FDM sounding rocket — OpenRocket + SolidWorks"
           href="/projects/3d-printed-rocket"
           image="/assets/projects/3dpr/3DPR_cover.JPG"
@@ -105,7 +110,7 @@ import ITARTile from '../components/ITARTile.astro';
       </div>
       <div class="t-e1rk">
         <ProjectTile
-          title="Group High Powered Rocket"
+          title="High Powered G-Class Rocket"
           tagline="E1RK · Fiberglass airframe, 3D-printed nose cone & boat tail"
           href="/projects/group-high-powered-rocket"
           image="/assets/projects/gmpr/gmpr_cover.jpg"
@@ -137,16 +142,16 @@ import ITARTile from '../components/ITARTile.astro';
 
     <div class="mosaic">
       <div class="t-rs">
-        <ITARTile title="Production Fixtures"       tagline="Engineering design & fabrication"   />
+        <ITARTile title="Production Tooling Fixtures"       tagline=""   />
       </div>
       <div class="t-rs">
-        <ITARTile title="Additive Manufacturing"    tagline="Design for additive manufacturing"  />
+        <ITARTile title="Additive Manufacturing"    tagline=""  />
       </div>
       <div class="t-rs">
-        <ITARTile title="Exploding Foil Initiator"  tagline="Precision initiation engineering"   />
+        <ITARTile title="Pyrotechnics & Energetics"  tagline=""   />
       </div>
       <div class="t-rs">
-        <ITARTile title="Precision Initiating Couplers" tagline="Ordnance interface engineering" />
+        <ITARTile title="Rapid Prototyping" tagline="" />
       </div>
     </div>
 
@@ -190,6 +195,28 @@ import ITARTile from '../components/ITARTile.astro';
 
 <style>
   .projects-page { padding-bottom: 4rem; }
+
+  /* Page header — same pattern as About / Skills / Contact */
+  .page-header { margin-bottom: 3rem; }
+
+  .page-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: var(--fw-black);
+    color: var(--text-100);
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+    text-transform: uppercase;
+  }
 
   .section-header {
     display: flex;

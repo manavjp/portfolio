@@ -8,9 +8,10 @@ interface Props {
   category: string;
   tagline: string;
   showOverview?: boolean;
+  nextHref?: string;
 }
 
-const { title, description, ghostText, category, tagline, showOverview = true } = Astro.props;
+const { title, description, ghostText, category, tagline, showOverview = true, nextHref } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
@@ -18,7 +19,7 @@ const { title, description, ghostText, category, tagline, showOverview = true } 
     <div class="proj-hero__bg" aria-hidden="true"></div>
     <div class="proj-hero__ghost" aria-hidden="true">{ghostText}</div>
     <div class="proj-hero__content page-padded">
-      <a href="/projects" class="proj-hero__back">← Projects</a>
+      <a href="/projects" class="proj-hero__back" data-astro-prefetch>← Projects</a>
       <p class="proj-hero__category">{category}</p>
       <h1 class="proj-hero__title">{title}</h1>
       <p class="proj-hero__tagline">{tagline}</p>
@@ -29,7 +30,607 @@ const { title, description, ghostText, category, tagline, showOverview = true } 
     {showOverview && <h2 class="section-overview">Overview</h2>}
     <slot />
   </div>
+  {nextHref && <div id="next-proj-data" data-href={nextHref} hidden aria-hidden="true"></div>}
 </Layout>
+
+<script>
+  // ── "Next Project" floating liquid-glass button ─────────────────────────────
+  // Library: dashersw/liquid-glass-js, vendored at /public/vendor/liquid-glass/.
+  // Load order matters: html2canvas → container.js → button.js (classic scripts).
+
+  import { navigate } from 'astro:transitions/client';
+  import { prefetch } from 'astro:prefetch';
+
+  const VENDOR = '/vendor/liquid-glass';
+  const BUTTON_TEXT = 'Next Project';
+  const ARROW = '→';
+  const TOP_ARROW = '↑';
+  const BUTTON_FONT_SIZE = 16;
+  const TOP_FONT_SIZE = 14; // circle diameter = 2.5 × font size ≈ pill height
+  const SHOW_AFTER_SCROLL = 0.25;
+  const TOP_SHOW_AFTER = 0.8;
+  const PREFETCH_RADIUS = 150; // px — cursor proximity to the button that triggers prefetch
+  // The transition overlay covers the viewport for ~820ms after astro:page-load
+  // (380ms hold + 440ms wipe). The page snapshot must wait until it is gone, or
+  // the glass samples the overlay panel instead of the page.
+  const OVERLAY_CLEAR_MS = 1350;
+
+  // Canonical project order (matches the index mosaic). Source of truth for
+  // previous-page lookup (← key) and destination captions; each page's nextHref
+  // prop is validated against it by the render check.
+  const PROJECT_ORDER: Array<{ path: string; name: string }> = [
+    { path: '/projects/horizontal-propulsion-test-stand', name: 'Horizontal Test Stand' },
+    { path: '/projects/injector-orifice-sizing',          name: 'N₂O Flow Model' },
+    { path: '/projects/vertical-test-stand',              name: 'Vertical Tank Mount' },
+    { path: '/projects/propulsion-data-analysis',         name: 'Data Analysis' },
+    { path: '/projects/uav-gimbal-joint',                 name: 'Quadrotor Research' },
+    { path: '/projects/submersible-v3',                   name: 'EVA Training Submersible' },
+    { path: '/projects/3d-printed-rocket',                name: 'A-Class Rocket' },
+    { path: '/projects/group-high-powered-rocket',        name: 'G-Class Rocket' },
+    { path: '/projects/obstacle-avoidance-robot',         name: 'Obstacle Avoidance Vehicle' },
+    { path: '/projects/taylor-observatory',               name: 'Observatory Research' },
+  ];
+
+  const normPath = (p: string): string => p.replace(/\/$/, '') || '/';
+
+  // Shader settings — the library reads window.glassControls at shader init.
+  const GLASS_SETTINGS = {
+    edgeIntensity: 0.01,
+    rimIntensity:  0.04,
+    baseIntensity: 0.01,
+    edgeDistance:  0.17,
+    rimDistance:   0.4,
+    baseDistance:  0.14,
+    cornerBoost:   0.02,
+    rippleEffect:  0.15,
+    blurRadius:    7.5,
+    tintOpacity:   0.16,
+  };
+
+  let _cleanup: (() => void) | null = null;
+  let _scriptsReady: Promise<void> | null = null;
+
+  const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+
+  function loadScript(src: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      if (document.querySelector(`script[src="${src}"]`)) { resolve(); return; }
+      const s = document.createElement('script');
+      s.src = src;
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error(`Failed to load: ${src}`));
+      document.head.appendChild(s);
+    });
+  }
+
+  function ensureScripts(): Promise<void> {
+    if (_scriptsReady) return _scriptsReady;
+    _scriptsReady = Promise.resolve()
+      .then(() => loadScript(`${VENDOR}/html2canvas.min.js`))
+      .then(() => loadScript(`${VENDOR}/container.js`))
+      .then(() => loadScript(`${VENDOR}/button.js`))
+      .then(() => {
+        // class declarations in classic scripts are NOT window properties; promote them
+        // via an inline classic script that runs in global scope where Button is accessible
+        if (!(window as any).LiquidGlassButton) {
+          const s = document.createElement('script');
+          s.textContent =
+            'window.LiquidGlassButton = typeof Button !== "undefined" ? Button : null;' +
+            'window.LiquidGlassContainer = typeof Container !== "undefined" ? Container : null;';
+          document.head.appendChild(s);
+        }
+      })
+      .catch((e: unknown) => { _scriptsReady = null; throw e; });
+    return _scriptsReady;
+  }
+
+  async function initNextBtn(): Promise<void> {
+    if (_cleanup) { _cleanup(); _cleanup = null; }
+
+    let cancelled = false;
+    let teardown: Array<() => void> = [];
+    _cleanup = () => {
+      cancelled = true;
+      teardown.forEach((fn) => { try { fn(); } catch { /* element already gone */ } });
+      teardown = [];
+    };
+
+    const data = document.getElementById('next-proj-data') as HTMLElement | null;
+    const href = data?.dataset.href ?? '';
+    if (!href) return; // not a project page
+
+    // Position of this page in the canonical order → previous page + next name.
+    const orderIdx = PROJECT_ORDER.findIndex((p) => p.path === normPath(location.pathname));
+    const prevHref = orderIdx >= 0
+      ? PROJECT_ORDER[(orderIdx - 1 + PROJECT_ORDER.length) % PROJECT_ORDER.length].path
+      : null;
+    const expectedNext = orderIdx >= 0
+      ? PROJECT_ORDER[(orderIdx + 1) % PROJECT_ORDER.length].path
+      : null;
+    const nextName = PROJECT_ORDER.find((p) => p.path === normPath(href))?.name ?? null;
+
+    // ← / → keyboard navigation between projects (wraps around, same order).
+    // Registered before the glass init so it works the moment the page loads,
+    // independent of WebGL/snapshot success.
+    let keyNavigated = false;
+    const onKeyDown = (e: KeyboardEvent): void => {
+      if (keyNavigated || e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+      const t = e.target as HTMLElement | null;
+      if (t && (t.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(t.tagName))) return;
+      if (e.key === 'ArrowRight') {
+        keyNavigated = true;
+        e.preventDefault();
+        void navigate(href);
+      } else if (e.key === 'ArrowLeft' && prevHref) {
+        keyNavigated = true;
+        e.preventDefault();
+        void navigate(prevHref);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    teardown.push(() => window.removeEventListener('keydown', onKeyDown));
+
+    try { await ensureScripts(); }
+    catch (e) { console.warn('[next-project] could not load liquid-glass assets:', e); return; }
+
+    // Let the page-transition overlay wipe out before snapshotting the page.
+    await sleep(OVERLAY_CLEAR_MS);
+    if (cancelled) return;
+
+    // Reset Container static state so each page gets a fresh snapshot.
+    // Without this, the first page's snapshot is reused on all subsequent pages,
+    // making the glass render the wrong background.
+    const GlassCtr = (window as any).LiquidGlassContainer;
+    if (GlassCtr) {
+      GlassCtr.instances          = [];
+      GlassCtr.pageSnapshot       = null;
+      GlassCtr.isCapturing        = false;
+      GlassCtr.waitingForSnapshot = [];
+    }
+
+    // Apply shader controls before Button instantiation so the render loop picks them up.
+    (window as any).glassControls = { ...GLASS_SETTINGS };
+
+    const Btn = (window as any).LiquidGlassButton;
+    if (!Btn) { console.warn('[next-project] LiquidGlassButton class unavailable'); return; }
+
+    // Layout: [ ↑ circle ] [ caption ↑ / Next Project → pill ] in one fixed
+    // flex row, so the circle always sits just left of the pill.
+    // A real <a> wraps the pill: keyboard/middle-click work natively and
+    // Astro's ClientRouter + transition overlay intercept it like any other link.
+    const wrapper = document.createElement('div');
+    wrapper.id = 'next-proj-btn';
+
+    const topWrap = document.createElement('div');
+    topWrap.className = 'npb-top';
+    const topLink = document.createElement('button');
+    topLink.type = 'button';
+    topLink.className = 'top-link';
+    topLink.setAttribute('aria-label', 'Back to top');
+
+    const nextWrap = document.createElement('div');
+    nextWrap.className = 'npb-next';
+    const link = document.createElement('a');
+    link.className = 'next-proj-link';
+    link.href = href;
+    link.setAttribute('aria-label', BUTTON_TEXT);
+    const dest = document.createElement('span');
+    dest.className = 'npb-dest';
+    dest.setAttribute('aria-hidden', 'true');
+    if (nextName) dest.textContent = `${ARROW} ${nextName}`;
+
+    let btn: any;
+    let topBtn: any;
+    try {
+      // Constructed with "label + arrow" as the text so the library measures the
+      // pill wide enough for both; the text node is then split into spans below
+      // so the arrow can animate independently on hover.
+      btn = new Btn({
+        text: `${BUTTON_TEXT} ${ARROW}`,
+        type: 'pill',
+        size: BUTTON_FONT_SIZE,
+        tintOpacity: GLASS_SETTINGS.tintOpacity,
+      });
+      topBtn = new Btn({
+        text: TOP_ARROW,
+        type: 'circle',
+        size: TOP_FONT_SIZE,
+        tintOpacity: GLASS_SETTINGS.tintOpacity,
+      });
+    } catch (e) {
+      console.warn('[next-project] button construction failed:', e);
+      return;
+    }
+
+    const textEl = btn.element.querySelector('.glass-button-text') as HTMLElement | null;
+    if (textEl) {
+      textEl.textContent = '';
+      const labelSpan = document.createElement('span');
+      labelSpan.className = 'npb-label';
+      labelSpan.textContent = BUTTON_TEXT;
+      const arrowSpan = document.createElement('span');
+      arrowSpan.className = 'npb-arrow';
+      arrowSpan.setAttribute('aria-hidden', 'true');
+      arrowSpan.textContent = ARROW;
+      textEl.append(labelSpan, arrowSpan);
+    }
+
+    link.appendChild(btn.element);
+    nextWrap.append(dest, link);
+    topLink.appendChild(topBtn.element);
+    topWrap.appendChild(topLink);
+    wrapper.append(topWrap, nextWrap);
+    document.body.appendChild(wrapper);
+
+    // Back to top — Lenis smooth scroll (exposed by Layout.astro), with fallbacks.
+    const onTopClick = (): void => {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const lenis = (window as any).__lenis;
+      if (lenis?.scrollTo) lenis.scrollTo(0, reduced ? { immediate: true } : undefined);
+      else window.scrollTo({ top: 0, behavior: reduced ? 'instant' : 'smooth' });
+    };
+    topLink.addEventListener('click', onTopClick);
+
+    // Prefetch the next page once — when the cursor nears the pill (desktop) or
+    // as soon as the pill is revealed (covers touch, where there is no cursor).
+    let prefetched = false;
+    const doPrefetch = (): void => {
+      if (prefetched) return;
+      prefetched = true;
+      try { prefetch(href); } catch { /* prefetch unavailable (e.g. data saver) */ }
+    };
+    const onPointerMove = (e: PointerEvent): void => {
+      if (prefetched) { window.removeEventListener('pointermove', onPointerMove); return; }
+      const r = link.getBoundingClientRect();
+      const dx = Math.max(r.left - e.clientX, e.clientX - r.right, 0);
+      const dy = Math.max(r.top - e.clientY, e.clientY - r.bottom, 0);
+      if (Math.hypot(dx, dy) < PREFETCH_RADIUS) {
+        doPrefetch();
+        window.removeEventListener('pointermove', onPointerMove);
+      }
+    };
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+
+    // Reveal thresholds: pill after SHOW_AFTER_SCROLL, circle after TOP_SHOW_AFTER.
+    const onScroll = (): void => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = scrollable > 0 ? window.scrollY / scrollable : 1;
+      nextWrap.classList.toggle('is-visible', pct >= SHOW_AFTER_SCROLL);
+      topWrap.classList.toggle('is-visible', pct >= TOP_SHOW_AFTER);
+      if (pct >= SHOW_AFTER_SCROLL) doPrefetch();
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+
+    teardown.push(() => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      window.removeEventListener('pointermove', onPointerMove);
+      // The library never stops its render loops or releases its WebGL contexts;
+      // do it here or cycling through projects exhausts the browser's context limit.
+      [btn, topBtn].forEach((b) => {
+        try {
+          const gl = b?.gl_refs?.gl ?? b?.gl;
+          if (b?.gl_refs) b.gl_refs.gl = null;
+          gl?.getExtension('WEBGL_lose_context')?.loseContext();
+        } catch { /* context already lost */ }
+      });
+      wrapper.remove();
+    });
+
+    void verifyRender(btn, topBtn, wrapper, link, href, expectedNext, nextName, () => cancelled);
+  }
+
+  // ── Render check ────────────────────────────────────────────────────────────
+  // Runs on every page load. Confirms both glass controls are in the DOM with
+  // real dimensions, their shaders initialized AND drew pixels, the pill text
+  // reads BUTTON_TEXT with the arrow and sits centered, the link points at the
+  // next project and agrees with PROJECT_ORDER, and the destination caption is
+  // correct. On failure: logs the reasons and applies a CSS-glass fallback so
+  // the controls stay visible and clickable.
+  async function verifyRender(
+    btn: any,
+    topBtn: any,
+    wrapper: HTMLElement,
+    link: HTMLAnchorElement,
+    href: string,
+    expectedNext: string | null,
+    nextName: string | null,
+    isCancelled: () => boolean,
+  ): Promise<void> {
+    const problems: string[] = [];
+
+    // Snapshot capture + shader compile are async; allow up to 8s.
+    const deadline = performance.now() + 8000;
+    while ((!btn.webglInitialized || !topBtn.webglInitialized) && performance.now() < deadline) {
+      if (isCancelled()) return;
+      await sleep(150);
+    }
+    if (isCancelled()) return;
+
+    if (!document.body.contains(wrapper)) problems.push('controls are not in the DOM');
+
+    const el = btn.element as HTMLElement;
+    const elRect = el.getBoundingClientRect();
+    if (elRect.width < 20 || elRect.height < 10) {
+      problems.push(`next button has no usable size (${Math.round(elRect.width)}×${Math.round(elRect.height)}px)`);
+    }
+
+    const topRect = (topBtn.element as HTMLElement).getBoundingClientRect();
+    if (topRect.width < 20 || Math.abs(topRect.width - topRect.height) > 2) {
+      problems.push(`top button is not a proper circle (${Math.round(topRect.width)}×${Math.round(topRect.height)}px)`);
+    } else if (topRect.right > elRect.left) {
+      problems.push('top button is not positioned left of the next button');
+    }
+
+    if (new URL(link.href, location.origin).pathname !== href) {
+      problems.push(`link points to ${link.href}, expected ${href}`);
+    }
+    if (expectedNext && normPath(new URL(link.href, location.origin).pathname) !== expectedNext) {
+      problems.push(`next link is ${href} but PROJECT_ORDER expects ${expectedNext}`);
+    }
+
+    const destEl = wrapper.querySelector('.npb-dest') as HTMLElement | null;
+    if (!nextName) {
+      problems.push('page missing from PROJECT_ORDER — destination caption and ← key degraded');
+    } else if (!destEl || destEl.textContent !== `${ARROW} ${nextName}`) {
+      problems.push(`destination caption is ${JSON.stringify(destEl?.textContent ?? null)}, expected "${ARROW} ${nextName}"`);
+    }
+
+    const textEl = el.querySelector('.glass-button-text') as HTMLElement | null;
+    const labelEl = textEl?.querySelector('.npb-label') as HTMLElement | null;
+    const arrowEl = textEl?.querySelector('.npb-arrow') as HTMLElement | null;
+    if (!textEl || !labelEl || labelEl.textContent !== BUTTON_TEXT) {
+      problems.push(`button label is ${JSON.stringify(labelEl?.textContent ?? textEl?.textContent ?? null)}, expected "${BUTTON_TEXT}"`);
+    } else {
+      if (!arrowEl || arrowEl.getBoundingClientRect().width < 4) {
+        problems.push('arrow icon missing or not rendered');
+      }
+      const t = textEl.getBoundingClientRect();
+      const dx = Math.abs(t.left + t.width / 2 - (elRect.left + elRect.width / 2));
+      const dy = Math.abs(t.top + t.height / 2 - (elRect.top + elRect.height / 2));
+      if (dx > 2 || dy > 2) problems.push(`text off-center by ${dx.toFixed(1)}px horizontal / ${dy.toFixed(1)}px vertical`);
+      if (t.width > elRect.width || t.height > elRect.height) problems.push('text overflows the button');
+    }
+
+    // preserveDrawingBuffer is on, so each drawn frame can be read back.
+    const checkGlassDrew = async (b: any, label: string): Promise<void> => {
+      if (!b.webglInitialized) {
+        problems.push(`${label}: glass shader never initialized (page snapshot or WebGL failed)`);
+        return;
+      }
+      let drew = false;
+      try {
+        const gl = b.gl_refs?.gl;
+        const canvas = b.canvas as HTMLCanvasElement;
+        for (let i = 0; i < 5 && !drew; i++) {
+          b.render?.();
+          const px = new Uint8Array(4);
+          gl.readPixels(Math.floor(canvas.width / 2), Math.floor(canvas.height / 2), 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+          drew = px[3] > 0; // shape mask alpha — opaque at the shape's center when rendered
+          if (!drew) await sleep(200);
+        }
+        if (!drew) problems.push(`${label}: glass canvas rendered no visible pixels`);
+      } catch (e) {
+        problems.push(`${label}: could not read glass canvas pixels: ${e}`);
+      }
+    };
+    await checkGlassDrew(btn, 'next button');
+    if (isCancelled()) return;
+    await checkGlassDrew(topBtn, 'top button');
+    if (isCancelled()) return;
+
+    if (problems.length) {
+      wrapper.classList.add('nextproj-fallback');
+      console.warn('[next-project] render check FAILED — CSS fallback applied. Problems:', problems);
+    } else {
+      console.info(`[next-project] render check passed — pill + top circle rendered, label/arrow centered, caption "${ARROW} ${nextName}", links to ${href}`);
+    }
+  }
+
+  document.addEventListener('astro:page-load', () => { void initNextBtn(); });
+</script>
+
+<style is:global>
+  /* ── Next Project floating glass button ──────────────────────────────────
+     Built by JS (liquid-glass-js), so these rules must be global.
+     z-index sits below the page-transition overlay (9990) so the sweep
+     covers the button during navigation. */
+  #next-proj-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 9980;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    pointer-events: none;
+  }
+
+  /* Each control reveals independently: pill at 25% scroll, circle at 80% */
+  #next-proj-btn .npb-top,
+  #next-proj-btn .npb-next {
+    position: relative;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+  }
+
+  #next-proj-btn .npb-top.is-visible,
+  #next-proj-btn .npb-next.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  #next-proj-btn .next-proj-link {
+    display: block;
+    text-decoration: none;
+    border-radius: 999px;
+  }
+
+  #next-proj-btn .next-proj-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 999px;
+  }
+
+  /* Back-to-top circle — native <button> wrapping the glass element */
+  #next-proj-btn .top-link {
+    display: block;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+
+  #next-proj-btn .top-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  /* Destination caption — fades in above the pill on hover */
+  #next-proj-btn .npb-dest {
+    position: absolute;
+    bottom: calc(100% + 0.6rem);
+    right: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    color: var(--text-50);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+  }
+
+  /* glass.css equivalents, bundled here so text centering never depends on
+     an asynchronously loaded stylesheet (source: liquid-glass-js glass.css) */
+  #next-proj-btn .glass-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  #next-proj-btn .glass-button {
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  #next-proj-btn .glass-button-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: none;
+    color: #fff;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-weight: normal;
+    line-height: 1;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+
+  #next-proj-btn .npb-arrow {
+    display: inline-block;
+    transition:
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      color 0.3s ease;
+  }
+
+  /* ── Hover animation: pill lifts + scales, arrow slides into the accent,
+        glass brightens; pressing scales back down for a tactile feel ──── */
+  #next-proj-btn .next-proj-link {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+
+  #next-proj-btn .glass-button {
+    transition: box-shadow 0.3s ease;
+  }
+
+  #next-proj-btn canvas {
+    transition: filter 0.3s ease;
+  }
+
+  @media (hover: hover) {
+    #next-proj-btn .next-proj-link:hover {
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    #next-proj-btn .next-proj-link:hover .glass-button,
+    #next-proj-btn .top-link:hover .glass-button {
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+    }
+
+    #next-proj-btn .next-proj-link:hover canvas,
+    #next-proj-btn .top-link:hover canvas {
+      filter: brightness(1.18);
+    }
+
+    #next-proj-btn .next-proj-link:hover .npb-arrow {
+      transform: translateX(4px);
+      color: var(--accent);
+    }
+
+    #next-proj-btn .next-proj-link:active {
+      transform: translateY(0) scale(0.97);
+      transition-duration: 0.1s;
+    }
+
+    #next-proj-btn .top-link:hover {
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    #next-proj-btn .top-link:active {
+      transform: translateY(0) scale(0.95);
+      transition-duration: 0.1s;
+    }
+
+    #next-proj-btn .npb-next:hover .npb-dest {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Render-check fallback — CSS glass stand-in when WebGL/snapshot fails */
+  #next-proj-btn.nextproj-fallback .glass-button {
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #next-proj-btn .npb-top,
+    #next-proj-btn .npb-next,
+    #next-proj-btn .npb-dest,
+    #next-proj-btn .next-proj-link,
+    #next-proj-btn .top-link,
+    #next-proj-btn .glass-button,
+    #next-proj-btn canvas,
+    #next-proj-btn .npb-arrow { transition: none; }
+  }
+</style>
 
 <style>
   .proj-hero {

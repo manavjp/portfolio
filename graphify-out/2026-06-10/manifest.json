@@ -1,0 +1,702 @@
+{
+  ".claude/launch.json": {
+    "mtime": 1781095013.798334,
+    "ast_hash": "05c3e15faf761c872b22199dd8b68b02",
+    "semantic_hash": ""
+  },
+  ".claude/settings.json": {
+    "mtime": 1779990471.6930513,
+    "ast_hash": "a7c3ca7c665d9da764c1cd325d63d5b5",
+    "semantic_hash": "a7c3ca7c665d9da764c1cd325d63d5b5"
+  },
+  ".claude/settings.local.json": {
+    "mtime": 1781088982.2582915,
+    "ast_hash": "99787c4333fea65bce3d038948f0e1db",
+    "semantic_hash": "99787c4333fea65bce3d038948f0e1db"
+  },
+  "astro.config.mjs": {
+    "mtime": 1779996679.1998596,
+    "ast_hash": "792a0d1720dac44d917189611a7d3408",
+    "semantic_hash": "792a0d1720dac44d917189611a7d3408"
+  },
+  "package.json": {
+    "mtime": 1780207163.0380673,
+    "ast_hash": "c53e57e60d038ceedd5fdd2f3f9474ba",
+    "semantic_hash": "c53e57e60d038ceedd5fdd2f3f9474ba"
+  },
+  "public/assets/projects/analysis/hotfire-thrust.json": {
+    "mtime": 1780594905.5620596,
+    "ast_hash": "020a9f8e9dea97839968f884bc28fd61",
+    "semantic_hash": "020a9f8e9dea97839968f884bc28fd61"
+  },
+  "src/components/Hero.astro": {
+    "mtime": 1780207163.429127,
+    "ast_hash": "7ea6a5bb54d17682afb64ea8b553552d",
+    "semantic_hash": "7ea6a5bb54d17682afb64ea8b553552d"
+  },
+  "src/components/ITARTile.astro": {
+    "mtime": 1780022375.5174341,
+    "ast_hash": "bc878df4ec84e074d3ef89434bb7d71e",
+    "semantic_hash": "bc878df4ec84e074d3ef89434bb7d71e"
+  },
+  "src/components/LogoStack.astro": {
+    "mtime": 1780206363.336743,
+    "ast_hash": "c8c55d68402c2c0bc8bf78f43d33abef",
+    "semantic_hash": "c8c55d68402c2c0bc8bf78f43d33abef"
+  },
+  "src/components/MetricCallout.astro": {
+    "mtime": 1780207163.4296196,
+    "ast_hash": "446ee200177c285d62cd8d9846b24e3c",
+    "semantic_hash": "446ee200177c285d62cd8d9846b24e3c"
+  },
+  "src/components/PdfViewer.astro": {
+    "mtime": 1780595013.196347,
+    "ast_hash": "74bb645e3b60f44001d7b94102b11b7f",
+    "semantic_hash": "74bb645e3b60f44001d7b94102b11b7f"
+  },
+  "src/components/ProgressBar.astro": {
+    "mtime": 1780206026.9688935,
+    "ast_hash": "60006cceedfa7d68ebf4f1a8e18198b6",
+    "semantic_hash": "60006cceedfa7d68ebf4f1a8e18198b6"
+  },
+  "src/components/ProjectTile.astro": {
+    "mtime": 1780455971.6593537,
+    "ast_hash": "fe7b2a08baa7df6705f83912670259d4",
+    "semantic_hash": "fe7b2a08baa7df6705f83912670259d4"
+  },
+  "src/components/ScatteredReports.astro": {
+    "mtime": 1780455981.1830459,
+    "ast_hash": "b4851fbc349aa7e98691aa027361175a",
+    "semantic_hash": "b4851fbc349aa7e98691aa027361175a"
+  },
+  "src/components/Sidebar.astro": {
+    "mtime": 1780455949.880541,
+    "ast_hash": "72f19dd47aa8b948dd6b382ae8ce754e",
+    "semantic_hash": "72f19dd47aa8b948dd6b382ae8ce754e"
+  },
+  "src/components/SpecTable.astro": {
+    "mtime": 1780026412.6959372,
+    "ast_hash": "a49f001204953c03cdbc9c294ebe58b4",
+    "semantic_hash": "a49f001204953c03cdbc9c294ebe58b4"
+  },
+  "src/components/StatusPill.astro": {
+    "mtime": 1779996932.5584974,
+    "ast_hash": "e384895bcad79a9dfe38e17b85764d10",
+    "semantic_hash": "e384895bcad79a9dfe38e17b85764d10"
+  },
+  "src/components/ThrustChart.astro": {
+    "mtime": 1780594918.7787588,
+    "ast_hash": "997ac93b0ad9112b86c45b7b8f8b2bc2",
+    "semantic_hash": "997ac93b0ad9112b86c45b7b8f8b2bc2"
+  },
+  "src/components/TransitionOverlay.astro": {
+    "mtime": 1780213370.9228933,
+    "ast_hash": "2425ab3db9930880612f987e72e19c69",
+    "semantic_hash": "2425ab3db9930880612f987e72e19c69"
+  },
+  "src/config.ts": {
+    "mtime": 1780222158.5629144,
+    "ast_hash": "2861f4eb4ea032cd214b51b65a099408",
+    "semantic_hash": "2861f4eb4ea032cd214b51b65a099408"
+  },
+  "src/env.d.ts": {
+    "mtime": 1780000748.5235658,
+    "ast_hash": "5177c9e0cec2aa7c3ae154b9b4460aef",
+    "semantic_hash": "5177c9e0cec2aa7c3ae154b9b4460aef"
+  },
+  "src/layouts/Layout.astro": {
+    "mtime": 1780791136.3731658,
+    "ast_hash": "46ba5435dc58ad72c56a98acde686f0b",
+    "semantic_hash": "46ba5435dc58ad72c56a98acde686f0b"
+  },
+  "src/layouts/ProjectPageLayout.astro": {
+    "mtime": 1781097062.6018238,
+    "ast_hash": "fe435850e9abaf480577541c03f1fa2d",
+    "semantic_hash": ""
+  },
+  "src/pages/about.astro": {
+    "mtime": 1780282441.245765,
+    "ast_hash": "de83b49399b716b9a04f39efe51776d8",
+    "semantic_hash": "de83b49399b716b9a04f39efe51776d8"
+  },
+  "src/pages/contact.astro": {
+    "mtime": 1780457799.2408345,
+    "ast_hash": "6ce1d5814755c46855ee2f0c5e2968e8",
+    "semantic_hash": "6ce1d5814755c46855ee2f0c5e2968e8"
+  },
+  "src/pages/index.astro": {
+    "mtime": 1780791120.7710092,
+    "ast_hash": "f2e38610c3728273847c2cd06654148e",
+    "semantic_hash": "f2e38610c3728273847c2cd06654148e"
+  },
+  "src/pages/projects.astro": {
+    "mtime": 1781092782.3841095,
+    "ast_hash": "95543f76dce665d8377cedc2d1ed6804",
+    "semantic_hash": ""
+  },
+  "src/pages/projects/3d-printed-rocket.astro": {
+    "mtime": 1781097063.9842553,
+    "ast_hash": "f9cb7075a043fc288c1caba1831283f4",
+    "semantic_hash": ""
+  },
+  "src/pages/projects/group-high-powered-rocket.astro": {
+    "mtime": 1781097063.9851122,
+    "ast_hash": "9750040890349dce107214d3d967ab36",
+    "semantic_hash": ""
+  },
+  "src/pages/projects/horizontal-propulsion-test-stand.astro": {
+    "mtime": 1781097063.985711,
+    "ast_hash": "bac9e8da1ca5f74182931c6867e0fad7",
+    "semantic_hash": ""
+  },
+  "src/pages/projects/injector-orifice-sizing.astro": {
+    "mtime": 1781097063.9862938,
+    "ast_hash": "8455297b3deaf29f96051249eeb862ce",
+    "semantic_hash": ""
+  },
+  "src/pages/projects/obstacle-avoidance-robot.astro": {
+    "mtime": 1781097063.9870887,
+    "ast_hash": "a019bb764fae89739adf7e9832f46582",
+    "semantic_hash": ""
+  },
+  "src/pages/projects/propulsion-data-analysis.astro": {
+    "mtime": 1781097063.9895349,
+    "ast_hash": "e4e0f15efa71f511f7fc2cd09c672082",
+    "semantic_hash": ""
+  },
+  "src/pages/projects/submersible-v3.astro": {
+    "mtime": 1781097063.99162,
+    "ast_hash": "fb2a0d83c45c5105d92f16e38f849d77",
+    "semantic_hash": ""
+  },
+  "src/pages/projects/taylor-observatory.astro": {
+    "mtime": 1781097063.993435,
+    "ast_hash": "678eda178842d5b9c488fbc746745aa1",
+    "semantic_hash": ""
+  },
+  "src/pages/projects/uav-gimbal-joint.astro": {
+    "mtime": 1781097063.9937875,
+    "ast_hash": "441120e67ead64629b0a3b5f12c790c9",
+    "semantic_hash": ""
+  },
+  "src/pages/projects/vertical-test-stand.astro": {
+    "mtime": 1781097063.9941444,
+    "ast_hash": "df48b9da60ec34b117f1461e7d05234e",
+    "semantic_hash": ""
+  },
+  "src/pages/skills.astro": {
+    "mtime": 1780207163.4396122,
+    "ast_hash": "6f350f5cbd2a70bf6cd8da807a572752",
+    "semantic_hash": "6f350f5cbd2a70bf6cd8da807a572752"
+  },
+  "tsconfig.json": {
+    "mtime": 1779996684.02989,
+    "ast_hash": "1d3613ac08bdda17e2b82251613dbc21",
+    "semantic_hash": "1d3613ac08bdda17e2b82251613dbc21"
+  },
+  ".github/workflows/deploy.yml": {
+    "mtime": 1780283788.2491584,
+    "ast_hash": "3b8fa04934fa56e69ac1dcb39341758b",
+    "semantic_hash": "3b8fa04934fa56e69ac1dcb39341758b"
+  },
+  "Claude.md": {
+    "mtime": 1779995789.5304909,
+    "ast_hash": "7319ee8f0cce85fcb36d44b257890195",
+    "semantic_hash": "7319ee8f0cce85fcb36d44b257890195"
+  },
+  "DECISIONS.md": {
+    "mtime": 1781097640.5919163,
+    "ast_hash": "24584921ca5f9c1c5a3e142058d92196",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1779938038.2733567,
+    "ast_hash": "337851be96a77bf7f33d8f0e4aff9b06",
+    "semantic_hash": "337851be96a77bf7f33d8f0e4aff9b06"
+  },
+  "docs/superpowers/plans/2026-05-28-milestone-1-foundation.md": {
+    "mtime": 1779996657.9433954,
+    "ast_hash": "d0c78eae03a553d887afc1e549674ad8",
+    "semantic_hash": "d0c78eae03a553d887afc1e549674ad8"
+  },
+  "docs/superpowers/plans/2026-05-28-milestone-2-hero.md": {
+    "mtime": 1779997623.2635784,
+    "ast_hash": "43d95e6236ddde869f016509a615ff58",
+    "semantic_hash": "43d95e6236ddde869f016509a615ff58"
+  },
+  "docs/superpowers/plans/2026-05-28-milestone-3-projects.md": {
+    "mtime": 1779999161.9067671,
+    "ast_hash": "7d3a30d795d19e2d26ef9553023e202e",
+    "semantic_hash": "7d3a30d795d19e2d26ef9553023e202e"
+  },
+  "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md": {
+    "mtime": 1780000685.520694,
+    "ast_hash": "ea5dfa2c413d5965d0b03ade5314da1d",
+    "semantic_hash": "ea5dfa2c413d5965d0b03ade5314da1d"
+  },
+  "docs/superpowers/specs/2026-05-28-milestone-2-hero.md": {
+    "mtime": 1779997512.0557277,
+    "ast_hash": "8e6b44e4ed8576d215a1e113c913606b",
+    "semantic_hash": "8e6b44e4ed8576d215a1e113c913606b"
+  },
+  "docs/superpowers/specs/2026-05-28-milestone-3-projects.md": {
+    "mtime": 1779998839.0872009,
+    "ast_hash": "47b57eab0e45b8035fea884e9943d65f",
+    "semantic_hash": "47b57eab0e45b8035fea884e9943d65f"
+  },
+  "docs/superpowers/specs/2026-05-28-milestone-4-all-projects.md": {
+    "mtime": 1780000238.969126,
+    "ast_hash": "bb2f319f7a42d47278872799c5534ade",
+    "semantic_hash": "bb2f319f7a42d47278872799c5534ade"
+  },
+  "public/assets/projects/3dpr/review_slides.pdf": {
+    "mtime": 1780224103.4255753,
+    "ast_hash": "c6243af25da33019fe30ac94edaae197",
+    "semantic_hash": "c6243af25da33019fe30ac94edaae197"
+  },
+  "public/assets/projects/analysis/Cold_Flow_001_26033_REV_A.pdf": {
+    "mtime": 1776079438.0,
+    "ast_hash": "5f5137b4177e5ca1a31d33c60a00fbb3",
+    "semantic_hash": "5f5137b4177e5ca1a31d33c60a00fbb3"
+  },
+  "public/assets/projects/analysis/Hydrostatic_003_26095_REV_A.pdf": {
+    "mtime": 1778785804.0,
+    "ast_hash": "32b8aff9db0173ceba9a267679bcc23f",
+    "semantic_hash": "32b8aff9db0173ceba9a267679bcc23f"
+  },
+  "public/assets/projects/analysis/_Particularity_ Injector Waterflow Analysis - Google Sheets.pdf": {
+    "mtime": 1780279533.152546,
+    "ast_hash": "eddd35b228dc901851287fdbc69c4171",
+    "semantic_hash": "eddd35b228dc901851287fdbc69c4171"
+  },
+  "public/assets/projects/flow_model/BenjaminWaxman.pdf": {
+    "mtime": 1777263785.042023,
+    "ast_hash": "dfceb5498f71ecf73323cab956fe7cef",
+    "semantic_hash": "dfceb5498f71ecf73323cab956fe7cef"
+  },
+  "public/assets/projects/flow_model/BrianJSolomon.pdf": {
+    "mtime": 1777263704.4177976,
+    "ast_hash": "d1134a20965515c57c9d410f1789e95e",
+    "semantic_hash": "d1134a20965515c57c9d410f1789e95e"
+  },
+  "public/assets/projects/gmpr/review_slides.pdf": {
+    "mtime": 1780224282.1607678,
+    "ast_hash": "93743831b650326727c9b930c8b4710d",
+    "semantic_hash": "93743831b650326727c9b930c8b4710d"
+  },
+  "public/assets/hero/homepage_screenshot.png": {
+    "mtime": 1780285280.0139053,
+    "ast_hash": "96e145c97503fd9587b1151412308e77",
+    "semantic_hash": "96e145c97503fd9587b1151412308e77"
+  },
+  "public/assets/projects/3dpr/3DPR_cover.JPG": {
+    "mtime": 1780030213.3791554,
+    "ast_hash": "5a49e9feba7fbb61623d56716b5b5e9c",
+    "semantic_hash": "5a49e9feba7fbb61623d56716b5b5e9c"
+  },
+  "public/assets/projects/3dpr/3d_print.jpg": {
+    "mtime": 1780292906.0,
+    "ast_hash": "fc7168d356ee5d435850a5e27a35f2f3",
+    "semantic_hash": "fc7168d356ee5d435850a5e27a35f2f3"
+  },
+  "public/assets/projects/3dpr/body_weight.jpg": {
+    "mtime": 1780197074.9689376,
+    "ast_hash": "1b806813c52f3f1ccf7c897e4d70eb44",
+    "semantic_hash": "1b806813c52f3f1ccf7c897e4d70eb44"
+  },
+  "public/assets/projects/3dpr/fins.jpg": {
+    "mtime": 1780197075.4184651,
+    "ast_hash": "80c31a897747a7c15ab8cde99dc73db5",
+    "semantic_hash": "80c31a897747a7c15ab8cde99dc73db5"
+  },
+  "public/assets/projects/3dpr/launchpad.JPG": {
+    "mtime": 1780030164.0,
+    "ast_hash": "5a49e9feba7fbb61623d56716b5b5e9c",
+    "semantic_hash": "5a49e9feba7fbb61623d56716b5b5e9c"
+  },
+  "public/assets/projects/3dpr/nose_cone.jpg": {
+    "mtime": 1780197075.1022687,
+    "ast_hash": "36797b30ce6e9c3551d530fbb3d2327e",
+    "semantic_hash": "36797b30ce6e9c3551d530fbb3d2327e"
+  },
+  "public/assets/projects/3dpr/prototype_B.jpg": {
+    "mtime": 1780267861.0202742,
+    "ast_hash": "6aca2fec9629feaf93876bb61a1922b9",
+    "semantic_hash": "6aca2fec9629feaf93876bb61a1922b9"
+  },
+  "public/assets/projects/3dpr/team_picture.JPG": {
+    "mtime": 1780224738.0,
+    "ast_hash": "ae30ef7e6b67cd2bbf51113def378a22",
+    "semantic_hash": "ae30ef7e6b67cd2bbf51113def378a22"
+  },
+  "public/assets/projects/advancingx/PVC_tubes.jpg": {
+    "mtime": 1780197075.6797621,
+    "ast_hash": "5b0d734dd3ea1439865a561fb8d44798",
+    "semantic_hash": "5b0d734dd3ea1439865a561fb8d44798"
+  },
+  "public/assets/projects/advancingx/SubX_cover.jpg": {
+    "mtime": 1780197073.8568718,
+    "ast_hash": "b77185af2cab1dc380d331c69cd8686b",
+    "semantic_hash": "b77185af2cab1dc380d331c69cd8686b"
+  },
+  "public/assets/projects/advancingx/board_calculations.JPG": {
+    "mtime": 1752591154.0,
+    "ast_hash": "3266d28467a73b5e3a0f38605d15e307",
+    "semantic_hash": "3266d28467a73b5e3a0f38605d15e307"
+  },
+  "public/assets/projects/advancingx/board_sketch.JPG": {
+    "mtime": 1752591508.0,
+    "ast_hash": "ad140ef3bc5e6f3ef74fd23707846ebe",
+    "semantic_hash": "ad140ef3bc5e6f3ef74fd23707846ebe"
+  },
+  "public/assets/projects/advancingx/divers.jpeg": {
+    "mtime": 1780042034.825175,
+    "ast_hash": "981d48fdf5f0bbcbc8a080f39e9d0097",
+    "semantic_hash": "981d48fdf5f0bbcbc8a080f39e9d0097"
+  },
+  "public/assets/projects/advancingx/final_config.png": {
+    "mtime": 1780188971.9544969,
+    "ast_hash": "e87597128170f2df9cba7ea558c5bfff",
+    "semantic_hash": "e87597128170f2df9cba7ea558c5bfff"
+  },
+  "public/assets/projects/advancingx/prototype.png": {
+    "mtime": 1780031152.8750854,
+    "ast_hash": "4927f3391e20cf89bd1e3d0706f1d233",
+    "semantic_hash": "4927f3391e20cf89bd1e3d0706f1d233"
+  },
+  "public/assets/projects/advancingx/test_1.jpg": {
+    "mtime": 1780197074.1931715,
+    "ast_hash": "e818c9bff7308fbd82103723a2548b17",
+    "semantic_hash": "e818c9bff7308fbd82103723a2548b17"
+  },
+  "public/assets/projects/advancingx/test_1a.jpg": {
+    "mtime": 1780197074.8135839,
+    "ast_hash": "5479759877a0ff8cf2c46c4ae96791b2",
+    "semantic_hash": "5479759877a0ff8cf2c46c4ae96791b2"
+  },
+  "public/assets/projects/advancingx/test_1b.JPG": {
+    "mtime": 1780178186.0,
+    "ast_hash": "956eecdab84a0fe2cabceb5c9d0275ff",
+    "semantic_hash": "956eecdab84a0fe2cabceb5c9d0275ff"
+  },
+  "public/assets/projects/advancingx/test_1c.JPG": {
+    "mtime": 1780178168.0,
+    "ast_hash": "feac400c32a3ed65a89ff8ded8401399",
+    "semantic_hash": "feac400c32a3ed65a89ff8ded8401399"
+  },
+  "public/assets/projects/advancingx/test_1d.JPG": {
+    "mtime": 1780178166.0,
+    "ast_hash": "ca17e926434c19abdf0b73328d91b703",
+    "semantic_hash": "ca17e926434c19abdf0b73328d91b703"
+  },
+  "public/assets/projects/analysis/analysis_cover.jpg": {
+    "mtime": 1780269903.0326204,
+    "ast_hash": "679f8494ada1cf7a1b5e72c12e6db9e4",
+    "semantic_hash": "679f8494ada1cf7a1b5e72c12e6db9e4"
+  },
+  "public/assets/projects/analysis/cold_flow_cover.jpg": {
+    "mtime": 1780278639.3761969,
+    "ast_hash": "ef22ca6ce17bd88756b852b1a3525b04",
+    "semantic_hash": "ef22ca6ce17bd88756b852b1a3525b04"
+  },
+  "public/assets/projects/analysis/hydrostatic_cover.jpg": {
+    "mtime": 1780278639.4324553,
+    "ast_hash": "b9812084ab04b8603031f0007ea23f9f",
+    "semantic_hash": "b9812084ab04b8603031f0007ea23f9f"
+  },
+  "public/assets/projects/arduino_car/arduniocar_cover.jpg": {
+    "mtime": 1780207163.4272237,
+    "ast_hash": "31ac32fa66d3a26c9b18f075259889e2",
+    "semantic_hash": "31ac32fa66d3a26c9b18f075259889e2"
+  },
+  "public/assets/projects/arduino_car/robot.jpg": {
+    "mtime": 1780189218.282334,
+    "ast_hash": "d532f18ae400e5932eb06f2566e0f8bf",
+    "semantic_hash": "d532f18ae400e5932eb06f2566e0f8bf"
+  },
+  "public/assets/projects/flow_model/calibration_curves_at_best_kappa.png": {
+    "mtime": 1777425897.595829,
+    "ast_hash": "0d05d4602d07fa62869cc4359ca4f1bc",
+    "semantic_hash": "0d05d4602d07fa62869cc4359ca4f1bc"
+  },
+  "public/assets/projects/flow_model/iteration_results.png": {
+    "mtime": 1778341936.0614295,
+    "ast_hash": "42cb1808fd7e6473d822c4c2f2a0cca9",
+    "semantic_hash": "42cb1808fd7e6473d822c4c2f2a0cca9"
+  },
+  "public/assets/projects/flow_model/n2omodel_cover.JPG": {
+    "mtime": 1780038573.3614109,
+    "ast_hash": "de6145b99b8e9af36f8a8cbe8a980855",
+    "semantic_hash": "de6145b99b8e9af36f8a8cbe8a980855"
+  },
+  "public/assets/projects/gmpr/body_tube_layup.jpeg": {
+    "mtime": 1780178184.0,
+    "ast_hash": "020c644a3b4e8582a2afa363f9705e56",
+    "semantic_hash": "020c644a3b4e8582a2afa363f9705e56"
+  },
+  "public/assets/projects/gmpr/flight_config.jpg": {
+    "mtime": 1780197074.6734025,
+    "ast_hash": "f208e0963a50c83f06fd8128cf76ee49",
+    "semantic_hash": "f208e0963a50c83f06fd8128cf76ee49"
+  },
+  "public/assets/projects/gmpr/gmpr_cover.jpg": {
+    "mtime": 1780197073.946473,
+    "ast_hash": "551d1dc68eefdf2779a2aa3dc1860be8",
+    "semantic_hash": "551d1dc68eefdf2779a2aa3dc1860be8"
+  },
+  "public/assets/projects/gmpr/launch.PNG": {
+    "mtime": 1780178190.0,
+    "ast_hash": "8ee068b0c2304982ab1e0aa2680c8825",
+    "semantic_hash": "8ee068b0c2304982ab1e0aa2680c8825"
+  },
+  "public/assets/projects/gmpr/layup_b.png": {
+    "mtime": 1780189573.4736028,
+    "ast_hash": "cc80b704aa0657581df853c28f71a23a",
+    "semantic_hash": "cc80b704aa0657581df853c28f71a23a"
+  },
+  "public/assets/projects/gmpr/layupc.jpg": {
+    "mtime": 1780223285.6259973,
+    "ast_hash": "36dadd1dbc2a47d9991269e7938b5f58",
+    "semantic_hash": "36dadd1dbc2a47d9991269e7938b5f58"
+  },
+  "public/assets/projects/gmpr/nosecone_cap_CAD.jpg": {
+    "mtime": 1780223304.2299562,
+    "ast_hash": "74bce164a430832be8f6c499ca97f444",
+    "semantic_hash": "74bce164a430832be8f6c499ca97f444"
+  },
+  "public/assets/projects/gmpr/nosecone_cap_CAD_B.jpg": {
+    "mtime": 1780223585.149698,
+    "ast_hash": "43c834e410c7cde10bcdf22066fa539b",
+    "semantic_hash": "43c834e410c7cde10bcdf22066fa539b"
+  },
+  "public/assets/projects/gmpr/nosecone_cap_prototype.jpg": {
+    "mtime": 1780223323.6008,
+    "ast_hash": "d44b15b5adaab094e3d08cc9a285c846",
+    "semantic_hash": "d44b15b5adaab094e3d08cc9a285c846"
+  },
+  "public/assets/projects/hero/aiaa_logo.png": {
+    "mtime": 1780204848.3463943,
+    "ast_hash": "c14134adbfb58a8bcad6d19080c454a8",
+    "semantic_hash": "c14134adbfb58a8bcad6d19080c454a8"
+  },
+  "public/assets/projects/hero/ucla_logo.png": {
+    "mtime": 1780205308.066762,
+    "ast_hash": "6218258fb3e8aa203a656fb89a62b177",
+    "semantic_hash": "6218258fb3e8aa203a656fb89a62b177"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/Excel_sheet.png": {
+    "mtime": 1780218731.5080016,
+    "ast_hash": "9693ec69262d84d7ef4422aaca3b0a9a",
+    "semantic_hash": "9693ec69262d84d7ef4422aaca3b0a9a"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/ansys_mesh.png": {
+    "mtime": 1780218655.323301,
+    "ast_hash": "e42d936a3b7ae5d03db60506e7ffb0cb",
+    "semantic_hash": "e42d936a3b7ae5d03db60506e7ffb0cb"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/broken_plate.jpg": {
+    "mtime": 1780218514.8562243,
+    "ast_hash": "c39f478f0331208586d48878376de7dd",
+    "semantic_hash": "c39f478f0331208586d48878376de7dd"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/drill_press.jpeg": {
+    "mtime": 1780178176.0,
+    "ast_hash": "8b31d07b46742ff89aa6382368628fbf",
+    "semantic_hash": "8b31d07b46742ff89aa6382368628fbf"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/heritage.jpg": {
+    "mtime": 1780218348.6185966,
+    "ast_hash": "52c56d094d18f3e0a34c3263a7bf68c1",
+    "semantic_hash": "52c56d094d18f3e0a34c3263a7bf68c1"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/hf2_config.jpg": {
+    "mtime": 1780219030.3935633,
+    "ast_hash": "43c43deb78bf0923f970aabb2cb1bcca",
+    "semantic_hash": "43c43deb78bf0923f970aabb2cb1bcca"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/hf3_config.jpg": {
+    "mtime": 1780197074.5287256,
+    "ast_hash": "3c9b6fa16402ff4f0417f97df6382cb4",
+    "semantic_hash": "3c9b6fa16402ff4f0417f97df6382cb4"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/hts_cover.jpg": {
+    "mtime": 1780197073.2721357,
+    "ast_hash": "2f82e653146e8c5bec1df9d6982618ca",
+    "semantic_hash": "2f82e653146e8c5bec1df9d6982618ca"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/marker_drawing.jpg": {
+    "mtime": 1780219569.6819305,
+    "ast_hash": "7b66f994688e2b2b2f987cd28905d1f5",
+    "semantic_hash": "7b66f994688e2b2b2f987cd28905d1f5"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/red_light.jpg": {
+    "mtime": 1780218870.6894023,
+    "ast_hash": "a93d862c8514c2bcd47740ddf760927b",
+    "semantic_hash": "a93d862c8514c2bcd47740ddf760927b"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/sketch.jpg": {
+    "mtime": 1780219591.1108947,
+    "ast_hash": "658beab3159871cf35a0d75646de547e",
+    "semantic_hash": "658beab3159871cf35a0d75646de547e"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/thrust_interface.jpg": {
+    "mtime": 1780197075.5507772,
+    "ast_hash": "63c4ba9d57c3ba46b9ef143a4577e4f0",
+    "semantic_hash": "63c4ba9d57c3ba46b9ef143a4577e4f0"
+  },
+  "public/assets/projects/maclab/drone_cover.jpg": {
+    "mtime": 1780197073.763668,
+    "ast_hash": "06d880166921505dd93ac81b3b492580",
+    "semantic_hash": "06d880166921505dd93ac81b3b492580"
+  },
+  "public/assets/projects/observatory/dome_night.jpg": {
+    "mtime": 1780189203.7705927,
+    "ast_hash": "e0c86eb609afd53f4e4f4c8f3ce9c6c2",
+    "semantic_hash": "e0c86eb609afd53f4e4f4c8f3ce9c6c2"
+  },
+  "public/assets/projects/observatory/foto_cover.jpg": {
+    "mtime": 1780059508.0,
+    "ast_hash": "1e14806ee843c4d59d26f844af03606d",
+    "semantic_hash": "1e14806ee843c4d59d26f844af03606d"
+  },
+  "public/assets/projects/reynolds/DJI_0070.webp": {
+    "mtime": 1763065575.6435478,
+    "ast_hash": "8ed0215a3124e7b2e75ee0d71bcd8167",
+    "semantic_hash": "8ed0215a3124e7b2e75ee0d71bcd8167"
+  },
+  "public/assets/projects/rocket-project/rocketproject_cover.JPG": {
+    "mtime": 1780025296.9619613,
+    "ast_hash": "25519f94b57f7dd2a795439b7f54542b",
+    "semantic_hash": "25519f94b57f7dd2a795439b7f54542b"
+  },
+  "public/assets/projects/rocket-project/rp_cover.JPG": {
+    "mtime": 1780026254.8162246,
+    "ast_hash": "25519f94b57f7dd2a795439b7f54542b",
+    "semantic_hash": "25519f94b57f7dd2a795439b7f54542b"
+  },
+  "public/assets/projects/tank_mount/cad_v1.png": {
+    "mtime": 1780222338.903229,
+    "ast_hash": "c5462015ed644e0be2092e48aa6251d7",
+    "semantic_hash": "c5462015ed644e0be2092e48aa6251d7"
+  },
+  "public/assets/projects/tank_mount/restraint_drawing.png": {
+    "mtime": 1780222396.3841324,
+    "ast_hash": "c47cb6ba2dae454e47cf83a005503407",
+    "semantic_hash": "c47cb6ba2dae454e47cf83a005503407"
+  },
+  "public/assets/projects/tank_mount/tank_restraint.jpg": {
+    "mtime": 1780197074.3580728,
+    "ast_hash": "30a18821113b6bb6f9b4b80df5d144c3",
+    "semantic_hash": "30a18821113b6bb6f9b4b80df5d144c3"
+  },
+  "public/assets/projects/tank_mount/tank_stand_a.jpg": {
+    "mtime": 1780197075.2777672,
+    "ast_hash": "2619162e0c1c749acc3e9b248828aad9",
+    "semantic_hash": "2619162e0c1c749acc3e9b248828aad9"
+  },
+  "public/assets/projects/tank_mount/tankmount_cover.jpg": {
+    "mtime": 1780197073.679424,
+    "ast_hash": "648450061fef11f0b92f76215751f6c8",
+    "semantic_hash": "648450061fef11f0b92f76215751f6c8"
+  },
+  "public/favicon.svg": {
+    "mtime": 1779997008.8159482,
+    "ast_hash": "7d866a3d184fc3f26c0f9ddab383c21a",
+    "semantic_hash": "7d866a3d184fc3f26c0f9ddab383c21a"
+  },
+  "public/assets/projects/3dpr/launch_video.MP4": {
+    "mtime": 1780224748.0,
+    "ast_hash": "c6f4d14d006e73bd255d0df4ca691c65",
+    "semantic_hash": "c6f4d14d006e73bd255d0df4ca691c65"
+  },
+  "public/assets/projects/analysis/cold_flow_slow.mp4": {
+    "mtime": 1780269233.5579424,
+    "ast_hash": "6bbccded1c2c95ce923e7d6be09fb54c",
+    "semantic_hash": "6bbccded1c2c95ce923e7d6be09fb54c"
+  },
+  "public/assets/projects/flow_model/injector_model.mp4": {
+    "mtime": 1780267268.0,
+    "ast_hash": "b5817b3c918321ef3c692d65910ae695",
+    "semantic_hash": "b5817b3c918321ef3c692d65910ae695"
+  },
+  "public/assets/projects/hero/hero_montage.mp4": {
+    "mtime": 1780194866.952598,
+    "ast_hash": "2aa37975b8e9f9a4f90f95a3edbb3189",
+    "semantic_hash": "2aa37975b8e9f9a4f90f95a3edbb3189"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/camera_test.mp4": {
+    "mtime": 1780189296.2792544,
+    "ast_hash": "1d0fdfc8eef9d61d2c82336cb0c16686",
+    "semantic_hash": "1d0fdfc8eef9d61d2c82336cb0c16686"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/hts_model.mp4": {
+    "mtime": 1780021832.7149713,
+    "ast_hash": "71b83324e7ea9b0a75e4f8d672e95ff8",
+    "semantic_hash": "71b83324e7ea9b0a75e4f8d672e95ff8"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/rails_test.mp4": {
+    "mtime": 1780189285.570667,
+    "ast_hash": "072979d82b0b9fbd909849cfcce9b215",
+    "semantic_hash": "072979d82b0b9fbd909849cfcce9b215"
+  },
+  "public/assets/projects/horizontal-propulsion-test-stand/static_fire.mp4": {
+    "mtime": 1780028409.538894,
+    "ast_hash": "71d008c5ee9145ca5ec39a031e772a19",
+    "semantic_hash": "71d008c5ee9145ca5ec39a031e772a19"
+  },
+  "public/assets/projects/tank_mount/mount_model.mp4": {
+    "mtime": 1780214070.8523977,
+    "ast_hash": "cf25dd55e19dd8284fa58a98b7360f4e",
+    "semantic_hash": "cf25dd55e19dd8284fa58a98b7360f4e"
+  },
+  "liquid-glass-js-main/button.js": {
+    "mtime": 1749688073.0,
+    "ast_hash": "f0133ff26f27d8586839ce4928996e5a",
+    "semantic_hash": ""
+  },
+  "liquid-glass-js-main/container.js": {
+    "mtime": 1749688073.0,
+    "ast_hash": "b1491ec08ecb9cdb06de652d0e9a5554",
+    "semantic_hash": ""
+  },
+  "liquid-glass-js-main/controls.js": {
+    "mtime": 1749688073.0,
+    "ast_hash": "ef907887daf47727d4441d130aebb266",
+    "semantic_hash": ""
+  },
+  "liquid-glass-js-main/demo.js": {
+    "mtime": 1749688073.0,
+    "ast_hash": "e288ed308929c6fb1c244992d1de18cd",
+    "semantic_hash": ""
+  },
+  "public/vendor/liquid-glass/button.js": {
+    "mtime": 1781096880.343741,
+    "ast_hash": "f0133ff26f27d8586839ce4928996e5a",
+    "semantic_hash": ""
+  },
+  "public/vendor/liquid-glass/container.js": {
+    "mtime": 1781096880.3431227,
+    "ast_hash": "b1491ec08ecb9cdb06de652d0e9a5554",
+    "semantic_hash": ""
+  },
+  "public/vendor/liquid-glass/html2canvas.min.js": {
+    "mtime": 1781096880.5276468,
+    "ast_hash": "d7530aa0b7587e627484c49fdf8f13f2",
+    "semantic_hash": ""
+  },
+  "liquid-glass-js-main/README.md": {
+    "mtime": 1749688073.0,
+    "ast_hash": "80e358a72ec17d1cfb1bbbcdbbb033c3",
+    "semantic_hash": ""
+  },
+  "liquid-glass-js-main/index.html": {
+    "mtime": 1749688073.0,
+    "ast_hash": "dcd2e0fa30a9e0e0ef24e06f0f9530c5",
+    "semantic_hash": ""
+  },
+  "liquid-glass-js-main/demo.gif": {
+    "mtime": 1749688073.0,
+    "ast_hash": "eb947d50e2d7f9de30a6165d6480e377",
+    "semantic_hash": ""
+  }
+}

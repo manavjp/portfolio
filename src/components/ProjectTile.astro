@@ -19,7 +19,7 @@ const classes = [
 ---
 
 {href ? (
-  <a href={href} class:list={classes} data-umami-event="project_open" data-umami-event-project={title}>
+  <a href={href} class:list={classes} data-astro-prefetch data-umami-event="project_open" data-umami-event-project={title}>
     {image
       ? <img src={image} alt="" class="tile__photo" aria-hidden="true" loading="lazy" style={`object-position: ${imagePosition}`} />
       : <div class="tile__bg" aria-hidden="true"></div>

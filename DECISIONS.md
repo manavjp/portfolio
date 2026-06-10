@@ -57,3 +57,52 @@ PATH: `/opt/homebrew/bin`. Add to shell profile: `export PATH="/opt/homebrew/bin
 The root-level `CNAME` file (from the original placeholder repo) is superseded by
 `public/CNAME`. Astro copies `public/` to `dist/`, so `dist/CNAME` is what
 GitHub Pages reads. The root-level file can be removed.
+
+## Next Project button (liquid-glass-js)
+
+**Vendored locally at `public/vendor/liquid-glass/`** (container.js, button.js,
+glass.css from the attached `liquid-glass-js-main/`, plus html2canvas 1.4.1) —
+the previous CDN load (`cdn.jsdelivr.net/gh/...`) tracks the repo's default
+branch, so the look could drift; local files pin it and remove a third-party
+runtime dependency. `glass.css` rules are also inlined in
+`ProjectPageLayout.astro`'s `is:global` style so text centering never races an
+async stylesheet.
+
+**Button creation waits 1350ms after `astro:page-load`** — the TransitionOverlay
+covers the viewport for ~820ms (380ms hold + 440ms wipe); html2canvas snapshots
+taken earlier would bake the overlay into the glass background. 1350ms (owner's
+pick) leaves ~530ms of margin over the overlay's exit.
+
+**WebGL context released on page change** — the library never stops its render
+loop or frees contexts; without `WEBGL_lose_context` cleanup, cycling projects
+via the button would exhaust the browser's ~16-context limit and the glass
+would stop rendering.
+
+**Render check on every page load** — verifies DOM presence, glass pixels
+actually drawn (readPixels alpha), text centered within 2px, and link target;
+logs `[next-project] render check passed/FAILED` to the console and applies a
+CSS `backdrop-filter` fallback if WebGL/snapshot fails.
+
+## Navigation QoL (prefetch, keyboard, back-to-top)
+
+**`prefetch: true` in astro.config.mjs** — required to import `astro:prefetch`
+(ClientRouter alone does not enable it in Astro 6). Only links carrying
+`data-astro-prefetch` (sidebar, project tiles, back-link) prefetch on hover;
+nothing site-wide.
+
+**Next page prefetches once per project page** — earliest of: cursor within
+150px of the pill, or pill revealed at 25% scroll (covers touch). Uses
+`<link rel="prefetch">` via `astro:prefetch`.
+
+**`PROJECT_ORDER` array in ProjectPageLayout is the canonical project order** —
+drives the ← key (previous, wraps) and the hover destination caption; the
+render check validates each page's `nextHref` prop against it, so a page
+falling out of sync logs a console warning.
+
+**←/→ keyboard nav registers before the glass init** — works immediately on
+page load and keeps working even if WebGL/snapshot fails. Guards: skips
+inputs/contenteditable, modifier keys, and latches after first navigation.
+
+**Lenis instance exposed as `window.__lenis`** (Layout.astro) — the back-to-top
+circle uses it for smooth scroll; falls back to native smooth scrolling, and
+both paths honor `prefers-reduced-motion` with an instant jump.

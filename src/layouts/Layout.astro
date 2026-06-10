@@ -197,6 +197,8 @@ const pageTitle = `${title} — Manav Patel`;
 
     // lerp-based: more responsive than duration/easing — 0.12 = snappy but smooth
     lenis = new Lenis({ lerp: 0.12, smoothWheel: true });
+    // Exposed for the back-to-top control on project pages (ProjectPageLayout)
+    (window as any).__lenis = lenis;
 
     function tick(t: number) {
       lenis!.raf(t);
