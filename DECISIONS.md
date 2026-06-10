@@ -106,3 +106,20 @@ inputs/contenteditable, modifier keys, and latches after first navigation.
 **Lenis instance exposed as `window.__lenis`** (Layout.astro) — the back-to-top
 circle uses it for smooth scroll; falls back to native smooth scrolling, and
 both paths honor `prefers-reduced-motion` with an instant jump.
+
+## Glass snapshot capture moved out of the library
+
+The "transparency not working after Next-Project navigation" bug had nothing to
+do with navigation: liquid-glass renders by refracting an html2canvas snapshot
+of `<body>`, and two site-wide facts made snapshots mostly empty — (1) the page
+background lives on `<html>`, which an html2canvas capture of `<body>` never
+paints, and (2) scroll-reveal sections (`.will-reveal`) sit at `opacity: 0`
+until scrolled into view, so everything below the fold captured invisible.
+Whether a button looked right depended on what happened to be revealed where it
+sampled. ProjectPageLayout now captures the snapshot itself before constructing
+the buttons: it toggles `html.glass-capturing` (CSS forces `.will-reveal`
+visible — offscreen only, no flash), passes the computed `<html>` background as
+the capture base, excludes the transition overlay and the controls, and
+pre-seeds `Container.pageSnapshot` so the library never races a stale capture.
+The render check now also asserts the snapshot is non-transparent and matches
+the page height.

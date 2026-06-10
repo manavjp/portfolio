@@ -3092,6 +3092,16 @@
       "norm_label": "navigation qol (prefetch, keyboard, back-to-top)"
     },
     {
+      "label": "Glass snapshot capture moved out of the library",
+      "file_type": "document",
+      "source_file": "DECISIONS.md",
+      "source_location": "L110",
+      "_origin": "ast",
+      "id": "decisions_glass_snapshot_capture_moved_out_of_the_library",
+      "community": 42,
+      "norm_label": "glass snapshot capture moved out of the library"
+    },
+    {
       "label": "README.md",
       "file_type": "document",
       "source_file": "README.md",
@@ -10583,17 +10593,17 @@
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src/layouts/ProjectPageLayout.astro",
+      "confidence_score": 1.0,
       "source": "layouts_projectpagelayout",
-      "target": "astro_prefetch",
-      "confidence_score": 1.0
+      "target": "astro_prefetch"
     },
     {
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src/layouts/ProjectPageLayout.astro",
+      "confidence_score": 1.0,
       "source": "layouts_projectpagelayout",
-      "target": "client",
-      "confidence_score": 1.0
+      "target": "client"
     },
     {
       "relation": "contains",
@@ -10601,9 +10611,9 @@
       "source_file": "src/layouts/ProjectPageLayout.astro",
       "source_location": "L106",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "layouts_projectpagelayout",
-      "target": "layouts_projectpagelayout_ensurescripts",
-      "confidence_score": 1.0
+      "target": "layouts_projectpagelayout_ensurescripts"
     },
     {
       "relation": "contains",
@@ -10611,9 +10621,9 @@
       "source_file": "src/layouts/ProjectPageLayout.astro",
       "source_location": "L399",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "layouts_projectpagelayout",
-      "target": "layouts_projectpagelayout_if",
-      "confidence_score": 1.0
+      "target": "layouts_projectpagelayout_if"
     },
     {
       "relation": "contains",
@@ -10621,9 +10631,9 @@
       "source_file": "src/layouts/ProjectPageLayout.astro",
       "source_location": "L95",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "layouts_projectpagelayout",
-      "target": "layouts_projectpagelayout_loadscript",
-      "confidence_score": 1.0
+      "target": "layouts_projectpagelayout_loadscript"
     },
     {
       "relation": "imports_from",
@@ -11139,11 +11149,21 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "DECISIONS.md",
-      "source_location": "L86",
+      "source_location": "L110",
       "weight": 1.0,
       "source": "decisions_decisions_md",
-      "target": "decisions_navigation_qol_prefetch_keyboard_back_to_top",
+      "target": "decisions_glass_snapshot_capture_moved_out_of_the_library",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DECISIONS.md",
+      "source_location": "L86",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "decisions_decisions_md",
+      "target": "decisions_navigation_qol_prefetch_keyboard_back_to_top"
     },
     {
       "relation": "contains",
@@ -15148,5 +15168,5 @@
       "source_file": "public/assets/projects/analysis/Cold_Flow_001_26033_REV_A.pdf"
     }
   ],
-  "built_at_commit": "0d3aace770b77fa3570fb0e6c0c337efdbf492c7"
+  "built_at_commit": "2194a064210438da91f5b670f11e10577d8cafeb"
 }

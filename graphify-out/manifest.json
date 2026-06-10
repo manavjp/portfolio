@@ -110,8 +110,8 @@
     "semantic_hash": ""
   },
   "src/layouts/ProjectPageLayout.astro": {
-    "mtime": 1781130049.6970549,
-    "ast_hash": "d5197792eb1ce6a4094f970f6513ae86",
+    "mtime": 1781131500.6086636,
+    "ast_hash": "d69baa4f7661964b2ad5505c0d23e3ae",
     "semantic_hash": ""
   },
   "src/pages/about.astro": {
@@ -205,8 +205,8 @@
     "semantic_hash": "7319ee8f0cce85fcb36d44b257890195"
   },
   "DECISIONS.md": {
-    "mtime": 1781130305.0245268,
-    "ast_hash": "097a255e1efdb71f8e740bf52c7f31cc",
+    "mtime": 1781131667.459729,
+    "ast_hash": "287e77efbff86185b6690d3b3ccfd11c",
     "semantic_hash": ""
   },
   "README.md": {

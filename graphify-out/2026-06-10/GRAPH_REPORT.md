@@ -1,11 +1,11 @@
 # Graph Report - portfolio  (2026-06-10)
 
 ## Corpus Check
-- 57 files · ~2,121,075 words
+- 57 files · ~1,667,162 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 640 nodes · 769 edges · 59 communities (43 shown, 16 thin omitted)
+- 646 nodes · 775 edges · 59 communities (43 shown, 16 thin omitted)
 - Extraction: 84% EXTRACTED · 16% INFERRED · 0% AMBIGUOUS · INFERRED: 125 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
@@ -75,14 +75,14 @@
 ## God Nodes (most connected - your core abstractions)
 1. `File Map` - 18 edges
 2. `../layouts/Layout.astro` - 17 edges
-3. `Container` - 15 edges
+3. `../../layouts/ProjectPageLayout.astro` - 16 edges
 4. `Container` - 15 edges
-5. `🍎 Liquid Glass JS` - 15 edges
-6. `Manav Patel — Portfolio Website Build Brief` - 13 edges
-7. `File Map` - 12 edges
-8. `Button` - 11 edges
+5. `Container` - 15 edges
+6. `🍎 Liquid Glass JS` - 15 edges
+7. `Manav Patel — Portfolio Website Build Brief` - 13 edges
+8. `File Map` - 12 edges
 9. `Button` - 11 edges
-10. `../../layouts/ProjectPageLayout.astro` - 11 edges
+10. `Button` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `ScatteredReports.astro Component` --shares_data_with--> `Cold Flow Test Report 001 (26033 REV A)`  [INFERRED]
@@ -107,8 +107,8 @@
 ## Communities (59 total, 16 thin omitted)
 
 ### Community 0 - "UI Components & Interactivity"
-Cohesion: 0.11
-Nodes (21): ../../components/MetricCallout.astro, ../../components/PdfViewer.astro, applySlider(), keyNav(), renderPage(), snapLeft(), updateTicks(), ../../components/ScatteredReports.astro (+13 more)
+Cohesion: 0.09
+Nodes (22): astro:transitions/client, ../../components/MetricCallout.astro, ../../components/PdfViewer.astro, applySlider(), keyNav(), renderPage(), snapLeft(), updateTicks() (+14 more)
 
 ### Community 1 - "Portfolio Design Patterns & PDF Artifacts"
 Cohesion: 0.06
@@ -211,8 +211,8 @@ Cohesion: 0.15
 Nodes (12): A. Projects Index — Mosaic Layout, B. Horizontal Propulsion Test Stand — Detail Page, Files, Milestone 3: Projects Index + Test Stand Detail Page Design, New Components, Projects Inventory, Rocket Project cluster (hub + 5 sub-projects), Section 1 — Hero Band (+4 more)
 
 ### Community 42 - "Community 42"
-Cohesion: 0.20
-Nodes (8): Access Gate, Deploy, Fonts, Framework, Next Project button (liquid-glass-js), Node.js, Root CNAME, Styling
+Cohesion: 0.18
+Nodes (9): Access Gate, Deploy, Fonts, Framework, Navigation QoL (prefetch, keyboard, back-to-top), Next Project button (liquid-glass-js), Node.js, Root CNAME (+1 more)
 
 ### Community 43 - "Community 43"
 Cohesion: 0.20
@@ -267,7 +267,7 @@ Cohesion: 0.67
 Nodes (3): cn(), on(), Qn()
 
 ## Knowledge Gaps
-- **231 isolated node(s):** `version`, `configurations`, `superpowers@superpowers-marketplace`, `allow`, `helloRow` (+226 more)
+- **232 isolated node(s):** `version`, `configurations`, `superpowers@superpowers-marketplace`, `allow`, `helloRow` (+227 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -275,13 +275,13 @@ Nodes (3): cn(), on(), Qn()
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `../layouts/Layout.astro` connect `Astro Page Components` to `UI Components & Interactivity`, `Chart & Motion Library Config`?**
-  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
 - **Why does `../../layouts/ProjectPageLayout.astro` connect `UI Components & Interactivity` to `Astro Page Components`?**
-  _High betweenness centrality (0.007) - this node is a cross-community bridge._
+  _High betweenness centrality (0.008) - this node is a cross-community bridge._
 - **What connects `version`, `configurations`, `superpowers@superpowers-marketplace` to the rest of the system?**
-  _239 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _240 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `UI Components & Interactivity` be split into smaller, more focused modules?**
-  _Cohesion score 0.11397849462365592 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09206349206349207 - nodes in this community are weakly interconnected._
 - **Should `Portfolio Design Patterns & PDF Artifacts` be split into smaller, more focused modules?**
   _Cohesion score 0.05813953488372093 - nodes in this community are weakly interconnected._
 - **Should `Astro Page Components` be split into smaller, more focused modules?**

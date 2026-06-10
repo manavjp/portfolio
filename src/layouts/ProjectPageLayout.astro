@@ -177,13 +177,46 @@ const { title, description, ghostText, category, tagline, showOverview = true, n
     await sleep(OVERLAY_CLEAR_MS);
     if (cancelled) return;
 
-    // Reset Container static state so each page gets a fresh snapshot.
-    // Without this, the first page's snapshot is reused on all subsequent pages,
-    // making the glass render the wrong background.
+    // Capture the page snapshot ourselves rather than letting the library do it
+    // lazily. This lets us:
+    //  • force scroll-reveal sections visible — otherwise below-the-fold content
+    //    captures at opacity 0 and the glass renders a blank milky fill over it
+    //    (the "transparency not working" bug)
+    //  • paint the real page background — it lives on <html>, which html2canvas
+    //    ignores when capturing <body>
+    //  • exclude the transition overlay and our own controls
+    //  • avoid a stale capture from a previous page landing on this one
+    const h2c = (window as any).html2canvas;
+    if (!h2c) { console.warn('[next-project] html2canvas unavailable'); return; }
+    let snapshot: HTMLCanvasElement | null = null;
+    document.documentElement.classList.add('glass-capturing');
+    try {
+      snapshot = await h2c(document.body, {
+        scale: 1,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: getComputedStyle(document.documentElement).backgroundColor,
+        ignoreElements: (el: Element) =>
+          el.id === 'page-overlay' ||
+          el.id === 'next-proj-btn' ||
+          el.classList.contains('glass-container') ||
+          el.classList.contains('glass-button') ||
+          el.classList.contains('glass-button-text'),
+      });
+    } catch (e) {
+      console.warn('[next-project] page snapshot failed:', e);
+    } finally {
+      document.documentElement.classList.remove('glass-capturing');
+    }
+    if (cancelled) return;
+
+    // Pre-seed the library's static snapshot so Container.init() skips its own
+    // capture and initializes WebGL straight from this one. If our capture
+    // failed (snapshot null), the library falls back to capturing itself.
     const GlassCtr = (window as any).LiquidGlassContainer;
     if (GlassCtr) {
       GlassCtr.instances          = [];
-      GlassCtr.pageSnapshot       = null;
+      GlassCtr.pageSnapshot       = snapshot;
       GlassCtr.isCapturing        = false;
       GlassCtr.waitingForSnapshot = [];
     }
@@ -394,6 +427,26 @@ const { title, description, ghostText, category, tagline, showOverview = true, n
       if (t.width > elRect.width || t.height > elRect.height) problems.push('text overflows the button');
     }
 
+    // Snapshot sanity — a fully transparent snapshot means the glass has
+    // nothing to refract (renders as a blank milky fill).
+    try {
+      const snap = (window as any).LiquidGlassContainer?.pageSnapshot as HTMLCanvasElement | null;
+      if (!snap) {
+        problems.push('no page snapshot captured');
+      } else {
+        if (Math.abs(snap.height - document.body.scrollHeight) > 200) {
+          problems.push(`snapshot height ${snap.height}px does not match page height ${document.body.scrollHeight}px`);
+        }
+        const sctx = snap.getContext('2d');
+        if (sctx) {
+          const allTransparent = [0.1, 0.3, 0.5, 0.7, 0.9].every(
+            (f) => sctx.getImageData(Math.floor(snap.width / 2), Math.floor(snap.height * f), 1, 1).data[3] === 0,
+          );
+          if (allTransparent) problems.push('page snapshot is fully transparent — glass would render blank');
+        }
+      }
+    } catch { /* tainted canvas — skip pixel sanity */ }
+
     // preserveDrawingBuffer is on, so each drawn frame can be read back.
     const checkGlassDrew = async (b: any, label: string): Promise<void> => {
       if (!b.webglInitialized) {
@@ -433,6 +486,15 @@ const { title, description, ghostText, category, tagline, showOverview = true, n
 </script>
 
 <style is:global>
+  /* While the glass page snapshot is being captured, force scroll-reveal
+     sections visible — otherwise below-the-fold content captures at opacity 0
+     and the glass renders a blank fill over it. Only offscreen content is
+     affected, so there is no visible flash. */
+  html.glass-capturing .will-reveal {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+
   /* ── Next Project floating glass button ──────────────────────────────────
      Built by JS (liquid-glass-js), so these rules must be global.
      z-index sits below the page-transition overlay (9990) so the sweep

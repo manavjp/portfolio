@@ -2382,6 +2382,56 @@
       "norm_label": "../../layouts/projectpagelayout.astro"
     },
     {
+      "label": "loadScript()",
+      "file_type": "code",
+      "source_file": "src/layouts/ProjectPageLayout.astro",
+      "source_location": "L95",
+      "_origin": "ast",
+      "id": "layouts_projectpagelayout_loadscript",
+      "community": 0,
+      "norm_label": "loadscript()"
+    },
+    {
+      "label": "ensureScripts()",
+      "file_type": "code",
+      "source_file": "src/layouts/ProjectPageLayout.astro",
+      "source_location": "L106",
+      "_origin": "ast",
+      "id": "layouts_projectpagelayout_ensurescripts",
+      "community": 0,
+      "norm_label": "ensurescripts()"
+    },
+    {
+      "label": "if()",
+      "file_type": "code",
+      "source_file": "src/layouts/ProjectPageLayout.astro",
+      "source_location": "L128",
+      "_origin": "ast",
+      "id": "layouts_projectpagelayout_if",
+      "community": 0,
+      "norm_label": "if()"
+    },
+    {
+      "label": "astro:transitions/client",
+      "file_type": "code",
+      "source_file": "astro:transitions/client",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "client",
+      "community": 0,
+      "norm_label": "astro:transitions/client"
+    },
+    {
+      "label": "astro:prefetch",
+      "file_type": "code",
+      "source_file": "astro:prefetch",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "astro_prefetch",
+      "community": 0,
+      "norm_label": "astro:prefetch"
+    },
+    {
       "label": "about.astro",
       "file_type": "code",
       "source_file": "src/pages/about.astro",
@@ -3030,6 +3080,16 @@
       "id": "decisions_next_project_button_liquid_glass_js",
       "community": 42,
       "norm_label": "next project button (liquid-glass-js)"
+    },
+    {
+      "label": "Navigation QoL (prefetch, keyboard, back-to-top)",
+      "file_type": "document",
+      "source_file": "DECISIONS.md",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "decisions_navigation_qol_prefetch_keyboard_back_to_top",
+      "community": 42,
+      "norm_label": "navigation qol (prefetch, keyboard, back-to-top)"
     },
     {
       "label": "README.md",
@@ -7292,9 +7352,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button",
-      "target": "liquid_glass_js_main_button_button",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button"
     },
     {
       "relation": "method",
@@ -7302,9 +7362,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button",
-      "target": "liquid_glass_js_main_button_button_constructor",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_constructor"
     },
     {
       "relation": "method",
@@ -7312,9 +7372,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L144",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button",
-      "target": "liquid_glass_js_main_button_button_createtextelement",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_createtextelement"
     },
     {
       "relation": "method",
@@ -7322,9 +7382,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L175",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button",
-      "target": "liquid_glass_js_main_button_button_initnestedglass",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_initnestedglass"
     },
     {
       "relation": "method",
@@ -7332,9 +7392,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L163",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button",
-      "target": "liquid_glass_js_main_button_button_initwebgl",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_initwebgl"
     },
     {
       "relation": "method",
@@ -7342,9 +7402,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button",
-      "target": "liquid_glass_js_main_button_button_measuretext",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_measuretext"
     },
     {
       "relation": "method",
@@ -7352,9 +7412,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button",
-      "target": "liquid_glass_js_main_button_button_setsizefromtext",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_setsizefromtext"
     },
     {
       "relation": "method",
@@ -7362,9 +7422,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L127",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button",
-      "target": "liquid_glass_js_main_button_button_setupasnestedglass",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_setupasnestedglass"
     },
     {
       "relation": "method",
@@ -7372,9 +7432,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L153",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button",
-      "target": "liquid_glass_js_main_button_button_setupclickhandler",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_setupclickhandler"
     },
     {
       "relation": "method",
@@ -7382,9 +7442,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L187",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button",
-      "target": "liquid_glass_js_main_button_button_setupdynamicnestedshader",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_setupdynamicnestedshader"
     },
     {
       "relation": "method",
@@ -7392,9 +7452,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L589",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button",
-      "target": "liquid_glass_js_main_button_button_startnestedrenderloop",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_startnestedrenderloop"
     },
     {
       "relation": "calls",
@@ -7403,9 +7463,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button_constructor",
-      "target": "liquid_glass_js_main_button_button_createtextelement",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_createtextelement"
     },
     {
       "relation": "calls",
@@ -7414,9 +7474,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button_constructor",
-      "target": "liquid_glass_js_main_button_button_setsizefromtext",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_setsizefromtext"
     },
     {
       "relation": "calls",
@@ -7425,9 +7485,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button_constructor",
-      "target": "liquid_glass_js_main_button_button_setupclickhandler",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_setupclickhandler"
     },
     {
       "relation": "calls",
@@ -7436,9 +7496,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button_setsizefromtext",
-      "target": "liquid_glass_js_main_button_button_measuretext",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_measuretext"
     },
     {
       "relation": "calls",
@@ -7447,9 +7507,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L132",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button_setupasnestedglass",
-      "target": "liquid_glass_js_main_button_button_initwebgl",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_initwebgl"
     },
     {
       "relation": "calls",
@@ -7458,9 +7518,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L168",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button_initwebgl",
-      "target": "liquid_glass_js_main_button_button_initnestedglass",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_initnestedglass"
     },
     {
       "relation": "calls",
@@ -7469,9 +7529,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L183",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button_initnestedglass",
-      "target": "liquid_glass_js_main_button_button_setupdynamicnestedshader",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_setupdynamicnestedshader"
     },
     {
       "relation": "calls",
@@ -7480,9 +7540,9 @@
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L586",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_button_button_setupdynamicnestedshader",
-      "target": "liquid_glass_js_main_button_button_startnestedrenderloop",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_button_button_startnestedrenderloop"
     },
     {
       "relation": "contains",
@@ -7490,9 +7550,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container",
-      "target": "liquid_glass_js_main_container_container",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container"
     },
     {
       "relation": "method",
@@ -7500,9 +7560,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container",
-      "target": "liquid_glass_js_main_container_container_addchild",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_addchild"
     },
     {
       "relation": "method",
@@ -7510,9 +7570,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L193",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container",
-      "target": "liquid_glass_js_main_container_container_capturepagesnapshot",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_capturepagesnapshot"
     },
     {
       "relation": "method",
@@ -7520,9 +7580,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L683",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container",
-      "target": "liquid_glass_js_main_container_container_compileshader",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_compileshader"
     },
     {
       "relation": "method",
@@ -7530,9 +7590,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container",
-      "target": "liquid_glass_js_main_container_container_constructor",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_constructor"
     },
     {
       "relation": "method",
@@ -7540,9 +7600,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L148",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container",
-      "target": "liquid_glass_js_main_container_container_createelement",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_createelement"
     },
     {
       "relation": "method",
@@ -7550,9 +7610,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L665",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container",
-      "target": "liquid_glass_js_main_container_container_createprogram",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_createprogram"
     },
     {
       "relation": "method",
@@ -7560,9 +7620,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L184",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container",
-      "target": "liquid_glass_js_main_container_container_getposition",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_getposition"
     },
     {
       "relation": "method",
@@ -7570,9 +7630,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L126",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container",
-      "target": "liquid_glass_js_main_container_container_init",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_init"
     },
     {
       "relation": "method",
@@ -7580,9 +7640,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L231",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container",
-      "target": "liquid_glass_js_main_container_container_initwebgl",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_initwebgl"
     },
     {
       "relation": "method",
@@ -7590,9 +7650,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container",
-      "target": "liquid_glass_js_main_container_container_removechild",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_removechild"
     },
     {
       "relation": "method",
@@ -7600,9 +7660,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L176",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container",
-      "target": "liquid_glass_js_main_container_container_setupcanvas",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_setupcanvas"
     },
     {
       "relation": "method",
@@ -7610,9 +7670,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L242",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container",
-      "target": "liquid_glass_js_main_container_container_setupshader",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_setupshader"
     },
     {
       "relation": "method",
@@ -7620,9 +7680,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L638",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container",
-      "target": "liquid_glass_js_main_container_container_startrenderloop",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_startrenderloop"
     },
     {
       "relation": "method",
@@ -7630,9 +7690,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container",
-      "target": "liquid_glass_js_main_container_container_updatesizefromdom",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_updatesizefromdom"
     },
     {
       "relation": "calls",
@@ -7641,9 +7701,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container_constructor",
-      "target": "liquid_glass_js_main_container_container_init",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_init"
     },
     {
       "relation": "calls",
@@ -7652,9 +7712,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container_addchild",
-      "target": "liquid_glass_js_main_container_container_updatesizefromdom",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_updatesizefromdom"
     },
     {
       "relation": "calls",
@@ -7663,9 +7723,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container_removechild",
-      "target": "liquid_glass_js_main_container_container_updatesizefromdom",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_updatesizefromdom"
     },
     {
       "relation": "calls",
@@ -7674,9 +7734,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L131",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container_init",
-      "target": "liquid_glass_js_main_container_container_updatesizefromdom",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_updatesizefromdom"
     },
     {
       "relation": "calls",
@@ -7685,9 +7745,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L144",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container_init",
-      "target": "liquid_glass_js_main_container_container_capturepagesnapshot",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_capturepagesnapshot"
     },
     {
       "relation": "calls",
@@ -7696,9 +7756,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L127",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container_init",
-      "target": "liquid_glass_js_main_container_container_createelement",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_createelement"
     },
     {
       "relation": "calls",
@@ -7707,9 +7767,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L136",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container_init",
-      "target": "liquid_glass_js_main_container_container_initwebgl",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_initwebgl"
     },
     {
       "relation": "calls",
@@ -7718,9 +7778,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L128",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container_init",
-      "target": "liquid_glass_js_main_container_container_setupcanvas",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_setupcanvas"
     },
     {
       "relation": "calls",
@@ -7729,9 +7789,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L622",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container_setupshader",
-      "target": "liquid_glass_js_main_container_container_getposition",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_getposition"
     },
     {
       "relation": "calls",
@@ -7740,9 +7800,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L518",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container_setupshader",
-      "target": "liquid_glass_js_main_container_container_createprogram",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_createprogram"
     },
     {
       "relation": "calls",
@@ -7751,9 +7811,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L635",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container_setupshader",
-      "target": "liquid_glass_js_main_container_container_startrenderloop",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_startrenderloop"
     },
     {
       "relation": "calls",
@@ -7762,9 +7822,9 @@
       "source_file": "liquid-glass-js-main/container.js",
       "source_location": "L666",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_container_container_createprogram",
-      "target": "liquid_glass_js_main_container_container_compileshader",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_container_container_compileshader"
     },
     {
       "relation": "contains",
@@ -7772,9 +7832,9 @@
       "source_file": "liquid-glass-js-main/controls.js",
       "source_location": "L269",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_controls",
-      "target": "liquid_glass_js_main_controls_initializecontrols",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_controls_initializecontrols"
     },
     {
       "relation": "contains",
@@ -7782,9 +7842,9 @@
       "source_file": "liquid-glass-js-main/controls.js",
       "source_location": "L199",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_controls",
-      "target": "liquid_glass_js_main_controls_initializecontrolscontainer",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_controls_initializecontrolscontainer"
     },
     {
       "relation": "contains",
@@ -7792,9 +7852,9 @@
       "source_file": "liquid-glass-js-main/controls.js",
       "source_location": "L129",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_controls",
-      "target": "liquid_glass_js_main_controls_randomizeglasseffects",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_controls_randomizeglasseffects"
     },
     {
       "relation": "contains",
@@ -7802,9 +7862,9 @@
       "source_file": "liquid-glass-js-main/controls.js",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_controls",
-      "target": "liquid_glass_js_main_controls_setupcontrolsliders",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_controls_setupcontrolsliders"
     },
     {
       "relation": "contains",
@@ -7812,9 +7872,9 @@
       "source_file": "liquid-glass-js-main/controls.js",
       "source_location": "L226",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_controls",
-      "target": "liquid_glass_js_main_controls_setupmobiletoggle",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_controls_setupmobiletoggle"
     },
     {
       "relation": "contains",
@@ -7822,9 +7882,9 @@
       "source_file": "liquid-glass-js-main/controls.js",
       "source_location": "L191",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_controls",
-      "target": "liquid_glass_js_main_controls_togglebuttonsvisibility",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_controls_togglebuttonsvisibility"
     },
     {
       "relation": "contains",
@@ -7832,9 +7892,9 @@
       "source_file": "liquid-glass-js-main/controls.js",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_controls",
-      "target": "liquid_glass_js_main_controls_updateallglassinstances",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_controls_updateallglassinstances"
     },
     {
       "relation": "calls",
@@ -7843,9 +7903,9 @@
       "source_file": "liquid-glass-js-main/controls.js",
       "source_location": "L185",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_controls_randomizeglasseffects",
-      "target": "liquid_glass_js_main_controls_updateallglassinstances",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_controls_updateallglassinstances"
     },
     {
       "relation": "calls",
@@ -7854,9 +7914,9 @@
       "source_file": "liquid-glass-js-main/controls.js",
       "source_location": "L271",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_controls_initializecontrols",
-      "target": "liquid_glass_js_main_controls_setupcontrolsliders",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_controls_setupcontrolsliders"
     },
     {
       "relation": "calls",
@@ -7865,9 +7925,9 @@
       "source_file": "liquid-glass-js-main/controls.js",
       "source_location": "L270",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_controls_initializecontrols",
-      "target": "liquid_glass_js_main_controls_initializecontrolscontainer",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_controls_initializecontrolscontainer"
     },
     {
       "relation": "calls",
@@ -7876,9 +7936,9 @@
       "source_file": "liquid-glass-js-main/controls.js",
       "source_location": "L272",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_controls_initializecontrols",
-      "target": "liquid_glass_js_main_controls_setupmobiletoggle",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_controls_setupmobiletoggle"
     },
     {
       "relation": "contains",
@@ -7886,9 +7946,9 @@
       "source_file": "liquid-glass-js-main/demo.js",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_demo",
-      "target": "liquid_glass_js_main_demo_button1",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_demo_button1"
     },
     {
       "relation": "contains",
@@ -7896,9 +7956,9 @@
       "source_file": "liquid-glass-js-main/demo.js",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_demo",
-      "target": "liquid_glass_js_main_demo_button2",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_demo_button2"
     },
     {
       "relation": "contains",
@@ -7906,9 +7966,9 @@
       "source_file": "liquid-glass-js-main/demo.js",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_demo",
-      "target": "liquid_glass_js_main_demo_buttoncontainer",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_demo_buttoncontainer"
     },
     {
       "relation": "contains",
@@ -7916,9 +7976,9 @@
       "source_file": "liquid-glass-js-main/demo.js",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_demo",
-      "target": "liquid_glass_js_main_demo_containerrow",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_demo_containerrow"
     },
     {
       "relation": "contains",
@@ -7926,9 +7986,9 @@
       "source_file": "liquid-glass-js-main/demo.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_demo",
-      "target": "liquid_glass_js_main_demo_controlsrow",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_demo_controlsrow"
     },
     {
       "relation": "contains",
@@ -7936,9 +7996,9 @@
       "source_file": "liquid-glass-js-main/demo.js",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_demo",
-      "target": "liquid_glass_js_main_demo_hellobutton",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_demo_hellobutton"
     },
     {
       "relation": "contains",
@@ -7946,9 +8006,9 @@
       "source_file": "liquid-glass-js-main/demo.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_demo",
-      "target": "liquid_glass_js_main_demo_hellorow",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_demo_hellorow"
     },
     {
       "relation": "contains",
@@ -7956,9 +8016,9 @@
       "source_file": "liquid-glass-js-main/demo.js",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_demo",
-      "target": "liquid_glass_js_main_demo_nextbutton",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_demo_nextbutton"
     },
     {
       "relation": "contains",
@@ -7966,9 +8026,9 @@
       "source_file": "liquid-glass-js-main/demo.js",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_demo",
-      "target": "liquid_glass_js_main_demo_playbutton",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_demo_playbutton"
     },
     {
       "relation": "contains",
@@ -7976,9 +8036,9 @@
       "source_file": "liquid-glass-js-main/demo.js",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_demo",
-      "target": "liquid_glass_js_main_demo_recordbutton",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_demo_recordbutton"
     },
     {
       "relation": "contains",
@@ -7986,9 +8046,9 @@
       "source_file": "liquid-glass-js-main/demo.js",
       "source_location": "L68",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_demo",
-      "target": "liquid_glass_js_main_demo_standalonebutton",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_demo_standalonebutton"
     },
     {
       "relation": "contains",
@@ -7996,9 +8056,9 @@
       "source_file": "liquid-glass-js-main/demo.js",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_demo",
-      "target": "liquid_glass_js_main_demo_standalonerow",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_demo_standalonerow"
     },
     {
       "relation": "contains",
@@ -8178,9 +8238,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button",
-      "target": "liquid_glass_button_button",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button"
     },
     {
       "relation": "method",
@@ -8188,9 +8248,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button",
-      "target": "liquid_glass_button_button_constructor",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_constructor"
     },
     {
       "relation": "method",
@@ -8198,9 +8258,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L144",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button",
-      "target": "liquid_glass_button_button_createtextelement",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_createtextelement"
     },
     {
       "relation": "method",
@@ -8208,9 +8268,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L175",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button",
-      "target": "liquid_glass_button_button_initnestedglass",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_initnestedglass"
     },
     {
       "relation": "method",
@@ -8218,9 +8278,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L163",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button",
-      "target": "liquid_glass_button_button_initwebgl",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_initwebgl"
     },
     {
       "relation": "method",
@@ -8228,9 +8288,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button",
-      "target": "liquid_glass_button_button_measuretext",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_measuretext"
     },
     {
       "relation": "method",
@@ -8238,9 +8298,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button",
-      "target": "liquid_glass_button_button_setsizefromtext",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_setsizefromtext"
     },
     {
       "relation": "method",
@@ -8248,9 +8308,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L127",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button",
-      "target": "liquid_glass_button_button_setupasnestedglass",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_setupasnestedglass"
     },
     {
       "relation": "method",
@@ -8258,9 +8318,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L153",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button",
-      "target": "liquid_glass_button_button_setupclickhandler",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_setupclickhandler"
     },
     {
       "relation": "method",
@@ -8268,9 +8328,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L187",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button",
-      "target": "liquid_glass_button_button_setupdynamicnestedshader",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_setupdynamicnestedshader"
     },
     {
       "relation": "method",
@@ -8278,9 +8338,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L589",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button",
-      "target": "liquid_glass_button_button_startnestedrenderloop",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_startnestedrenderloop"
     },
     {
       "relation": "calls",
@@ -8289,9 +8349,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button_constructor",
-      "target": "liquid_glass_button_button_createtextelement",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_createtextelement"
     },
     {
       "relation": "calls",
@@ -8300,9 +8360,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button_constructor",
-      "target": "liquid_glass_button_button_setsizefromtext",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_setsizefromtext"
     },
     {
       "relation": "calls",
@@ -8311,9 +8371,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button_constructor",
-      "target": "liquid_glass_button_button_setupclickhandler",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_setupclickhandler"
     },
     {
       "relation": "calls",
@@ -8322,9 +8382,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button_setsizefromtext",
-      "target": "liquid_glass_button_button_measuretext",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_measuretext"
     },
     {
       "relation": "calls",
@@ -8333,9 +8393,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L132",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button_setupasnestedglass",
-      "target": "liquid_glass_button_button_initwebgl",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_initwebgl"
     },
     {
       "relation": "calls",
@@ -8344,9 +8404,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L168",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button_initwebgl",
-      "target": "liquid_glass_button_button_initnestedglass",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_initnestedglass"
     },
     {
       "relation": "calls",
@@ -8355,9 +8415,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L183",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button_initnestedglass",
-      "target": "liquid_glass_button_button_setupdynamicnestedshader",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_setupdynamicnestedshader"
     },
     {
       "relation": "calls",
@@ -8366,9 +8426,9 @@
       "source_file": "public/vendor/liquid-glass/button.js",
       "source_location": "L586",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_button_button_setupdynamicnestedshader",
-      "target": "liquid_glass_button_button_startnestedrenderloop",
-      "confidence_score": 1.0
+      "target": "liquid_glass_button_button_startnestedrenderloop"
     },
     {
       "relation": "contains",
@@ -8376,9 +8436,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container",
-      "target": "liquid_glass_container_container",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container"
     },
     {
       "relation": "method",
@@ -8386,9 +8446,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container",
-      "target": "liquid_glass_container_container_addchild",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_addchild"
     },
     {
       "relation": "method",
@@ -8396,9 +8456,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L193",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container",
-      "target": "liquid_glass_container_container_capturepagesnapshot",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_capturepagesnapshot"
     },
     {
       "relation": "method",
@@ -8406,9 +8466,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L683",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container",
-      "target": "liquid_glass_container_container_compileshader",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_compileshader"
     },
     {
       "relation": "method",
@@ -8416,9 +8476,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container",
-      "target": "liquid_glass_container_container_constructor",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_constructor"
     },
     {
       "relation": "method",
@@ -8426,9 +8486,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L148",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container",
-      "target": "liquid_glass_container_container_createelement",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_createelement"
     },
     {
       "relation": "method",
@@ -8436,9 +8496,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L665",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container",
-      "target": "liquid_glass_container_container_createprogram",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_createprogram"
     },
     {
       "relation": "method",
@@ -8446,9 +8506,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L184",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container",
-      "target": "liquid_glass_container_container_getposition",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_getposition"
     },
     {
       "relation": "method",
@@ -8456,9 +8516,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L126",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container",
-      "target": "liquid_glass_container_container_init",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_init"
     },
     {
       "relation": "method",
@@ -8466,9 +8526,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L231",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container",
-      "target": "liquid_glass_container_container_initwebgl",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_initwebgl"
     },
     {
       "relation": "method",
@@ -8476,9 +8536,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container",
-      "target": "liquid_glass_container_container_removechild",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_removechild"
     },
     {
       "relation": "method",
@@ -8486,9 +8546,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L176",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container",
-      "target": "liquid_glass_container_container_setupcanvas",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_setupcanvas"
     },
     {
       "relation": "method",
@@ -8496,9 +8556,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L242",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container",
-      "target": "liquid_glass_container_container_setupshader",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_setupshader"
     },
     {
       "relation": "method",
@@ -8506,9 +8566,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L638",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container",
-      "target": "liquid_glass_container_container_startrenderloop",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_startrenderloop"
     },
     {
       "relation": "method",
@@ -8516,9 +8576,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container",
-      "target": "liquid_glass_container_container_updatesizefromdom",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_updatesizefromdom"
     },
     {
       "relation": "calls",
@@ -8527,9 +8587,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container_constructor",
-      "target": "liquid_glass_container_container_init",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_init"
     },
     {
       "relation": "calls",
@@ -8538,9 +8598,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container_addchild",
-      "target": "liquid_glass_container_container_updatesizefromdom",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_updatesizefromdom"
     },
     {
       "relation": "calls",
@@ -8549,9 +8609,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container_removechild",
-      "target": "liquid_glass_container_container_updatesizefromdom",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_updatesizefromdom"
     },
     {
       "relation": "calls",
@@ -8560,9 +8620,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L131",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container_init",
-      "target": "liquid_glass_container_container_updatesizefromdom",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_updatesizefromdom"
     },
     {
       "relation": "calls",
@@ -8571,9 +8631,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L144",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container_init",
-      "target": "liquid_glass_container_container_capturepagesnapshot",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_capturepagesnapshot"
     },
     {
       "relation": "calls",
@@ -8582,9 +8642,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L127",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container_init",
-      "target": "liquid_glass_container_container_createelement",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_createelement"
     },
     {
       "relation": "calls",
@@ -8593,9 +8653,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L136",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container_init",
-      "target": "liquid_glass_container_container_initwebgl",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_initwebgl"
     },
     {
       "relation": "calls",
@@ -8604,9 +8664,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L128",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container_init",
-      "target": "liquid_glass_container_container_setupcanvas",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_setupcanvas"
     },
     {
       "relation": "calls",
@@ -8615,9 +8675,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L622",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container_setupshader",
-      "target": "liquid_glass_container_container_getposition",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_getposition"
     },
     {
       "relation": "calls",
@@ -8626,9 +8686,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L518",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container_setupshader",
-      "target": "liquid_glass_container_container_createprogram",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_createprogram"
     },
     {
       "relation": "calls",
@@ -8637,9 +8697,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L635",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container_setupshader",
-      "target": "liquid_glass_container_container_startrenderloop",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_startrenderloop"
     },
     {
       "relation": "calls",
@@ -8648,9 +8708,9 @@
       "source_file": "public/vendor/liquid-glass/container.js",
       "source_location": "L666",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_container_container_createprogram",
-      "target": "liquid_glass_container_container_compileshader",
-      "confidence_score": 1.0
+      "target": "liquid_glass_container_container_compileshader"
     },
     {
       "relation": "contains",
@@ -8658,9 +8718,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_a",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_a"
     },
     {
       "relation": "contains",
@@ -8668,9 +8728,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ae",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ae"
     },
     {
       "relation": "contains",
@@ -8678,9 +8738,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_an",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_an"
     },
     {
       "relation": "contains",
@@ -8688,9 +8748,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_b",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_b"
     },
     {
       "relation": "contains",
@@ -8698,9 +8758,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_bb",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_bb"
     },
     {
       "relation": "contains",
@@ -8708,9 +8768,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_be",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_be"
     },
     {
       "relation": "contains",
@@ -8718,9 +8778,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_bs",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_bs"
     },
     {
       "relation": "contains",
@@ -8728,9 +8788,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ca",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ca"
     },
     {
       "relation": "contains",
@@ -8738,9 +8798,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_cn",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_cn"
     },
     {
       "relation": "contains",
@@ -8748,9 +8808,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_cs",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_cs"
     },
     {
       "relation": "contains",
@@ -8758,9 +8818,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_da",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_da"
     },
     {
       "relation": "contains",
@@ -8768,9 +8828,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_de",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_de"
     },
     {
       "relation": "contains",
@@ -8778,9 +8838,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ds",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ds"
     },
     {
       "relation": "contains",
@@ -8788,9 +8848,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_e",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_e"
     },
     {
       "relation": "contains",
@@ -8798,9 +8858,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_eb",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_eb"
     },
     {
       "relation": "contains",
@@ -8808,9 +8868,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ee",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ee"
     },
     {
       "relation": "contains",
@@ -8818,9 +8878,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_fa",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_fa"
     },
     {
       "relation": "contains",
@@ -8828,9 +8888,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_fe",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_fe"
     },
     {
       "relation": "contains",
@@ -8838,9 +8898,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_fn",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_fn"
     },
     {
       "relation": "contains",
@@ -8848,9 +8908,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_fr",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_fr"
     },
     {
       "relation": "contains",
@@ -8858,9 +8918,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_fs",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_fs"
     },
     {
       "relation": "contains",
@@ -8868,9 +8928,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ga",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ga"
     },
     {
       "relation": "contains",
@@ -8878,9 +8938,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_gb",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_gb"
     },
     {
       "relation": "contains",
@@ -8888,9 +8948,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_gn",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_gn"
     },
     {
       "relation": "contains",
@@ -8898,9 +8958,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_gr",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_gr"
     },
     {
       "relation": "contains",
@@ -8908,9 +8968,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_gs",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_gs"
     },
     {
       "relation": "contains",
@@ -8918,9 +8978,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_h",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_h"
     },
     {
       "relation": "contains",
@@ -8928,9 +8988,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ha",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ha"
     },
     {
       "relation": "contains",
@@ -8938,9 +8998,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_he",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_he"
     },
     {
       "relation": "contains",
@@ -8948,9 +9008,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_hn",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_hn"
     },
     {
       "relation": "contains",
@@ -8958,9 +9018,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_i",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_i"
     },
     {
       "relation": "contains",
@@ -8968,9 +9028,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ie",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ie"
     },
     {
       "relation": "contains",
@@ -8978,9 +9038,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ja",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ja"
     },
     {
       "relation": "contains",
@@ -8988,9 +9048,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_kb",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_kb"
     },
     {
       "relation": "contains",
@@ -8998,9 +9058,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_kr",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_kr"
     },
     {
       "relation": "contains",
@@ -9008,9 +9068,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_l",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_l"
     },
     {
       "relation": "contains",
@@ -9018,9 +9078,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_la",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_la"
     },
     {
       "relation": "contains",
@@ -9028,9 +9088,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_lb",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_lb"
     },
     {
       "relation": "contains",
@@ -9038,9 +9098,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_lr",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_lr"
     },
     {
       "relation": "contains",
@@ -9048,9 +9108,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ls",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ls"
     },
     {
       "relation": "contains",
@@ -9058,9 +9118,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_mb",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_mb"
     },
     {
       "relation": "contains",
@@ -9068,9 +9128,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_mr",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_mr"
     },
     {
       "relation": "contains",
@@ -9078,9 +9138,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ms",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ms"
     },
     {
       "relation": "contains",
@@ -9088,9 +9148,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_n",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_n"
     },
     {
       "relation": "contains",
@@ -9098,9 +9158,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ne",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ne"
     },
     {
       "relation": "contains",
@@ -9108,9 +9168,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_nn",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_nn"
     },
     {
       "relation": "contains",
@@ -9118,9 +9178,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ns",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ns"
     },
     {
       "relation": "contains",
@@ -9128,9 +9188,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_oe",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_oe"
     },
     {
       "relation": "contains",
@@ -9138,9 +9198,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_on",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_on"
     },
     {
       "relation": "contains",
@@ -9148,9 +9208,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_p",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_p"
     },
     {
       "relation": "contains",
@@ -9158,9 +9218,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_pe",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_pe"
     },
     {
       "relation": "contains",
@@ -9168,9 +9228,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_pr",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_pr"
     },
     {
       "relation": "contains",
@@ -9178,9 +9238,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_pt",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_pt"
     },
     {
       "relation": "contains",
@@ -9188,9 +9248,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_qa",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_qa"
     },
     {
       "relation": "contains",
@@ -9198,9 +9258,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_qb",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_qb"
     },
     {
       "relation": "contains",
@@ -9208,9 +9268,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_qe",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_qe"
     },
     {
       "relation": "contains",
@@ -9218,9 +9278,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_qn",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_qn"
     },
     {
       "relation": "contains",
@@ -9228,9 +9288,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_rb",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_rb"
     },
     {
       "relation": "contains",
@@ -9238,9 +9298,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_re",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_re"
     },
     {
       "relation": "contains",
@@ -9248,9 +9308,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_rs",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_rs"
     },
     {
       "relation": "contains",
@@ -9258,9 +9318,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_sb",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_sb"
     },
     {
       "relation": "contains",
@@ -9268,9 +9328,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_se",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_se"
     },
     {
       "relation": "contains",
@@ -9278,9 +9338,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_sn",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_sn"
     },
     {
       "relation": "contains",
@@ -9288,9 +9348,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_support_cors_images",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_support_cors_images"
     },
     {
       "relation": "contains",
@@ -9298,9 +9358,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_support_cors_xhr",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_support_cors_xhr"
     },
     {
       "relation": "contains",
@@ -9308,9 +9368,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_support_foreignobject_drawing",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_support_foreignobject_drawing"
     },
     {
       "relation": "contains",
@@ -9318,9 +9378,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_support_native_text_segmentation",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_support_native_text_segmentation"
     },
     {
       "relation": "contains",
@@ -9328,9 +9388,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_support_range_bounds",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_support_range_bounds"
     },
     {
       "relation": "contains",
@@ -9338,9 +9398,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_support_response_type",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_support_response_type"
     },
     {
       "relation": "contains",
@@ -9348,9 +9408,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_support_svg_drawing",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_support_svg_drawing"
     },
     {
       "relation": "contains",
@@ -9358,9 +9418,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_support_word_breaking",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_support_word_breaking"
     },
     {
       "relation": "contains",
@@ -9368,9 +9428,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_t",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_t"
     },
     {
       "relation": "contains",
@@ -9378,9 +9438,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_tb",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_tb"
     },
     {
       "relation": "contains",
@@ -9388,9 +9448,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_te",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_te"
     },
     {
       "relation": "contains",
@@ -9398,9 +9458,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ts",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ts"
     },
     {
       "relation": "contains",
@@ -9408,9 +9468,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ua",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ua"
     },
     {
       "relation": "contains",
@@ -9418,9 +9478,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_us",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_us"
     },
     {
       "relation": "contains",
@@ -9428,9 +9488,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_vn",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_vn"
     },
     {
       "relation": "contains",
@@ -9438,9 +9498,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_vs",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_vs"
     },
     {
       "relation": "contains",
@@ -9448,9 +9508,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_w",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_w"
     },
     {
       "relation": "contains",
@@ -9458,9 +9518,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_wa",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_wa"
     },
     {
       "relation": "contains",
@@ -9468,9 +9528,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ws",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ws"
     },
     {
       "relation": "contains",
@@ -9478,9 +9538,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_xa",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_xa"
     },
     {
       "relation": "contains",
@@ -9488,9 +9548,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_xb",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_xb"
     },
     {
       "relation": "contains",
@@ -9498,9 +9558,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_xs",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_xs"
     },
     {
       "relation": "contains",
@@ -9508,9 +9568,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_xt",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_xt"
     },
     {
       "relation": "contains",
@@ -9518,9 +9578,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ya",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ya"
     },
     {
       "relation": "contains",
@@ -9528,9 +9588,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_ye",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ye"
     },
     {
       "relation": "contains",
@@ -9538,9 +9598,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_za",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_za"
     },
     {
       "relation": "contains",
@@ -9548,9 +9608,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min",
-      "target": "liquid_glass_html2canvas_min_zn",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_zn"
     },
     {
       "relation": "calls",
@@ -9559,9 +9619,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_hn",
-      "target": "liquid_glass_html2canvas_min_a",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_a"
     },
     {
       "relation": "calls",
@@ -9581,9 +9641,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_wa",
-      "target": "liquid_glass_html2canvas_min_p",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_p"
     },
     {
       "relation": "calls",
@@ -9592,9 +9652,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_wa",
-      "target": "liquid_glass_html2canvas_min_e",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_e"
     },
     {
       "relation": "calls",
@@ -9603,9 +9663,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_wa",
-      "target": "liquid_glass_html2canvas_min_i",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_i"
     },
     {
       "relation": "calls",
@@ -9625,9 +9685,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_fa",
-      "target": "liquid_glass_html2canvas_min_ua",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ua"
     },
     {
       "relation": "calls",
@@ -9636,9 +9696,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_la",
-      "target": "liquid_glass_html2canvas_min_ua",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ua"
     },
     {
       "relation": "calls",
@@ -9647,9 +9707,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_da",
-      "target": "liquid_glass_html2canvas_min_ha",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ha"
     },
     {
       "relation": "calls",
@@ -9658,9 +9718,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_te",
-      "target": "liquid_glass_html2canvas_min_ee",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ee"
     },
     {
       "relation": "calls",
@@ -9669,9 +9729,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_he",
-      "target": "liquid_glass_html2canvas_min_te",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_te"
     },
     {
       "relation": "calls",
@@ -9680,9 +9740,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_ye",
-      "target": "liquid_glass_html2canvas_min_te",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_te"
     },
     {
       "relation": "calls",
@@ -9691,9 +9751,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_cs",
-      "target": "liquid_glass_html2canvas_min_be",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_be"
     },
     {
       "relation": "calls",
@@ -9702,9 +9762,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_xb",
-      "target": "liquid_glass_html2canvas_min_oe",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_oe"
     },
     {
       "relation": "calls",
@@ -9724,9 +9784,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_xb",
-      "target": "liquid_glass_html2canvas_min_fe",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_fe"
     },
     {
       "relation": "calls",
@@ -9735,9 +9795,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_an",
-      "target": "liquid_glass_html2canvas_min_pt",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_pt"
     },
     {
       "relation": "calls",
@@ -9768,9 +9828,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_support_foreignobject_drawing",
-      "target": "liquid_glass_html2canvas_min_lr",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_lr"
     },
     {
       "relation": "calls",
@@ -9801,9 +9861,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_cn",
-      "target": "liquid_glass_html2canvas_min_on",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_on"
     },
     {
       "relation": "calls",
@@ -9812,9 +9872,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_qn",
-      "target": "liquid_glass_html2canvas_min_on",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_on"
     },
     {
       "relation": "calls",
@@ -9834,9 +9894,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_gs",
-      "target": "liquid_glass_html2canvas_min_ts",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ts"
     },
     {
       "relation": "calls",
@@ -9845,9 +9905,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_gs",
-      "target": "liquid_glass_html2canvas_min_rs",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_rs"
     },
     {
       "relation": "calls",
@@ -9856,9 +9916,9 @@
       "source_file": "public/vendor/liquid-glass/html2canvas.min.js",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_html2canvas_min_gs",
-      "target": "liquid_glass_html2canvas_min_ns",
-      "confidence_score": 1.0
+      "target": "liquid_glass_html2canvas_min_ns"
     },
     {
       "relation": "imports_from",
@@ -10522,6 +10582,52 @@
     {
       "relation": "imports_from",
       "confidence": "EXTRACTED",
+      "source_file": "src/layouts/ProjectPageLayout.astro",
+      "source": "layouts_projectpagelayout",
+      "target": "astro_prefetch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/ProjectPageLayout.astro",
+      "source": "layouts_projectpagelayout",
+      "target": "client",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/ProjectPageLayout.astro",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "layouts_projectpagelayout",
+      "target": "layouts_projectpagelayout_ensurescripts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/ProjectPageLayout.astro",
+      "source_location": "L399",
+      "weight": 1.0,
+      "source": "layouts_projectpagelayout",
+      "target": "layouts_projectpagelayout_if",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/ProjectPageLayout.astro",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "layouts_projectpagelayout",
+      "target": "layouts_projectpagelayout_loadscript",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
       "source_file": "src/pages/projects/3d-printed-rocket.astro",
       "confidence_score": 1.0,
       "source": "projects_3d_printed_rocket",
@@ -10755,9 +10861,9 @@
       "source_file": "Claude.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude",
-      "target": "claude_manav_patel_portfolio_website_build_brief",
-      "confidence_score": 1.0
+      "target": "claude_manav_patel_portfolio_website_build_brief"
     },
     {
       "relation": "contains",
@@ -10765,9 +10871,9 @@
       "source_file": "Claude.md",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_manav_patel_portfolio_website_build_brief",
-      "target": "claude_0_how_to_use_this_file",
-      "confidence_score": 1.0
+      "target": "claude_0_how_to_use_this_file"
     },
     {
       "relation": "contains",
@@ -10775,9 +10881,9 @@
       "source_file": "Claude.md",
       "source_location": "L258",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_manav_patel_portfolio_website_build_brief",
-      "target": "claude_10_quality_bar_conventions",
-      "confidence_score": 1.0
+      "target": "claude_10_quality_bar_conventions"
     },
     {
       "relation": "contains",
@@ -10785,9 +10891,9 @@
       "source_file": "Claude.md",
       "source_location": "L268",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_manav_patel_portfolio_website_build_brief",
-      "target": "claude_11_build_milestones_review_after_each",
-      "confidence_score": 1.0
+      "target": "claude_11_build_milestones_review_after_each"
     },
     {
       "relation": "contains",
@@ -10795,9 +10901,9 @@
       "source_file": "Claude.md",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_manav_patel_portfolio_website_build_brief",
-      "target": "claude_1_goal",
-      "confidence_score": 1.0
+      "target": "claude_1_goal"
     },
     {
       "relation": "contains",
@@ -10805,9 +10911,9 @@
       "source_file": "Claude.md",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_manav_patel_portfolio_website_build_brief",
-      "target": "claude_2_north_star_the_portfolio_is_not_the_resume",
-      "confidence_score": 1.0
+      "target": "claude_2_north_star_the_portfolio_is_not_the_resume"
     },
     {
       "relation": "contains",
@@ -10815,9 +10921,9 @@
       "source_file": "Claude.md",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_manav_patel_portfolio_website_build_brief",
-      "target": "claude_3_audience_and_tone",
-      "confidence_score": 1.0
+      "target": "claude_3_audience_and_tone"
     },
     {
       "relation": "contains",
@@ -10825,9 +10931,9 @@
       "source_file": "Claude.md",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_manav_patel_portfolio_website_build_brief",
-      "target": "claude_4_design_direction",
-      "confidence_score": 1.0
+      "target": "claude_4_design_direction"
     },
     {
       "relation": "contains",
@@ -10835,9 +10941,9 @@
       "source_file": "Claude.md",
       "source_location": "L119",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_manav_patel_portfolio_website_build_brief",
-      "target": "claude_5_information_architecture",
-      "confidence_score": 1.0
+      "target": "claude_5_information_architecture"
     },
     {
       "relation": "contains",
@@ -10845,9 +10951,9 @@
       "source_file": "Claude.md",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_manav_patel_portfolio_website_build_brief",
-      "target": "claude_6_signature_features",
-      "confidence_score": 1.0
+      "target": "claude_6_signature_features"
     },
     {
       "relation": "contains",
@@ -10855,9 +10961,9 @@
       "source_file": "Claude.md",
       "source_location": "L154",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_manav_patel_portfolio_website_build_brief",
-      "target": "claude_7_projects",
-      "confidence_score": 1.0
+      "target": "claude_7_projects"
     },
     {
       "relation": "contains",
@@ -10865,9 +10971,9 @@
       "source_file": "Claude.md",
       "source_location": "L190",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_manav_patel_portfolio_website_build_brief",
-      "target": "claude_8_asset_organization",
-      "confidence_score": 1.0
+      "target": "claude_8_asset_organization"
     },
     {
       "relation": "contains",
@@ -10875,9 +10981,9 @@
       "source_file": "Claude.md",
       "source_location": "L213",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_manav_patel_portfolio_website_build_brief",
-      "target": "claude_9_tech_stack",
-      "confidence_score": 1.0
+      "target": "claude_9_tech_stack"
     },
     {
       "relation": "contains",
@@ -10885,9 +10991,9 @@
       "source_file": "Claude.md",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_4_design_direction",
-      "target": "claude_4_1_aesthetic_concept",
-      "confidence_score": 1.0
+      "target": "claude_4_1_aesthetic_concept"
     },
     {
       "relation": "contains",
@@ -10895,9 +11001,9 @@
       "source_file": "Claude.md",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_4_design_direction",
-      "target": "claude_4_2_reference_sites_principles_to_extract",
-      "confidence_score": 1.0
+      "target": "claude_4_2_reference_sites_principles_to_extract"
     },
     {
       "relation": "contains",
@@ -10905,9 +11011,9 @@
       "source_file": "Claude.md",
       "source_location": "L85",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_4_design_direction",
-      "target": "claude_4_3_typography",
-      "confidence_score": 1.0
+      "target": "claude_4_3_typography"
     },
     {
       "relation": "contains",
@@ -10915,9 +11021,9 @@
       "source_file": "Claude.md",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_4_design_direction",
-      "target": "claude_4_4_color",
-      "confidence_score": 1.0
+      "target": "claude_4_4_color"
     },
     {
       "relation": "contains",
@@ -10925,9 +11031,9 @@
       "source_file": "Claude.md",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_4_design_direction",
-      "target": "claude_4_5_motion_atmosphere",
-      "confidence_score": 1.0
+      "target": "claude_4_5_motion_atmosphere"
     },
     {
       "relation": "contains",
@@ -10935,9 +11041,9 @@
       "source_file": "Claude.md",
       "source_location": "L156",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_7_projects",
-      "target": "claude_7_1_project_page_template_use_for_every_project",
-      "confidence_score": 1.0
+      "target": "claude_7_1_project_page_template_use_for_every_project"
     },
     {
       "relation": "contains",
@@ -10945,9 +11051,9 @@
       "source_file": "Claude.md",
       "source_location": "L169",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_7_projects",
-      "target": "claude_7_2_project_list",
-      "confidence_score": 1.0
+      "target": "claude_7_2_project_list"
     },
     {
       "relation": "contains",
@@ -10955,9 +11061,9 @@
       "source_file": "Claude.md",
       "source_location": "L225",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_9_tech_stack",
-      "target": "claude_9_1_deploy_github_pages_cloudflare",
-      "confidence_score": 1.0
+      "target": "claude_9_1_deploy_github_pages_cloudflare"
     },
     {
       "relation": "contains",
@@ -10965,9 +11071,9 @@
       "source_file": "Claude.md",
       "source_location": "L232",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_9_tech_stack",
-      "target": "claude_9_2_pre_launch_access_gate_soft_temporary",
-      "confidence_score": 1.0
+      "target": "claude_9_2_pre_launch_access_gate_soft_temporary"
     },
     {
       "relation": "contains",
@@ -10975,9 +11081,9 @@
       "source_file": "Claude.md",
       "source_location": "L279",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_11_build_milestones_review_after_each",
-      "target": "claude_owner_quick_reference_for_about_footer",
-      "confidence_score": 1.0
+      "target": "claude_owner_quick_reference_for_about_footer"
     },
     {
       "relation": "contains",
@@ -10985,9 +11091,9 @@
       "source_file": "DECISIONS.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "decisions",
-      "target": "decisions_decisions_md",
-      "confidence_score": 1.0
+      "target": "decisions_decisions_md"
     },
     {
       "relation": "contains",
@@ -10995,9 +11101,9 @@
       "source_file": "DECISIONS.md",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "decisions_decisions_md",
-      "target": "decisions_access_gate",
-      "confidence_score": 1.0
+      "target": "decisions_access_gate"
     },
     {
       "relation": "contains",
@@ -11005,9 +11111,9 @@
       "source_file": "DECISIONS.md",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "decisions_decisions_md",
-      "target": "decisions_deploy",
-      "confidence_score": 1.0
+      "target": "decisions_deploy"
     },
     {
       "relation": "contains",
@@ -11015,9 +11121,9 @@
       "source_file": "DECISIONS.md",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "decisions_decisions_md",
-      "target": "decisions_fonts",
-      "confidence_score": 1.0
+      "target": "decisions_fonts"
     },
     {
       "relation": "contains",
@@ -11025,8 +11131,18 @@
       "source_file": "DECISIONS.md",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "decisions_decisions_md",
-      "target": "decisions_framework",
+      "target": "decisions_framework"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DECISIONS.md",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "decisions_decisions_md",
+      "target": "decisions_navigation_qol_prefetch_keyboard_back_to_top",
       "confidence_score": 1.0
     },
     {
@@ -11035,9 +11151,9 @@
       "source_file": "DECISIONS.md",
       "source_location": "L61",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "decisions_decisions_md",
-      "target": "decisions_next_project_button_liquid_glass_js",
-      "confidence_score": 1.0
+      "target": "decisions_next_project_button_liquid_glass_js"
     },
     {
       "relation": "contains",
@@ -11045,9 +11161,9 @@
       "source_file": "DECISIONS.md",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "decisions_decisions_md",
-      "target": "decisions_node_js",
-      "confidence_score": 1.0
+      "target": "decisions_node_js"
     },
     {
       "relation": "contains",
@@ -11055,9 +11171,9 @@
       "source_file": "DECISIONS.md",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "decisions_decisions_md",
-      "target": "decisions_root_cname",
-      "confidence_score": 1.0
+      "target": "decisions_root_cname"
     },
     {
       "relation": "contains",
@@ -11065,9 +11181,9 @@
       "source_file": "DECISIONS.md",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "decisions_decisions_md",
-      "target": "decisions_styling",
-      "confidence_score": 1.0
+      "target": "decisions_styling"
     },
     {
       "relation": "contains",
@@ -11075,9 +11191,9 @@
       "source_file": "README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "readme",
-      "target": "readme_portfolio",
-      "confidence_score": 1.0
+      "target": "readme_portfolio"
     },
     {
       "relation": "contains",
@@ -11085,9 +11201,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-1-foundation.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_1_foundation",
-      "target": "plans_2026_05_28_milestone_1_foundation_milestone_1_foundation_implementation_plan",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_1_foundation_milestone_1_foundation_implementation_plan"
     },
     {
       "relation": "contains",
@@ -11095,9 +11211,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-1-foundation.md",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_1_foundation_milestone_1_foundation_implementation_plan",
-      "target": "plans_2026_05_28_milestone_1_foundation_file_map",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_1_foundation_file_map"
     },
     {
       "relation": "contains",
@@ -11105,9 +11221,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-1-foundation.md",
       "source_location": "L955",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_1_foundation_file_map",
-      "target": "plans_2026_05_28_milestone_1_foundation_task_10_decisions_md",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_1_foundation_task_10_decisions_md"
     },
     {
       "relation": "contains",
@@ -11115,9 +11231,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-1-foundation.md",
       "source_location": "L1015",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_1_foundation_file_map",
-      "target": "plans_2026_05_28_milestone_1_foundation_task_11_full_build_verification_commit",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_1_foundation_task_11_full_build_verification_commit"
     },
     {
       "relation": "contains",
@@ -11125,9 +11241,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-1-foundation.md",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_1_foundation_file_map",
-      "target": "plans_2026_05_28_milestone_1_foundation_task_1_project_scaffold_files",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_1_foundation_task_1_project_scaffold_files"
     },
     {
       "relation": "contains",
@@ -11135,9 +11251,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-1-foundation.md",
       "source_location": "L114",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_1_foundation_file_map",
-      "target": "plans_2026_05_28_milestone_1_foundation_task_2_install_dependencies_verify_build",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_1_foundation_task_2_install_dependencies_verify_build"
     },
     {
       "relation": "contains",
@@ -11145,9 +11261,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-1-foundation.md",
       "source_location": "L149",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_1_foundation_file_map",
-      "target": "plans_2026_05_28_milestone_1_foundation_task_3_css_design_tokens",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_1_foundation_task_3_css_design_tokens"
     },
     {
       "relation": "contains",
@@ -11155,9 +11271,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-1-foundation.md",
       "source_location": "L241",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_1_foundation_file_map",
-      "target": "plans_2026_05_28_milestone_1_foundation_task_4_global_base_styles",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_1_foundation_task_4_global_base_styles"
     },
     {
       "relation": "contains",
@@ -11165,9 +11281,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-1-foundation.md",
       "source_location": "L333",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_1_foundation_file_map",
-      "target": "plans_2026_05_28_milestone_1_foundation_task_5_layout_astro",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_1_foundation_task_5_layout_astro"
     },
     {
       "relation": "contains",
@@ -11175,9 +11291,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-1-foundation.md",
       "source_location": "L420",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_1_foundation_file_map",
-      "target": "plans_2026_05_28_milestone_1_foundation_task_6_sidebar_component",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_1_foundation_task_6_sidebar_component"
     },
     {
       "relation": "contains",
@@ -11185,9 +11301,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-1-foundation.md",
       "source_location": "L617",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_1_foundation_file_map",
-      "target": "plans_2026_05_28_milestone_1_foundation_task_7_statuspill_component",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_1_foundation_task_7_statuspill_component"
     },
     {
       "relation": "contains",
@@ -11195,9 +11311,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-1-foundation.md",
       "source_location": "L684",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_1_foundation_file_map",
-      "target": "plans_2026_05_28_milestone_1_foundation_task_8_stub_pages",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_1_foundation_task_8_stub_pages"
     },
     {
       "relation": "contains",
@@ -11205,9 +11321,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-1-foundation.md",
       "source_location": "L890",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_1_foundation_file_map",
-      "target": "plans_2026_05_28_milestone_1_foundation_task_9_static_assets_gh_actions_workflow",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_1_foundation_task_9_static_assets_gh_actions_workflow"
     },
     {
       "relation": "contains",
@@ -11215,9 +11331,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-2-hero.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_2_hero",
-      "target": "plans_2026_05_28_milestone_2_hero_milestone_2_hero_page_implementation_plan",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_2_hero_milestone_2_hero_page_implementation_plan"
     },
     {
       "relation": "contains",
@@ -11225,9 +11341,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-2-hero.md",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_2_hero_milestone_2_hero_page_implementation_plan",
-      "target": "plans_2026_05_28_milestone_2_hero_file_map",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_2_hero_file_map"
     },
     {
       "relation": "contains",
@@ -11235,9 +11351,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-2-hero.md",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_2_hero_file_map",
-      "target": "plans_2026_05_28_milestone_2_hero_task_1_remove_main_content_padding_add_page_padded_utility",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_2_hero_task_1_remove_main_content_padding_add_page_padded_utility"
     },
     {
       "relation": "contains",
@@ -11245,9 +11361,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-2-hero.md",
       "source_location": "L85",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_2_hero_file_map",
-      "target": "plans_2026_05_28_milestone_2_hero_task_2_wrap_stub_pages_in_page_padded",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_2_hero_task_2_wrap_stub_pages_in_page_padded"
     },
     {
       "relation": "contains",
@@ -11255,9 +11371,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-2-hero.md",
       "source_location": "L181",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_2_hero_file_map",
-      "target": "plans_2026_05_28_milestone_2_hero_task_3_create_hero_astro",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_2_hero_task_3_create_hero_astro"
     },
     {
       "relation": "contains",
@@ -11265,9 +11381,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-2-hero.md",
       "source_location": "L330",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_2_hero_file_map",
-      "target": "plans_2026_05_28_milestone_2_hero_task_4_update_index_astro_build_verification",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_2_hero_task_4_update_index_astro_build_verification"
     },
     {
       "relation": "contains",
@@ -11275,9 +11391,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-3-projects.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_3_projects",
-      "target": "plans_2026_05_28_milestone_3_projects_milestone_3_projects_index_test_stand_detail_page",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_3_projects_milestone_3_projects_index_test_stand_detail_page"
     },
     {
       "relation": "contains",
@@ -11285,9 +11401,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-3-projects.md",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_3_projects_milestone_3_projects_index_test_stand_detail_page",
-      "target": "plans_2026_05_28_milestone_3_projects_file_map",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_3_projects_file_map"
     },
     {
       "relation": "contains",
@@ -11295,9 +11411,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-3-projects.md",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_3_projects_file_map",
-      "target": "plans_2026_05_28_milestone_3_projects_task_1_projecttile_component",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_3_projects_task_1_projecttile_component"
     },
     {
       "relation": "contains",
@@ -11305,9 +11421,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-3-projects.md",
       "source_location": "L153",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_3_projects_file_map",
-      "target": "plans_2026_05_28_milestone_3_projects_task_2_spectable_component",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_3_projects_task_2_spectable_component"
     },
     {
       "relation": "contains",
@@ -11315,9 +11431,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-3-projects.md",
       "source_location": "L234",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_3_projects_file_map",
-      "target": "plans_2026_05_28_milestone_3_projects_task_3_metriccallout_component",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_3_projects_task_3_metriccallout_component"
     },
     {
       "relation": "contains",
@@ -11325,9 +11441,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-3-projects.md",
       "source_location": "L357",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_3_projects_file_map",
-      "target": "plans_2026_05_28_milestone_3_projects_task_4_projects_index_full_mosaic",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_3_projects_task_4_projects_index_full_mosaic"
     },
     {
       "relation": "contains",
@@ -11335,9 +11451,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-3-projects.md",
       "source_location": "L545",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_3_projects_file_map",
-      "target": "plans_2026_05_28_milestone_3_projects_task_5_stub_pages_for_all_unbuilt_project_routes",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_3_projects_task_5_stub_pages_for_all_unbuilt_project_routes"
     },
     {
       "relation": "contains",
@@ -11345,9 +11461,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-3-projects.md",
       "source_location": "L783",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_3_projects_file_map",
-      "target": "plans_2026_05_28_milestone_3_projects_task_6_horizontal_propulsion_test_stand_detail_page",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_3_projects_task_6_horizontal_propulsion_test_stand_detail_page"
     },
     {
       "relation": "contains",
@@ -11355,9 +11471,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-3-projects.md",
       "source_location": "L1117",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_3_projects_file_map",
-      "target": "plans_2026_05_28_milestone_3_projects_task_7_build_verification_commit",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_3_projects_task_7_build_verification_commit"
     },
     {
       "relation": "contains",
@@ -11365,9 +11481,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects",
-      "target": "plans_2026_05_28_milestone_4_all_projects_milestone_4_all_project_detail_pages",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_milestone_4_all_project_detail_pages"
     },
     {
       "relation": "contains",
@@ -11375,9 +11491,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_milestone_4_all_project_detail_pages",
-      "target": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_file_map"
     },
     {
       "relation": "contains",
@@ -11385,9 +11501,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L911",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_10_vertical_test_stand_tank_mount_detail_page",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_10_vertical_test_stand_tank_mount_detail_page"
     },
     {
       "relation": "contains",
@@ -11395,9 +11511,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L998",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_11_propulsion_data_analysis_detail_page",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_11_propulsion_data_analysis_detail_page"
     },
     {
       "relation": "contains",
@@ -11405,9 +11521,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L1102",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_12_injector_water_flows_detail_page",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_12_injector_water_flows_detail_page"
     },
     {
       "relation": "contains",
@@ -11415,9 +11531,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L1189",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_13_submersible_v3_detail_page",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_13_submersible_v3_detail_page"
     },
     {
       "relation": "contains",
@@ -11425,9 +11541,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L1278",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_14_uav_gimbal_joint_design_detail_page",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_14_uav_gimbal_joint_design_detail_page"
     },
     {
       "relation": "contains",
@@ -11435,9 +11551,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L1365",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_15_obstacle_avoidance_embedded_system_detail_page",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_15_obstacle_avoidance_embedded_system_detail_page"
     },
     {
       "relation": "contains",
@@ -11445,9 +11561,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L1453",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_16_friends_of_taylor_observatory_detail_page_short",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_16_friends_of_taylor_observatory_detail_page_short"
     },
     {
       "relation": "contains",
@@ -11455,9 +11571,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L1507",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_17_build_verification_commit",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_17_build_verification_commit"
     },
     {
       "relation": "contains",
@@ -11465,9 +11581,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_1_install_plotly_declare_module_type",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_1_install_plotly_declare_module_type"
     },
     {
       "relation": "contains",
@@ -11475,9 +11591,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L72",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_2_shared_project_page_css_in_global_css",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_2_shared_project_page_css_in_global_css"
     },
     {
       "relation": "contains",
@@ -11485,9 +11601,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L155",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_3_projectpagelayout_component",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_3_projectpagelayout_component"
     },
     {
       "relation": "contains",
@@ -11495,9 +11611,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L295",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_4_fix_projecttile_optional_href",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_4_fix_projecttile_optional_href"
     },
     {
       "relation": "contains",
@@ -11505,9 +11621,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L430",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_5_update_projects_astro_remove_hub_tile_href",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_5_update_projects_astro_remove_hub_tile_href"
     },
     {
       "relation": "contains",
@@ -11515,9 +11631,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L461",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_6_thrustchart_component",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_6_thrustchart_component"
     },
     {
       "relation": "contains",
@@ -11525,9 +11641,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L566",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_7_scatteredreports_component",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_7_scatteredreports_component"
     },
     {
       "relation": "contains",
@@ -11535,9 +11651,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L733",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_8_refactor_horizontal_propulsion_test_stand_to_use_projectpagelayout",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_8_refactor_horizontal_propulsion_test_stand_to_use_projectpagelayout"
     },
     {
       "relation": "contains",
@@ -11545,9 +11661,9 @@
       "source_file": "docs/superpowers/plans/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L823",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_2026_05_28_milestone_4_all_projects_file_map",
-      "target": "plans_2026_05_28_milestone_4_all_projects_task_9_injector_orifice_sizing_detail_page",
-      "confidence_score": 1.0
+      "target": "plans_2026_05_28_milestone_4_all_projects_task_9_injector_orifice_sizing_detail_page"
     },
     {
       "relation": "contains",
@@ -11555,9 +11671,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-2-hero.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_2_hero",
-      "target": "specs_2026_05_28_milestone_2_hero_milestone_2_hero_page_design",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_2_hero_milestone_2_hero_page_design"
     },
     {
       "relation": "contains",
@@ -11565,9 +11681,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-2-hero.md",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_2_hero_milestone_2_hero_page_design",
-      "target": "specs_2026_05_28_milestone_2_hero_animation",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_2_hero_animation"
     },
     {
       "relation": "contains",
@@ -11575,9 +11691,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-2-hero.md",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_2_hero_milestone_2_hero_page_design",
-      "target": "specs_2026_05_28_milestone_2_hero_background_motif",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_2_hero_background_motif"
     },
     {
       "relation": "contains",
@@ -11585,9 +11701,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-2-hero.md",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_2_hero_milestone_2_hero_page_design",
-      "target": "specs_2026_05_28_milestone_2_hero_content_top_bottom",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_2_hero_content_top_bottom"
     },
     {
       "relation": "contains",
@@ -11595,9 +11711,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-2-hero.md",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_2_hero_milestone_2_hero_page_design",
-      "target": "specs_2026_05_28_milestone_2_hero_files",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_2_hero_files"
     },
     {
       "relation": "contains",
@@ -11605,9 +11721,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-2-hero.md",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_2_hero_milestone_2_hero_page_design",
-      "target": "specs_2026_05_28_milestone_2_hero_layout",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_2_hero_layout"
     },
     {
       "relation": "contains",
@@ -11615,9 +11731,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-3-projects.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_3_projects",
-      "target": "specs_2026_05_28_milestone_3_projects_milestone_3_projects_index_test_stand_detail_page_design",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_3_projects_milestone_3_projects_index_test_stand_detail_page_design"
     },
     {
       "relation": "contains",
@@ -11625,9 +11741,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-3-projects.md",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_3_projects_milestone_3_projects_index_test_stand_detail_page_design",
-      "target": "specs_2026_05_28_milestone_3_projects_a_projects_index_mosaic_layout",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_3_projects_a_projects_index_mosaic_layout"
     },
     {
       "relation": "contains",
@@ -11635,9 +11751,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-3-projects.md",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_3_projects_milestone_3_projects_index_test_stand_detail_page_design",
-      "target": "specs_2026_05_28_milestone_3_projects_b_horizontal_propulsion_test_stand_detail_page",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_3_projects_b_horizontal_propulsion_test_stand_detail_page"
     },
     {
       "relation": "contains",
@@ -11645,9 +11761,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-3-projects.md",
       "source_location": "L112",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_3_projects_milestone_3_projects_index_test_stand_detail_page_design",
-      "target": "specs_2026_05_28_milestone_3_projects_files",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_3_projects_files"
     },
     {
       "relation": "contains",
@@ -11655,9 +11771,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-3-projects.md",
       "source_location": "L102",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_3_projects_milestone_3_projects_index_test_stand_detail_page_design",
-      "target": "specs_2026_05_28_milestone_3_projects_new_components",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_3_projects_new_components"
     },
     {
       "relation": "contains",
@@ -11665,9 +11781,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-3-projects.md",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_3_projects_milestone_3_projects_index_test_stand_detail_page_design",
-      "target": "specs_2026_05_28_milestone_3_projects_projects_inventory",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_3_projects_projects_inventory"
     },
     {
       "relation": "contains",
@@ -11675,9 +11791,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-3-projects.md",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_3_projects_projects_inventory",
-      "target": "specs_2026_05_28_milestone_3_projects_rocket_project_cluster_hub_5_sub_projects",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_3_projects_rocket_project_cluster_hub_5_sub_projects"
     },
     {
       "relation": "contains",
@@ -11685,9 +11801,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-3-projects.md",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_3_projects_projects_inventory",
-      "target": "specs_2026_05_28_milestone_3_projects_standalone_projects",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_3_projects_standalone_projects"
     },
     {
       "relation": "contains",
@@ -11695,9 +11811,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-3-projects.md",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_3_projects_b_horizontal_propulsion_test_stand_detail_page",
-      "target": "specs_2026_05_28_milestone_3_projects_section_1_hero_band",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_3_projects_section_1_hero_band"
     },
     {
       "relation": "contains",
@@ -11705,9 +11821,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-3-projects.md",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_3_projects_b_horizontal_propulsion_test_stand_detail_page",
-      "target": "specs_2026_05_28_milestone_3_projects_section_2_spec_block",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_3_projects_section_2_spec_block"
     },
     {
       "relation": "contains",
@@ -11715,9 +11831,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-3-projects.md",
       "source_location": "L86",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_3_projects_b_horizontal_propulsion_test_stand_detail_page",
-      "target": "specs_2026_05_28_milestone_3_projects_section_3_the_work",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_3_projects_section_3_the_work"
     },
     {
       "relation": "contains",
@@ -11725,9 +11841,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-3-projects.md",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_3_projects_b_horizontal_propulsion_test_stand_detail_page",
-      "target": "specs_2026_05_28_milestone_3_projects_section_4_metric_callouts",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_3_projects_section_4_metric_callouts"
     },
     {
       "relation": "contains",
@@ -11735,9 +11851,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_4_all_projects",
-      "target": "specs_2026_05_28_milestone_4_all_projects_milestone_4_all_project_detail_pages_design",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_4_all_projects_milestone_4_all_project_detail_pages_design"
     },
     {
       "relation": "contains",
@@ -11745,9 +11861,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_4_all_projects_milestone_4_all_project_detail_pages_design",
-      "target": "specs_2026_05_28_milestone_4_all_projects_files",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_4_all_projects_files"
     },
     {
       "relation": "contains",
@@ -11755,9 +11871,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_4_all_projects_milestone_4_all_project_detail_pages_design",
-      "target": "specs_2026_05_28_milestone_4_all_projects_hub_tile_fix",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_4_all_projects_hub_tile_fix"
     },
     {
       "relation": "contains",
@@ -11765,9 +11881,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_4_all_projects_milestone_4_all_project_detail_pages_design",
-      "target": "specs_2026_05_28_milestone_4_all_projects_new_components",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_4_all_projects_new_components"
     },
     {
       "relation": "contains",
@@ -11775,9 +11891,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_4_all_projects_milestone_4_all_project_detail_pages_design",
-      "target": "specs_2026_05_28_milestone_4_all_projects_page_content",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_4_all_projects_page_content"
     },
     {
       "relation": "contains",
@@ -11785,9 +11901,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_4_all_projects_new_components",
-      "target": "specs_2026_05_28_milestone_4_all_projects_scatteredreports_astro",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_4_all_projects_scatteredreports_astro"
     },
     {
       "relation": "contains",
@@ -11795,9 +11911,9 @@
       "source_file": "docs/superpowers/specs/2026-05-28-milestone-4-all-projects.md",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "specs_2026_05_28_milestone_4_all_projects_new_components",
-      "target": "specs_2026_05_28_milestone_4_all_projects_thrustchart_astro",
-      "confidence_score": 1.0
+      "target": "specs_2026_05_28_milestone_4_all_projects_thrustchart_astro"
     },
     {
       "relation": "contains",
@@ -11805,9 +11921,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme",
-      "target": "liquid_glass_js_main_readme_liquid_glass_js",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_liquid_glass_js"
     },
     {
       "relation": "contains",
@@ -11815,9 +11931,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L389",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_liquid_glass_js",
-      "target": "liquid_glass_js_main_readme_acknowledgments",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_acknowledgments"
     },
     {
       "relation": "contains",
@@ -11825,9 +11941,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L163",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_liquid_glass_js",
-      "target": "liquid_glass_js_main_readme_advanced_usage",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_advanced_usage"
     },
     {
       "relation": "contains",
@@ -11835,9 +11951,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L91",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_liquid_glass_js",
-      "target": "liquid_glass_js_main_readme_api_reference",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_api_reference"
     },
     {
       "relation": "contains",
@@ -11845,9 +11961,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L262",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_liquid_glass_js",
-      "target": "liquid_glass_js_main_readme_architecture",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_architecture"
     },
     {
       "relation": "contains",
@@ -11855,9 +11971,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L286",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_liquid_glass_js",
-      "target": "liquid_glass_js_main_readme_browser_support",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_browser_support"
     },
     {
       "relation": "contains",
@@ -11865,9 +11981,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L319",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_liquid_glass_js",
-      "target": "liquid_glass_js_main_readme_contributing",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_contributing"
     },
     {
       "relation": "contains",
@@ -11875,9 +11991,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L301",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_liquid_glass_js",
-      "target": "liquid_glass_js_main_readme_development",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_development"
     },
     {
       "relation": "contains",
@@ -11885,9 +12001,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L334",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_liquid_glass_js",
-      "target": "liquid_glass_js_main_readme_examples",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_examples"
     },
     {
       "relation": "contains",
@@ -11895,9 +12011,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_liquid_glass_js",
-      "target": "liquid_glass_js_main_readme_features",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_features"
     },
     {
       "relation": "contains",
@@ -11905,9 +12021,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L146",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_liquid_glass_js",
-      "target": "liquid_glass_js_main_readme_glass_effect_parameters",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_glass_effect_parameters"
     },
     {
       "relation": "contains",
@@ -11915,9 +12031,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L385",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_liquid_glass_js",
-      "target": "liquid_glass_js_main_readme_license",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_license"
     },
     {
       "relation": "contains",
@@ -11925,9 +12041,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_liquid_glass_js",
-      "target": "liquid_glass_js_main_readme_quick_start",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_quick_start"
     },
     {
       "relation": "contains",
@@ -11935,9 +12051,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L375",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_liquid_glass_js",
-      "target": "liquid_glass_js_main_readme_roadmap",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_roadmap"
     },
     {
       "relation": "contains",
@@ -11945,9 +12061,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L218",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_liquid_glass_js",
-      "target": "liquid_glass_js_main_readme_styling",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_styling"
     },
     {
       "relation": "contains",
@@ -11955,9 +12071,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_quick_start",
-      "target": "liquid_glass_js_main_readme_basic_usage",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_basic_usage"
     },
     {
       "relation": "contains",
@@ -11965,9 +12081,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_quick_start",
-      "target": "liquid_glass_js_main_readme_container_with_nested_glass",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_container_with_nested_glass"
     },
     {
       "relation": "contains",
@@ -11975,9 +12091,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L116",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_api_reference",
-      "target": "liquid_glass_js_main_readme_button_class",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_button_class"
     },
     {
       "relation": "contains",
@@ -11985,9 +12101,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L93",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_api_reference",
-      "target": "liquid_glass_js_main_readme_container_class",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_container_class"
     },
     {
       "relation": "contains",
@@ -11995,9 +12111,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L95",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_container_class",
-      "target": "liquid_glass_js_main_readme_constructor_options",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_constructor_options"
     },
     {
       "relation": "contains",
@@ -12005,9 +12121,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L103",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_container_class",
-      "target": "liquid_glass_js_main_readme_methods",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_methods"
     },
     {
       "relation": "contains",
@@ -12015,9 +12131,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L120",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_button_class",
-      "target": "liquid_glass_js_main_readme_constructor_options_120",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_constructor_options_120"
     },
     {
       "relation": "contains",
@@ -12025,9 +12141,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L131",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_button_class",
-      "target": "liquid_glass_js_main_readme_example",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_example"
     },
     {
       "relation": "contains",
@@ -12035,9 +12151,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L165",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_advanced_usage",
-      "target": "liquid_glass_js_main_readme_custom_glass_controls",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_custom_glass_controls"
     },
     {
       "relation": "contains",
@@ -12045,9 +12161,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L189",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_advanced_usage",
-      "target": "liquid_glass_js_main_readme_shape_types",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_shape_types"
     },
     {
       "relation": "contains",
@@ -12055,9 +12171,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L200",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_shape_types",
-      "target": "liquid_glass_js_main_readme_perfect_circle",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_perfect_circle"
     },
     {
       "relation": "contains",
@@ -12065,9 +12181,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L209",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_shape_types",
-      "target": "liquid_glass_js_main_readme_pill_capsule",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_pill_capsule"
     },
     {
       "relation": "contains",
@@ -12075,9 +12191,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L191",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_shape_types",
-      "target": "liquid_glass_js_main_readme_rounded_rectangle",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_rounded_rectangle"
     },
     {
       "relation": "contains",
@@ -12085,9 +12201,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L220",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_styling",
-      "target": "liquid_glass_js_main_readme_css_classes",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_css_classes"
     },
     {
       "relation": "contains",
@@ -12095,9 +12211,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L248",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_styling",
-      "target": "liquid_glass_js_main_readme_custom_themes",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_custom_themes"
     },
     {
       "relation": "contains",
@@ -12105,9 +12221,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L272",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_architecture",
-      "target": "liquid_glass_js_main_readme_file_structure",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_file_structure"
     },
     {
       "relation": "contains",
@@ -12115,9 +12231,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L264",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_architecture",
-      "target": "liquid_glass_js_main_readme_webgl_implementation",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_webgl_implementation"
     },
     {
       "relation": "contains",
@@ -12125,9 +12241,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L315",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_development",
-      "target": "liquid_glass_js_main_readme_building",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_building"
     },
     {
       "relation": "contains",
@@ -12135,9 +12251,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L303",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_development",
-      "target": "liquid_glass_js_main_readme_local_development",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_local_development"
     },
     {
       "relation": "contains",
@@ -12145,9 +12261,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L327",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_contributing",
-      "target": "liquid_glass_js_main_readme_development_guidelines",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_development_guidelines"
     },
     {
       "relation": "contains",
@@ -12155,9 +12271,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L356",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_examples",
-      "target": "liquid_glass_js_main_readme_control_panel",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_control_panel"
     },
     {
       "relation": "contains",
@@ -12165,9 +12281,9 @@
       "source_file": "liquid-glass-js-main/README.md",
       "source_location": "L336",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "liquid_glass_js_main_readme_examples",
-      "target": "liquid_glass_js_main_readme_navigation_bar",
-      "confidence_score": 1.0
+      "target": "liquid_glass_js_main_readme_navigation_bar"
     },
     {
       "relation": "implements",

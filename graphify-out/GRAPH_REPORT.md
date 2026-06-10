@@ -1,16 +1,16 @@
 # Graph Report - portfolio  (2026-06-10)
 
 ## Corpus Check
-- 57 files · ~1,667,162 words
+- 57 files · ~1,667,649 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 646 nodes · 775 edges · 59 communities (43 shown, 16 thin omitted)
+- 647 nodes · 776 edges · 59 communities (43 shown, 16 thin omitted)
 - Extraction: 84% EXTRACTED · 16% INFERRED · 0% AMBIGUOUS · INFERRED: 125 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0d3aace7`
+- Built from commit: `2194a064`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -211,8 +211,8 @@ Cohesion: 0.15
 Nodes (12): A. Projects Index — Mosaic Layout, B. Horizontal Propulsion Test Stand — Detail Page, Files, Milestone 3: Projects Index + Test Stand Detail Page Design, New Components, Projects Inventory, Rocket Project cluster (hub + 5 sub-projects), Section 1 — Hero Band (+4 more)
 
 ### Community 42 - "Community 42"
-Cohesion: 0.18
-Nodes (9): Access Gate, Deploy, Fonts, Framework, Navigation QoL (prefetch, keyboard, back-to-top), Next Project button (liquid-glass-js), Node.js, Root CNAME (+1 more)
+Cohesion: 0.17
+Nodes (10): Access Gate, Deploy, Fonts, Framework, Glass snapshot capture moved out of the library, Navigation QoL (prefetch, keyboard, back-to-top), Next Project button (liquid-glass-js), Node.js (+2 more)
 
 ### Community 43 - "Community 43"
 Cohesion: 0.20
@@ -267,7 +267,7 @@ Cohesion: 0.67
 Nodes (3): cn(), on(), Qn()
 
 ## Knowledge Gaps
-- **232 isolated node(s):** `version`, `configurations`, `superpowers@superpowers-marketplace`, `allow`, `helloRow` (+227 more)
+- **233 isolated node(s):** `version`, `configurations`, `superpowers@superpowers-marketplace`, `allow`, `helloRow` (+228 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -279,7 +279,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `../../layouts/ProjectPageLayout.astro` connect `UI Components & Interactivity` to `Astro Page Components`?**
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
 - **What connects `version`, `configurations`, `superpowers@superpowers-marketplace` to the rest of the system?**
-  _240 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _241 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `UI Components & Interactivity` be split into smaller, more focused modules?**
   _Cohesion score 0.09206349206349207 - nodes in this community are weakly interconnected._
 - **Should `Portfolio Design Patterns & PDF Artifacts` be split into smaller, more focused modules?**

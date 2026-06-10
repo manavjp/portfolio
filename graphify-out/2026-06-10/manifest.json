@@ -15,9 +15,9 @@
     "semantic_hash": "99787c4333fea65bce3d038948f0e1db"
   },
   "astro.config.mjs": {
-    "mtime": 1779996679.1998596,
-    "ast_hash": "792a0d1720dac44d917189611a7d3408",
-    "semantic_hash": "792a0d1720dac44d917189611a7d3408"
+    "mtime": 1781129889.7510047,
+    "ast_hash": "c160033d1a0a1f599bff34d34e5faa94",
+    "semantic_hash": ""
   },
   "package.json": {
     "mtime": 1780207163.0380673,
@@ -60,9 +60,9 @@
     "semantic_hash": "60006cceedfa7d68ebf4f1a8e18198b6"
   },
   "src/components/ProjectTile.astro": {
-    "mtime": 1780455971.6593537,
-    "ast_hash": "fe7b2a08baa7df6705f83912670259d4",
-    "semantic_hash": "fe7b2a08baa7df6705f83912670259d4"
+    "mtime": 1781129819.1690383,
+    "ast_hash": "f10ff293e6ff3f43cdd4f6b1fcf604c4",
+    "semantic_hash": ""
   },
   "src/components/ScatteredReports.astro": {
     "mtime": 1780455981.1830459,
@@ -70,9 +70,9 @@
     "semantic_hash": "b4851fbc349aa7e98691aa027361175a"
   },
   "src/components/Sidebar.astro": {
-    "mtime": 1780455949.880541,
-    "ast_hash": "72f19dd47aa8b948dd6b382ae8ce754e",
-    "semantic_hash": "72f19dd47aa8b948dd6b382ae8ce754e"
+    "mtime": 1781129817.0281196,
+    "ast_hash": "aa058ec5647a16fa82440138eefff106",
+    "semantic_hash": ""
   },
   "src/components/SpecTable.astro": {
     "mtime": 1780026412.6959372,
@@ -105,13 +105,13 @@
     "semantic_hash": "5177c9e0cec2aa7c3ae154b9b4460aef"
   },
   "src/layouts/Layout.astro": {
-    "mtime": 1780791136.3731658,
-    "ast_hash": "46ba5435dc58ad72c56a98acde686f0b",
-    "semantic_hash": "46ba5435dc58ad72c56a98acde686f0b"
+    "mtime": 1781129821.217621,
+    "ast_hash": "99bd4ceaadfa37322047f8a944c89f3a",
+    "semantic_hash": ""
   },
   "src/layouts/ProjectPageLayout.astro": {
-    "mtime": 1781097062.6018238,
-    "ast_hash": "fe435850e9abaf480577541c03f1fa2d",
+    "mtime": 1781130049.6970549,
+    "ast_hash": "d5197792eb1ce6a4094f970f6513ae86",
     "semantic_hash": ""
   },
   "src/pages/about.astro": {
@@ -130,8 +130,8 @@
     "semantic_hash": "f2e38610c3728273847c2cd06654148e"
   },
   "src/pages/projects.astro": {
-    "mtime": 1781092782.3841095,
-    "ast_hash": "95543f76dce665d8377cedc2d1ed6804",
+    "mtime": 1781129229.7467794,
+    "ast_hash": "b3a8353929f8e2d0a071dca60890cf95",
     "semantic_hash": ""
   },
   "src/pages/projects/3d-printed-rocket.astro": {
@@ -205,8 +205,8 @@
     "semantic_hash": "7319ee8f0cce85fcb36d44b257890195"
   },
   "DECISIONS.md": {
-    "mtime": 1781097640.5919163,
-    "ast_hash": "24584921ca5f9c1c5a3e142058d92196",
+    "mtime": 1781130305.0245268,
+    "ast_hash": "097a255e1efdb71f8e740bf52c7f31cc",
     "semantic_hash": ""
   },
   "README.md": {
@@ -687,16 +687,6 @@
   "liquid-glass-js-main/README.md": {
     "mtime": 1749688073.0,
     "ast_hash": "80e358a72ec17d1cfb1bbbcdbbb033c3",
-    "semantic_hash": ""
-  },
-  "liquid-glass-js-main/index.html": {
-    "mtime": 1749688073.0,
-    "ast_hash": "dcd2e0fa30a9e0e0ef24e06f0f9530c5",
-    "semantic_hash": ""
-  },
-  "liquid-glass-js-main/demo.gif": {
-    "mtime": 1749688073.0,
-    "ast_hash": "eb947d50e2d7f9de30a6165d6480e377",
     "semantic_hash": ""
   }
 }
