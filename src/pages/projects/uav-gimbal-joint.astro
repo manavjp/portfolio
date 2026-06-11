@@ -4,75 +4,191 @@ import SpecTable from '../../components/SpecTable.astro';
 import MetricCallout from '../../components/MetricCallout.astro';
 
 const specRows = [
-  { label: 'DoF Added',      value: '+1 Rotational'                  },
-  { label: 'Singularity',    value: '6-DoF at vertical arm'          },
-  { label: 'Design Method',  value: 'DfAM (additive manufacturing)'  },
-  { label: 'Joint Type',     value: 'Gimbal on passive hinge'        },
-  { label: 'Lab',            value: 'UCLA MacLab / Mechatronics Lab' },
+  { label: 'Platform',         value: 'Overactuated UAV' },
+  { label: 'DoF',              value: '6'                },
+  { label: 'Mass',             value: '155 g'            },
+  { label: 'Quadcopters',      value: '4'                },
+  { label: 'Quadcopter Model', value: 'Crazyflie 2.1'    },
+  { label: 'Gimbals',          value: '4'                },
+  { label: 'Motors',           value: '16'               },
+  { label: 'Motor Size',       value: '0.28 × 0.6 in'    },
+  { label: 'Total Thrust',     value: '0.63 lbf'         },
+  { label: 'Frame',            value: 'Carbon Fiber'     },
+  { label: 'Gimbal Material',  value: 'PLA (FDM Print)'  },
 ];
 ---
 <ProjectPageLayout
-  title="UAV Research"
-  description="DfAM gimbal joint adding one rotational DoF to an over-actuated UAV, eliminating a 6-DoF kinematic singularity."
+  title="Omnidirectional UAV Research"
+  description="Passive gimbal joint for an overactuated 6-DoF UAV — addressing the mechanical singularity at vertical rotor alignment."
   ghostText="MaCLAB"
   category="Mechatronics & Controls Lab"
-  tagline="DfAM gimbal joint — 6-DoF singularity elimination"
+  tagline="Overactuated 6-DOF UAV with 4 passive gimbals"
+  showOverview={false}
   nextHref="/projects/submersible-v3"
 >
-  <section class="spec-block">
-    <SpecTable rows={specRows} title="Specifications" />
-    <div class="todo-block">
-      <span class="todo-label">TODO — Rotating gimbal GIF</span>
-      <p>SolidWorks animation showing the gimbal joint articulating through its full range of motion. ~3 s loop GIF or MP4. Place at <code>public/assets/projects/uav-gimbal-joint/gimbal-rotate.gif</code>.</p>
+  <!-- Overview + specs alongside cropped platform cover -->
+  <section class="spec-block" style="grid-template-columns: 1fr 1.5fr; align-items: start; gap: 1.5rem;">
+    <div class="spec-col">
+      <h2 class="section-overview">Overview</h2>
+      <SpecTable rows={specRows} title="Specifications" />
+    </div>
+    <div class="cover-wrap">
+      <img
+        class="cover-img"
+        src="/assets/projects/maclab/drone_cover.jpg"
+        alt="Overactuated UAV — four Crazyflie 2.1 quadcopters in gimbals on a carbon-fiber frame"
+      />
     </div>
   </section>
+
   <section class="metrics-row" aria-label="Key metrics">
-    <MetricCallout value="1" unit="DoF"  description="Rotational DoF added"      prefix="+" />
-    <MetricCallout value="6" unit="-DoF" description="Singularity eliminated"               />
-    <MetricCallout value="0" unit="machinable alternatives" description="DfAM only solution" />
+    <MetricCallout value="6"   unit="DoF"    description="Overactuated flight control"      />
+    <MetricCallout value="16"  unit="motors" description="Across four gimbaled quadcopters" />
+    <MetricCallout value="155" unit="g"      description="Total platform mass"              />
   </section>
+
   <section class="the-work">
+
+    <!-- ── Problem ──────────────────────────────────────────── -->
     <div class="work-row">
       <h2 class="work-label">Problem</h2>
       <div class="work-content">
-        <!-- FILL IN - Problem: Describe the engineering challenge that motivated this project -->
+        <p class="work-text">
+          Traditional multirotors are underactuated, so lateral translation
+          requires tilting the entire airframe, coupling position and
+          attitude. However, this prevents vertical hovering or overhead
+          surface inspection. Making a drone fully overactuated solves that
+          coupling but creates a new issue: when a gimbaled rotor approaches
+          vertical alignment, the mechanism loses an effective degree of
+          freedom. Designing a joint that holds the gimbal constrained during
+          normal operation and smoothly unlocks an auxiliary axis only near
+          this singular configuration, without relying on friction or
+          mechanically unpredictable behavior, is the specific problem I am
+          working to address.
+        </p>
       </div>
     </div>
+
+    <!-- ── Concept ──────────────────────────────────────────── -->
+    <div class="work-row">
+      <h2 class="work-label">Concept</h2>
+      <div class="work-content">
+        <p class="work-text">
+          The platform suspends four Crazyflie 2.1 quadcopters in 3D-printed
+          (PLA) 2-DOF gimbals mounted on a carbon-fiber frame. This gives each
+          actuator the ability to independently steer its thrust vector in 3D
+          space. My contribution targets the mechanical singularity: a passive
+          joint that constrains the gimbal in its normal operating range and
+          unlocks an auxiliary rotational axis when the gimbal approaches
+          vertical. The mechanism must transition smoothly, add negligible
+          mass, and avoid friction-dependent behavior.
+        </p>
+        <!-- frame — portrait 3:4, constrain width -->
+        <figure class="proj-figure portrait-figure">
+          <img src="/assets/projects/maclab/frame.jpg"
+               alt="Carbon-fiber frame with gimbal-mounted Crazyflie 2.1 quadcopters and motion-capture markers"
+               loading="lazy" />
+          <figcaption>Carbon-fiber frame with gimbal-mounted Crazyflie 2.1 quadcopters and motion-capture markers</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- ── Approach ─────────────────────────────────────────── -->
     <div class="work-row">
       <h2 class="work-label">Approach</h2>
       <div class="work-content">
-        <!-- FILL IN - Approach: Explain the methodology, key decisions, and tools used -->
-      </div>
-    </div>
-    <div class="work-row">
-      <h2 class="work-label">Analysis</h2>
-      <div class="work-content">
-        <figure class="proj-figure">
-          <img src="/assets/projects/maclab/figure1.webp"
-               alt="Gimbal joint kinematic figure — DoF analysis and singularity configuration" loading="lazy" />
-          <figcaption>Gimbal joint — kinematic configuration</figcaption>
+        <p class="work-text">
+          Using SolidWorks, I iterate on joint geometry prototypes. Each
+          iteration is 3D-printed in PLA and evaluated for transition behavior
+          at the vertical angular boundary, structural integrity, and
+          compatibility with the Crazyflie mounting.
+        </p>
+        <!-- gimbal close-up — portrait 3:4, constrain width -->
+        <figure class="proj-figure portrait-figure">
+          <img src="/assets/projects/maclab/gimbal_close.jpg"
+               alt="3D-printed PLA gimbal ring around a Crazyflie 2.1, with a joint iteration in SolidWorks behind"
+               loading="lazy" />
+          <figcaption>Printed gimbal ring around a Crazyflie 2.1</figcaption>
         </figure>
-        <div class="todo-block">
-          <span class="todo-label">TODO — Singularity-explainer diagram</span>
-          <p>Kinematic diagram showing the passive-hinge structure at the singular configuration: which force/torque directions are lost and how the added DoF restores them.</p>
-        </div>
-        <div class="todo-block">
-          <span class="todo-label">TODO — Before/after DoF comparison</span>
-          <p>Side-by-side workspace visualization showing inaccessible configurations before the gimbal and the recovered workspace after.</p>
-        </div>
       </div>
     </div>
+
+    <!-- ── Vision ───────────────────────────────────────────── -->
     <div class="work-row">
-      <h2 class="work-label">Result</h2>
+      <h2 class="work-label">Vision</h2>
       <div class="work-content">
-        <!-- FILL IN - Result: Describe what was achieved — metrics, validation, outcomes -->
+        <p class="work-text">
+          This research could lead to future drones that can fly and maneuver
+          in all six degrees of freedom, making them useful for inspecting
+          cliffs, caves, spacecraft, and other hard-to-reach places. On Mars,
+          a scaled version could help explore crater walls, lava tubes, and
+          steep terrain that rovers can&rsquo;t safely reach. Its gimbaled
+          thrust system could allow a Mars copter to hover while pointing
+          cameras or scientific instruments in different directions, rather
+          than needing the whole aircraft to tilt. Titan may be an even
+          stronger long-term application because its dense atmosphere and low
+          gravity make rotorcraft flight easier, allowing similar 6-DOF drones
+          to explore icy terrain and organic deposits.
+        </p>
+        <figure class="proj-figure">
+          <video class="media-landscape" autoplay loop muted playsinline
+                 aria-label="NASA JPL Mars Chopper concept animation">
+            <source src="/assets/projects/maclab/mars.mp4" type="video/mp4" />
+          </video>
+          <figcaption>Mars Chopper, NASA Jet Propulsion Laboratory.</figcaption>
+        </figure>
       </div>
     </div>
-    <div class="work-row">
-      <h2 class="work-label">Reflection</h2>
-      <div class="work-content">
-        <!-- FILL IN - Reflection: Lessons learned and what would be done differently -->
-      </div>
-    </div>
+
   </section>
 </ProjectPageLayout>
+
+<style>
+  /* Cropped cover image beside the spec table */
+  .cover-wrap {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% center;
+    display: block;
+  }
+
+  .spec-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .spec-col :global(.section-overview) {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: var(--fw-black);
+    color: var(--text-100);
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Portrait photos (3:4) — cap width so they don't dominate the page */
+  .portrait-figure {
+    max-width: 60%;
+  }
+  @media (max-width: 768px) {
+    .portrait-figure { max-width: 100%; }
+  }
+
+  /* Mars Chopper video — 16:9 landscape */
+  .media-landscape {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: var(--surface);
+  }
+</style>

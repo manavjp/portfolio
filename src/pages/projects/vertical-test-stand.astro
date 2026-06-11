@@ -15,10 +15,10 @@ const specRows = [
 ---
 <ProjectPageLayout
   title="Vertical Tank Mount"
-  description="Flight tank structural mount and vertical stand infrastructure, FEA-validated in Ansys Mechanical."
+  description="Oxidizer tank infrastructure for static fire / cold flows"
   ghostText="TANK MOUNT"
   category="UCLA Rocket Project"
-  tagline="Flight tank structural mount, FEA-validated in Ansys Mechanical"
+  tagline="Oxidizer tank infrastructure for static fire / cold flows"
   showOverview={false}
   nextHref="/projects/propulsion-data-analysis"
 >
@@ -45,16 +45,37 @@ const specRows = [
   </section>
 
   <section class="the-work">
+
+    <!-- ── Objective ────────────────────────────────────────── -->
     <div class="work-row">
-      <h2 class="work-label">Problem</h2>
+      <h2 class="work-label">Objective</h2>
       <div class="work-content">
-        <!-- FILL IN - Problem: Describe the engineering challenge that motivated this project -->
+        <p class="work-text">
+          Built a vertical oxidizer tank mount to support a hybrid rocket
+          engine test campaign of 2 cold flows and 3 static fires. The primary
+          measurement requirement was accurate load cell data. This drove the
+          design toward a dual-level restraint (laser cut) geometry to isolate
+          lateral tank motion from load cell inputs. The mount also needed to
+          accommodate a quick-disconnect arm for procedures and install onto an
+          existing test site structure.
+        </p>
       </div>
     </div>
+
+    <!-- ── Approach ─────────────────────────────────────────── -->
     <div class="work-row">
       <h2 class="work-label">Approach</h2>
       <div class="work-content">
-        <!-- FILL IN - Approach: Explain the methodology, key decisions, and tools used -->
+        <p class="work-text">
+          Adapted an existing vertical test stand from a prior COTS rocket
+          motor firing rather than fabricating new primary structure, reusing
+          the base frame to reduce schedule strain. Added two independent
+          levels of tank restraint plates to constrain lateral tank motion.
+          The main mechanism is an eye bolt and a rod that goes through the
+          tank&rsquo;s skirt. Integrated a quick-disconnect arm at the base of
+          the strut assembly, incorporating it into standard test procedures
+          as a verified checkout item.
+        </p>
         <!-- restraint drawing — ultra-wide (4.3:1), show full width at natural ratio -->
         <figure class="proj-figure">
           <img src="/assets/projects/tank_mount/restraint_drawing.png"
@@ -71,20 +92,37 @@ const specRows = [
         </figure>
       </div>
     </div>
+
+    <!-- ── Build ────────────────────────────────────────────── -->
     <div class="work-row">
-      <h2 class="work-label">Analysis</h2>
+      <h2 class="work-label">Build</h2>
       <div class="work-content">
-        <!-- FILL IN - Analysis: Share data, calculations, test results, FEA, or simulation findings -->
-        <div class="todo-block">
-          <span class="todo-label">TODO — FEA stress contours</span>
-          <p>Ansys Mechanical von Mises stress contours for each load case. Export as high-res PNG with colorbar and FoS annotation.</p>
-        </div>
+        <p class="work-text">
+          The main frame of the tank mount was completed within an hour. I
+          laser-cut the restraint boards and fit-checked them in SolidWorks.
+          The structure was bolted to the test site.
+        </p>
+        <!-- vertical test stand — portrait 3:4, constrain width -->
+        <figure class="proj-figure build-figure">
+          <img src="/assets/projects/tank_mount/vertical_test_stand.jpg"
+               alt="Vertical test stand from a prior COTS rocket motor firing, re-used as the tank mount base structure"
+               loading="lazy" />
+          <figcaption>Vertical test stand for COTS rocket motor. Re-used for tank mount structure.</figcaption>
+        </figure>
       </div>
     </div>
+
+    <!-- ── Result ───────────────────────────────────────────── -->
     <div class="work-row">
       <h2 class="work-label">Result</h2>
       <div class="work-content">
-        <!-- FILL IN - Result: Describe what was achieved — metrics, validation, outcomes -->
+        <p class="work-text">
+          The mount completed all test events, 2 cold flows and 3 static
+          fires, without structural failure or unplanned modification. During
+          the campaign, I identified an issue with the oxidizer flex hose
+          length. The hose was long and spiraling, introducing pressure
+          losses; it was fixed.
+        </p>
         <div class="proj-gallery proj-gallery--2">
           <figure class="proj-figure">
             <img src="/assets/projects/tank_mount/tank_restraint.jpg"
@@ -99,12 +137,7 @@ const specRows = [
         </div>
       </div>
     </div>
-    <div class="work-row">
-      <h2 class="work-label">Reflection</h2>
-      <div class="work-content">
-        <!-- FILL IN - Reflection: Lessons learned and what would be done differently -->
-      </div>
-    </div>
+
   </section>
 </ProjectPageLayout>
 
@@ -150,5 +183,15 @@ const specRows = [
   .img-portrait-constrained {
     width: 100%;
     display: block;
+  }
+
+  /* Portrait build photo (3:4) — cap width so it doesn't dominate */
+  .build-figure {
+    max-width: 60%;
+  }
+
+  @media (max-width: 768px) {
+    .cad-figure,
+    .build-figure { max-width: 100%; }
   }
 </style>

@@ -17,10 +17,10 @@ const specRows = [
 
 <ProjectPageLayout
   title="Two-Phase N₂O Flow Model"
-  description="Python/CoolProp two-phase model reducing N₂O mass-flow error from 35% to 10.3%."
+  description="Python two-phase model reducing N₂O mass-flow error from 35% to 10.3%."
   ghostText="NITROUS OXIDE"
   category="UCLA Rocket Project"
-  tagline="Two-phase N₂O model — 35% → 10.3% mass-flow error"
+  tagline="To better predict oxidizer mass flow rate"
   showOverview={false}
   nextHref="/projects/vertical-test-stand"
 >
@@ -47,21 +47,102 @@ const specRows = [
   </section>
 
   <section class="the-work">
+
+    <!-- ── Problem ──────────────────────────────────────────── -->
     <div class="work-row">
       <h2 class="work-label">Problem</h2>
       <div class="work-content">
-        <!-- FILL IN - Problem: Describe the engineering challenge that motivated this project -->
+        <p class="work-text">
+          Hybrid rocket injectors using saturated-liquid nitrous oxide have a
+          modeling problem: the Single-Phase Incompressible (SPI) model
+        </p>
+        <div class="equation" aria-label="m-dot equals C sub d times A sub c times the square root of 2 rho 1 times the quantity P 1 minus P 2">
+          <span class="eq-body">ṁ = C<sub>d</sub> · A<sub>c</sub> · √<span class="eq-rad">2ρ<sub>1</sub>(P<sub>1</sub> − P<sub>2</sub>)</span></span>
+          <span class="eq-tag" aria-hidden="true">SPI</span>
+        </div>
+        <p class="work-text">
+          assumes non-flashing liquid and overpredicts mass flow by up to 30%
+          when nitrous accelerates through the atomizing injector and drops
+          below the saturation pressure, starting vapor formation. The
+          Homogeneous Equilibrium Model (HEM)
+        </p>
+        <div class="equation" aria-label="m-dot equals C sub d times A sub c times rho 2 times the square root of 2 times the quantity h 1 minus h 2">
+          <span class="eq-body">ṁ = C<sub>d</sub> · A<sub>c</sub> · ρ<sub>2</sub> · √<span class="eq-rad">2(h<sub>1</sub> − h<sub>2</sub>)</span></span>
+          <span class="eq-tag" aria-hidden="true">HEM</span>
+        </div>
+        <p class="work-text">
+          corrects for phase change by assuming full thermodynamic equilibrium
+          between phases, but underpredicts flow, and neither model is perfect.
+          Injector sizing in our program paired waterflow testing with SPI
+          alone, which is a terrible forward predictor. Two-phase nitrous oxide
+          flow through short orifices remains an active research area with no
+          consensus. The need was a validated forward predictor.
+        </p>
       </div>
     </div>
+
+    <!-- ── Approach ─────────────────────────────────────────── -->
     <div class="work-row">
       <h2 class="work-label">Approach</h2>
       <div class="work-content">
-        <!-- FILL IN - Approach: Explain the methodology, key decisions, and tools used -->
+        <p class="work-text">
+          I implemented the Non-Homogeneous Non-Equilibrium (NHNE) model, a
+          weighted combination of SPI and HEM controlled by a single factor
+          <var>κ</var>. The methodology we used was a waterflow-test-derived
+          discharge coefficient (C<sub>d</sub>), which captures our
+          geometry-specific losses, and used saturation property lookups in
+          Python for nitrous oxide to produce a forward mass-flow prediction
+          across the operating pressure-drop range. Calibrating <var>κ</var>
+          against oxidizer flow measured in a previous static fire made the
+          abstract physics match our actual injector geometry. Choke detection,
+          specifically the pressure ratio P<sub>2</sub>/P<sub>sat</sub> at
+          which further increasing upstream pressure no longer increases mass
+          flow, is computed directly from a thermodynamic lookup, creating an
+          upper bound for any sizing decision.
+        </p>
       </div>
     </div>
+
+    <!-- ── Build ────────────────────────────────────────────── -->
+    <div class="work-row">
+      <h2 class="work-label">Build</h2>
+      <div class="work-content">
+        <p class="work-text">
+          The implementation uses Python 3 with CoolProp for fluid properties
+          through property lookups (inputs: pressure, temperature — outputs:
+          density, enthalpy, vapor quality). NumPy was used for vectorized flow
+          math, Matplotlib for plotting, and pandas for terminal output. The
+          project is in a GitHub repository with three scripts:
+          <code>inputs.py</code> holds all parameters, <code>model.py</code> is
+          the pure forward model from literature, and
+          <code>prediction.py</code> sweeps orifice counts to find the quantity
+          that best meets the target oxidizer flow rate.
+        </p>
+      </div>
+    </div>
+
+    <!-- ── Analysis ─────────────────────────────────────────── -->
     <div class="work-row">
       <h2 class="work-label">Analysis</h2>
       <div class="work-content">
+        <p class="work-text">
+          Calibration swept <var>κ</var> across 50 values from 0 to 3.0,
+          evaluating predicted mass flow against the 1.85 lb/s measured from
+          the oxidizer tank load cell slope during the 14-second liquid phase
+          of the previous static fire. The key finding was that pure-HEM
+          over-predicted measured flow by 10%, and blending in any SPI only
+          worsened accuracy. Choke detection returned a critical pressure ratio
+          P<sub>2</sub>/P<sub>sat</sub> of 0.765, closely matching the
+          empirically established value of approximately 0.8 derived from over
+          500 cold-flow tests in published literature, independently confirming
+          the results. The 10% over-prediction falls within the ±15% accuracy
+          band reported at appropriate discharge coefficients
+          (C<sub>d</sub>), so the validation passed both average mass flow
+          within published accuracy and choke pressure ratio matching empirical
+          expectations. Honestly, the 10% gap is likely water-flow
+          C<sub>d</sub> being slightly higher than effective two-phase
+          C<sub>d</sub>, and feed-line two-phase effects at the manifold.
+        </p>
         <!-- Calibration curves — ~16:10 landscape chart -->
         <figure class="proj-figure">
           <img src="/assets/projects/flow_model/calibration_curves_at_best_kappa.png"
@@ -76,18 +157,54 @@ const specRows = [
         </figure>
       </div>
     </div>
+
+    <!-- ── Result ───────────────────────────────────────────── -->
     <div class="work-row">
       <h2 class="work-label">Result</h2>
       <div class="work-content">
-        <!-- FILL IN - Result: Describe what was achieved — metrics, validation, outcomes -->
+        <p class="work-text">
+          My calibrated model sized our flight injector to 69 orifices, with
+          the orifice-count sweep selecting it. On our program&rsquo;s second
+          hybrid engine static fire, the final fire before flight, the model
+          predicted mass flow (2.693 lbm/s) with a −6.71% error relative to
+          measured (2.88 lbm/s), well within the ±15% accuracy band reported in
+          literature. The legacy SPI approach lacks any physical reality and
+          cannot represent phase change, so it systematically overpredicts flow
+          in the flashing regime. This establishes a calibrated two-phase flow
+          model for the program&rsquo;s injector development, replacing a
+          waterflow-only sizing method with a quantitative, reproducible
+          process that can be recalibrated. I made sure to document everything
+          for future students.
+        </p>
       </div>
     </div>
+
+    <!-- ── Reflection ───────────────────────────────────────── -->
     <div class="work-row">
       <h2 class="work-label">Reflection</h2>
       <div class="work-content">
-        <!-- FILL IN - Reflection: Lessons learned and what would be done differently -->
+        <p class="work-text">
+          None of this would have been possible without Brian J. Solomon from
+          Utah State University and his 2011 M.S. report,
+          <a href="/assets/projects/flow_model/BrianJSolomon.pdf"
+             target="_blank" rel="noopener">&ldquo;Engineering Model to
+          Calculate Mass Flow Rate of a Two-Phase Saturated Fluid Through an
+          Injector Orifice.&rdquo;</a> The residual ~10% error is consistent
+          with HEM&rsquo;s limitations: it assumes equal velocity for liquid
+          and vapor phases. Closing that gap would require instrumentation that
+          our program does not have. Another limiting factor is that we
+          continue to use C<sub>d</sub> derived from water flows.
+        </p>
+        <figure class="proj-figure">
+          <video class="media-landscape" autoplay loop muted playsinline
+                 aria-label="Injector water-flow test">
+            <source src="/assets/projects/flow_model/waterflow.mp4" type="video/mp4" />
+          </video>
+          <figcaption>Injector water flow — produces the discharge coefficient (C<sub>d</sub>) used by the model</figcaption>
+        </figure>
       </div>
     </div>
+
   </section>
 </ProjectPageLayout>
 
@@ -119,5 +236,79 @@ const specRows = [
     line-height: var(--leading-tight);
     text-transform: uppercase;
     margin-bottom: 0.75rem;
+  }
+
+  /* ── Display equations — instrumentation-style readout ─────── */
+  .equation {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1rem 4.5rem;
+    background: var(--surface);
+    border: 1px solid var(--grid-line);
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    color: var(--text-90);
+    letter-spacing: 0.02em;
+    max-width: 72ch;
+  }
+  .equation sub {
+    font-size: 0.68em;
+    letter-spacing: 0;
+  }
+  /* Radical bar — overline spanning the radicand */
+  .eq-rad {
+    border-top: 1px solid currentColor;
+    padding: 0.1em 0.25em 0 0.1em;
+  }
+  .eq-tag {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.1em;
+  }
+  @media (max-width: 600px) {
+    .equation {
+      padding: 1rem 1rem 2.2rem;
+      font-size: 0.95rem;
+    }
+    .eq-tag {
+      top: auto;
+      bottom: 0.6rem;
+      transform: none;
+    }
+  }
+
+  /* Inline math variables */
+  .work-text var {
+    font-style: italic;
+    font-family: var(--font-mono);
+  }
+  .work-text code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    color: var(--text-90);
+  }
+  .work-text a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .work-text a:hover {
+    color: var(--accent);
+  }
+
+  /* Water-flow video — 16:9 landscape */
+  .media-landscape {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: var(--surface);
   }
 </style>
