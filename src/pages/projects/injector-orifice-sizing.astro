@@ -63,7 +63,7 @@ const specRows = [
         <p class="work-text">
           assumes non-flashing liquid and overpredicts mass flow by up to 30%
           when nitrous accelerates through the atomizing injector and drops
-          below the saturation pressure, starting vapor formation. The
+          below the saturation pressure, starting vapor formation. It uses pressure drop. The
           Homogeneous Equilibrium Model (HEM)
         </p>
         <div class="equation" aria-label="m-dot equals C sub d times A sub c times rho 2 times the square root of 2 times the quantity h 1 minus h 2">
@@ -72,7 +72,7 @@ const specRows = [
         </div>
         <p class="work-text">
           corrects for phase change by assuming full thermodynamic equilibrium
-          between phases, but underpredicts flow, and neither model is perfect.
+          between phases, but underpredicts flow, and neither model is perfect. HEM uses enthalpy drop.
           Injector sizing in our program paired waterflow testing with SPI
           alone, which is a terrible forward predictor. Two-phase nitrous oxide
           flow through short orifices remains an active research area with no
@@ -86,7 +86,7 @@ const specRows = [
       <h2 class="work-label">Approach</h2>
       <div class="work-content">
         <p class="work-text">
-          I implemented the Non-Homogeneous Non-Equilibrium (NHNE) model, a
+          We chose the Non-Homogeneous Non-Equilibrium (NHNE) model, a
           weighted combination of SPI and HEM controlled by a single factor
           <var>κ</var>. The methodology we used was a waterflow-test-derived
           discharge coefficient (C<sub>d</sub>), which captures our
@@ -126,10 +126,9 @@ const specRows = [
       <h2 class="work-label">Analysis</h2>
       <div class="work-content">
         <p class="work-text">
-          Calibration swept <var>κ</var> across 50 values from 0 to 3.0,
+          Calibration swept <var>κ</var> values,
           evaluating predicted mass flow against the 1.85 lb/s measured from
-          the oxidizer tank load cell slope during the 14-second liquid phase
-          of the previous static fire. The key finding was that pure-HEM
+          the oxidizer tank load cell of the previous static fire. The key finding was that pure-HEM
           over-predicted measured flow by 10%, and blending in any SPI only
           worsened accuracy. Choke detection returned a critical pressure ratio
           P<sub>2</sub>/P<sub>sat</sub> of 0.765, closely matching the

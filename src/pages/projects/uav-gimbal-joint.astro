@@ -54,17 +54,13 @@ const specRows = [
       <h2 class="work-label">Problem</h2>
       <div class="work-content">
         <p class="work-text">
-          Traditional multirotors are underactuated, so lateral translation
-          requires tilting the entire airframe, coupling position and
-          attitude. However, this prevents vertical hovering or overhead
-          surface inspection. Making a drone fully overactuated solves that
-          coupling but creates a new issue: when a gimbaled rotor approaches
+          Traditional multirotors are underactuated, so lateral movement
+          requires tilting the entire frame. However, this prevents vertical hovering or
+          surface inspection. Making a drone fully overactuated solves this but creates a new issue when the gimbaled rotor approaches
           vertical alignment, the mechanism loses an effective degree of
           freedom. Designing a joint that holds the gimbal constrained during
-          normal operation and smoothly unlocks an auxiliary axis only near
-          this singular configuration, without relying on friction or
-          mechanically unpredictable behavior, is the specific problem I am
-          working to address.
+          normal operation and smoothly unlocks a vertical axis is the specific problem I am
+          working on.
         </p>
       </div>
     </div>
@@ -77,11 +73,7 @@ const specRows = [
           The platform suspends four Crazyflie 2.1 quadcopters in 3D-printed
           (PLA) 2-DOF gimbals mounted on a carbon-fiber frame. This gives each
           actuator the ability to independently steer its thrust vector in 3D
-          space. My contribution targets the mechanical singularity: a passive
-          joint that constrains the gimbal in its normal operating range and
-          unlocks an auxiliary rotational axis when the gimbal approaches
-          vertical. The mechanism must transition smoothly, add negligible
-          mass, and avoid friction-dependent behavior.
+          space.
         </p>
         <!-- frame — portrait 3:4, constrain width -->
         <figure class="proj-figure portrait-figure">
@@ -118,17 +110,15 @@ const specRows = [
       <h2 class="work-label">Vision</h2>
       <div class="work-content">
         <p class="work-text">
-          This research could lead to future drones that can fly and maneuver
-          in all six degrees of freedom, making them useful for inspecting
+          This research could lead to future drones that can fly
+          in 6+ DOF, making them useful for inspecting
           cliffs, caves, spacecraft, and other hard-to-reach places. On Mars,
-          a scaled version could help explore crater walls, lava tubes, and
-          steep terrain that rovers can&rsquo;t safely reach. Its gimbaled
+          a scaled version could explore crater walls, lava tubes, and
+          steep terrain that rovers can&rsquo;t reach. Its gimbaled
           thrust system could allow a Mars copter to hover while pointing
-          cameras or scientific instruments in different directions, rather
-          than needing the whole aircraft to tilt. Titan may be an even
-          stronger long-term application because its dense atmosphere and low
-          gravity make rotorcraft flight easier, allowing similar 6-DOF drones
-          to explore icy terrain and organic deposits.
+          cameras/science instruments in different directions. Titan may be an even
+          stronger vision because its dense atmosphere and low
+          gravity make flight easier, allowing 6-DOF drones to explore icy terrain or organic deposits.
         </p>
         <figure class="proj-figure">
           <video class="media-landscape" autoplay loop muted playsinline
