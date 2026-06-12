@@ -229,32 +229,6 @@ GitHub Pages serves static files only, so the site builds to fully static output
 - Cloudflare DNS: point apex/`www` at GitHub Pages (the four GH Pages A records + a `www` CNAME to `<user>.github.io`). If proxied (orange cloud), set SSL/TLS to **Full** to avoid redirect loops.
 - **Domain: `manav-patel.com`** (apex). Set Astro `site: 'https://manav-patel.com'`, put `manav-patel.com` in the `CNAME` file, and point Cloudflare DNS at GitHub Pages (handle `www` → apex redirect in Cloudflare if desired).
 
-### 9.2 Pre-launch access gate (soft, temporary)
-
-While the site is in development it should not be openly browsable: visitors without a token link are redirected to LinkedIn. Anyone visiting `?token=dev9` is granted access (stored in `localStorage`) and can browse normally afterward.
-
-Implement as an **inline, render-blocking script in the `<head>` of the base layout** (Astro: `<script is:inline>`), so it runs before any content paints and there's no flash before redirect:
-
-```html
-<script is:inline>
-  const SECRET = "dev9";
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("token") === SECRET) {
-    localStorage.setItem("access", SECRET);
-  }
-  if (localStorage.getItem("access") !== SECRET) {
-    window.location.href = "https://www.linkedin.com/in/manavjp/";
-  }
-</script>
-```
-
-Notes:
-- This is a **soft gate only** — not security. GitHub Pages serves all files publicly, so HTML/images/PDFs remain fetchable by direct URL, and the token is visible in source. Use it only to keep the unfinished site out of casual view; never gate genuinely sensitive content behind it (see Section 10 confidentiality rule).
-- If View Transitions are enabled, the head script runs on initial load (sufficient, since access persists in `localStorage`). To re-check on every client-side navigation, also run the same check on the `astro:page-load` event.
-- Make the gate easy to remove for public launch (single component/flag) — delete it (or set a flag) when going live.
-
----
-
 ## 10. Quality bar & conventions
 
 - Responsive (mobile → desktop); accessible (semantic HTML, alt text on every figure, keyboard nav, `prefers-reduced-motion`).

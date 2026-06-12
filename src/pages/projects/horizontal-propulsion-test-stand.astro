@@ -53,14 +53,12 @@ const specRows = [
       <h2 class="work-label">Problem</h2>
       <div class="work-content">
         <p class="work-text">
-          The heritage test stand required on-site readjustment because its leg
-          struts were constrained only at a single joint, leaving them free to
-          rotate laterally. Crucially, the stand had to interface with fixed
-          bolt holes at the test site. Thrust measurement was not isolated from
-          the stand structure, mixing off-axis bearing loads. The previous
-          year&rsquo;s heritage design reportedly consumed multiple weeks of
-          machining time, and our year&rsquo;s hybrid test campaign could not
-          begin until we had a test stand.
+          The heritage test stand required readjustment because its legs were constrained at a single 
+          joint, leaving them free to rotate laterally. Critically, the stand had to interface with 
+          fixed bolt holes at the test site. Thrust measurement was not isolated from the stand
+          structure, mixing off-axis bearing loads. The heritage design reportedly took weeks of
+          machining time, and our year&rsquo;s hybrid test campaign could not begin until we had a
+          test stand.
         </p>
         <!-- heritage (portrait 3:4) + broken_plate (landscape 4:3) — uniform 4:3 crop -->
         <div class="proj-gallery proj-gallery--2">
@@ -83,15 +81,12 @@ const specRows = [
       <h2 class="work-label">Approach</h2>
       <div class="work-content">
         <p class="work-text">
-          Rather than improving the problematic leg struts, I deleted the leg
-          assembly entirely and redesigned the stand to mount directly to the
-          site&rsquo;s bolt plates. Rebuilding from the site constraints and the
-          governing propulsion calc. sheet, I reframed the primary structure as
-          two horizontal H-struts forming a square frame that interfaces
-          directly with the site&rsquo;s plates, with two vertical H-struts as
-          uprights. This geometry made the stand highly adjustable both
-          vertically and horizontally at the plate interface. Cantilever loads
-          on the base plate were addressed by adding diagonal braces,
+          Rather than improving the problematic leg struts, I deleted the legs entirely and redesigned 
+          the stand to mount directly to the site&rsquo;s plates. Rebuilding from the site constraints
+          and the governing propulsion calc. sheet, I reframed the primary structure as two horizontal 
+          H-struts forming a square frame that interfaces directly with the site&rsquo;s plates, with
+          two vertical H-struts as uprights. This made the stand highly adjustable both vertically and
+          horizontally. Cantilever loads on the base plate were addressed by adding diagonal braces,
           converting the shelf into a truss configuration.
         </p>
 
@@ -118,15 +113,13 @@ const specRows = [
       <h2 class="work-label">Build</h2>
       <div class="work-content">
         <p class="work-text">
-          The stand went from design thread to completed build in three weeks.
-          During assembly, I identified that the vertical struts had clearance
-          above the base plate for a blast shield to be added directly to the
-          stand rather than the prior configuration, which placed the shield
-          beneath the oxidizer tank mount, further from any potential blast
-          origin. I machined the aluminum base plate with the 3-axis mill,
-          drilling hole patterns for the linear rails, mounting brackets, and
-          brace attachment; the steel blast shield required a central hole for
-          the oxidizer flex hose and bolt patterns for the braces.
+          The stand went from slack thread to completed build in three weeks. During assembly, I saw
+          that the vertical struts had clearance above the base plate for a blast shield to be added
+          directly to the stand rather than the prior configuration, which placed the shield under
+          the oxidizer tank mount, further from any potential blast origin. I machined the aluminum
+          base plate with the 3-axis mill, drilling hole patterns for the linear rails, mounting
+          brackets, and brace attachment; the steel blast shield required a central hole for the
+          oxidizer flex hose and bolt patterns for the braces.
         </p>
 
         <!-- drill press (left, 4:3) + hf2 config (right) — uniform 4:3 crop -->
@@ -158,15 +151,12 @@ const specRows = [
       <h2 class="work-label">Analysis</h2>
       <div class="work-content">
         <p class="work-text">
-          I performed structural analysis on every bolted joint using loads
-          from the governing propulsion calculation sheet, applying a 1.7&times;
-          dynamic load factor for a factored thrust of 1,088 lbf. Joints
-          analyzed included the base plate brackets to horizontal H-strut at
-          full factored thrust and the horizontal H-strut to wall plates at
-          544 lbf, with failure modes checked across bolt shear, bearing,
-          tear-out, brace buckling, and brace tension. All joints exceeded the
-          2.0 minimum factor of safety. Krytox GPL 205 was applied prior to
-          static-fire campaigns.
+          I performed structural analysis on every bolted joint using loads from our propulsion
+          calculation sheet, applying a 1.7&times; dynamic load factor for a factored thrust of 1,088 
+          lbf. Joints analyzed included the base plate brackets to horizontal H-strut at full factored
+          thrust and the horizontal H-strut to wall plates at 544 lbf, with failure modes checked
+          across bolt shear, bearing, tear-out, brace buckling, and brace tension. All joints exceeded
+          the 2.0 minimum factor of safety.
         </p>
 
         <!-- Excel sheet — very wide, let it breathe at natural ratio -->
@@ -210,14 +200,12 @@ const specRows = [
       <h2 class="work-label">Result</h2>
       <div class="work-content">
         <p class="work-text">
-          The stand was integrated on the first attempt at the site with zero
-          adjustments required, cutting integration time by one hour. It
-          supported a full test campaign: several high-pressure leak-rate
-          tests, two CO&#8322; cold-flows, three N&#8322;O/HTPB static fires
-          across three different SRAD engine designs, and a flight CO&#8322;
-          wet dress rehearsal. The blast shield, relocated to the stand during
-          build, absorbed direct blast exposure at the final hotfire, which was
-          a real-world validation of the decision to position it closer to the
+          The stand was integrated on the first attempt at the site with zero adjustments required,
+          cutting integration time by one hour. It supported a full test campaign: several
+          high-pressure leak-rate tests, two CO&#8322; cold-flows, three N&#8322;O/HTPB static
+          fires across three different SRAD engine designs, and a flight CO&#8322; wet dress
+          rehearsal. The blast shield, relocated to the stand during build, absorbed direct blast
+          exposure at the final hotfire, which validated the decision to position it closer to the
           potential failure origin.
         </p>
         <video
@@ -234,17 +222,13 @@ const specRows = [
       <h2 class="work-label">Reflection</h2>
       <div class="work-content">
         <p class="work-text">
-          Ownership through design, analysis, build, and site integration
-          reduced a full development cycle into three weeks and surfaced issues
-          with a fast feedback loop. Speed is a tactical advantage. Three weeks
-          from the first message to a stand that took a full-pressure blast is
-          a pace worth repeating, and it was possible only because the
-          structure was simple enough to build quickly. Simplicity was critical
-          to early stand design. The highest-leverage decision was removing the
-          legs entirely rather than improving them; redefining the problem
-          rather than optimizing a flawed feature. The blast shield taking a
-          real blast confirmed that moving it from the tank mount to the stand
-          was the right decision.
+          Speed is a tactical advantage. Ownership through design, analysis, build, and site
+          integration reduced a full development process into twp weeks and surfaced issues with a
+          fast feedback loop. Three weeks from the first message to a stand that took a
+          full-pressure blast is a pace worth repeating, and it was possible only because the
+          structure was simple enough to build quickly. Simplicity was critical to early designs.
+          The highest-leverage decision was removing the legs entirely rather than improving them; 
+          why optimize a flawed feature?
         </p>
         <figure class="proj-figure">
           <img src="/assets/projects/horizontal-propulsion-test-stand/red_light.jpg"
