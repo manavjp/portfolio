@@ -123,3 +123,22 @@ the capture base, excludes the transition overlay and the controls, and
 pre-seeds `Container.pageSnapshot` so the library never races a stale capture.
 The render check now also asserts the snapshot is non-transparent and matches
 the page height.
+
+## Projects: Rocket-hub "reveal clickable tiles" interaction
+
+The "UCLA Rocket Project" hub tile is a static `<div>` (no `href`). It's made
+keyboard/click-activatable in JS (`role=button`, `tabindex=0`) — clicking briefly
+flashes an accent inset ring on each *clickable* sibling in the same `.mosaic`
+(`a.tile`), then clears it on `animationend`. Not a toggle, never highlights
+itself. The ring is an `::after` `box-shadow: inset` (the tile has
+`overflow:hidden`, so an outer ring/outline would be clipped). 90 ms stagger.
+
+## Contact: email row copies instead of mailto
+
+The email "link" is now a `<button>` that copies `manavjpatel@g.ucla.edu` to the
+clipboard while displaying `manavjpatel@ucla.edu`. The `↗` arrow is swapped for a
+copy-glyph SVG that, on success, briefly swaps to a check (`.is-copied`, 1.4 s).
+"Same size-change animation as the arrows" was read as: hover scales the icon
+(`scale(1.18)`) + accent color, reusing the arrows' `--dur-fast`/`--ease-out`
+tokens (the arrows translate; a scale reads better for a copy action). Clipboard
+uses async `writeText` with an execCommand textarea fallback on rejection.

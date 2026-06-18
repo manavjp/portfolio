@@ -190,6 +190,49 @@ import ITARTile from '../components/ITARTile.astro';
   }
 
   document.addEventListener('astro:page-load', applyPreviewGating);
+
+  // Click the big "UCLA Rocket Project" hub to briefly reveal which tiles in
+  // the cluster are actually clickable: each one flashes an accent outline,
+  // then fades back to normal. Not a toggle; the hub itself never highlights.
+  function initRocketHub() {
+    const hub = document.querySelector<HTMLElement>('.t-hub .tile');
+    if (!hub || hub.dataset.hubInit) return;
+    hub.dataset.hubInit = '1';
+
+    const mosaic = hub.closest('.mosaic');
+    if (!mosaic) return;
+    const subTiles = Array.from(mosaic.querySelectorAll<HTMLElement>('a.tile'));
+
+    hub.setAttribute('role', 'button');
+    hub.setAttribute('tabindex', '0');
+    hub.setAttribute('aria-label', 'Highlight the clickable Rocket Project case studies');
+
+    function flash() {
+      // little press feedback on the hub — no accent ring on itself
+      hub.classList.remove('hub-press');
+      void hub.offsetWidth; // restart the animation
+      hub.classList.add('hub-press');
+
+      subTiles.forEach((tile, i) => {
+        tile.classList.remove('rocket-flash');
+        void tile.offsetWidth; // restart the animation
+        tile.style.setProperty('--flash-delay', `${i * 90}ms`);
+        tile.classList.add('rocket-flash');
+      });
+    }
+
+    // Drop the flash class once each tile's animation ends so nothing stays lit.
+    subTiles.forEach(tile => {
+      tile.addEventListener('animationend', () => tile.classList.remove('rocket-flash'));
+    });
+
+    hub.addEventListener('click', flash);
+    hub.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flash(); }
+    });
+  }
+
+  document.addEventListener('astro:page-load', initRocketHub);
 </script>
 
 <style>
@@ -244,6 +287,43 @@ import ITARTile from '../components/ITARTile.astro';
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: var(--col-gap);
+  }
+
+  /* ── Rocket hub: click to briefly reveal the clickable sub-projects ── */
+  .t-hub :global(.tile) { cursor: pointer; }
+
+  /* Subtle press feedback on the hub itself — never an accent ring. */
+  .t-hub :global(.tile.hub-press) {
+    animation: hubPress 0.4s var(--ease-out);
+  }
+  @keyframes hubPress {
+    0%   { transform: scale(1); }
+    35%  { transform: scale(0.985); }
+    100% { transform: scale(1); }
+  }
+
+  /* Accent outline flashed onto each clickable rocket tile, then fades out.
+     Inset ring so it isn't clipped by the tile's overflow:hidden. */
+  .mosaic :global(a.tile.rocket-flash)::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 2px var(--accent);
+    opacity: 0;
+    animation: rocketFlash 1s var(--ease-out);
+    animation-delay: var(--flash-delay, 0ms);
+  }
+  @keyframes rocketFlash {
+    0%   { opacity: 0; }
+    20%  { opacity: 1; }
+    55%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .t-hub :global(.tile.hub-press) { animation: none; }
   }
 
   /* Rocket cluster */

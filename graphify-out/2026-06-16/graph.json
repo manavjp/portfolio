@@ -107,6 +107,36 @@
       "norm_label": "superpowers@superpowers-marketplace"
     },
     {
+      "label": "settings.local.json",
+      "file_type": "code",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "claude_settings_local",
+      "community": 23,
+      "norm_label": "settings.local.json"
+    },
+    {
+      "label": "permissions",
+      "file_type": "code",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "claude_settings_local_permissions",
+      "community": 23,
+      "norm_label": "permissions"
+    },
+    {
+      "label": "allow",
+      "file_type": "code",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "claude_settings_local_permissions_allow",
+      "community": 23,
+      "norm_label": "allow"
+    },
+    {
       "label": "astro.config.mjs",
       "file_type": "code",
       "source_file": "astro.config.mjs",
@@ -2422,16 +2452,6 @@
       "norm_label": "contact.astro"
     },
     {
-      "label": "if()",
-      "file_type": "code",
-      "source_file": "src/pages/contact.astro",
-      "source_location": "L91",
-      "_origin": "ast",
-      "id": "pages_contact_if",
-      "community": 2,
-      "norm_label": "if()"
-    },
-    {
       "label": "index.astro",
       "file_type": "code",
       "source_file": "src/pages/index.astro",
@@ -2922,10 +2942,20 @@
       "norm_label": "9.1 deploy (github pages + cloudflare)"
     },
     {
-      "label": "10. Quality bar & conventions",
+      "label": "9.2 Pre-launch access gate (soft, temporary)",
       "file_type": "document",
       "source_file": "Claude.md",
       "source_location": "L232",
+      "_origin": "ast",
+      "id": "claude_9_2_pre_launch_access_gate_soft_temporary",
+      "community": 33,
+      "norm_label": "9.2 pre-launch access gate (soft, temporary)"
+    },
+    {
+      "label": "10. Quality bar & conventions",
+      "file_type": "document",
+      "source_file": "Claude.md",
+      "source_location": "L258",
       "_origin": "ast",
       "id": "claude_10_quality_bar_conventions",
       "community": 33,
@@ -2935,7 +2965,7 @@
       "label": "11. Build milestones (review after each)",
       "file_type": "document",
       "source_file": "Claude.md",
-      "source_location": "L242",
+      "source_location": "L268",
       "_origin": "ast",
       "id": "claude_11_build_milestones_review_after_each",
       "community": 33,
@@ -2945,7 +2975,7 @@
       "label": "Owner quick-reference (for About / footer)",
       "file_type": "document",
       "source_file": "Claude.md",
-      "source_location": "L253",
+      "source_location": "L279",
       "_origin": "ast",
       "id": "claude_owner_quick_reference_for_about_footer",
       "community": 33,
@@ -3070,26 +3100,6 @@
       "id": "decisions_glass_snapshot_capture_moved_out_of_the_library",
       "community": 42,
       "norm_label": "glass snapshot capture moved out of the library"
-    },
-    {
-      "label": "Projects: Rocket-hub \"reveal clickable tiles\" interaction",
-      "file_type": "document",
-      "source_file": "DECISIONS.md",
-      "source_location": "L127",
-      "_origin": "ast",
-      "id": "decisions_projects_rocket_hub_reveal_clickable_tiles_interaction",
-      "community": 42,
-      "norm_label": "projects: rocket-hub \"reveal clickable tiles\" interaction"
-    },
-    {
-      "label": "Contact: email row copies instead of mailto",
-      "file_type": "document",
-      "source_file": "DECISIONS.md",
-      "source_location": "L136",
-      "_origin": "ast",
-      "id": "decisions_contact_email_row_copies_instead_of_mailto",
-      "community": 42,
-      "norm_label": "contact: email row copies instead of mailto"
     },
     {
       "label": "README.md",
@@ -7329,6 +7339,26 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_settings_local",
+      "target": "claude_settings_local_permissions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_settings_local_permissions",
+      "target": "claude_settings_local_permissions_allow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "liquid-glass-js-main/button.js",
       "source_location": "L1",
       "weight": 1.0,
@@ -10688,16 +10718,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/pages/contact.astro",
-      "source_location": "L91",
-      "weight": 1.0,
-      "source": "pages_contact",
-      "target": "pages_contact_if",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "src/pages/projects/3d-printed-rocket.astro",
       "source_location": "L7",
       "weight": 1.0,
@@ -11059,6 +11079,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Claude.md",
+      "source_location": "L232",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_9_tech_stack",
+      "target": "claude_9_2_pre_launch_access_gate_soft_temporary"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Claude.md",
       "source_location": "L279",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -11084,16 +11114,6 @@
       "confidence_score": 1.0,
       "source": "decisions_decisions_md",
       "target": "decisions_access_gate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "DECISIONS.md",
-      "source_location": "L136",
-      "weight": 1.0,
-      "source": "decisions_decisions_md",
-      "target": "decisions_contact_email_row_copies_instead_of_mailto",
-      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11131,9 +11151,9 @@
       "source_file": "DECISIONS.md",
       "source_location": "L110",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "decisions_decisions_md",
-      "target": "decisions_glass_snapshot_capture_moved_out_of_the_library"
+      "target": "decisions_glass_snapshot_capture_moved_out_of_the_library",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11164,16 +11184,6 @@
       "confidence_score": 1.0,
       "source": "decisions_decisions_md",
       "target": "decisions_node_js"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "DECISIONS.md",
-      "source_location": "L127",
-      "weight": 1.0,
-      "source": "decisions_decisions_md",
-      "target": "decisions_projects_rocket_hub_reveal_clickable_tiles_interaction",
-      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15158,5 +15168,5 @@
       "source_file": "public/assets/projects/analysis/Cold_Flow_001_26033_REV_A.pdf"
     }
   ],
-  "built_at_commit": "44bab4d8cf01e49981fc56cdfab1a2af6673c017"
+  "built_at_commit": "2194a064210438da91f5b670f11e10577d8cafeb"
 }

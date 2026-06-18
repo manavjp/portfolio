@@ -1,16 +1,16 @@
-# Graph Report - portfolio  (2026-06-16)
+# Graph Report - portfolio  (2026-06-10)
 
 ## Corpus Check
-- 56 files · ~1,744,538 words
+- 57 files · ~1,667,649 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 646 nodes · 776 edges · 58 communities (43 shown, 15 thin omitted)
+- 647 nodes · 776 edges · 59 communities (43 shown, 16 thin omitted)
 - Extraction: 84% EXTRACTED · 16% INFERRED · 0% AMBIGUOUS · INFERRED: 125 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `44bab4d8`
+- Built from commit: `2194a064`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -37,6 +37,7 @@
 - [[_COMMUNITY_Hotfire Thrust Data|Hotfire Thrust Data]]
 - [[_COMMUNITY_Dev Launch Config|Dev Launch Config]]
 - [[_COMMUNITY_Claude Code Settings|Claude Code Settings]]
+- [[_COMMUNITY_Local Dev Permissions|Local Dev Permissions]]
 - [[_COMMUNITY_Rocket Project Team Photos|Rocket Project Team Photos]]
 - [[_COMMUNITY_Rocket Review Presentations|Rocket Review Presentations]]
 - [[_COMMUNITY_Reynolds Aerial Work|Reynolds Aerial Work]]
@@ -103,7 +104,7 @@
 - **Project Detail Page Core Components (SpecTable + MetricCallout + Ghost Title)** — plans_milestone3_spectable, plans_milestone3_metriccallout, concept_ghost_title [INFERRED 0.85]
 - **Propulsion Data Analysis Artifacts (Cold Flow + Hydrostatic + Waterflow Reports)** — analysis_coldflow_001, analysis_hydrostatic_003, analysis_waterflow [INFERRED 0.85]
 
-## Communities (58 total, 15 thin omitted)
+## Communities (59 total, 16 thin omitted)
 
 ### Community 0 - "UI Components & Interactivity"
 Cohesion: 0.09
@@ -190,8 +191,8 @@ Cohesion: 0.05
 Nodes (37): 🙏 Acknowledgments, 🔧 Advanced Usage, 📚 API Reference, 🏗️ Architecture, Basic Usage, 🌐 Browser Support, Building, Button Class (+29 more)
 
 ### Community 33 - "Community 33"
-Cohesion: 0.09
-Nodes (22): 0. How to use this file, 10. Quality bar & conventions, 11. Build milestones (review after each), 1. Goal, 2. North star: the portfolio is NOT the resume, 3. Audience and tone, 4.1 Aesthetic concept, 4.2 Reference sites — principles to extract (+14 more)
+Cohesion: 0.08
+Nodes (23): 0. How to use this file, 10. Quality bar & conventions, 11. Build milestones (review after each), 1. Goal, 2. North star: the portfolio is NOT the resume, 3. Audience and tone, 4.1 Aesthetic concept, 4.2 Reference sites — principles to extract (+15 more)
 
 ### Community 34 - "Community 34"
 Cohesion: 0.10
@@ -210,8 +211,8 @@ Cohesion: 0.15
 Nodes (12): A. Projects Index — Mosaic Layout, B. Horizontal Propulsion Test Stand — Detail Page, Files, Milestone 3: Projects Index + Test Stand Detail Page Design, New Components, Projects Inventory, Rocket Project cluster (hub + 5 sub-projects), Section 1 — Hero Band (+4 more)
 
 ### Community 42 - "Community 42"
-Cohesion: 0.14
-Nodes (12): Access Gate, Contact: email row copies instead of mailto, Deploy, Fonts, Framework, Glass snapshot capture moved out of the library, Navigation QoL (prefetch, keyboard, back-to-top), Next Project button (liquid-glass-js) (+4 more)
+Cohesion: 0.17
+Nodes (10): Access Gate, Deploy, Fonts, Framework, Glass snapshot capture moved out of the library, Navigation QoL (prefetch, keyboard, back-to-top), Next Project button (liquid-glass-js), Node.js (+2 more)
 
 ### Community 43 - "Community 43"
 Cohesion: 0.20
@@ -266,9 +267,9 @@ Cohesion: 0.67
 Nodes (3): cn(), on(), Qn()
 
 ## Knowledge Gaps
-- **233 isolated node(s):** `version`, `configurations`, `superpowers@superpowers-marketplace`, `helloRow`, `controlsRow` (+228 more)
+- **233 isolated node(s):** `version`, `configurations`, `superpowers@superpowers-marketplace`, `allow`, `helloRow` (+228 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -284,6 +285,6 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `Portfolio Design Patterns & PDF Artifacts` be split into smaller, more focused modules?**
   _Cohesion score 0.05813953488372093 - nodes in this community are weakly interconnected._
 - **Should `Astro Page Components` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08333333333333333 - nodes in this community are weakly interconnected._
 - **Should `Vertical Test Stand Hardware` be split into smaller, more focused modules?**
   _Cohesion score 0.11 - nodes in this community are weakly interconnected._

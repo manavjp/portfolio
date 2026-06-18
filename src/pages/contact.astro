@@ -13,13 +13,26 @@ import { RESUME_URL } from '../config';
 
     <div class="contact-list">
 
-      <a href="mailto:manavjpatel@g.ucla.edu" class="contact-item" data-umami-event="email_click">
+      <button
+        type="button"
+        class="contact-item contact-item--copy"
+        data-copy="manavjpatel@g.ucla.edu"
+        data-umami-event="email_copy"
+      >
         <span class="contact-item__label">Email</span>
         <span class="contact-item__value">
           manavjpatel@ucla.edu
-          <span class="contact-item__arrow" aria-hidden="true">↗</span>
+          <span class="contact-item__icon" aria-hidden="true">
+            <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6 9 17l-5-5"></path>
+            </svg>
+          </span>
         </span>
-      </a>
+      </button>
 
       <a
         href="https://www.linkedin.com/in/manavjp/"
@@ -68,6 +81,55 @@ import { RESUME_URL } from '../config';
 
   </div>
 </Layout>
+
+<script>
+  // Email "link" copies the real address to the clipboard instead of opening
+  // a mail client; a check briefly replaces the copy icon to confirm.
+  async function copyText(text: string): Promise<boolean> {
+    // Preferred path: async Clipboard API (secure contexts).
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch {
+      /* fall through to the legacy path below */
+    }
+    // Legacy fallback: hidden textarea + execCommand (older / insecure contexts).
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch {
+      return false;
+    }
+  }
+
+  function initEmailCopy() {
+    document.querySelectorAll<HTMLElement>('.contact-item--copy').forEach(btn => {
+      if (btn.dataset.copyInit) return;
+      btn.dataset.copyInit = '1';
+
+      let timer: ReturnType<typeof setTimeout> | null = null;
+
+      btn.addEventListener('click', async () => {
+        const ok = await copyText(btn.dataset.copy ?? '');
+        if (!ok) return;
+        btn.classList.add('is-copied');
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(() => btn.classList.remove('is-copied'), 1400);
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initEmailCopy);
+</script>
 
 <style>
   .page-header { margin-bottom: 3rem; }
@@ -148,6 +210,58 @@ import { RESUME_URL } from '../config';
   .contact-item:hover .contact-item__arrow {
     color: var(--accent);
     transform: translate(2px, -2px);
+  }
+
+  /* ── Email copy button — shares contact-item styling, reset button chrome ── */
+  button.contact-item {
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: none;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .contact-item__icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-35);
+    transition: color var(--dur-fast) var(--ease-out),
+                transform var(--dur-fast) var(--ease-out);
+    transform-origin: center;
+  }
+
+  .contact-item__icon svg {
+    width: 0.7em;
+    height: 0.7em;
+    display: block;
+  }
+
+  /* Stack the check over the copy glyph so the swap doesn't shift layout. */
+  .contact-item__icon .icon-check {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    opacity: 0;
+  }
+
+  /* Hover: grow + accent — same feel/tokens as the ↗ arrows. */
+  .contact-item:hover .contact-item__icon {
+    color: var(--accent);
+    transform: scale(1.18);
+  }
+
+  /* Copied confirmation: swap to a check, hold accent briefly. */
+  .contact-item--copy.is-copied .contact-item__icon { color: var(--accent); }
+  .contact-item--copy.is-copied .icon-copy  { opacity: 0; }
+  .contact-item--copy.is-copied .icon-check { opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-item:hover .contact-item__icon { transform: none; }
   }
 
   @media (max-width: 600px) {
