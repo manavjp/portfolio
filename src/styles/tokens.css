@@ -26,6 +26,7 @@
 
   /* ── Layout ── */
   --sidebar-w:   220px;
+  --mnav-h:      60px;   /* mobile bottom tab-bar height (excludes safe-area inset) */
   --outer-gutter: clamp(1.5rem, 5vw, 4rem);
   --col-gap:     1.5rem;
   --cols:        12;

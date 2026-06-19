@@ -510,6 +510,14 @@ const { title, description, ghostText, category, tagline, showOverview = true, n
     pointer-events: none;
   }
 
+  /* Mobile: lift the floating controls above the bottom tab bar (+ safe area). */
+  @media (max-width: 768px) {
+    #next-proj-btn {
+      bottom: calc(var(--mnav-h) + env(safe-area-inset-bottom) + 1rem);
+      right: 1.25rem;
+    }
+  }
+
   /* Each control reveals independently: pill at 25% scroll, circle at 80% */
   #next-proj-btn .npb-top,
   #next-proj-btn .npb-next {
@@ -789,6 +797,18 @@ const { title, description, ghostText, category, tagline, showOverview = true, n
   .proj-body {
     padding-top: 3rem;
     padding-bottom: 5rem;
+  }
+
+  @media (max-width: 768px) {
+    /* Clear the fixed bottom tab bar (+ iPhone safe area). */
+    .proj-body {
+      padding-bottom: calc(var(--mnav-h) + env(safe-area-inset-bottom) + 1.5rem);
+    }
+    /* Larger tap target for the back link on touch. */
+    .proj-hero__back {
+      display: inline-block;
+      padding: 0.5rem 0;
+    }
   }
 
   /* Section heading — same display font as hero name, smaller scale */

@@ -93,7 +93,9 @@ img, video {
 
 @media (max-width: 768px) {
   .page-padded {
-    padding: 5rem var(--outer-gutter) var(--outer-gutter);
+    /* Bottom padding clears the fixed mobile tab bar (+ iPhone safe area). */
+    padding: 5rem var(--outer-gutter)
+             calc(var(--mnav-h) + env(safe-area-inset-bottom) + 1.5rem);
   }
 }
 
@@ -147,7 +149,10 @@ img, video {
 }
 
 @media (max-width: 768px) {
-  .spec-block { grid-template-columns: 1fr; }
+  /* !important so per-project pages that redefine .spec-block with their own
+     (scoped, higher-specificity) column ratio still stack model + specs into
+     one column on phones instead of two cramped columns. */
+  .spec-block { grid-template-columns: 1fr !important; }
 }
 
 .metrics-row {

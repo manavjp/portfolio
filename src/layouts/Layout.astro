@@ -5,6 +5,7 @@ import '@fontsource-variable/geist-mono';
 import '../styles/tokens.css';
 import '../styles/global.css';
 import Sidebar from '../components/Sidebar.astro';
+import MobileNav from '../components/MobileNav.astro';
 import StatusPill from '../components/StatusPill.astro';
 import TransitionOverlay from '../components/TransitionOverlay.astro';
 import ProgressBar from '../components/ProgressBar.astro';
@@ -80,6 +81,7 @@ const pageTitle = `${title} — Manav Patel`;
     <main class="main-content">
       <slot />
     </main>
+    <MobileNav currentPath={currentPath} transition:persist="mobile-nav" />
   </body>
 </html>
 
@@ -166,7 +168,7 @@ const pageTitle = `${title} — Manav Patel`;
   // Astro-rendered aria-current/is-active attributes won't update automatically.
   function updateNavActive() {
     const path = window.location.pathname;
-    document.querySelectorAll<HTMLAnchorElement>('.nav-item').forEach((el) => {
+    document.querySelectorAll<HTMLAnchorElement>('.nav-item, .mnav-item').forEach((el) => {
       const href   = el.getAttribute('href') ?? '';
       const active = href === '/' ? (path === '/' || path === '') : path.startsWith(href);
       el.classList.toggle('is-active', active);

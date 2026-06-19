@@ -195,6 +195,20 @@ const classes = [
     opacity: 1;
     transform: translate(0, 0);
   }
+
+  /* ── Mobile: no hover, so reveal taglines + arrow by default ── */
+  @media (max-width: 768px) {
+    .tile__tagline {
+      opacity: 1;
+      max-height: 3em;
+      margin-top: 0.3rem;
+      transition: none;
+    }
+    a.tile .tile__arrow {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
 </style>
 
 <script>

@@ -64,7 +64,11 @@ const hide = currentPath.startsWith('/projects') || currentPath === '/about';
   }
 
   @media (max-width: 768px) {
-    .logo-stack { bottom: 5rem; right: 1.25rem; }
+    /* Clear the fixed bottom tab bar (+ iPhone safe area). */
+    .logo-stack {
+      bottom: calc(var(--mnav-h) + env(safe-area-inset-bottom) + 1rem);
+      right: 1.25rem;
+    }
     .logo-stack__img { height: 28px; }
   }
 </style>

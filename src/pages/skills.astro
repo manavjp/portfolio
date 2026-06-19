@@ -48,7 +48,6 @@ const skillGroups = [
       'Test Reports',
       'Solenoids',
       'Standard Operating Procedure (SOP)',
-      'Meteorology',
     ],
   },
   {
@@ -70,6 +69,7 @@ const skillGroups = [
       'C',
       'C++',
       'pandas',
+      'NumPy',
       'GitHub',
       'Arduino IDE',
       'Linux',
@@ -136,6 +136,11 @@ const skillGroups = [
     letter-spacing: -0.01em;
     line-height: var(--leading-tight);
     text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .page-header { margin-bottom: 2rem; }
+    .page-title  { font-size: clamp(2.5rem, 12vw, 3rem); }
   }
 
   /* ── Groups ── */

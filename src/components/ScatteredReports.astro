@@ -425,6 +425,17 @@ const TICKS = 15;
   .slider-thumb:active       { cursor: grabbing; }
   .slider-thumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
 
+  /* ── Mobile: enlarge the prev/next buttons to a comfortable tap target.
+        (Slider drag is pointer-based; the buttons are the touch path.) ── */
+  @media (max-width: 768px) {
+    .rctl-btn {
+      min-width: 48px;
+      min-height: 48px;
+      font-size: var(--text-md);
+      padding: 0.5rem 0.75rem;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .report-card,
     .slider-thumb { transition: none !important; }

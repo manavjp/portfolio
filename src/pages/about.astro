@@ -134,6 +134,11 @@ import Layout from '../layouts/Layout.astro';
     text-transform: uppercase;
   }
 
+  @media (max-width: 768px) {
+    .page-header { margin-bottom: 2rem; }
+    .page-title  { font-size: clamp(2.5rem, 12vw, 3rem); }
+  }
+
   /* ── Section rows ── */
   .about-body {
     display: flex;

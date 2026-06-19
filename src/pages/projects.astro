@@ -260,6 +260,15 @@ import ITARTile from '../components/ITARTile.astro';
     text-transform: uppercase;
   }
 
+  @media (max-width: 768px) {
+    .page-header { margin-bottom: 2rem; }
+    .page-title  { font-size: clamp(2.5rem, 12vw, 3rem); }
+    /* Override the desktop 4rem bottom pad so the last tiles clear the tab bar. */
+    .projects-page {
+      padding-bottom: calc(var(--mnav-h) + env(safe-area-inset-bottom) + 1.5rem);
+    }
+  }
+
   .section-header {
     display: flex;
     align-items: center;
@@ -349,7 +358,7 @@ import ITARTile from '../components/ITARTile.astro';
 
   @media (max-width: 900px) {
     .t-hub, .t-hts,
-    .t-inj, .t-vstand { grid-column: span 6; }
+    .t-inj, .t-vstand, .t-data { grid-column: span 6; }
     .t-rs                         { grid-column: span 6; }
     .t-sub, .t-uav               { grid-column: span 10; }
     .t-e1rk, .t-obst, .t-obs    { grid-column: span 6; }
@@ -357,7 +366,7 @@ import ITARTile from '../components/ITARTile.astro';
 
   @media (max-width: 600px) {
     .t-hub, .t-hts,
-    .t-inj, .t-vstand,
+    .t-inj, .t-vstand, .t-data,
     .t-rs,
     .t-sub, .t-uav,
     .t-e1rk,

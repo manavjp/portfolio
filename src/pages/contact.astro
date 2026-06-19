@@ -153,6 +153,11 @@ import { RESUME_URL } from '../config';
     text-transform: uppercase;
   }
 
+  @media (max-width: 768px) {
+    .page-header { margin-bottom: 2rem; }
+    .page-title  { font-size: clamp(2.5rem, 12vw, 3rem); }
+  }
+
   /* ── Contact list ── */
   .contact-list {
     display: flex;
