@@ -19,24 +19,73 @@ const specRows = [
 >
   <section class="spec-block">
     <SpecTable rows={specRows} title="Details" />
-    <figure class="proj-figure">
+    <figure class="proj-figure dome-figure">
       <img src="/assets/projects/observatory/dome_night.jpg"
            alt="Taylor Observatory dome at night under the stars" loading="lazy" />
       <figcaption>Taylor Observatory — dome at night</figcaption>
     </figure>
   </section>
 
-  <section class="obs-body">
-    <!-- FILL IN - General: section text -->
-    <figure class="proj-figure obs-figure--wide">
-      <img src="/assets/projects/observatory/foto_cover.jpg"
-           alt="Telescope pointed at a star field for astrometric data collection" loading="lazy" />
-      <figcaption>Astrometric observation session</figcaption>
-    </figure>
+  <section class="the-work">
+    <div class="work-row">
+      <h2 class="work-label">Research</h2>
+      <div class="work-content">
+        <p class="work-text">
+          Initiated asteroid astrometry and photometry reporting to the IAU Minor Planet Center, imaging wide fields on a Celestron RASA astrograph and Planewave mount, and using blink comparison of frames taken one to two weeks apart to flag and measure moving objects.
+        </p>
+        <figure class="proj-figure">
+          <img src="/assets/projects/observatory/foto_cover.jpg"
+               alt="Telescope pointed at a star field for astrometric data collection" loading="lazy" />
+          <figcaption>Astrometric observation session</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="work-row">
+      <h2 class="work-label">Service</h2>
+      <div class="work-content">
+        <p class="work-text">
+          Served as a docent at biweekly planetarium shows over more than a year, answering astronomy questions from visitors ranging from young children to adults. Began developing a new website for the observatory and attended board meetings.
+        </p>
+      </div>
+    </div>
+
+    <div class="work-row">
+      <h2 class="work-label">Impact</h2>
+      <div class="work-content">
+        <p class="work-text">
+          Put a small rural observatory's asteroid astrometry and photometry into the IAU Minor Planet Center, the database top researchers use to track and refine asteroid orbits. Reached the public through biweekly planetarium outreach in northern California, hoping to pull young people toward the natural sciences, the path I am now on as an Aerospace Engineering student.
+        </p>
+      </div>
+    </div>
+
+    <div class="work-row">
+      <h2 class="work-label">Reflection</h2>
+      <div class="work-content">
+        <p class="work-text">
+          Taylor Observatory is a big reason I am studying Aerospace Engineering. I believe humanity should be a spacefaring civilization, and that curiosity starts with the stars, which I saw firsthand as a docent, through the questions of five-year-olds and elders alike.
+        </p>
+        <figure class="proj-figure">
+          <img src="/assets/projects/observatory/bj.jpg"
+               alt="Betelgeuse in the constellation Orion" loading="lazy" />
+          <figcaption>Betelgeuse, Orion, 650 light years away</figcaption>
+        </figure>
+        <figure class="proj-figure">
+          <img src="/assets/projects/observatory/saturn.jpg"
+               alt="Saturn imaged through the observatory telescope" loading="lazy" />
+          <figcaption>Saturn, 746 million miles away</figcaption>
+        </figure>
+        <figure class="proj-figure">
+          <img src="/assets/projects/observatory/deep_field.jpg"
+               alt="Wide-field image of the Local Group" loading="lazy" />
+          <figcaption>A field image, The Local Group</figcaption>
+        </figure>
+      </div>
+    </div>
   </section>
 </ProjectPageLayout>
 
 <style>
-  .obs-body { margin-top: 2rem; max-width: 72ch; display: flex; flex-direction: column; gap: 1.5rem; }
-  .obs-figure--wide { max-width: 100%; }
+  /* dome_night reduced to 60% of its column width (−40%). */
+  .dome-figure img { max-width: 60%; }
 </style>

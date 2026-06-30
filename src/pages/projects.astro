@@ -53,7 +53,7 @@ import ITARTile from '../components/ITARTile.astro';
       </div>
       <div class="t-data">
         <ProjectTile
-          title="Data Analysis"
+          title="Fluids Analysis"
           tagline="20+ pages of test reports, Excel Sheets"
           href="/projects/propulsion-data-analysis"
           image="/assets/projects/analysis/analysis_cover.jpg"
@@ -161,10 +161,7 @@ import ITARTile from '../components/ITARTile.astro';
 <script>
   // When preview mode is OFF, disable tiles for pages that aren't ready yet.
   // Tiles become non-interactive — no navigation happens on click.
-  const HIDDEN_HREFS = [
-    '/projects/obstacle-avoidance-robot',
-    '/projects/taylor-observatory',
-  ];
+  const HIDDEN_HREFS: string[] = [];
 
   function applyPreviewGating() {
     if (localStorage.getItem('preview') === '1') {

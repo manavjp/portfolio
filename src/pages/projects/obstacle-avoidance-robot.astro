@@ -20,12 +20,8 @@ const specRows = [
   tagline="Ultrasonic Sensing · Arduino IDE · Embedded Systems"
   nextHref="/projects/taylor-observatory"
 >
-  <section class="spec-block">
+  <section class="spec-block spec-block--single">
     <SpecTable rows={specRows} title="Specifications" />
-    <div class="todo-block">
-      <span class="todo-label">TODO — Demo video &amp; wiring diagram</span>
-      <p>Demo video (~30 s) of the vehicle navigating an obstacle course. Annotated wiring diagram (Fritzing or hand-drawn). Place at <code>public/assets/projects/obstacle-avoidance-robot/</code>.</p>
-    </div>
   </section>
   <section class="metrics-row" aria-label="Key metrics">
     <MetricCallout value="400" unit="cm" description="Maximum sensor range"    />
@@ -34,34 +30,32 @@ const specRows = [
   </section>
   <section class="the-work">
     <div class="work-row">
-      <h2 class="work-label">Problem</h2>
+      <h2 class="work-label">Objective</h2>
       <div class="work-content">
-        <!-- FILL IN - Problem: Describe the engineering challenge that motivated this project -->
+        <p class="work-text">
+          Built an autonomous obstacle-avoidance vehicle that uses ultrasonic sensing to detect and steer around obstacles, clearing a multi-obstacle course.
+        </p>
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Approach</h2>
       <div class="work-content">
-        <!-- FILL IN - Approach: Explain the methodology, key decisions, and tools used -->
+        <p class="work-text">
+          Engineered the platform around an Arduino Uno running a C++ control loop, pairing an HC-SR04 ultrasonic sensor with a 2-motor differential drive on a PLA chassis.
+        </p>
       </div>
     </div>
     <div class="work-row">
-      <h2 class="work-label">Analysis</h2>
+      <h2 class="work-label">Build</h2>
       <div class="work-content">
-        <div class="todo-block">
-          <span class="todo-label">TODO — Annotated code snippet</span>
-          <p>Key loop showing the non-blocking millis() pattern, state machine transitions, and sensor read logic. Syntax-highlighted code block.</p>
-        </div>
-        <div class="todo-block">
-          <span class="todo-label">TODO — Wiring diagram</span>
-          <p>Schematic showing HC-SR04 trigger/echo pin connections, motor driver wiring, and power distribution.</p>
-        </div>
+        <p class="work-text">
+          Implemented the obstacle-avoidance firmware and tuned open-loop turn timing and detection thresholds empirically.
+        </p>
       </div>
     </div>
     <div class="work-row">
       <h2 class="work-label">Result</h2>
       <div class="work-content">
-        <!-- FILL IN - Result: Describe what was achieved — metrics, validation, outcomes -->
         <figure class="proj-figure">
           <img src="/assets/projects/arduino_car/robot.jpg"
                alt="Assembled Arduino obstacle avoidance vehicle with ultrasonic sensor mounted" loading="lazy" />
@@ -69,11 +63,10 @@ const specRows = [
         </figure>
       </div>
     </div>
-    <div class="work-row">
-      <h2 class="work-label">Reflection</h2>
-      <div class="work-content">
-        <!-- FILL IN - Reflection: Lessons learned and what would be done differently -->
-      </div>
-    </div>
   </section>
 </ProjectPageLayout>
+
+<style>
+  /* No second media column on this page yet — let the spec table stand alone. */
+  .spec-block--single { grid-template-columns: 1fr; }
+</style>

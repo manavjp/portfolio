@@ -43,23 +43,20 @@ const specRows = [
 
   <section class="the-work">
     <div class="work-row">
-      <h2 class="work-label">Problem</h2>
+      <h2 class="work-label">Constraints</h2>
       <div class="work-content">
-        <!-- FILL IN - Problem: Describe the engineering challenge that motivated this project -->
+        <p class="work-text">
+          Designed to a 3,000 ft apogee with a 1.5 to 2.5 cal stability margin, sub-15.5 sec ascent, and 75+ ft/s off-the-rail velocity, while flying and recovering a raw egg intact and logging in-flight apogee, inertia, and stability data within a ~436 g loaded mass budget.
+        </p>
       </div>
     </div>
 
     <div class="work-row">
       <h2 class="work-label">Approach</h2>
       <div class="work-content">
-        <!-- FILL IN - Approach: Explain the methodology, key decisions, and tools used -->
-        <!-- Design review slide deck — 6 pages, arrow-navigable -->
-        <PdfViewer
-          src="/assets/projects/gmpr/review_slides.pdf"
-          pages={6}
-          label="GMPR design review slides"
-          aspectRatio="16 / 9"
-        />
+        <p class="work-text">
+          Using OpenRocket and SolidWorks, we chose a Von Karman nose cone for low transonic drag (~Mach 0.7), a fiberglass airframe, and three trapezoidal birch-plywood fins for passive stability. Doubled the nose cone as the payload bay and designed a fastener-free nose cone cap from PLA clips that snap into notches, with fluff for shock isolation.
+        </p>
         <!-- nosecone_cap prototype + CAD — both portrait 3:4, side by side -->
         <div class="proj-gallery proj-gallery--2">
           <figure class="proj-figure">
@@ -81,15 +78,17 @@ const specRows = [
     <div class="work-row">
       <h2 class="work-label">Build</h2>
       <div class="work-content">
-        <!-- FILL IN - Build: Manufacturing process, materials, and fabrication steps -->
-        <!-- body_tube_layup (4:3) + layup_b (portrait 3:4) — side by side, 4:3 crop -->
+        <p class="work-text">
+          Laid the fiberglass airframe, laser-cut the centering rings, bulkhead, and fin slots, and FDM-printed the nose cone and clip cap in PLA. Iterated the nose cone twice (resized per the OpenRocket optimization, then reprinted after a loose fit) and the retention cap twice more after it spun in its notch and cracked.
+        </p>
+        <!-- body_tube_layup (4:3) + layup_d (portrait 3:4) — side by side, 4:3 crop -->
         <div class="proj-gallery proj-gallery--2">
           <figure class="proj-figure">
             <img src="/assets/projects/gmpr/body_tube_layup.jpeg"
                  alt="Fiberglass body tube wet layup in progress" loading="lazy" />
           </figure>
           <figure class="proj-figure">
-            <img src="/assets/projects/gmpr/layup_b.png"
+            <img src="/assets/projects/gmpr/layup_d.jpg"
                  alt="Composite wet layup detail" loading="lazy"
                  style="aspect-ratio: 4/3; object-fit: cover;" />
           </figure>
@@ -100,20 +99,37 @@ const specRows = [
     <div class="work-row">
       <h2 class="work-label">Analysis</h2>
       <div class="work-content">
-        <!-- FILL IN - Analysis: Share data, calculations, test results, FEA, or simulation findings -->
+        <p class="work-text">
+          Modeled the full flight in OpenRocket (237 m/s max velocity, ~Mach 0.7, 133 Ns motor impulse) and ran a stability trade study showing that removing the nose electronics pushed the margin from ~1.45 to 1.34 cal, below the 1.5 cal floor.
+        </p>
+      </div>
+    </div>
+
+    <div class="work-row">
+      <h2 class="work-label">Design Review</h2>
+      <div class="work-content">
+        <!-- Design review slide deck — 6 pages, arrow-navigable -->
+        <PdfViewer
+          src="/assets/projects/gmpr/review_slides.pdf"
+          pages={6}
+          label="GMPR design review slides"
+          aspectRatio="16 / 9"
+        />
       </div>
     </div>
 
     <div class="work-row">
       <h2 class="work-label">Result</h2>
       <div class="work-content">
-        <!-- FILL IN - Result: Describe what was achieved — metrics, validation, outcomes -->
+        <p class="work-text">
+          After four ignition attempts caused by a loss of motor continuity, the motor fired and the rocket launched on a slightly angled but straight trajectory. Post-flight, our search failed, leaving recovery and egg condition unconfirmed.
+        </p>
         <!-- launch (portrait 0.57:1) + flight_config (4:3) — side by side, 4:3 crop -->
         <div class="proj-gallery proj-gallery--2">
           <figure class="proj-figure">
             <img src="/assets/projects/gmpr/launch.PNG"
                  alt="Rocket on the launchpad for flight" loading="lazy"
-                 style="aspect-ratio: 4/3; object-fit: cover;" />
+                 style="aspect-ratio: 4/3; object-fit: cover; object-position: center 17%;" />
           </figure>
           <figure class="proj-figure">
             <img src="/assets/projects/gmpr/flight_config.jpg"
@@ -126,7 +142,13 @@ const specRows = [
     <div class="work-row">
       <h2 class="work-label">Reflection</h2>
       <div class="work-content">
-        <!-- FILL IN - Reflection: Lessons learned and what would be done differently -->
+        <p class="work-text">
+          With the electronics cut during the build to protect the stability, the apogee logging requirement went unmet. Being on a two-person team (versus the typical five- to six-person team) was a challenge.
+        </p>
+        <figure class="proj-figure">
+          <img src="/assets/projects/gmpr/mandrel.jpg"
+               alt="Mandrel used for the fiberglass body tube layup" loading="lazy" />
+        </figure>
       </div>
     </div>
   </section>

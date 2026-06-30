@@ -44,30 +44,29 @@ const specRows = [
 
   <section class="the-work">
     <div class="work-row">
-      <h2 class="work-label">Problem</h2>
+      <h2 class="work-label">Constraints</h2>
       <div class="work-content">
-        <!-- FILL IN - Problem: Describe the engineering challenge that motivated this project -->
+        <p class="work-text">
+          Engineered to a tight flight envelope: under 3 oz with the Estes A8-3 motor, 1.10 to 2.50 calibers of static stability, at least 15.24 m/s rail-exit velocity, under 5 m/s descent, and a fully 3D-printed PLA airframe with parachute recovery and at least 15 cm^3 of chute space.
+        </p>
       </div>
     </div>
 
     <div class="work-row">
       <h2 class="work-label">Approach</h2>
       <div class="work-content">
-        <!-- FILL IN - Approach: Explain the methodology, key decisions, and tools used -->
-        <!-- Design review slide deck — 7 pages, arrow-navigable -->
-        <PdfViewer
-          src="/assets/projects/3dpr/review_slides.pdf"
-          pages={7}
-          label="3DPR design review slides"
-          aspectRatio="16 / 9"
-        />
+        <p class="work-text">
+          Designed a freeform three-fin airframe in SolidWorks with an elliptical nosecone and Starship-inspired nose fins, then validated static stability and flight performance in OpenRocket against the 1.10 to 2.50 caliber target.
+        </p>
       </div>
     </div>
 
     <div class="work-row">
       <h2 class="work-label">Build</h2>
       <div class="work-content">
-        <!-- FILL IN - Build: Manufacturing process, materials, and fabrication steps -->
+        <p class="work-text">
+          Led build of the all-PLA airframe, printing four body-tube iterations to converge on the thinnest structurally viable wall and minimize mass against the under-3 oz limit, plus three nosecone iterations to resolve nose-fin printability at small scale.
+        </p>
         <!-- 3d_print (portrait 3:4) + prototype_B (portrait 3:4) — side by side -->
         <div class="proj-gallery proj-gallery--2">
           <figure class="proj-figure">
@@ -99,7 +98,9 @@ const specRows = [
     <div class="work-row">
       <h2 class="work-label">Analysis</h2>
       <div class="work-content">
-        <!-- FILL IN - Analysis: Share data, calculations, test results, FEA, or simulation findings -->
+        <p class="work-text">
+          The internal shock-cord ring cut into parachute space. Verified in OpenRocket that total mass held under 3 oz and rail-exit velocity stayed above 15.24 m/s.
+        </p>
         <figure class="proj-figure">
           <img src="/assets/projects/3dpr/body_weight.jpg"
                alt="Weighing rocket components for OpenRocket simulation input" loading="lazy" />
@@ -109,16 +110,33 @@ const specRows = [
     </div>
 
     <div class="work-row">
+      <h2 class="work-label">Design Review</h2>
+      <div class="work-content">
+        <!-- Design review slide deck — 7 pages, arrow-navigable -->
+        <PdfViewer
+          src="/assets/projects/3dpr/review_slides.pdf"
+          pages={7}
+          label="3DPR design review slides"
+          aspectRatio="16 / 9"
+        />
+      </div>
+    </div>
+
+    <div class="work-row">
       <h2 class="work-label">Result</h2>
       <div class="work-content">
-        <!-- FILL IN - Result: Describe what was achieved — metrics, validation, outcomes -->
+        <p class="work-text">
+          Achieved a near-vertical boost with only a slight launch-rail angle; the parachute failed to deploy, but the shock-cord held, and the airframe survived.
+        </p>
       </div>
     </div>
 
     <div class="work-row">
       <h2 class="work-label">Reflection</h2>
       <div class="work-content">
-        <!-- FILL IN - Reflection: Lessons learned and what would be done differently -->
+        <p class="work-text">
+          With airframe/stability proven in flight, the recovery failure taught me a valuable lesson. I'd improve our recovery system design, as the constrained parachute space most likely drove the non-deployment.
+        </p>
         <figure class="proj-figure">
           <img src="/assets/projects/3dpr/team_picture.JPG"
                alt="E1RK team photo" loading="lazy" />
