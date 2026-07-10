@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404" description="Page not found.">
+  <div class="page-padded">
+
+    <div class="page-header">
+      <span class="page-label">// 404</span>
+      <h1 class="page-title">Page Not Found</h1>
+    </div>
+
+    <p class="nf-text">This page doesn't exist or has moved.</p>
+    <a href="/" class="nf-link">← Back to home</a>
+
+  </div>
+</Layout>
+
+<style>
+  .page-header { margin-bottom: 3rem; }
+
+  .page-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-35);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: var(--fw-black);
+    color: var(--text-100);
+    letter-spacing: -0.01em;
+    line-height: var(--leading-tight);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .page-header { margin-bottom: 2rem; }
+    .page-title  { font-size: clamp(2.5rem, 12vw, 3rem); }
+  }
+
+  .nf-text {
+    font-family: var(--font-label);
+    font-size: var(--text-sm);
+    color: var(--text-50);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .nf-link {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-70);
+    text-decoration: none;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+
+  .nf-link:hover { color: var(--accent); }
+</style>

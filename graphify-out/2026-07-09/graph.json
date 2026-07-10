@@ -2000,6 +2000,16 @@
       "norm_label": "../components/logostack.astro"
     },
     {
+      "label": "list",
+      "file_type": "code",
+      "source_file": "src/components/LogoStack.astro",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "components_logostack_list",
+      "community": 2,
+      "norm_label": "list"
+    },
+    {
       "label": "../../components/MetricCallout.astro",
       "file_type": "code",
       "source_file": "src/components/MetricCallout.astro",
@@ -2009,37 +2019,6 @@
       "id": "components_metriccallout",
       "community": 0,
       "norm_label": "../../components/metriccallout.astro"
-    },
-    {
-      "label": "../components/MobileNav.astro",
-      "file_type": "code",
-      "source_file": "src/components/MobileNav.astro",
-      "source_location": "L1",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "id": "components_mobilenav",
-      "community": 2,
-      "norm_label": "../components/mobilenav.astro"
-    },
-    {
-      "label": "navItems",
-      "file_type": "code",
-      "source_file": "src/components/MobileNav.astro",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "components_mobilenav_navitems",
-      "community": 2,
-      "norm_label": "navitems"
-    },
-    {
-      "label": "isActive()",
-      "file_type": "code",
-      "source_file": "src/components/MobileNav.astro",
-      "source_location": "L19",
-      "_origin": "ast",
-      "id": "components_mobilenav_isactive",
-      "community": 2,
-      "norm_label": "isactive()"
     },
     {
       "label": "../../components/PdfViewer.astro",
@@ -2423,16 +2402,6 @@
       "norm_label": "astro:prefetch"
     },
     {
-      "label": "404.astro",
-      "file_type": "code",
-      "source_file": "src/pages/404.astro",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "pages_404",
-      "community": 2,
-      "norm_label": "404.astro"
-    },
-    {
       "label": "about.astro",
       "file_type": "code",
       "source_file": "src/pages/about.astro",
@@ -2456,7 +2425,7 @@
       "label": "if()",
       "file_type": "code",
       "source_file": "src/pages/contact.astro",
-      "source_location": "L77",
+      "source_location": "L91",
       "_origin": "ast",
       "id": "pages_contact_if",
       "community": 2,
@@ -3121,16 +3090,6 @@
       "id": "decisions_contact_email_row_copies_instead_of_mailto",
       "community": 42,
       "norm_label": "contact: email row copies instead of mailto"
-    },
-    {
-      "label": "Analytics: umami accuracy pass",
-      "file_type": "document",
-      "source_file": "DECISIONS.md",
-      "source_location": "L146",
-      "_origin": "ast",
-      "id": "decisions_analytics_umami_accuracy_pass",
-      "community": 42,
-      "norm_label": "analytics: umami accuracy pass"
     },
     {
       "label": "README.md",
@@ -9964,6 +9923,16 @@
       "target": "components_itartile"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/LogoStack.astro",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_logostack",
+      "target": "components_logostack_list"
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -10072,37 +10041,6 @@
       "confidence_score": 1.0,
       "source": "projects_vertical_test_stand",
       "target": "components_metriccallout"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/MobileNav.astro",
-      "source_location": "L19",
-      "weight": 1.0,
-      "source": "components_mobilenav",
-      "target": "components_mobilenav_isactive",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/MobileNav.astro",
-      "source_location": "L11",
-      "weight": 1.0,
-      "source": "components_mobilenav",
-      "target": "components_mobilenav_navitems",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/layouts/Layout.astro",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "layouts_layout",
-      "target": "components_mobilenav",
-      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10584,14 +10522,6 @@
     {
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src/pages/404.astro",
-      "source": "pages_404",
-      "target": "layouts_layout",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
       "source_file": "src/pages/about.astro",
       "confidence_score": 1.0,
       "source": "pages_about",
@@ -10761,9 +10691,9 @@
       "source_file": "src/pages/contact.astro",
       "source_location": "L91",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "pages_contact",
-      "target": "pages_contact_if"
+      "target": "pages_contact_if",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11159,21 +11089,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "DECISIONS.md",
-      "source_location": "L146",
-      "weight": 1.0,
-      "source": "decisions_decisions_md",
-      "target": "decisions_analytics_umami_accuracy_pass",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "DECISIONS.md",
       "source_location": "L136",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "decisions_decisions_md",
-      "target": "decisions_contact_email_row_copies_instead_of_mailto"
+      "target": "decisions_contact_email_row_copies_instead_of_mailto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11251,9 +11171,9 @@
       "source_file": "DECISIONS.md",
       "source_location": "L127",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "decisions_decisions_md",
-      "target": "decisions_projects_rocket_hub_reveal_clickable_tiles_interaction"
+      "target": "decisions_projects_rocket_hub_reveal_clickable_tiles_interaction",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15238,5 +15158,5 @@
       "source_file": "public/assets/projects/analysis/Cold_Flow_001_26033_REV_A.pdf"
     }
   ],
-  "built_at_commit": "932d7144b68b5c68e2ec2d1c49a3b38aa879a6bd"
+  "built_at_commit": "44bab4d8cf01e49981fc56cdfab1a2af6673c017"
 }

@@ -1,16 +1,16 @@
-# Graph Report - portfolio  (2026-07-09)
+# Graph Report - portfolio  (2026-06-16)
 
 ## Corpus Check
-- 58 files · ~2,054,963 words
+- 56 files · ~1,744,538 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 650 nodes · 780 edges · 58 communities (43 shown, 15 thin omitted)
+- 646 nodes · 776 edges · 58 communities (43 shown, 15 thin omitted)
 - Extraction: 84% EXTRACTED · 16% INFERRED · 0% AMBIGUOUS · INFERRED: 125 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `932d7144`
+- Built from commit: `44bab4d8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -72,8 +72,8 @@
 - [[_COMMUNITY_Community 58|Community 58]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `../layouts/Layout.astro` - 19 edges
-2. `File Map` - 18 edges
+1. `File Map` - 18 edges
+2. `../layouts/Layout.astro` - 17 edges
 3. `../../layouts/ProjectPageLayout.astro` - 16 edges
 4. `Container` - 15 edges
 5. `Container` - 15 edges
@@ -114,8 +114,8 @@ Cohesion: 0.06
 Nodes (44): Cold Flow Test Report 001 (26033 REV A), Hydrostatic Test Report 003 (26095 REV A), Injector Waterflow Analysis Report, Count-up Number Animation (IntersectionObserver), Engineering Drawing Grid Motif (CSS repeating-linear-gradient), Ghosted Oversized Title Behind Hero (Vast pattern), Project Page Template (hero → spec → metrics → the-work), Scattered Reports Component (CSS fan-stack of PDF cards) (+36 more)
 
 ### Community 2 - "Astro Page Components"
-Cohesion: 0.07
-Nodes (19): astro/components/ClientRouter.astro, ../components/Hero.astro, ../components/ITARTile.astro, ../components/LogoStack.astro, ../components/MobileNav.astro, navItems, ../components/ProgressBar.astro, ../components/ProjectTile.astro (+11 more)
+Cohesion: 0.08
+Nodes (18): astro/components/ClientRouter.astro, ../components/Hero.astro, ../components/ITARTile.astro, ../components/LogoStack.astro, list, ../components/ProgressBar.astro, ../components/ProjectTile.astro, ../components/Sidebar.astro (+10 more)
 
 ### Community 3 - "Vertical Test Stand Hardware"
 Cohesion: 0.11
@@ -210,8 +210,8 @@ Cohesion: 0.15
 Nodes (12): A. Projects Index — Mosaic Layout, B. Horizontal Propulsion Test Stand — Detail Page, Files, Milestone 3: Projects Index + Test Stand Detail Page Design, New Components, Projects Inventory, Rocket Project cluster (hub + 5 sub-projects), Section 1 — Hero Band (+4 more)
 
 ### Community 42 - "Community 42"
-Cohesion: 0.13
-Nodes (13): Access Gate, Analytics: umami accuracy pass, Contact: email row copies instead of mailto, Deploy, Fonts, Framework, Glass snapshot capture moved out of the library, Navigation QoL (prefetch, keyboard, back-to-top) (+5 more)
+Cohesion: 0.14
+Nodes (12): Access Gate, Contact: email row copies instead of mailto, Deploy, Fonts, Framework, Glass snapshot capture moved out of the library, Navigation QoL (prefetch, keyboard, back-to-top), Next Project button (liquid-glass-js) (+4 more)
 
 ### Community 43 - "Community 43"
 Cohesion: 0.20
@@ -266,7 +266,7 @@ Cohesion: 0.67
 Nodes (3): cn(), on(), Qn()
 
 ## Knowledge Gaps
-- **235 isolated node(s):** `version`, `configurations`, `superpowers@superpowers-marketplace`, `helloRow`, `controlsRow` (+230 more)
+- **233 isolated node(s):** `version`, `configurations`, `superpowers@superpowers-marketplace`, `helloRow`, `controlsRow` (+228 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -274,16 +274,16 @@ Nodes (3): cn(), on(), Qn()
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `../layouts/Layout.astro` connect `Astro Page Components` to `UI Components & Interactivity`, `Chart & Motion Library Config`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
 - **Why does `../../layouts/ProjectPageLayout.astro` connect `UI Components & Interactivity` to `Astro Page Components`?**
-  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+  _High betweenness centrality (0.008) - this node is a cross-community bridge._
 - **What connects `version`, `configurations`, `superpowers@superpowers-marketplace` to the rest of the system?**
-  _243 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _241 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `UI Components & Interactivity` be split into smaller, more focused modules?**
   _Cohesion score 0.09206349206349207 - nodes in this community are weakly interconnected._
 - **Should `Portfolio Design Patterns & PDF Artifacts` be split into smaller, more focused modules?**
   _Cohesion score 0.05813953488372093 - nodes in this community are weakly interconnected._
 - **Should `Astro Page Components` be split into smaller, more focused modules?**
-  _Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `Vertical Test Stand Hardware` be split into smaller, more focused modules?**
   _Cohesion score 0.11 - nodes in this community are weakly interconnected._

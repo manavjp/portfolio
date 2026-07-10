@@ -1,7 +1,7 @@
 {
   ".claude/launch.json": {
-    "mtime": 1781828255.8988981,
-    "ast_hash": "11924303442285c44572ddbce80a957b",
+    "mtime": 1781628988.5858917,
+    "ast_hash": "05c3e15faf761c872b22199dd8b68b02",
     "semantic_hash": ""
   },
   ".claude/settings.json": {
@@ -35,9 +35,9 @@
     "semantic_hash": "bc878df4ec84e074d3ef89434bb7d71e"
   },
   "src/components/LogoStack.astro": {
-    "mtime": 1781827697.2503722,
-    "ast_hash": "bfaf52585e9adf39c1602af19a29be07",
-    "semantic_hash": ""
+    "mtime": 1781628989.734601,
+    "ast_hash": "c8c55d68402c2c0bc8bf78f43d33abef",
+    "semantic_hash": "c8c55d68402c2c0bc8bf78f43d33abef"
   },
   "src/components/MetricCallout.astro": {
     "mtime": 1781628989.7347147,
@@ -55,18 +55,18 @@
     "semantic_hash": "60006cceedfa7d68ebf4f1a8e18198b6"
   },
   "src/components/ProjectTile.astro": {
-    "mtime": 1783657336.6279008,
-    "ast_hash": "3cf3f53cde517b115f51511322c6ec1c",
+    "mtime": 1781628989.7354968,
+    "ast_hash": "fe7b2a08baa7df6705f83912670259d4",
     "semantic_hash": ""
   },
   "src/components/ScatteredReports.astro": {
-    "mtime": 1783657338.0990086,
-    "ast_hash": "616eeceda2090776d3aaabb2846994e4",
-    "semantic_hash": ""
+    "mtime": 1781628989.7356417,
+    "ast_hash": "b4851fbc349aa7e98691aa027361175a",
+    "semantic_hash": "b4851fbc349aa7e98691aa027361175a"
   },
   "src/components/Sidebar.astro": {
-    "mtime": 1783657340.9207008,
-    "ast_hash": "89db2b154af8bf287bf49a49513fc561",
+    "mtime": 1781628989.7358768,
+    "ast_hash": "72f19dd47aa8b948dd6b382ae8ce754e",
     "semantic_hash": ""
   },
   "src/components/SpecTable.astro": {
@@ -100,23 +100,23 @@
     "semantic_hash": "5177c9e0cec2aa7c3ae154b9b4460aef"
   },
   "src/layouts/Layout.astro": {
-    "mtime": 1783657330.213136,
-    "ast_hash": "4d5b123c174a3bdc94d43b40d4e607a5",
+    "mtime": 1781628989.7369897,
+    "ast_hash": "99bd4ceaadfa37322047f8a944c89f3a",
     "semantic_hash": ""
   },
   "src/layouts/ProjectPageLayout.astro": {
-    "mtime": 1782800178.0217195,
-    "ast_hash": "f3409f5ca7a9e977c614885e747f8a5a",
+    "mtime": 1781628989.7372684,
+    "ast_hash": "1ea9c005a5b23fb6d54858704644d6b5",
     "semantic_hash": ""
   },
   "src/pages/about.astro": {
-    "mtime": 1781827640.6557848,
-    "ast_hash": "edf2af6fd28b5e796d1cd6becd36b54a",
-    "semantic_hash": ""
+    "mtime": 1781628989.7376776,
+    "ast_hash": "de83b49399b716b9a04f39efe51776d8",
+    "semantic_hash": "de83b49399b716b9a04f39efe51776d8"
   },
   "src/pages/contact.astro": {
-    "mtime": 1783657343.7407901,
-    "ast_hash": "88ce0070323ce52cd9122565649bc2f5",
+    "mtime": 1781630407.7833388,
+    "ast_hash": "5582254f355d774a96df686ed8a57e25",
     "semantic_hash": ""
   },
   "src/pages/index.astro": {
@@ -125,18 +125,18 @@
     "semantic_hash": ""
   },
   "src/pages/projects.astro": {
-    "mtime": 1782800163.4461222,
-    "ast_hash": "9945ddbb7fa8dfc9841b31e48c9beb36",
+    "mtime": 1781630193.7919908,
+    "ast_hash": "dab8bd46b8d38ba65beced4c9ce01736",
     "semantic_hash": ""
   },
   "src/pages/projects/3d-printed-rocket.astro": {
-    "mtime": 1782800265.2448068,
-    "ast_hash": "c8d30311c8b8fad22edaa49516e89f38",
+    "mtime": 1781628989.7389486,
+    "ast_hash": "f9cb7075a043fc288c1caba1831283f4",
     "semantic_hash": ""
   },
   "src/pages/projects/group-high-powered-rocket.astro": {
-    "mtime": 1782801538.0710573,
-    "ast_hash": "27a0384816ecb8380c6ac75c73244bc8",
+    "mtime": 1781628989.7392182,
+    "ast_hash": "9750040890349dce107214d3d967ab36",
     "semantic_hash": ""
   },
   "src/pages/projects/horizontal-propulsion-test-stand.astro": {
@@ -145,33 +145,33 @@
     "semantic_hash": ""
   },
   "src/pages/projects/injector-orifice-sizing.astro": {
-    "mtime": 1782800638.6596491,
-    "ast_hash": "f152e2060f35e97572c5b7c75dfd0287",
+    "mtime": 1781628989.7397387,
+    "ast_hash": "9b8d8bffcb1ca809b4555cb4bf22107e",
     "semantic_hash": ""
   },
   "src/pages/projects/obstacle-avoidance-robot.astro": {
-    "mtime": 1782800357.9548042,
-    "ast_hash": "f53c9950e5be47f52c87ba9cd323db02",
+    "mtime": 1781628989.739861,
+    "ast_hash": "a019bb764fae89739adf7e9832f46582",
     "semantic_hash": ""
   },
   "src/pages/projects/propulsion-data-analysis.astro": {
-    "mtime": 1782800174.5152285,
-    "ast_hash": "a4a7d0c4cc2d1479a7c7a68191148492",
+    "mtime": 1781628989.7400908,
+    "ast_hash": "e4e0f15efa71f511f7fc2cd09c672082",
     "semantic_hash": ""
   },
   "src/pages/projects/submersible-v3.astro": {
-    "mtime": 1783580458.2398472,
-    "ast_hash": "7c95c8d80921f724e8a3e3ea51c5caca",
+    "mtime": 1781628989.740385,
+    "ast_hash": "fb2a0d83c45c5105d92f16e38f849d77",
     "semantic_hash": ""
   },
   "src/pages/projects/taylor-observatory.astro": {
-    "mtime": 1782800405.042761,
-    "ast_hash": "5a3d8512baba04c4347cd9db5a38f8a0",
+    "mtime": 1781628989.7404997,
+    "ast_hash": "678eda178842d5b9c488fbc746745aa1",
     "semantic_hash": ""
   },
   "src/pages/projects/uav-gimbal-joint.astro": {
-    "mtime": 1782800695.8211148,
-    "ast_hash": "129edc647c026081a71ebee028bda824",
+    "mtime": 1781628989.7407432,
+    "ast_hash": "2086853173cbf8ed3e1ca46b81a7fd36",
     "semantic_hash": ""
   },
   "src/pages/projects/vertical-test-stand.astro": {
@@ -180,9 +180,9 @@
     "semantic_hash": ""
   },
   "src/pages/skills.astro": {
-    "mtime": 1781827630.776862,
-    "ast_hash": "ec405d8253fc4b7de776799529c4f0ca",
-    "semantic_hash": ""
+    "mtime": 1781628989.7416525,
+    "ast_hash": "6f350f5cbd2a70bf6cd8da807a572752",
+    "semantic_hash": "6f350f5cbd2a70bf6cd8da807a572752"
   },
   "tsconfig.json": {
     "mtime": 1781628989.7421997,
@@ -200,8 +200,8 @@
     "semantic_hash": ""
   },
   "DECISIONS.md": {
-    "mtime": 1783657801.0021102,
-    "ast_hash": "5c89586bf4198fc5dbdcb29476576a28",
+    "mtime": 1781630495.6457162,
+    "ast_hash": "2b8f0c14fb96970a84c39d99fddcb13b",
     "semantic_hash": ""
   },
   "README.md": {
@@ -350,9 +350,9 @@
     "semantic_hash": "981d48fdf5f0bbcbc8a080f39e9d0097"
   },
   "public/assets/projects/advancingx/final_config.png": {
-    "mtime": 1783580458.2305105,
-    "ast_hash": "3424dfc0f469b4170366556aa8b48df6",
-    "semantic_hash": ""
+    "mtime": 1781628988.6945314,
+    "ast_hash": "e87597128170f2df9cba7ea558c5bfff",
+    "semantic_hash": "e87597128170f2df9cba7ea558c5bfff"
   },
   "public/assets/projects/advancingx/prototype.png": {
     "mtime": 1781628988.7008832,
@@ -702,51 +702,6 @@
   "public/assets/projects/maclab/mars.mp4": {
     "mtime": 1781628989.6850653,
     "ast_hash": "6716c24ff9f51e4c949a2fbafb15ac52",
-    "semantic_hash": ""
-  },
-  "src/components/MobileNav.astro": {
-    "mtime": 1781830742.5453963,
-    "ast_hash": "3fdcc9ac1a36b35b5cabf5f3b6d2df16",
-    "semantic_hash": ""
-  },
-  "src/pages/404.astro": {
-    "mtime": 1783657361.0285845,
-    "ast_hash": "5308842efa48a8fe71b24e237eab27f8",
-    "semantic_hash": ""
-  },
-  "public/assets/projects/analysis/Static_Fire_002_26101_REV_A.pdf": {
-    "mtime": 1782799734.5978267,
-    "ast_hash": "60d46ff04808c64b60dfb4cdb673c562",
-    "semantic_hash": ""
-  },
-  "public/assets/projects/analysis/static_cover.jpg": {
-    "mtime": 1782799734.6003585,
-    "ast_hash": "c13a184b3b933e1e75288f9207320863",
-    "semantic_hash": ""
-  },
-  "public/assets/projects/gmpr/layup_d.jpg": {
-    "mtime": 1782799297.8232615,
-    "ast_hash": "20207d521efbf965ba3d52290433cc61",
-    "semantic_hash": ""
-  },
-  "public/assets/projects/gmpr/mandrel.jpg": {
-    "mtime": 1782799297.8297231,
-    "ast_hash": "0a0bb74b66acebbbb7bb134db37f84f6",
-    "semantic_hash": ""
-  },
-  "public/assets/projects/observatory/bj.jpg": {
-    "mtime": 1782799297.8346956,
-    "ast_hash": "170a43cc97104112fff223788731fdb2",
-    "semantic_hash": ""
-  },
-  "public/assets/projects/observatory/deep_field.jpg": {
-    "mtime": 1782799297.8394494,
-    "ast_hash": "af26f70f541dadb44a85e6da19e97d4c",
-    "semantic_hash": ""
-  },
-  "public/assets/projects/observatory/saturn.jpg": {
-    "mtime": 1782799297.8434198,
-    "ast_hash": "3443c4492a36c96888bbc67352188bdf",
     "semantic_hash": ""
   }
 }

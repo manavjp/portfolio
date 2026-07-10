@@ -142,3 +142,30 @@ copy-glyph SVG that, on success, briefly swaps to a check (`.is-copied`, 1.4 s).
 (`scale(1.18)`) + accent color, reusing the arrows' `--dur-fast`/`--ease-out`
 tokens (the arrows translate; a scale reads better for a copy action). Clipboard
 uses async `writeText` with an execCommand textarea fallback on rejection.
+
+## Analytics: umami accuracy pass
+
+Custom events use a site-owned `data-track-event` / `data-track-event-*`
+convention (delegated listener in `Layout.astro`), NOT umami's native
+`data-umami-event`: umami's click auto-track `preventDefault()`s same-tab links
+and re-navigates with `location.href` after its fetch, which makes the
+ClientRouter skip the link — every tracked internal link degraded to a full page
+reload with no view transition. Our listener calls `umami.track()` and never
+touches navigation.
+
+Auto pageviews stay on (umami hooks `pushState`), but back/forward traversals are
+performed by the ClientRouter *without* `pushState`, so after a `popstate`-driven
+navigation completes (`astro:page-load`) we re-announce the URL via a same-URL
+`history.replaceState` — umami's hook picks it up and ignores calls whose URL
+hasn't changed, so it can't double count. Astro's own scroll-save `replaceState`
+calls pass no URL and are ignored by umami.
+
+Pollution guards: the script renders in production builds only
+(`import.meta.env.PROD`), `data-domains="manav-patel.com,www.manav-patel.com"`
+blocks previews/forks/`astro preview`, and the owner-only `?preview=1` toggle
+also sets `localStorage["umami.disabled"]` (`?preview=0` clears it) so the
+owner's own visits are excluded. `data-exclude-hash` keeps URL stats from
+fragmenting; search params stay recorded so UTM/ref campaign links keep working.
+
+`src/pages/404.astro` exists partly for analytics: GitHub Pages serves it at the
+requested URL, so umami records exactly which broken links visitors hit.

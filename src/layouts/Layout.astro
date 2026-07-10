@@ -58,16 +58,39 @@ const pageTitle = `${title} — Manav Patel`;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <ClientRouter />
 
-    <!-- Umami analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="408aab67-e3ea-40bc-a0d6-d069bc53128f" is:inline></script>
+    <!-- Umami analytics — production builds only; data-domains guards previews,
+         forks, and local `astro preview` from polluting the stats.
+         Custom events use data-track-event (see script below), NOT data-umami-event:
+         umami's own click handler preventDefault()s same-tab links, which makes the
+         ClientRouter skip them and forces a full page reload on every tracked link. -->
+    {
+      import.meta.env.PROD && (
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="408aab67-e3ea-40bc-a0d6-d069bc53128f"
+          data-domains="manav-patel.com,www.manav-patel.com"
+          data-exclude-hash="true"
+          is:inline
+        />
+      )
+    }
 
     <!-- PREVIEW TOGGLE — ?preview=1 to enable, ?preview=0 to disable -->
     <!-- When preview is OFF (public default): About page redirects, incomplete project tiles are non-clickable -->
     <script is:inline>
       (function () {
         const p = new URLSearchParams(window.location.search).get('preview');
-        if (p === '1') localStorage.setItem('preview', '1');
-        if (p === '0') localStorage.removeItem('preview');
+        // Preview mode is owner-only, so also flip umami's kill switch — it is
+        // checked before every send, keeping the owner's visits out of the stats.
+        if (p === '1') {
+          localStorage.setItem('preview', '1');
+          localStorage.setItem('umami.disabled', '1');
+        }
+        if (p === '0') {
+          localStorage.removeItem('preview');
+          localStorage.removeItem('umami.disabled');
+        }
       })();
     </script>
     <!-- END PREVIEW TOGGLE -->
@@ -186,6 +209,45 @@ const pageTitle = `${title} — Manav Patel`;
     const hide = path.startsWith('/projects') || path === '/about';
     logos.classList.toggle('is-hidden', hide);
   }
+
+  // ── Analytics (umami) ──────────────────────────────────────────────────────
+  // Custom events: elements with data-track-event fire a umami event on click;
+  // extra data-track-event-* attributes become event data. This deliberately
+  // replaces umami's native data-umami-event auto-track, whose click handler
+  // preventDefault()s same-tab links — the ClientRouter then ignores them and
+  // every tracked internal link degrades to a full page reload.
+  document.addEventListener(
+    'click',
+    (e) => {
+      const el = (e.target as Element | null)?.closest?.('[data-track-event]');
+      if (!el) return;
+      const name = el.getAttribute('data-track-event');
+      if (!name) return;
+      const data: Record<string, string> = {};
+      for (const attr of el.getAttributeNames()) {
+        const m = attr.match(/^data-track-event-(.+)$/);
+        if (m?.[1]) data[m[1]] = el.getAttribute(attr) ?? '';
+      }
+      (window as any).umami?.track(name, data);
+    },
+    true
+  );
+
+  // Back/forward pageviews: umami auto-tracks by hooking pushState, but the
+  // ClientRouter performs history traversals without calling it. After a
+  // traversal's swap completes, re-announce the URL via replaceState so umami
+  // records the view. Safe against double counting: umami ignores history calls
+  // whose (normalized) URL matches the last one it tracked.
+  let traversed = false;
+  window.addEventListener('popstate', () => {
+    traversed = true;
+  });
+  document.addEventListener('astro:page-load', () => {
+    if (traversed) {
+      traversed = false;
+      history.replaceState(history.state, '', window.location.href);
+    }
+  });
 
   // ── Lenis smooth scroll ────────────────────────────────────────────────────
   import Lenis from 'lenis';
